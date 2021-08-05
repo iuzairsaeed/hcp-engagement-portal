@@ -7,18 +7,14 @@
 <body>
     <div class="wrapper">
         @if(Auth::check())
-            @include('inc.sidebar')
+
+             @include('inc.navbar')
             
-            @include('inc.navbar')
-            <div class="main-panel">
-                <div class="main-content">
-                    <div class="content-wrapper">
-                        <div class="container-fluid">
+            <div class="main-panel" id="wrapper">
+                           @include('inc.sidebar')
                             @yield('content')
                         </div>
-                    </div>
-                </div>
-            </div>
+             
         @else
             @yield('content')
         @endif

@@ -89,7 +89,7 @@ a{text-decoration: none !important;}
 .pb-7{padding-bottom: 6.0rem;}
 .pb-8{padding-bottom: 7.5rem;}
 .h-img {
-    height: 106px;
+    height: 100px;
     overflow: hidden;
     margin-bottom: 2px;
     border: 1px solid #f7f7f7;
@@ -652,7 +652,7 @@ input[type=number] {
 .toggled span{ display: none }
 .toggled .hide-collapse{display: inline-block;}
 .comment-overlay:hover {  background: #fef8f4; }
-.w-fix{ width: 73%; }
+.w-fix{ width: 70%; }
 .w-93{width: 93%;}
 
 
