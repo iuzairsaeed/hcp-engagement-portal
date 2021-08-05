@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class RoleController extends Controller
 {
 
-    
- protected $model;
+
+    protected $model;
 
     public function __construct(Role $model)
     {
