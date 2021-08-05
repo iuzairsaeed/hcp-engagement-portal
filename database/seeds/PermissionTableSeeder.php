@@ -20,11 +20,21 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
-            'plan-getList',
-            'plan-list',
-            'plan-create',
-            'plan-edit',
-            'plan-delete',
+            'post-getList',
+            'post-list',
+            'post-create',
+            'post-edit',
+            'post-delete',
+            'activity-getList',
+            'activity-list',
+            'activity-create',
+            'activity-edit',
+            'activity-delete',
+            'event-getList',
+            'event-list',
+            'event-create',
+            'event-edit',
+            'event-delete',
             'settings-getList',
             'settings-list',
             'settings-create',
@@ -35,7 +45,7 @@ class PermissionTableSeeder extends Seeder
             'notifications-create',
             'notifications-edit',
             'notifications-delete',
-            
+
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
