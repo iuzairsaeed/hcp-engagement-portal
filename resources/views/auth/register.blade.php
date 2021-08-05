@@ -28,10 +28,10 @@
                                     <div class="text-center">
                                          <ul class="nav nav-tabs tabs-login border-0 justify-content-center" role="tablist">
                                                  <li class="nav-item">
-                                                  <a class="nav-link font-gothamlight" href="#">Sign in</a>
+                                                  <a class="nav-link font-gothamlight" href="{{url('/login')}}">Sign in</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                  <a class="nav-link active font-gothammedium" href="#">Sign up</a>
+                                                  <a class="nav-link active font-gothammedium" href="{{url('/register')}}">Sign up</a>
                                                 </li>
                                                  <!-- <li class="nav-item">
                                                   <a class="nav-link" data-toggle="tab" href="#signup">Sign Up</a>
@@ -41,16 +41,17 @@
 
                                      <div class="tab-content mt-4">
 
-                                              <form class="user" method="post" action="">
+                                              <form class="form" method="POST" id="userForm" action="{{ route('users.store') }}" enctype="multipart/form-data">
                                                 @csrf
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset4.png')}}" width="11">
-                                                        <input type="text" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" name="name"
+                                                        <input type="text" id="name" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" name="name"
                                                             placeholder="Name">
-                                                    </div>
+                                                      </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset14.png')}}" width="13">
-                                                        <input type="email" name="email" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Email">
+                                                        <input type="email" id="email" name="email" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Email">
+                                                       
                                                     </div>
                                                      <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset9.png')}}" width="10">
@@ -58,7 +59,7 @@
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset8.png')}}" width="13">
-                                                        <input type="tel" name="phone" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Phone">
+                                                        <input type="tel" name="phone" id="phone" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Phone">
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset7.png')}}" width="11">
@@ -72,10 +73,11 @@
 
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset48.png')}}" width="11" height="11">
-                                                        <input type="password" name="password" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Password">
+                                                        <input type="password" name="password" id="password" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Password" required>
+                                                         
                                                     </div>
                                                   
-                                                    <button class="btn bg-orange text-uppercase border-radius25px text-white btn-block outline-none fontsize15px letterspacing1px pt-2 pb-2 mt-4 hoverbtn1 border border-orange font-gothamlight" type="submit">
+                                                    <button type="submit" class="btn bg-orange text-uppercase border-radius25px text-white btn-block outline-none fontsize15px letterspacing1px pt-2 pb-2 mt-4 hoverbtn1 border border-orange font-gothamlight" type="submit">
                                                         Sign Up
                                                     </button>
                                                  
@@ -98,16 +100,12 @@
     </div>
 
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title-wrap bar-teal">
-                    <h4 class="card-title" id="horz-layout-colored-controls">Register User</h4>
-                </div>
-            </div>
-            <div class="card-body px-4">
-                <form class="form" method="POST" id="userForm" action="{{ route('users.store') }}" enctype="multipart/form-data">
+
+
+
+
+            
+               <!--  <form class="form" method="POST" id="userForm" action="{{ route('users.store') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="row">
                         <div class="col-6">
@@ -153,12 +151,7 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Profile Picture </label>
-                                <input type="file" id="pic" class="form-control border-primary" name="avatar" required>
-                            </div>
-                        </div> --}}
+                  
                         
                     </div>
 
@@ -170,12 +163,13 @@
                             <i class="icon-note"></i> Save
                         </button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-    
+                </form> -->
+          
+
+          
+       
+
+
 @endsection
 @section('afterScript')
 <script>

@@ -29,14 +29,17 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('role','RoleController');
         Route::get('role-list', 'RoleController@getList')->name('role.get-list');
         Route::get('role-dropdown-list', 'RoleController@getRole')->name('role.get-role');
-    });
 
-        Route::get('userdashboard', function(){ return view('userdashboard'); });
+         Route::get('userdashboard', function(){ return view('userdashboard'); });
         Route::get('profile', function(){ return view('pages/profile'); });
         Route::get('activities', function(){ return view('pages/activities'); });
-        Route::get('communities', function(){ return view('pages/communities'); });
-        Route::get('about', function(){ return view('pages/about'); });
+        Route::get('communities', function(){ return view('pages/communities');  });
+         Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
+                Route::get('about', function(){ return view('pages/about'); });
         Route::get('contact', function(){ return view('pages/contact'); });
+    });
+
+       
    
 });
 

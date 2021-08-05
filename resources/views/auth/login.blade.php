@@ -29,10 +29,10 @@
                                     <div class="text-center">
                                          <ul class="nav nav-tabs tabs-login border-0 justify-content-center" role="tablist">
                                                  <li class="nav-item">
-                                                  <a class="nav-link active font-gothammedium" href="#">Sign in</a>
+                                                  <a class="nav-link active font-gothammedium" href="{{url('/login')}}">Sign in</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                  <a class="nav-link font-gothamlight" href="#">Sign up</a>
+                                                  <a class="nav-link font-gothamlight" href="{{url('/register') }}">Sign up</a>
                                                 </li>
                                               
                                          </ul>
@@ -42,21 +42,33 @@
                                  
                                         <!-- sign In -->
                                          <!-- <div id="signin" class="tab-pane active"> -->
-                                                <form class="user" method="post" action="">
+                                                <form class="user" method="POST" action="{{ route('login') }}">
                                                     @csrf
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset10.png')}}" width="13">
-                                                        <input type="email" name="email" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight text-darkgray fontsize13px col-md-12" placeholder="Email">
-                                                    </div>
+                                                        <input type="email" name="username" class="form-control form-control-lg{{ $errors->has('username') ? ' is-invalid' : '' }} border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight text-darkgray fontsize13px col-md-12" placeholder="Email" value="{{ old('username') }}" id="username">
+
+                                                        </div>
+                                                         @if ($errors->has('username'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('username') }}</strong>
+                                                            </span>
+                                                        @endif
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 align-items-center d-flex">
                                                         <img src="{{asset('images/Asset5.png')}}" width="10" >
-                                                        <input type="password" name="password" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray"
-                                                            placeholder="Password">
+                                                        <input type="password" name="password" class="form-control form-control-lg{{ $errors->has('password') ? ' is-invalid' : '' }} border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray"
+                                                           name="password" id="inputPass" placeholder="Password">
                                                     </div>
+                                                   
+                                                          @if ($errors->has('password'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                                </span>
+                                                            @endif
                                                     <div class="w-100 d-flex flex-wrap">
                                                         <div class="form-group col-sm-6">
                                                             <div class="custom-control custom-checkbox small">
-                                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                                <input type="checkbox" class="custom-control-input" name="remember" id="remember">
                                                                 <label class="custom-control-label fontsize11px font-gothamlight text-darkgray" for="customCheck">Remember
                                                                     me</label>
                                                             </div>
@@ -87,15 +99,10 @@
     </div>
 
 
-    <div class="container-fluid">
-        <div class="row full-height-vh">
-            <div class="col-12 d-flex align-items-center justify-content-center gradient-crystal-clear">
-                <div class="card px-4 py-2 box-shadow-2 width-400">
-                    <
-                    <div class="card-body">
-                        <div class="card-block">
-                            <br />
-                            <form method="POST" action="{{ route('login') }}">
+
+                    
+                  
+                          <!--   <form method="POST" action="{{ route('login') }}">
                             @csrf
                                 <div class="form-group">
                                     <div class="col-md-12">
@@ -145,20 +152,10 @@
                                 </div>
                               
                             </form>
-                        </div>
-                    </div>
-                    <div class="card-footer grey darken-1">
-                        <div class="text-center">
-                            <p class="font-small-2">All rights Reserved © RUSD Investment Bank</p>
-                            @if (Route::has('password.request'))
+                  
                                 <div class="text-center mb-1">Forgot Password? <a href="{{ route('password.request') }}"><b>Reset</b></a></div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</section>
+                            -->
+
+                        
+          </section>
 @endsection
