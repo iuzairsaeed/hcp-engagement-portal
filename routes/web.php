@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::group(['namespace' => 'Web'], function () {
-    Auth::routes(['register'=>false, 'reset'=>false]);
+    Auth::routes();
 
-    Route::group(['middleware' => 'auth' ], function () {
+     Route::group(['middleware' => 'auth' ], function () {
         
         Route::post('registerUser','Auth\RegisterController@register')->name('registerUser');
         Route::resource('users','UserController');
@@ -19,8 +19,8 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');
 
-        Route::get('profile','ProfileController@showProfileForm');
-        Route::post('profile','ProfileController@profile')->name('profile');
+        // Route::get('profile','ProfileController@showProfileForm');
+        // Route::post('profile','ProfileController@profile')->name('profile');
 
         Route::resource('permission','PermissionController');
         Route::get('permission-dropdown-list', 'PermissionController@getPermission')->name('permission.get-permission');
@@ -29,10 +29,17 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('role','RoleController');
         Route::get('role-list', 'RoleController@getList')->name('role.get-list');
         Route::get('role-dropdown-list', 'RoleController@getRole')->name('role.get-role');
-        
+
+        Route::get('userdashboard', function(){ return view('pages/userdashboard'); });
+         Route::get('profile', function(){ return view('pages/profile'); });
+        Route::get('activities', function(){ return view('pages/activities'); });
+        Route::get('communities', function(){ return view('pages/communities'); });
+         Route::get('about', function(){ return view('pages/about'); });
+         Route::get('contact', function(){ return view('pages/contact'); });
     });
    
 });
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
 Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
+

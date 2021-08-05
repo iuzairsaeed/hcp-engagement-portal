@@ -1,41 +1,92 @@
-<div class="app-sidebar" data-background-color="white" data-image={{  asset('app-assets/img/sidebar-bg/12.jpg') }} data-active-color="succsess">
-    <div class="sidebar-header">
-        <div class="logo clearfix">
-            <a href="/dashboard" class="logo-text" style="text-align: center;">
-                <div class="">
-                <img src="{{ asset('favicon.ico') }}" alt="logo" class="main-logo mb-1 mt-3 width-200"/>
-                </div>
-            </a>
-            <a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none">
-                <i class="ft-x-circle"></i>
-            </a>
-        </div>
-    </div>
-    <div class="sidebar-content">
-        <div class="nav-container">
-            @php
-                $segment1 = Request::segment(1);
-                $segment2 = Request::segment(2);
-            @endphp
-            <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-                <li class="nav-item {{ $segment1 === 'dashboard' ? 'active' : null }}"><a href="/dashboard"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
-                </li>
-                <li class="has-sub nav-item {{ $segment1 === 'users' ? 'open' : null }} "  {{ (auth()->user()->roles[0]->hasPermissionTo('user-edit','user-delete','user-create','user-list')) == true ? "" : "hidden"}}><a href="#"><i class="icon-user" ></i><span data-i18n="" class="menu-title">Users</span></a>
-                    <ul class="menu-content" >
-                        <li class="nav-item {{ $segment1 === 'users' && $segment2 === null ? 'active' : null }} {{ $segment1 === 'users' && $segment2 != null ? 'active' : null }}"{{ (auth()->user()->roles[0]->hasPermissionTo('user-list') ) == true ? "" : "hidden"}}>
-                            <a href="{{route('users.index')}}"><span data-i18n="" class="menu-title">All Users</span></a>
-                        </li>
-                    </ul>
-                </li>
-                
-                
-            </ul>
-            {{-- Scroll Bar --}}
-            <div class="ps-scrollbar-y-rail" style="top: 120px; height: 50px; right: 3px;">
-                <div class="ps-scrollbar-y" tabindex="0" style="top: 83px; height: 150%;">
-                </div>
+<ul class="navbar-nav bg-blue sidebar sidebar-dark accordion pt-2" id="accordionSidebar">
+
+                 <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-right d-none d-md-inline w-100 bg-orange text-white font-gothamlight fontsize11px text-center lineheight2px"> <span>Collapse </span> <span class="hide-collapse"> Expand </span><button class="rounded-circle bg-orange border-0 float-right mb-0" id="sidebarToggle"></button>
             </div>
-        </div>
-    </div>
-    <div class="sidebar-background"></div>
-</div>
+
+            <!-- Nav Item - Dashboard -->
+                        <li class="nav-item {{ (request()->is('userdashboard')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('userdashboard')}}" title="Dashboard">
+                    <span class="{{ (request()->is('userdashboard')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('userdashboard')) ?'Asset25.png':'Asset35.png'}}' width="15"></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+           
+            <li class="nav-item {{ (request()->is('profile')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('user-profile')}}" title="Profile">
+                    <span class="{{ (request()->is('profile')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('profile')) ?'Asset17.png':'Asset27.png'}}' width="15"></span>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+         
+             <li class="nav-item {{ (request()->is('activities')) ? 'active' : '' }}">
+                <a class="nav-link font-gothamlight" href="{{url('activities')}}" title="Activities">
+                    <span class="{{ (request()->is('activities')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('activities')) ?'Asset20.png':'Asset30.png'}}' width="15"></span>
+                    <span>Activities</span>
+                </a>
+            </li>
+
+
+              <li class="nav-item {{ (request()->is('chatroom')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('chatroom')}}" title="Chatroom">
+                    <span class="{{ (request()->is('chatroom')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('chatroom')) ?'Asset24.png':'Asset34.png'}}' width="15"></span>
+                    <span>Chatroom</span>
+                </a>
+            </li>
+
+
+     <li class="nav-item {{ (request()->is('communities')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('communities')}}" title="Communities">
+                    <span class="{{ (request()->is('communities')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('communities')) ?'Asset21.png':'Asset31.png'}}' width="15"></span>
+                    <span>Communities</span>
+                </a>
+            </li>
+
+                <li class="nav-item {{ (request()->is('event-calenders')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('event-calenders')}}" title="Event Calendars">
+                    <span class="{{ (request()->is('event-calenders')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('event-calenders')) ?'Asset19.png':'Asset29.png'}}' width="15"></span>
+                    <span>Events Calendars</span></a>
+            </li>
+
+     <li class="nav-item {{ (request()->is('libraries')) ? 'active' : '' }}">
+                <a class="nav-link font-gothamlight" href="{{url('libraries')}}" title="Libraries">
+                    <span class="{{ (request()->is('libraries')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('libraries')) ?'Asset21.png':'Asset32.png'}}' width="15"></span>
+                    <span>Libraries</span></a>
+            </li>
+
+
+
+      <li class="nav-item {{ (request()->is('trainings')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('trainings')}}" title="My Trainings">
+                    <span class="{{ (request()->is('trainings')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('trainings')) ?'Asset23.png':'Asset33.png'}}' width="15"></span>
+                    <span>My Trainings</span></a>
+            </li>
+
+
+      <li class="nav-item {{ (request()->is('faq')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('faq')}}" title="FAQs">
+                    <span class="{{ (request()->is('faq')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('faq')) ?'Asset65.png':'Asset64.png'}}' width="15"></span>
+                    <span>FAQ</span></a>
+            </li>
+
+             <li class="nav-item {{ (request()->is('about')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('about')}}" title="About">
+                     <span class="{{ (request()->is('about')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;">  <img src='{{asset("images")}}/{{ (request()->is('about')) ?'Asset18.png':'Asset28.png'}}' width="15"></span>
+                    <span  >About</span></a>
+            </li>
+
+
+                <li class="nav-item {{ (request()->is('contact')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('contact')}}" title="Contact Us">
+                    <span class="{{ (request()->is('contact')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('contact')) ?'Asset26.png':'Asset36.png'}}' width="15"></span>
+                    <span>Contact Us</span></a>
+            </li>
+
+        
+
+            <div class="w-100 mt-5">
+                <h6 class="fontsize12px font-weight-light text-center font-gothamlight" style="color: rgb(255 255 255 / 58%);">©2021. Celeritas</h6>
+            </div>
+
+        </ul>

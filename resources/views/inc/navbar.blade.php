@@ -1,35 +1,165 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-faded">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-left">
-        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      </button>
-      <span class="d-lg-none navbar-right navbar-collapse-toggle"><a class="open-navbar-container"><i class="ft-more-vertical"></i></a></span>
-    </div>
-    @php $user = auth()->user(); @endphp
-    <div class="navbar-container">
-      <div id="navbarSupportedContent" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="dropdown nav-item mr-0">
-            <a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-user-link dropdown-toggle">
-              <span class="avatar avatar-online  width-100">
-                <img id="navbar-avatar" src="{{ asset('favicon.ico') }}" alt="avatar" />
-              </span>
-            </a>
-            <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
-              <div class="arrow_box_right">
-                <a href="{{ route('profile') }}" class="dropdown-item py-1"><i class="icon-user mr-2"></i><span>{{$user->name}}</span></a>
-                <a href="{{ route('changePassword') }}" class="dropdown-item py-1"><i class="ft-lock mr-2"></i><span>Change Password</span></a>
-                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="ft-power mr-2"></i><span>Logout</span></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-              </div>
-            </div>
-          </li>
 
-        </ul>
-      </div>
+ <div class="container-fluid">
+                <div class="row">
+                <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow col-sm-12">
+                        <div><a href="#"><img src="{{asset('images/Asset3.png')}}" width="130"></a></div>
+                         <!-- Page Heading -->
+                        <div class="d-sm-flex align-items-center justify-content-between border-left p-2 ml-4 col-sm-4 d-sm-block d-none" style="border-width: 2px !important;">
+                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium">Dashboard </h1>
+
+                        </div>
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <!-- Topbar Search -->
+                        <form
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search " method="post" action='#'>
+                            @csrf
+                            <div class="input-group border-radius25px bg-lightgray">
+                                <input type="text" class="form-control font-gothamlight bg-transparent border-0 small outline-none pl-4" placeholder="Search..."
+                                    aria-label="Search" name="search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none d-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                placeholder="Search for..." aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+
+
+                            <!-- Nav Item - Messages -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <img src="{{asset('images/Asset14.png')}}" width="17">
+                                    <!-- Counter - Messages -->
+                                    <!-- <span class="badge bg-blue text-white badge-counter">7</span> -->
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="messagesDropdown" id="testss">
+                                    <h6 class="dropdown-header font-gothamlight" >
+                                        Message Center
+                                    </h6>
+
+
+                                   <a class="dropdown-item d-flex align-items-center" href="#" id="testss">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                                alt="">
+                                            <div class="status-indicator bg-warning"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">Last month's report looks great, I am very happy with
+                                                the progress so far, keep up the good work!</div>
+                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                        </div>
+                                    </a> 
+                                  
+
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </div>
+                            </li>
+
+
+                               <!-- Nav Item - Alerts -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <img src="{{asset('images/Asset13.png')}}" width="15">
+                                    <!-- Counter - Alerts -->
+                                    <!-- <span class="badge bg-blue text-white badge-counter">3+</span> -->
+                                </a>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="alertsDropdown" >
+                                    <h6 class="dropdown-header font-gothamlight">
+                                        Alerts Center
+                                    </h6>
+
+                             <div class="overflow-y" style="height: 400px;">
+                                    
+                                     <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-success">
+                                                <i class="fas fa-donate text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">December 7, 2019</div>
+                                            $290.29 has been deposited into your account!
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-warning">
+                                                <i class="fas fa-exclamation-triangle text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">December 2, 2019</div>
+                                            Spending Alert: We've noticed unusually high spending for your account.
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> 
+                                     </div>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow d-sm-block d-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <img class="img-profile rounded-circle mr-2" src="{{asset('images/Asset38.png')}}" />
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Salauddin </span>
+
+                                </a>
+                            </li>
+                              <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+
+                                     <span class="d-block bg-lightgray rounded-circle p-1 text-center" style="width: 31px;"><img src="{{asset('images/Asset15.png')}}" width="15"></span>
+                            
+                                </a>
+                        
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                 </form>
+                            </li>
+                        </ul>
+
+                    </nav>
+                <!-- End of Topbar -->
+                </div>
     </div>
-  </div>
-</nav>
