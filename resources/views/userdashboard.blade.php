@@ -74,7 +74,7 @@
                     </div>
                 
                         <div class="col-sm-1 p-0 m-auto">
-                            <a href="#"
+                            <a href="{{url('/recentactivity') }}"
                                class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                 All</a>
                         </div>
@@ -148,7 +148,7 @@
 
 
                             <div class="col-sm-1 p-0 m-auto">
-                                <a href="#" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
+                                <a href="{{url('/recentpost') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
                             </div>
 

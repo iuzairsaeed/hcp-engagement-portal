@@ -76,6 +76,7 @@ a{text-decoration: none !important;}
 .maxwidth245px{    max-width: 245px;}
 .maxwidth317px{ max-width: 317px;}
 .maxwidth437px{max-width: 437px;}
+.lineheight1px{line-height: 1.3;}
 .lineheight1-3px{line-height: 1.5;}
 .lineheight1-7px{line-height: 1.7;}
 .lineheight2px{line-height: 2;}
@@ -397,7 +398,7 @@ input[type=number] {
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
-  height: 343px;
+  height: 354px;
   overflow-y: auto;
   padding-right: 7px;
   font-family: Gothambook;
@@ -584,7 +585,9 @@ input[type=number] {
   display: none;
 }
 .uploader #response #messages {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    font-size: 13px;
 }
 .uploader #file-image {
   display: inline;
@@ -592,6 +595,7 @@ input[type=number] {
   width: auto;
   height: auto;
   max-width: 180px;
+  width: 100%;
 }
 .uploader #file-image.hidden {
   display: none;

@@ -35,8 +35,15 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('activities', function(){ return view('pages/activities'); });
         Route::get('communities', function(){ return view('pages/communities');  });
          Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
-                Route::get('about', function(){ return view('pages/about'); });
+        Route::get('about', function(){ return view('pages/about'); });
         Route::get('contact', function(){ return view('pages/contact'); });
+        Route::get('chatroom', function(){ return view('pages/chatroom'); });
+        Route::get('libraries', function(){ return view('pages/libraries'); });
+        Route::get('trainings', function(){ return view('pages/trainings'); });
+        Route::get('faq', function(){ return view('pages/faq'); });
+        Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
+        Route::get('recentpost', function(){ return view('pages/recentpost'); });
+        Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
     });
 
        
