@@ -96,7 +96,7 @@ a{text-decoration: none !important;}
     border: 1px solid #f7f7f7;
     border-radius: 9px 9px;
 }
-.hovericon:hover,.hovericon:active,.hovericon:focus{ background: #f17121; color: #fff; }
+.hovericon:hover,.hovericon:active,.hovericon:focus{ background: #f17121 !important; color: #fff; }
 .overflow-y::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
@@ -120,6 +120,7 @@ a{text-decoration: none !important;}
   bottom: 0;
   top: 0;
 }
+.right-0{right: 2.8em !important; left: auto !important;}
 .hoverbtn:hover, .hoverbtn:active, .hoverbtn:focus { background: #f17121 !important; border-color: #f17121 !important;}
 .hoverlink:hover, .hoverlink:active,.hoverlink:focus{color: #f17121;text-decoration: none;}
 .aticon{background-color: #f17121;color: #fff;}

@@ -43,9 +43,9 @@
                 </a>
             </li>
 
-                <li class="nav-item {{ (request()->is('event-calenders')) ? 'active' : '' }}">
-                <a class="nav-link font-gothambook" href="{{url('event-calenders')}}" title="Event Calendars">
-                    <span class="{{ (request()->is('event-calenders')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('event-calenders')) ?'Asset19.png':'Asset29.png'}}' width="15"></span>
+                <li class="nav-item {{ (request()->is('eventcalender')) ? 'active' : '' }}">
+                <a class="nav-link font-gothambook" href="{{url('eventcalender')}}" title="Event Calendars">
+                    <span class="{{ (request()->is('eventcalender')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('eventcalender')) ?'Asset19.png':'Asset29.png'}}' width="15"></span>
                     <span>Events Calendars</span></a>
             </li>
 
