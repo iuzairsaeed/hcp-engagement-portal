@@ -50,15 +50,14 @@ class RegisterController extends Controller
      */
     public function validator(array $data)
     {
-
         return Validator::make($data, [
-            'name' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
+            'name' => ['bail', 'required','alpha_spaces', 'max:255', 'min:3'],
             'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['bail','required', 'string', 'min:6', 'confirmed'],
+            'password' => ['bail','required', 'string', 'min:6'],
             'phone' => ['required','regex:/[0-9+*-*]/'],
             'pmdc' => ['required','regex:/[0-9+*-*]/'],
-            'speciality' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'location' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
+            'speciality' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
+            'location' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
         ]);
     }
 
@@ -88,7 +87,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         
         event(new Registered($user = $this->create($request->all())));
-        
-        return redirect("/users/$user->id");
+
+        return redirect("/");
     }
 }

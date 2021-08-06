@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::group(['namespace' => 'Web'], function () {
-    Auth::routes();
+    Auth::routes(['rese' => true, 'verify' => true]);
 
      Route::group(['middleware' => 'auth' ], function () {
         
@@ -33,25 +33,28 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('activity','ActivityController');
         Route::get('activity-list', 'ActivityController@getList')->name('activity.get-list');
         
-        Route::resource('community','CommunityController');
-        Route::get('community-list', 'CommunityController@getList')->name('community.get-list');
-        
         Route::resource('event','EventController');
         Route::get('event-list', 'EventController@getList')->name('event.get-list');
 
         //  Route::get('userdashboard', function(){ return view('userdashboard'); });
+        // Route::get('profile', function(){ return view('pages/profile'); });
         // Route::get('activities', function(){ return view('pages/activities'); });
         // Route::get('communities', function(){ return view('pages/communities');  });
         //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
+        Route::get('chatroom', function(){ return view('pages/chatroom'); });
+        Route::get('libraries', function(){ return view('pages/libraries'); });
+        Route::get('trainings', function(){ return view('pages/trainings'); });
+        Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
+        Route::get('recentpost', function(){ return view('pages/recentpost'); });
+        Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
     });
-
-       
-   
+    
 });
 
 Route::get('about', 'Web\PageController@about');
 Route::get('contact', 'Web\PageController@contact');
+Route::get('faq', 'Web\PageController@faq');
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
-Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
+Route::get('{any}', 'Web\PageController@ho  me')->where('any', '.*');
 
