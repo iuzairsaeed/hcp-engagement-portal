@@ -34,22 +34,20 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'username',
         'email',
+        'avatar',
         'password',
+        'pmdc',
+        'speciality',
         'phone',
+        'location',
+        'cnic',
         'gender',
-        'country',
-        'dob',
         'address',
         'street',
         'city',
         'zipcode',
-        'about_me',
+        'dob',
         'is_active',
-        'pin',
-        'biometric',
-        '2fa',
-        '2fa_code',
-        'refresh_token',
     ];
 
     protected $with = [
@@ -59,6 +57,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getStatusAttribute()
     {
         return $this->status()->name;
+    }
+    
+    public function getRoleAttribute()
+    {
+        return $this->roles->first()->name;
     }
 
     public function getAvatarAttribute($value)

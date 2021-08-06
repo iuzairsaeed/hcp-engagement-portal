@@ -53,13 +53,12 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'name' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'username' => ['required', 'string', 'alpha_dash', 'max:255', 'unique:users'],
             'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['bail','required', 'string', 'min:6', 'confirmed'],
-            'dob' => ['bail','required', 'date',],
-            'country' => ['bail','required', 'date'],
-            'gender' => ['bail','required', 'string'],
             'phone' => ['required','regex:/[0-9+*-*]/'],
+            'pmdc' => ['required','regex:/[0-9+*-*]/'],
+            'speciality' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
+            'location' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
         ]);
     }
 
@@ -72,14 +71,13 @@ class RegisterController extends Controller
     public function create(array $data)
     {
         return User::create([
-            'name' => $data['name'] ?? '',
-            'username' => $data['username'],
+            'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
-            'dob' => $data['dob'],
-            'country' => $data['country'],
-            'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
+            'pmdc' => $data['pmdc'],
+            'speciality' => $data['speciality'],
+            'phone' => $data['phone'],
+            'location' => $data['location'],
             'device_token' => $data['device_token'] ?? null,
         ]);
     }

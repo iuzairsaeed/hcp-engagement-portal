@@ -55,7 +55,7 @@
                                                     </div>
                                                      <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset9.png')}}" width="10">
-                                                        <input type="text" name="specialty" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Specialty">
+                                                        <input type="text" name="speciality" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Speciality">
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset8.png')}}" width="13">
@@ -99,99 +99,9 @@
 
     </div>
 
-
-
-
-
-
-            
-               <!--  <form class="form" method="POST" id="userForm" action="{{ route('users.store') }}" enctype="multipart/form-data">
-                @csrf
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Name </label>
-                                <input type="text" id="name" class="form-control border-primary" name="name" placeholder="Enter Name" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">User Name </label>
-                                <input type="text" id="phone" class="form-control border-primary" name="username" placeholder="Enter User Name" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Email </label>
-                                <input type="email" id="email" class="form-control border-primary" name="email" placeholder="Enter User Email" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Password </label>
-                                <input type="password" id="password" class="form-control border-primary" name="password" placeholder="Enter User Password" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Password Confirmation</label>
-                                <input type="password" id="con_pass" class="form-control border-primary" name="password_confirmation" placeholder="Confirm Password" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control" for="vendor_no">Phone No. </label>
-                                <input type="text" id="phone" class="form-control border-primary" name="phone" placeholder="Enter User Phone Number" required>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label-control">Role</label>
-                                <select name="roles[]" id="role" value="{{old('role')}}" class="form-control border-primary" >
-                                </select>
-                            </div>
-                        </div>
-                  
-                        
-                    </div>
-
-                    <div class="form-actions right">
-                        <button type="button" class="btn btn-danger mr-1">
-                            <i class="icon-trash"></i> Cancel
-                        </button>
-                        <button type="submit" class="btn btn-success">
-                            <i class="icon-note"></i> Save
-                        </button>
-                    </div>
-                </form> -->
-          
-
-          
-       
-
-
 @endsection
 @section('afterScript')
 <script>
-    $('#role').select2({
-        placeholder: "Search Role",
-        allowClear: true,
-        ajax: {
-            url: "{{ route('role.get-role') }}",
-            type: "GET",
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    search: params.term
-                };
-            },
-            processResults: function (response) {
-                return {
-                    results: response
-                };
-            },
-            cache: true
-        }
-    });
+    
 </script>
 @endsection
