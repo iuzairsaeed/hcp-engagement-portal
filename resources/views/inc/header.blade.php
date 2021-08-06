@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 <meta name="description" content="{{ config('app.name', 'HCP Engagement Portal') }}">
 <meta name="keywords" content="{{ config('app.name', 'HCP Engagement Portal') }}">
-<meta name="author" content="rusd Inc">
+<meta name="author" content="hcp Inc">
 <title>{{ config('app.name', 'HCP Engagement Portal') }}</title>
 
 <!-- CSRF Token -->

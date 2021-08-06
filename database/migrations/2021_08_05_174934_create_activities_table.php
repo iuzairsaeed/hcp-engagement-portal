@@ -17,7 +17,6 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('type');
             $table->enum('type', ['gamification', 'clinical']);
             $table->string('avtivity_image');
             $table->string('avtivity_doc');

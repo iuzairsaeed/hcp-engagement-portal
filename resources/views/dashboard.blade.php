@@ -11,36 +11,37 @@
 
                   <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
                         <div class="row">   
-
-                            <div class="col-sm-12 text-right">
-                                <ul class="pl-0 pr-0 pt-2 pb-2 m-0 text-right d-flex flex-wrap" style="flex-direction: row-reverse;">
-                                     <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>HCP Name </option>
-                                                <option>HCP Name </option>
-                                            <option>HCP Name </option>
-                                        <option>HCP Namey </option></select></li>
-                                    
-                                    <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 font-gothambook pt-2 pb-2 outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>Speciality </option>
-                                                <option>Speciality </option>
-                                            <option>Speciality </option>
-                                        <option>Speciality </option></select></li>
-                             
-                            <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
-                                        <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
-                                            <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-5 checklabel text-left border-right mr-2 mb-0">Karachi
-                                                      <input type="checkbox" required>
-                                                      <span class="checkmark"></span>
-                                                    </label>
-                                             <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
-                                                      <input type="checkbox" required>
-                                                      <span class="checkmark"></span>
-                                                    </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                          <div class="col-sm-12 text-right">
+                              <ul class="pl-0 pr-0 pt-2 pb-2 m-0 text-right d-flex flex-wrap" style="flex-direction: row-reverse;">
+                                  <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>HCP Name </option>
+                                              <option>HCP Name </option>
+                                          <option>HCP Name </option>
+                                      <option>HCP Name </option></select></li>
+                                  
+                                  <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 font-gothambook pt-2 pb-2 outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>Speciality </option>
+                                              <option>Speciality </option>
+                                          <option>Speciality </option>
+                                      <option>Speciality </option></select></li>
+                            
+                                  <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
+                                      <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
+                                          <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-5 checklabel text-left border-right mr-2 mb-0">Karachi
+                                                    <input type="checkbox" required>
+                                                    <span class="checkmark"></span>
+                                                  </label>
+                                            <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
+                                                    <input type="checkbox" required>
+                                                    <span class="checkmark"></span>
+                                                  </label>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+                        </div>
+                        <div class="row">
 
                             <!-- Graph 1 -->
-                            <div class="col-sm-5 pl-2" style="max-width: 435px;">
+                            <div class="col-lg-5 col-sm-12 " >
                                 <h6 class="mb-2 pt-1 pb-1 font-gothambook">Top 10 HCP Rating on Their Activity </h6>
                                 <div class="w-100 bg-white border-radius10px p-2" style="box-shadow: 1px 1px 10px #afc5ce;">
                                          <div class="chart-container w-100">
@@ -53,7 +54,7 @@
 
 
                             <!-- Graph 2-->
-                            <div class="col-sm-5 pl-1" style="max-width: 458px;">
+                            <div class="col-lg-5 col-sm-12 " >
                                 <h6 class="mb-2 pt-1 pb-1 font-gothambook">Top 10 HCP w.r.t Experience </h6>
                                 <div class="w-100 bg-white border-radius10px p-2" style="box-shadow: 1px 1px 10px #afc5ce;">
                                         <div class="chart chart-container w-100">
@@ -64,7 +65,7 @@
                             </div>
                             <!-- Graph 1 -->
 
-                            <div class="col-sm-3 pr-1 pl-1 col-12 max-100" style="max-width: 207px;">
+                            <div class="col-lg-2 col-sm-12  " >
                                     <div class="w-100 bg-white border-radius10px text-center pt-2 pb-2" 
                                     style="margin-top: 2.1em;">
                                             <img src="{{ asset ('images/Asset87.png') }}" width="32" class="mb-1">

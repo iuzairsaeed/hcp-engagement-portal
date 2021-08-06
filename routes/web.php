@@ -19,8 +19,8 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');
 
-        // Route::get('profile','ProfileController@showProfileForm');
-        // Route::post('profile','ProfileController@profile')->name('profile');
+        Route::get('profile','ProfileController@showProfileForm');
+        Route::post('profile','ProfileController@profile')->name('profile');
 
         Route::resource('permission','PermissionController');
         Route::get('permission-dropdown-list', 'PermissionController@getPermission')->name('permission.get-permission');
@@ -49,6 +49,9 @@ Route::group(['namespace' => 'Web'], function () {
        
    
 });
+
+Route::get('about', 'Web\PageController@about');
+Route::get('contact', 'Web\PageController@contact');
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
 Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
