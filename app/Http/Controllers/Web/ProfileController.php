@@ -35,14 +35,13 @@ class ProfileController extends Controller
 
         $user = auth()->user();
         $data = $request->all();
+        $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'email' ,'old_password', 'password']);
         if($request->hasFile('avatar')){
             $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
             $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);
-            $data['avatar'] = $file_name;
+            $userData['avatar'] = $file_name;
         }
 
-        $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'email' ,'old_password', 'password']);
-        $userData['avatar'] = $file_name;
         $profileData = $request->only(['clinic_name','clinic_address']); $profileData['user_id'] = auth()->id();
         $educationData = $request->except([
             'clinic_name','clinic_address', 'experience', 'old_password', 'password', 'name', 'location',
@@ -56,9 +55,9 @@ class ProfileController extends Controller
         $userModel = auth()->user();
         $this->model->update($userData, $userModel);
 
-        $profileModel = new PRofile;
+        $profileModel = Profile::where('user_id', auth()->id())->first() ?? new Profile;
         $this->model = new Repository($profileModel);
-        $this->model->create($profileData);
+        $profileModel->exists() ? $this->model->update($profileData, $profileModel) : $this->model->create($profileData) ;
 
         return redirect()->back()->with('success', 'Profile has been updated.');
     }
