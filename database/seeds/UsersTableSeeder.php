@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $admin = User::create([
             'name' => 'Uzair Saeed',
             'username' => 'uzair',
-            'pmdc' => 'pmdc',
+            'pmdc' => '123456789',
             'speciality' => 'speciality',
             'phone' => '0335669874',
             'location' => '64 , K0 - D L Appartment Flat 19',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Asim A.',
             'username' => 'asim',
-            'pmdc' => 'pmdc',
+            'pmdc' => '123456789',
             'speciality' => 'speciality',
             'phone' => '0335669874',
             'location' => '64 , K0 - D L Appartment Flat 19',

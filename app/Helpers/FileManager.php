@@ -42,18 +42,3 @@ function avatarsPath()
     return 'storage/avatars/';
 }
 
-function nicPath()
-{
-    return 'storage/nic/';
-}
-
-function passportPath()
-{
-    return 'storage/passport/';
-}
-
-function billPath()
-{
-    return 'storage/bill/';
-}
-

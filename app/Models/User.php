@@ -91,9 +91,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function profile(): HasOne
+    public function profile()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Profile::class);
     }
 
     /**
@@ -101,7 +101,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function education(): HasMany
+    public function education()
     {
         return $this->hasMany(Education::class);
     }
@@ -111,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function experience(): HasMany
+    public function experience()
     {
         return $this->hasMany(Experience::class);
     }

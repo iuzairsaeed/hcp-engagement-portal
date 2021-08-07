@@ -26,14 +26,14 @@ class ProfileUpdateRequest extends FormRequest
         return [
             // PROFILE ARRAY CHECK
             'name' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'email' => ['bail', 'required', 'string', 'email', 'max:255'],
+            // 'email' => ['bail', 'required', 'string', 'email', 'max:255'],
             'phone' => ['required','regex:/[0-9+*-*]/'],
             'pmdc' => ['required','regex:/[0-9+*-*]/'],
             'speciality' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'location' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'clinic_name' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'clinic_address' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'avatar' => ['required', 'image', 'mimes:jpg,jpeg,png|max:2048'],
+            'location' => ['bail', 'string', 'max:255', 'min:3'],
+            'clinic_name' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
+            'clinic_address' => ['bail', 'required', 'string', 'max:255', 'min:3'],
+            'avatar' => ['image', 'mimes:jpg,jpeg,png|max:2048'],
             // EDUCATION ARRAY CHECK
             'education.level.*' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
             'education.type.*' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],

@@ -47,17 +47,17 @@
                                         <div class="col-sm-4 pl-2 pr-2">
                                             <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Full Name*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="name" value="" placeholder="Full Name" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="name" value="{{ $user->name }}" placeholder="Full Name" />
                                             </div>
                                             <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Location*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="location" value="" placeholder="Location" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="location" value="{{ $user->location }}" placeholder="Location" />
                                             </div>
                                         </div>
                                          <div class="col-sm-4 pl-2 pr-2">
                                              <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Speciality*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="speciality" value="" placeholder="Speciality" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="speciality" value="{{ $user->speciality }}" placeholder="Speciality" />
                                             </div>
 
                                         </div>
@@ -85,20 +85,20 @@
                                     <div class="panel-body w-100 bg-white border-radius15px d-flex flex-wrap p-3" style="box-shadow: 1px 1px 14px #cddee4;">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Email Address*</label>
-                                            <input type="email" required="required"  value="" name ="email" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Email Address" />
+                                            <input type="email" required="required"  value="{{ $user->email }}" disabled name ="email" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Email Address" />
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Phone Number*</label>
-                                            <input type="Number" required="required" name ="phone" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Phone Number" value="" />
+                                            <input type="Number" required="required" value="{{$user->phone}}" name ="phone" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Phone Number" />
                                         </div>
                                          <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Clinic Name*</label>
-                                            <input type="text" required="required" name ="clinic_name" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Clinic Name" />
+                                            <input type="text" required="required" name ="clinic_name" value="{{$user->profile->clinic_name ?? ""}}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Clinic Name" />
                                         </div>
 
                                         <div class="form-group col-sm-8">
                                             <label class="text-dark font-gothamlight fontsize12px">Clinic Address*</label>
-                                            <input type="text" required="required" name ="clinic_address" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Clinic Address" />
+                                            <input type="text" required="required" name ="clinic_address" value="{{$user->profile->clinic_address ?? "" }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Clinic Address" />
                                         </div>
 
                                     </div>
@@ -118,7 +118,7 @@
                                         </div>
                                          <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">PMDC Code* </label>
-                                            <input type="number" name="pmdc" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px text-darkgray" value="" placeholder="PMDC Code" />
+                                            <input type="number" name="pmdc" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px text-darkgray" value="{{$user->pmdc ?? ""}}" placeholder="PMDC Code" />
                                         </div>
                                     </div>
 
