@@ -4,11 +4,10 @@
 
 
 
-
-                                              @if(session()->has('message'))
-                                                  <div class="alert alert-success">
-                                                      {{ session()->get('message') }}
-                                                  </div>
+                                 @if(session()->has('message'))
+                                          <div class="alert alert-success">
+                                              {{ session()->get('message') }}
+                                            </div>
                                               @endif
 
 
@@ -70,23 +69,60 @@
 
                                                                 <!-- first card -->
                                                 <div class="col-sm-3 p-2">
-                                                            <div class="w-100 p-2 card border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
-                                                                    <div class="overflow-hiden w-100 position-relative h-img rounded">
-                                                                          <img class="card-img-top w-100" src="{{asset('images/Asset42.png') }}">
-                                                                           <div class="text-center position-absolute overlay-effect">
-                                                                                    <h6 class="font-gothamlight fontsize14px mb-0 text-white p-2" > Dr Mirza </h6>
-                                                                                </div>
-                                                                             </div>
-                                                                              <div class="card-body text-left pt-2 pb-0 pl-2 pr-2">
-                                                                               <ul class="list-unstyled d-inline-block pb-2 d-flex flex-wrap w-100 mb-2 border-bottom border-gray">
-                                                                                    <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1" ></i> BS </h6> </li>
-                                                                                     <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 3 Years </h6></li>
-                                                                                     <li class="col-sm-3 col-3 p-0 text-right">
-                                                                                        <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
-                                                                                        <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i>
+                                                    <div class="w-100 p-2 card border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
+                                                           <div class="overflow-hiden w-100 position-relative h-img rounded">
+                                                              <img class="card-img-top w-100" src="{{asset('images/Asset42.png') }}">
+                                                                  <div class="text-center position-absolute overlay-effect">
+                                                                       <h6 class="font-gothamlight fontsize14px mb-0 text-white p-2" > Dr Mirza </h6>
+                                                                        </div>
+                                                                        </div>
+                                                                     <div class="card-body text-left pt-2 pb-0 pl-2 pr-2">
+                                                                      <ul class="list-unstyled d-inline-block pb-2 d-flex flex-wrap w-100 mb-2 border-bottom border-gray">
+                                                                        <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1" ></i> BS </h6> </li>
+                                                                         <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 3 Years </h6></li>
+                                                                         <li class="col-sm-3 col-3 p-0 text-right">
+                                                                        <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
+                                                                          <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i>
                                                                                      </a>
-                                                                                     </li>
-                                                                                 </ul>
+                                                                      
+                                                                                  </li>
+                                                                            </ul>
+
+                                                                                  <div class="text-left">
+                                                                                    <p class="fontsize13px mb-0 pt-2 text-black font-gothammedium"> Title goes here </p>
+                                                                                    <p class="text-gray font-gothamlight fontsize10px"> Clinic Name </p>
+                                                                                </div>
+
+                                                                                </div>
+
+                                                                        </div>
+                                                                  </div>
+
+
+                                                              <div class="col-sm-3 p-2">
+                                                    <div class="w-100 p-2 card border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
+                                                           <div class="overflow-hiden w-100 position-relative h-img rounded">
+                                                              <img class="card-img-top w-100" src="{{asset('images/Asset42.png') }}">
+                                                                  <div class="text-center position-absolute overlay-effect">
+                                                                       <h6 class="font-gothamlight fontsize14px mb-0 text-white p-2" > Dr Salauddin </h6>
+                                                                        </div>
+                                                                        </div>
+                                                                     <div class="card-body text-left pt-2 pb-0 pl-2 pr-2">
+                                                                      <ul class="list-unstyled d-inline-block pb-2 d-flex flex-wrap w-100 mb-2 border-bottom border-gray">
+                                                                        <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1" ></i> BS </h6> </li>
+                                                                         <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 3 Years </h6></li>
+                                                                         <li class="col-sm-3 col-3 p-0 text-right">
+                                                                              <div class="dropdown">
+                                                                              <button type="button" class="btn bg-transparent border-0 dropdown-toggle text-orange p-0" data-toggle="dropdown">
+                                                                                          <i class="fa fa-ellipsis-v"></i>
+                                                                                  </button>
+                                                                                  <div class="dropdown-menu border-0 right-0" style="box-shadow: 1px 1px 10px #ccc;">
+                                                                                   <a class="dropdown-item text-orange fontsize11px font-gothamlight" href="#">Remove User</a>
+                                                                                  <a class="dropdown-item text-orange fontsize11px font-gothamlight" href="#">Make admin</a>
+                                                                                  </div>
+                                                                                  </div>
+                                                                                  </li>
+                                                                            </ul>
 
                                                                                   <div class="text-left">
                                                                                     <p class="fontsize13px mb-0 pt-2 text-black font-gothammedium"> Title goes here </p>
