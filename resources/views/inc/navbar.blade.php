@@ -141,8 +141,8 @@
                             <li class="nav-item dropdown no-arrow d-sm-block d-none">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                     <img class="img-profile rounded-circle mr-2" src="{{asset('images/Asset38.png')}}" />
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Salauddin </span>
+                                     <img class="img-profile rounded-circle mr-2" src="{{ auth()->user()->avatar }}" />
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ auth()->user()->name }} </span>
 
                                 </a>
                             </li>

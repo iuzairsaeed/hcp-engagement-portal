@@ -26,6 +26,7 @@ class CreateEventsTable extends Migration
             $table->string('url')->nullable();
             $table->string('tag')->nullable();
             $table->string('event_attachment')->nullable();
+            $table->foreignId('user_id');
             $table->softDeletes();
             $table->timestamps();
         });

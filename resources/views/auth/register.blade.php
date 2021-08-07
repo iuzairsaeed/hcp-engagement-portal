@@ -41,7 +41,7 @@
 
                                      <div class="tab-content mt-4">
 
-                                              <form class="form" method="POST" id="userForm" action="{{ route('users.store') }}" enctype="multipart/form-data">
+                                              <form class="form" method="POST" id="userForm" action="">
                                                 @csrf
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset4.png')}}" width="11">
@@ -68,7 +68,7 @@
                                                     
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset49.png')}}" width="10">
-                                                        <input type="password" name="pmdc_code" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="PMDC Code">
+                                                        <input type="password" name="pmdc" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="PMDC Code">
                                                     </div>
 
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">

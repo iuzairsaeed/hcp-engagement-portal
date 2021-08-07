@@ -6,10 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
+use App\Repositories\Repository;
+use App\Models\User;
 use Hash;
 
 class ProfileController extends Controller
 {
+
+    protected $model;
+
+    public function __construct(User $model)
+    {
+        $this->model = new Repository($model);
+    }
+
+
     public function showProfileForm()
     {
         $user = auth()->user();
@@ -18,14 +29,30 @@ class ProfileController extends Controller
 
     public function profile(ProfileUpdateRequest $request)
     {
-        $user = auth()->user();
-        $data = $request->all();
 
-        // if($request->hasFile('avatar')){
-        //     $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
-        //     $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);
-        //     $data['avatar'] = $file_name;
-        // }
+        $user = auth()->user();
+        $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'old_password', 'password']);
+        $profileData = $request->only(['clinic_name','clinic_address']);
+        $educationData = $request->except([
+            'clinic_name','clinic_address', 'experience', 'old_password', 'password', 'name', 'location',
+            'speciality','email','phone','pmdc','avatar'
+        ]);
+        $experienceData = $request->except([
+            'clinic_name','clinic_address', 'education', 'old_password', 'password', 'name', 'location',
+            'speciality','email','phone','pmdc','avatar'
+        ]);
+
+        $model = auth()->user();
+        $a = $this->model->update($userData, $model);
+        dd($a);
+
+
+
+        if($request->hasFile('avatar')){
+            $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
+            $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);
+            $data['avatar'] = $file_name;
+        }
         $user->fill($data);
         $user->update();
         return redirect()->back()->with('success', 'Profile has been updated.');

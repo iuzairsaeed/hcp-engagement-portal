@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('location');
             $table->string('cnic')->nullable();
             $table->date('dob')->nullable();
-            $table->enum('gender', ['male','female'])->nullanle();
+            $table->string('gender')->nullanle();
             $table->string('country')->nullanle();
             $table->string('address')->nullanle();
             $table->string('street')->nullanle();

@@ -47,7 +47,7 @@
                                         <div class="col-sm-4 pl-2 pr-2">
                                             <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Full Name*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="fullname" value="" placeholder="Full Name" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="name" value="" placeholder="Full Name" />
                                             </div>
                                             <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Location*</label>
@@ -65,11 +65,11 @@
                                              <label class="text-darkgray font-gothamlight fontsize12px">Profile Image </label>
                                             <div class="avatar-upload m-auto">
                                                 <div class="avatar-edit">
-                                                    <input type='file' id="imageUpload" name="profile_image" accept=".png, .jpg, .jpeg" />
+                                                    <input type='file' id="imageUpload" name="avatar" accept=".png, .jpg, .jpeg" />
                                                     <label for="imageUpload"></label>
                                                 </div>
                                                 <div class="avatar-preview">
-                                                    <div id="imagePreview" style="background-image: url(images/userimg.png)">
+                                                    <div id="imagePreview" style="background-image: url({{ $user->avatar }})">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Phone Number*</label>
-                                            <input type="Number" required="required" name ="phone_number" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Phone Number" value="" />
+                                            <input type="Number" required="required" name ="phone" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Phone Number" value="" />
                                         </div>
                                          <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Clinic Name*</label>
@@ -110,15 +110,15 @@
                                     <div class="panel-body w-100 bg-white border-radius15px d-flex flex-wrap p-3" style="box-shadow: 1px 1px 14px #cddee4;">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px ">Old Password*</label>
-                                            <input type="password"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Old Password"/>
+                                            <input type="old_password" name="old_password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Old Password"/>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">New Password</label>
-                                            <input type="password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="New Password" />
+                                            <input type="password" name="password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="New Password" />
                                         </div>
                                          <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">PMDC Code* </label>
-                                            <input type="number" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px text-darkgray" value="" placeholder="PMDC Code" />
+                                            <input type="number" name="pmdc" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px text-darkgray" value="" placeholder="PMDC Code" />
                                         </div>
                                     </div>
 
@@ -143,11 +143,11 @@
                                 <div class="row">
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
-                                        <input type="text" required="required" name="education_information" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
+                                        <input type="text" required="required" name="education[level][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Education Type</label>
-                                        <input type="text" required="required" name="education_type" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
+                                        <input type="text" required="required" name="education[type][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
                                         <!-- <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="education_type" style="height: 43px;">
 
                                             <option>Select Type</option>
@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Field of Study</label>
-                                         <input type="text" required="required" name="field_of_study" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
+                                         <input type="text" required="required" name="education[field][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
                                        <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="field_of_study" style="height: 43px;">
 
                                             <option>Select Type</option>
@@ -171,37 +171,37 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">School</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" name="school" />
+                                        <input type="text" name="education[school][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" name="education_country" />
+                                        <input type="text" name="education[country][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" name="education_city" />
+                                        <input type="text" name="education[city][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" />
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
-                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="yes" >
+                                            <label for="currently_here" class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
+                                                <input type="checkbox" name="education[currently_here][]"  value="true" >
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                        <input type="date" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" name="education_from_date" />
+                                        <input type="date" name="education[date_from][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                        <input type="date" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" name="education_to_date" />
+                                        <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
-                                                <input type="checkbox">
+                                                <input type="checkbox" name="education[data][]" value="true" >
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -211,7 +211,7 @@
                                  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
                              <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
                          </div>
-                            </div>
+                        </div>
 
                         </div>
 
@@ -237,11 +237,11 @@
                                 <div class="row">
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title" name="title" />
+                                        <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Organization </label>
-                                         <input type="text" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization" name="organization" />
+                                         <input type="text" name="experience[organization][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization"/>
                                        <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="organization" style="height: 43px;">
 
                                             <option>Select Type</option>
@@ -253,37 +253,37 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area"  name="therapeutica" />
+                                        <input type="text"  name="experience[organization][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" name="experience_city" />
+                                        <input type="text"  name="experience[organization][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text" required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" name="experience_country" />
+                                        <input type="text"  name="experience[organization][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
                                             <label class="checkcustom fontsize12px font-gothamlight" for="experience_time_period" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="yes" id="experience_time_period">
+                                                <input type="checkbox"  value="true" id="experience_time_period" name="experience[experience_time_period][]">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                        <input type="date" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" name="experience_from_date" />
+                                        <input type="date" name="experience[date_from][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                        <input type="date" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" name="experience_to_date" />
+                                        <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
-                                                <input type="checkbox">
+                                                <input type="checkbox" name="experience[data][]" value="true">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -321,7 +321,7 @@
                                                   <img src="" class="mr-3 mt-3 rounded-circle" style="width:160px;height: 160px;">
                                                   <div class="media-body mt-5">
                                                     <p class="w-100 font-gothamlight text-darkgray fontsize11px mb-2">General Information</p>
-                                                    <h5 class="mb-0"><input type="text" name="name" value="" disabled
+                                                    <h5 class="mb-0"><input type="text" name="" value="" disabled
                                                         class="bg-transparent border-0 outline-none font-gothambook text-dark"></h5>
                                                     <p class="mb-0"><input type="text" name="advice" value="" disabled
                                                         class="bg-transparent border-0 outline-none font-gothamlight fontsize14px"></p>

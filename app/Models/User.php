@@ -86,4 +86,34 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->device_token;
     }
 
+    /**
+     * Get the profile associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+    /**
+     * Get all of the education for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function education(): HasMany
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    /**
+     * Get all of the experience for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function experience(): HasMany
+    {
+        return $this->hasMany(Experience::class);
+    }
+
 }
