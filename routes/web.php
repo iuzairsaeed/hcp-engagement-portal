@@ -56,5 +56,5 @@ Route::get('contact', 'Web\PageController@contact');
 Route::get('faq', 'Web\PageController@faq');
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
-Route::get('{any}', 'Web\PageController@ho  me')->where('any', '.*');
+Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
 

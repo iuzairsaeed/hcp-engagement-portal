@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
+use App\Repositories\Repository;
 use App\Models\User;
 use App\Models\Customer;
 use App\Http\Requests\Auth\RegisterRequest;
@@ -123,6 +124,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        dd(1);
+        $profileModel = new Profile;
+        $educationModel = new Education;
+        $experienceModel = new Experience;
+        
+        $this->model = new Repository($profileModel);
+
+
+
         $this->validate($request, [
             'is_active' => 'required|boolean',
             'roles' => 'required'

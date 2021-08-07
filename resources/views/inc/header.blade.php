@@ -13,9 +13,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <!-- <link rel="icon" type="image/png" href="{{ asset('W.ico') }}" /> -->
+
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"> --}}
+<link href="{{asset('css/custom.css')}}" rel="stylesheet">
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<link href="{{asset('app-assets/vendors/css/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('app-assets/vendors/css/toastr.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{asset('css/owl.carousel.min.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -18,14 +18,16 @@ class ProfileController extends Controller
 
     public function profile(ProfileUpdateRequest $request)
     {
+
+        dd(1);
         $user = auth()->user();
         $data = $request->all();
 
-        // if($request->hasFile('avatar')){
-        //     $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
-        //     $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);
-        //     $data['avatar'] = $file_name;
-        // }
+        if($request->hasFile('avatar')){
+            $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
+            $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);
+            $data['avatar'] = $file_name;
+        }
         $user->fill($data);
         $user->update();
         return redirect()->back()->with('success', 'Profile has been updated.');

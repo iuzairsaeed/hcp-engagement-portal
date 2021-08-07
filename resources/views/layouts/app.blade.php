@@ -11,9 +11,9 @@
              @include('inc.navbar')
             
             <div class="main-panel" id="wrapper">
-                           @include('inc.sidebar')
-                            @yield('content')
-                        </div>
+                @include('inc.sidebar')
+                @yield('content')
+            </div>
              
         @else
             @yield('content')

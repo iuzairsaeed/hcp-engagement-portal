@@ -69,7 +69,7 @@
                                                     <label for="imageUpload"></label>
                                                 </div>
                                                 <div class="avatar-preview">
-                                                    <div id="imagePreview" style="background-image: url(images/userimg.png)">
+                                                    <div id="imagePreview" style="background-image: url({{ $user->avatar }})">
                                                     </div>
                                                 </div>
                                             </div>
