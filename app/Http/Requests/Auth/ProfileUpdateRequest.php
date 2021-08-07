@@ -26,7 +26,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             // PROFILE ARRAY CHECK
             'name' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],
-            'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['bail', 'required', 'string', 'email', 'max:255'],
             'phone' => ['required','regex:/[0-9+*-*]/'],
             'pmdc' => ['required','regex:/[0-9+*-*]/'],
             'speciality' => ['bail', 'alpha_spaces', 'max:255', 'min:3'],

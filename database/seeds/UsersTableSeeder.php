@@ -20,8 +20,8 @@ class UsersTableSeeder extends Seeder
             'username' => 'uzair',
             'pmdc' => 'pmdc',
             'speciality' => 'speciality',
-            'phone' => 'phone',
-            'location' => 'location',
+            'phone' => '0335669874',
+            'location' => '64 , K0 - D L Appartment Flat 19',
             'email' => 'uzair@hcp.com',
             'is_admin' => true,
             'password' => Hash::make('secret'),
@@ -31,14 +31,14 @@ class UsersTableSeeder extends Seeder
         $admin->assignRole([$role->id]);
 
         $user = User::create([
-            'name' => 'Murtuza Mehdi',
-            'username' => 'murtuza',
+            'name' => 'Asim A.',
+            'username' => 'asim',
             'pmdc' => 'pmdc',
             'speciality' => 'speciality',
-            'phone' => 'phone',
-            'location' => 'location',
-            'email' => 'murtuza@hcp.com',
-            'is_admin' => false,
+            'phone' => '0335669874',
+            'location' => '64 , K0 - D L Appartment Flat 19',
+            'email' => 'asim@hcp.com',
+            'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
         ]);
