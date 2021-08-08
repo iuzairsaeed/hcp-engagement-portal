@@ -43,15 +43,15 @@ Route::group(['namespace' => 'Web'], function () {
         // Route::get('profile', function(){ return view('pages/profile'); });
         // Route::get('activities', function(){ return view('pages/activities'); });
         Route::get('communities', function(){ return view('pages/communities');  });
-         Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
+        //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
         Route::get('chatroom', function(){ return view('pages/chatroom'); });
         Route::get('libraries', function(){ return view('pages/libraries'); });
         Route::get('trainings', function(){ return view('pages/trainings'); });
-        Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
-        Route::get('recentpost', function(){ return view('pages/recentpost'); });
+        // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
+        // Route::get('recentpost', function(){ return view('pages/recentpost'); });
         Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
-        Route::get('profileview', function(){ return view('pages/profileview'); });
-        Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
+        // Route::get('profileview', function(){ return view('pages/profileview'); });
+        // Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
     });
     
 });
