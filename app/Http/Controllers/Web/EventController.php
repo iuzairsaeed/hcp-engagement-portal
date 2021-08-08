@@ -73,7 +73,10 @@ class EventController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->model->create($request->all());
+            $data = $request->all();
+            $data['user_id'] = auth()->id();
+            $this->model->create($data);
+            return redirect()->back()->with('success', 'Event has been created.');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -128,8 +131,13 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        try {
+            $this->model->delete($event);
+            return redirect()->back()->with('success', 'Event deleted Successfully');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
     }
 }

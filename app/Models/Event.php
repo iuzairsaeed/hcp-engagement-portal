@@ -27,6 +27,7 @@ class Event extends Model
         'url',
         'tag',
         'event_attachment',
+        'user_id'
     ];
 
     public function user()

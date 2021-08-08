@@ -47,13 +47,18 @@ function postPath()
     return 'storage/post/';
 }
 
+function gamificationPath()
+{
+    return 'storage/gamification/';
+}
+function gamificationDocPath()
+{
+    return 'storage/gamificationDoc/';
+}
+
 function eventPath()
 {
     return 'storage/event/';
 }
 
-function activityPath()
-{
-    return 'storage/activty/';
-}
 

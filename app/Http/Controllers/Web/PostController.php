@@ -105,7 +105,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
     }
@@ -134,8 +134,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        try {
+            $this->model->delete($post);
+            return redirect()->back()->with('success', 'Post deleted Successfully');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
     }
 }

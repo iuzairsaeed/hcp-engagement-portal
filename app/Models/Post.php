@@ -15,7 +15,7 @@ class Post extends Model
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
 
-    protected $fillable = ['post_image','title','description'];
+    protected $fillable = ['post_image','title','description', 'user_id'];
 
     public function getPostImageAttribute($value)
     {
