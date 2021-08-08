@@ -30,6 +30,9 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('role-list', 'RoleController@getList')->name('role.get-list');
         Route::get('role-dropdown-list', 'RoleController@getRole')->name('role.get-role');
         
+        Route::resource('post','PostController');
+        Route::get('post-list', 'PostController@getList')->name('post.get-list');
+
         Route::resource('activity','ActivityController');
         Route::get('activity-list', 'ActivityController@getList')->name('activity.get-list');
         
@@ -39,8 +42,8 @@ Route::group(['namespace' => 'Web'], function () {
         //  Route::get('userdashboard', function(){ return view('userdashboard'); });
         // Route::get('profile', function(){ return view('pages/profile'); });
         // Route::get('activities', function(){ return view('pages/activities'); });
-        // Route::get('communities', function(){ return view('pages/communities');  });
-        //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
+        Route::get('communities', function(){ return view('pages/communities');  });
+         Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
         Route::get('chatroom', function(){ return view('pages/chatroom'); });
         Route::get('libraries', function(){ return view('pages/libraries'); });
         Route::get('trainings', function(){ return view('pages/trainings'); });

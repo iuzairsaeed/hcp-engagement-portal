@@ -15,10 +15,10 @@ class EventController extends Controller
     public function __construct(Event $model)
     {
 
-        $this->middleware('permission:event-list|event-create|event-edit|event-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:event-create', ['only' => ['create','store']]);
-        $this->middleware('permission:event-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:event-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:event-list|event-create|event-edit|event-delete', ['only' => ['index','show']]);
+        // $this->middleware('permission:event-create', ['only' => ['create','store']]);
+        // $this->middleware('permission:event-edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:event-delete', ['only' => ['destroy']]);
         $this->model = new Repository($model);
     }
 
@@ -50,7 +50,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('event.index');
+        $events = $this->model->all();
+        return view('event.index', compact('events'));
     }
 
     /**

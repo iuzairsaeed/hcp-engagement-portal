@@ -14,11 +14,10 @@ class PostController extends Controller
 
     public function __construct(Post $model)
     {
-
-        $this->middleware('permission:post-list|post-create|post-edit|post-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:post-create', ['only' => ['create','store']]);
-        $this->middleware('permission:post-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:post-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:post-list|post-create|post-edit|post-delete', ['only' => ['index','show']]);
+        // $this->middleware('permission:post-create', ['only' => ['create','store']]);
+        // $this->middleware('permission:post-edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:post-delete', ['only' => ['destroy']]);
         $this->model = new Repository($model);
     }
 
@@ -50,7 +49,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $posts = $this->model->all();
+        return view('post.index', compact('posts'));
     }
 
     /**

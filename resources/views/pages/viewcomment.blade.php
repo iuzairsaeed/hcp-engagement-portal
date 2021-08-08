@@ -2,18 +2,13 @@
 
 @section('content')
 
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
 
-
-  @if(session()->has('message'))
-                      <div class="alert alert-success">
-                          {{ session()->get('message') }}
-                      </div>
-                  @endif
-
-
-
-
-                  <!-- Content Wrapper -->
+        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -112,9 +107,6 @@
 
 </div>
     <!-- Scroll to Top Button-->
-
-
-
 
 
 @endsection

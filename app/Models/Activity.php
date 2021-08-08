@@ -15,5 +15,5 @@ class Activity extends Model
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
 
-    protected $fillable = ['title','description','type','type','avtivity_image','avtivity_doc',];
+    protected $fillable = ['title','description','type','avtivity_image','avtivity_doc',];
 }

@@ -15,10 +15,10 @@ class ActivityController extends Controller
     public function __construct(Activity $model)
     {
 
-        $this->middleware('permission:activity-list|activity-create|activity-edit|activity-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:activity-create', ['only' => ['create','store']]);
-        $this->middleware('permission:activity-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:activity-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:activity-list|activity-create|activity-edit|activity-delete', ['only' => ['index','show']]);
+        // $this->middleware('permission:activity-create', ['only' => ['create','store']]);
+        // $this->middleware('permission:activity-edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:activity-delete', ['only' => ['destroy']]);
         $this->model = new Repository($model);
     }
 
@@ -50,7 +50,8 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('activity.index');
+        $activities = $this->model->all();
+        return view('activity.index', compact('activities'));
     }
 
     /**
