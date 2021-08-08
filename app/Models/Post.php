@@ -15,6 +15,12 @@ class Post extends Model
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
 
-    protected $fillable = ['post_image','title','desc',];
+    protected $fillable = ['post_image','title','description'];
 
+    public function getPostImageAttribute($value)
+    {
+        $path = postPath();
+        return $path.$value;
+        // return ($value) ? file_exists($path.$value) ? $path.$value : $path.'no-image.png' : null;
+    }
 }

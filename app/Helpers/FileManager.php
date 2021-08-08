@@ -42,3 +42,18 @@ function avatarsPath()
     return 'storage/avatars/';
 }
 
+function postPath()
+{
+    return 'storage/post/';
+}
+
+function eventPath()
+{
+    return 'storage/event/';
+}
+
+function activityPath()
+{
+    return 'storage/activty/';
+}
+

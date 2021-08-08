@@ -26,7 +26,7 @@
                             
                                   <div class="col-sm-12 pt-2 pb-2 pl-3">
                                     <ul class="m-0 p-0 list-unstyled fontsize11px text-gray-500">
-                                    	 <li class="d-inline-block font-gothambook"> <a href="{{url('/userdashboard')}}" class="text-orange fontsize14px position-relative" style="top: 2px;"><i class="fas fa-arrow-circle-left"></i></a>  </li>
+                                    	 <li class="d-inline-block font-gothambook"> <a href="{{url('/dashboard')}}" class="text-orange fontsize14px position-relative" style="top: 2px;"><i class="fas fa-arrow-circle-left"></i></a>  </li>
                                         <li class="d-inline-block font-gothambook ml-1"> Dashboard </li>
                                         <li class="d-inline-block pl-1">/ </li>
                                         <li class="text-orange d-inline-block pl-1 font-gothammedium"> My Recent Activities </li>

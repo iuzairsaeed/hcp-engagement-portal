@@ -13,7 +13,7 @@ class DashboardController extends Controller
         if(auth()->user()->role == "admin"){
             return view('dashboard');
         } else {
-            return view('userdashboard');
+            return view('dashboard');
         } 
     }
 }

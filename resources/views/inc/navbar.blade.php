@@ -6,8 +6,8 @@
                         <div><a href="#"><img src="{{asset('images/Asset3.png')}}" width="130"></a></div>
                          <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between border-left p-2 ml-4 col-sm-4 d-sm-block d-none" style="border-width: 2px !important;">
-                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium">Dashboard </h1>
-
+                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium">{{  Str::ucfirst(Request::segment(1)) }}
+                             </h1>
                         </div>
                         <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -141,7 +141,7 @@
                             <li class="nav-item dropdown no-arrow d-sm-block d-none">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                     <img class="img-profile rounded-circle mr-2" src="{{ auth()->user()->avatar }}" />
+                                     <img class="img-profile rounded-circle mr-2" src="{{ asset(auth()->user()->avatar) }}" />
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ auth()->user()->name }} </span>
 
                                 </a>

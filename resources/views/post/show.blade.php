@@ -19,7 +19,7 @@
                             
                                  <div class="col-sm-12 pt-2 pb-2">
                                     <ul class="m-0 p-0 list-unstyled fontsize11px text-gray-500 font-gothambook">
-                                      <li class="d-inline-block font-gothambook"> <a href="{{url('/userdashboard')}}" class="text-orange fontsize14px position-relative" style="top: 2px;"><i class="fas fa-arrow-circle-left"></i></a>  </li>
+                                      <li class="d-inline-block font-gothambook"> <a href="{{url('/dashboard')}}" class="text-orange fontsize14px position-relative" style="top: 2px;"><i class="fas fa-arrow-circle-left"></i></a>  </li>
                                         <li class="d-inline-block pl-1"> Dashboard </li>
                                         <li class="d-inline-block pl-1">/ </li>
                                         <li class="text-orange d-inline-block pl-1 font-gothambook"> View Comments</li>
@@ -28,15 +28,13 @@
                               
                              </div>
 
-
-
                              <div class="w-100 mt-2">
                                     <div class="w-100 d-flex flex-wrap bg-white border-radius10px pb-3" style="box-shadow: 1px 1px 17px 2px #e6e6e6;">
                                             <div class="col-sm-5 pt-4 pb-4 pl-3 pr-4">
                                                 <div class="col-sm-12 pl-2 pr-2">
-                                                        <img src="{{ asset ('images/Asset39.png') }}" class="img-fluid mb-3 w-100">
-                                                        <h6 class="text-black font-gothammedium fontsize15px"> Hamdy El Gallad </h6>
-                                                        <p class="font-gothamlight fontsize11px text-gray mt-3"> Lorem Ipsum Text Goes Here </p>
+                                                        <img src="{{ asset($post->post_image) }}" class="img-fluid mb-3 w-100">
+                                                        <h6 class="text-black font-gothammedium fontsize15px"> {{$post->title}} </h6>
+                                                        <p class="font-gothamlight fontsize11px text-gray mt-3">  {{$post->description}} </p>
                                                 </div> 
                                                 <div class="col-sm-12 pl-2 pr-2">
                                                     <form class="w-100" action="" method="post">

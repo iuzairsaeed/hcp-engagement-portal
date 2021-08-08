@@ -7,7 +7,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
         <a class="nav-link font-gothambook" href="{{url('dashboard')}}" title="Dashboard">
-            <span class="{{ (request()->is('dashboard')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('userdashboard')) ?'Asset25.png':'Asset35.png'}}' width="15"></span>
+            <span class="{{ (request()->is('dashboard')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('dashboard')) ?'Asset25.png':'Asset35.png'}}' width="15"></span>
             <span>Dashboard</span>
         </a>
     </li>

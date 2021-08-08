@@ -72,7 +72,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->model->create($request->all());
+            $data = $request->all();
+            if($request->hasFile('post_image')){
+                $file_name = uploadFile($request->post_image, postPath());
+                $data['post_image'] = $file_name;
+            }
+            $this->model->create($data);
+            return redirect()->back()->with('success', 'Post has been created.');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -87,7 +93,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         try {
-            view('post.show', compact('post'));
+            return view('post.show', compact('post'));
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -116,6 +122,7 @@ class PostController extends Controller
         try { 
             $data = $request->all();
             $this->model->update($data , $post);
+            return redirect()->back()->with('success', 'Post has been updated.');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

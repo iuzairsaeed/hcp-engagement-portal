@@ -38,15 +38,16 @@ Route::group(['namespace' => 'Web'], function () {
         
         Route::resource('event','EventController');
         Route::get('event-list', 'EventController@getList')->name('event.get-list');
+        
+        Route::get('libraries', 'EventController@index');
+        Route::get('trainings', 'EventController@index');
 
-        //  Route::get('userdashboard', function(){ return view('userdashboard'); });
+        //  Route::get('dashboard', function(){ return view('dashboard'); });
         // Route::get('profile', function(){ return view('pages/profile'); });
         // Route::get('activities', function(){ return view('pages/activities'); });
         Route::get('communities', function(){ return view('pages/communities');  });
         //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
         Route::get('chatroom', function(){ return view('pages/chatroom'); });
-        Route::get('libraries', function(){ return view('pages/libraries'); });
-        Route::get('trainings', function(){ return view('pages/trainings'); });
         // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
         // Route::get('recentpost', function(){ return view('pages/recentpost'); });
         Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
