@@ -50,7 +50,7 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
+                <form class="w-100 uploader" action="" id="postForm" method="post" enctype="multipart/form-data">
                      @csrf
                     <div class="w-100">
                         <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
@@ -82,7 +82,7 @@
                         <textarea placeholder="Post Description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
                     </div>
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Post </button>
+                    <button type="button" onclick="submitPost()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Post </button>
                 </div>
             </form>
         </div>
@@ -98,6 +98,35 @@
 @section("afterScript")
 
 <script type="text/javascript">
+
+function submitPost(){
+  event = $("#postForm");
+  var form_data = new FormData($("#postForm")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('post.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+
+
     function ekUpload(){
       function Init() {
 

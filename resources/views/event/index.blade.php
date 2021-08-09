@@ -34,11 +34,11 @@
                                          <div class="w-100 pt-3 d-flex flex-wrap">
                                           {{ $webinars->isEmpty() ? "No data available!" : ""}}
                                           @foreach ($webinars as $webinar )
-                                          <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
+                                          <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                               <div class=" p-2 card border-0 border-radius10px">
                                                 <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                                  <p class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart-o align-middle"></i></p>
+                                                  <p class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart align-middle "></i></p>
 
                                                   <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                                       <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $webinar->created_at->format('l') }} </li>
@@ -56,7 +56,7 @@
                                             
                                   </div>
                               </div>
-                                  <!-- first tab -->
+                              <!-- first tab -->
 
 
                           <!-- second tab -->
@@ -70,7 +70,7 @@
                                  <div class="w-100 pt-3 d-flex flex-wrap">
                                   {{ $virtuals->isEmpty() ? "No data available!" : ""}}
                                   @foreach ($virtuals as $virtual )
-                                  <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
+                                  <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
@@ -107,7 +107,7 @@
                                  <div class="w-100 pt-3 d-flex flex-wrap">
                                   {{ $trainings->isEmpty() ? "No data available!" : ""}}
                                   @foreach ($trainings as $training )
-                                  <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
+                                  <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($training->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">

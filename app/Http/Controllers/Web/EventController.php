@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Event;
+use  App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -72,7 +73,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         try {
             $data = $request->all();
@@ -94,7 +95,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Request $event)
     {
         try {
             view('event.show', compact('event'));
