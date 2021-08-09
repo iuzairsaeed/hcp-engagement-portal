@@ -50,8 +50,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = $this->model->all();
-        return view('activity.index', compact('activities'));
+        $gamifications = $this->model->all()->where('type', 'gamification');
+        $clinicals = $this->model->all()->where('type', 'clinical');
+        return view('activity.index', compact('gamifications', 'clinicals'));
     }
 
     /**
@@ -74,6 +75,14 @@ class ActivityController extends Controller
     {
         try {
             $data = $request->all();
+            if($request->hasFile('activity_image')){
+                $file_name = uploadFile( $request->activity_image, ($request->type == 'gamification' ? gamificationPath() : clinicalPath()) );
+                $data['activity_image'] = $file_name;
+            }
+            if($request->hasFile('activity_doc')){
+                $file_name = uploadFile($request->activity_doc, ($request->type == 'gamification' ? gamificationDocPath() : clinicalDocPath()) );
+                $data['activity_doc'] = $file_name;
+            }
             $data['user_id'] = auth()->id();
             $this->model->create($data);
             return redirect()->back()->with('success', 'Activity has been created.');

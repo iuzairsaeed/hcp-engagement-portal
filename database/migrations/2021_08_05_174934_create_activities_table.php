@@ -18,8 +18,8 @@ class CreateActivitiesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->enum('type', ['gamification', 'clinical']);
-            $table->string('avtivity_image');
-            $table->string('avtivity_doc');
+            $table->string('activity_image');
+            $table->string('activity_doc');
             $table->foreignId('user_id');
             $table->softDeletes();
             $table->timestamps();

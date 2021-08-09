@@ -55,6 +55,14 @@ function gamificationDocPath()
 {
     return 'storage/gamificationDoc/';
 }
+function clinicalPath()
+{
+    return 'storage/clinical/';
+}
+function clinicalDocPath()
+{
+    return 'storage/clinicalDoc/';
+}
 
 function eventPath()
 {

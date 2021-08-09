@@ -18,6 +18,7 @@ class Experience extends Model
         'currently_here',
         'date_from',
         'date_to',
+        'user_id',
     ];
 
     protected $casts = [
