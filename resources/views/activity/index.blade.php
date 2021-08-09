@@ -235,7 +235,6 @@ function submitClinical(){
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  console.log(form_data);
   $.ajax({
     url : "{{ route('activity.store') }}",
     type: "POST",

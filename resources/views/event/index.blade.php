@@ -216,7 +216,7 @@
                    </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Webinar </button>
+                    <button type="button" onclick="submitWebinar()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Webinar </button>
                 </div>
             </form>
         </div>
@@ -268,7 +268,7 @@
                     </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
+                    <button type="button" onclick="submitTraining()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
                 </div>
             </form>
         </div>
@@ -361,7 +361,7 @@
                    </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Virtual Event </button>
+                    <button type="button" onclick="submitVirtual()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Virtual Event </button>
                 </div>
             </form>
         </div>
@@ -372,10 +372,6 @@
   </div>
   <!-- Add Training -->
 
-
-
-
-
 @endsection
 
 
@@ -384,5 +380,85 @@
 @section("afterScript")
 <script>
 
+function submitWebinar(){
+  event = $("#webinarForm");
+  var form_data = new FormData($("#webinarForm")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+
+function submitVirtual(){
+  event = $("#virtualForm");
+  var form_data = new FormData($("#virtualForm")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+
+function submitTraining(){
+  event = $("#trainingForm");
+  var form_data = new FormData($("#trainingForm")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
 </script>
 @endsection
