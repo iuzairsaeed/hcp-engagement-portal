@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Activity;
-
+use App\Http\Requests\ActivityRequest;
 class ActivityController extends Controller
 {
 
@@ -71,7 +71,7 @@ class ActivityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ActivityRequest $request)
     {
         try {
             $data = $request->all();

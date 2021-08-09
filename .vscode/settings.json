@@ -1,5 +1,5 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "onecentlin.laravel-blade",
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

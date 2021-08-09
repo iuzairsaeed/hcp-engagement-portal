@@ -59,7 +59,6 @@
                     <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addclinical">Create Activity </a>
                   </div>
 
-                  <div class="w-100 pt-3 d-flex flex-wrap">
                     {{ $clinicals->isEmpty() ? "No data available!" : ""}}
                     <div class="pt-3 d-flex flex-wrap">
                       @foreach ($clinicals as $clinical )
@@ -81,7 +80,6 @@
                       </div>
                       @endforeach 
                     </div>
-                  </div>
                 </div>
                   <!-- second tab -->
             </div>
@@ -108,7 +106,7 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" action="{{route('activity.store')}}" method="post"  enctype="multipart/form-data">
+                <form class="w-100 uploader" action="" method="post" id="gamification_form" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="type" value="gamification">
                     <div class="w-100">
@@ -147,7 +145,7 @@
                     </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothamlight text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Gamification </button>
+                    <button type="button" onclick="submitGamification()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Gamification </button>
                 </div>
             </form>
         </div>
@@ -171,8 +169,7 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" action="{{route('activity.store')}}" method="post"  enctype="multipart/form-data">
-                  @csrf
+                <form class="w-100 uploader" id="clinical_form"  method="post"  enctype="multipart/form-data">
                   <input type="hidden" name="type" value="clinical">
                     <div class="w-100">
                         <label class="font-montserrat fontsize10px text-dark w-100"> Upload Thumbnail </label>
@@ -210,7 +207,7 @@
                     </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Clinical </button>
+                    <button type="button" onclick="submitClinical()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Clinical </button>
                 </div>
             </form>
         </div>
@@ -225,6 +222,60 @@
 
 
 @section('afterScript')
-<script></script>
+<script>
+function submitClinical(){
+  activity = $("#clinical_form");
+  var form_data = new FormData($("#clinical_form")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  console.log(form_data);
+  $.ajax({
+    url : "{{ route('activity.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+function submitGamification(){
+  activity = $("#gamification_form");
+  var form_data = new FormData($("#gamification_form")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('activity.store') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+</script>
 
 @endsection
