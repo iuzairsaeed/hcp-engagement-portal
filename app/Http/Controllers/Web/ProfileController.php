@@ -32,7 +32,6 @@ class ProfileController extends Controller
 
     public function profile(ProfileUpdateRequest $request)
     {
-
         $user = auth()->user();
         $data = $request->all();
         $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'email' ,'old_password', 'password']);

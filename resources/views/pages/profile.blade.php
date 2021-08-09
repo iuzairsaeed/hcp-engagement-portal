@@ -185,9 +185,10 @@
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="yes" >
+                                                <input type="checkbox" >
                                                 <span class="checkmark"></span>
                                             </label>
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4">
@@ -200,7 +201,7 @@
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
-                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
+                                            <label class="checkcustom text-darkgray fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
                                                 <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
