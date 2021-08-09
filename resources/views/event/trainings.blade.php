@@ -16,84 +16,11 @@
 
                         <div class="w-100 d-flex flex-wrap pl-sm-2">
                                 <ul class="nav nav-tabs custom-navtabs border-0 col-sm-8 col-12">
-                                  <li><a data-toggle="tab" href="#webinar" class="active font-gothambook"> Webinar </a></li>
-                                  <li><a class="font-gothambook" data-toggle="tab" href="#virtual"> Virtual Events </a></li>
-                                  <li><a class="font-gothambook" data-toggle="tab" href="#trainings"> Trainings </a></li>
+                                  <li><a class="font-gothambook active" data-toggle="tab" href="#trainings"> Trainings </a></li>
                                 </ul>
                         </div>
-                            <!-- Webinar Activities -->
-                            <div class="tab-content w-100">
-                                <div class="tab-pane fade in active show" id="webinar">
-                                      @if (auth()->user()->role == "admin")
-                                        <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
-                                          <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-montserrat pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addwebinar"> Add Webinar </a>
-                                        </div>
-                                      @endif
-
-
-                                         <div class="w-100 pt-3 d-flex flex-wrap">
-                                          {{ $webinars->isEmpty() ? "No data available!" : ""}}
-                                          @foreach ($webinars as $webinar )
-                                          <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
-                                              <div class=" p-2 card border-0 border-radius10px">
-                                                <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
-                                                <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                                  <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
-                                                      <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $webinar->created_at->format('l') }} </li>
-                                                      <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
-                                                      <span class="float-left text-left w-fix"> {{ $webinar->created_at->format('d-m-Y') }} </span></h6></li>
-                                                      <li class="col-sm-3 col-3 p-0 text-center"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-clock mr-1 fontsize12px float-left"></i><span class="float-left text-left w-fix"> {{ $webinar->created_at->format('g:i A') }} </span></h6></li>
-                                                  </ul>
-                                                  <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$webinar->title}} </h1>
-                                                  {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$webinar->description}} </h1> --}}
-                                                </div>
-                                              </div>
-                                          </div>
-                                          @endforeach 
-                                            
-                                            
-                                  </div>
-                              </div>
-                                  <!-- first tab -->
-
-
-                          <!-- second tab -->
-                          <div class="tab-pane fade" id="virtual">
-                                  @if (auth()->user()->role == "admin")
-                                    <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
-                                         <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#virtualevent"> Add Virtual Event </a>
-                                    </div>
-                                  @endif
-
-                                 <div class="w-100 pt-3 d-flex flex-wrap">
-                                  {{ $virtuals->isEmpty() ? "No data available!" : ""}}
-                                  @foreach ($virtuals as $virtual )
-                                  <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
-                                      <div class=" p-2 card border-0 border-radius10px">
-                                        <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
-                                        <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                          <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
-                                              <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $virtual->created_at->format('l') }} </li>
-                                              <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
-                                              <span class="float-left text-left w-fix"> {{ $virtual->created_at->format('d-m-Y') }} </span></h6></li>
-                                              <li class="col-sm-3 col-3 p-0 text-center"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-clock mr-1 fontsize12px float-left"></i><span class="float-left text-left w-fix"> {{ $virtual->created_at->format('g:i A') }} </span></h6></li>
-                                          </ul>
-                                          <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$virtual->title}} </h1>
-                                          {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$virtual->description}} </h1> --}}
-                                        </div>
-                                      </div>
-                                  </div>
-                                  @endforeach 
-                                    
-
-                          </div>
-                      </div>
-                          <!-- second tab -->
-
-
-
                            <!-- Third tab -->
-                          <div class="tab-pane fade" id="trainings">
+                          <div class="tab-pane fade active show" id="trainings">
                                   @if (auth()->user()->role == "admin")
                                     <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
                                          <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#trainingsmodal"> Add Training </a>

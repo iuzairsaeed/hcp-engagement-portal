@@ -38,9 +38,9 @@ Route::group(['namespace' => 'Web'], function () {
         
         Route::resource('event','EventController');
         Route::get('event-list', 'EventController@getList')->name('event.get-list');
+        Route::get('libraries', 'EventController@libraries');
+        Route::get('trainings', 'EventController@trainings');
         
-        Route::get('libraries', 'EventController@index');
-        Route::get('trainings', 'EventController@index');
         
         Route::resource('support','SupportController');
 

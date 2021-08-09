@@ -146,4 +146,25 @@ class EventController extends Controller
             return $th->getMessage();
         }
     }
+    
+    public function libraries()
+    {
+        try {
+            $webinars = $this->model->all()->where('type', 'webinar');
+            $virtuals = $this->model->all()->where('type', 'virtual');
+            return view('event.libraries', compact('webinars', 'virtuals'));
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    
+    public function trainings()
+    {
+        try {
+            $trainings = $this->model->all()->where('type', 'training');
+            return view('event.trainings', compact('trainings'));
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
 }

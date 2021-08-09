@@ -26,9 +26,11 @@
             <div class="tab-content w-100 pl-2 pr-2">
               <!-- Gamification tab -->
                 <div class="tab-pane fade in active show" id="gami">
-                  <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
-                    <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addgami"> Add Gamification</a>
-                  </div>
+                  @if (auth()->user()->role == "admin")
+                    <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
+                      <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addgami"> Add Gamification</a>
+                    </div>
+                  @endif
                   <div class="pt-3 d-flex flex-wrap">
                     {{ $gamifications->isEmpty() ? "No data available!" : ""}}
                       @foreach ($gamifications as $gamification )
@@ -55,9 +57,11 @@
 
                 <!-- second tab -->
                 <div class="tab-pane fade" id="clinical">
-                  <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
-                    <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addclinical">Create Activity </a>
-                  </div>
+                  @if (auth()->user()->role == "admin")
+                    <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
+                      <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addclinical">Create Activity </a>
+                    </div>
+                  @endif
 
                     {{ $clinicals->isEmpty() ? "No data available!" : ""}}
                     <div class="pt-3 d-flex flex-wrap">
