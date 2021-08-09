@@ -17,17 +17,20 @@ class Activity extends Model
 
     protected $fillable = ['title','description','type','activity_image','activity_doc', 'user_id'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function getActivityImageAttribute($value)
     {
         $path = ($this->type == 'gamification') ? gamificationPath() : clinicalPath() ;
         return $path.$value;
-        // return ($value) ? file_exists($path.$value) ? $path.$value : $path.'no-image.png' : null;
     }
     
     public function getActivityDocAttribute($value)
     {
         $path = ($this->type == 'gamification') ? gamificationDocPath() : clinicalDocPath() ;
         return $path.$value;
-        // return ($value) ? file_exists($path.$value) ? $path.$value : $path.'no-image.png' : null;
     }
 }

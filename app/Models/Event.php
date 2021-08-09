@@ -35,4 +35,10 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
     
+
+    public function getEventAttachmentAttribute($value)
+    {
+        $path = $this->type == 'webinar'  ? webinarPath() : ( $this->type == 'virtual' ? virtualPath() : trainingPath() ) ;
+        return $path.$value;
+    }
 }

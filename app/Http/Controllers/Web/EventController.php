@@ -50,8 +50,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = $this->model->all();
-        return view('event.index', compact('events'));
+        $webinars = $this->model->all()->where('type', 'webinar');
+        $virtuals = $this->model->all()->where('type', 'virtual');
+        $trainings = $this->model->all()->where('type', 'training');
+        return view('event.index', compact('webinars', 'virtuals', 'trainings'));
     }
 
     /**
@@ -74,6 +76,10 @@ class EventController extends Controller
     {
         try {
             $data = $request->all();
+            if($request->hasFile('event_attachment')){
+                $file_name = uploadFile( $request->event_attachment,  $request->type == 'webinar'  ? webinarPath() : ( $request->type == 'virtual' ? virtualPath() : trainingPath()) );
+                $data['event_attachment'] = $file_name;
+            }
             $data['user_id'] = auth()->id();
             $this->model->create($data);
             return redirect()->back()->with('success', 'Event has been created.');

@@ -17,10 +17,14 @@ class Post extends Model
 
     protected $fillable = ['post_image','title','description', 'user_id'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function getPostImageAttribute($value)
     {
         $path = postPath();
         return $path.$value;
-        // return ($value) ? file_exists($path.$value) ? $path.$value : $path.'no-image.png' : null;
     }
 }

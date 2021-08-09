@@ -64,9 +64,17 @@ function clinicalDocPath()
     return 'storage/clinicalDoc/';
 }
 
-function eventPath()
+function webinarPath()
 {
-    return 'storage/event/';
+    return 'storage/webinar/';
+}
+function virtualPath()
+{
+    return 'storage/virtual/';
+}
+function trainingPath()
+{
+    return 'storage/training/';
 }
 
 
