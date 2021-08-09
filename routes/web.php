@@ -54,7 +54,7 @@ Route::group(['namespace' => 'Web'], function () {
         // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
         // Route::get('recentpost', function(){ return view('pages/recentpost'); });
         Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
-        // Route::get('profileview', function(){ return view('pages/profileview'); });
+        Route::get('profileview', function(){ return view('pages/profileview'); });
         // Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
     });
     

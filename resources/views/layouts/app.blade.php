@@ -11,7 +11,13 @@
              @include('inc.navbar')
             
             <div class="main-panel" id="wrapper">
-                @include('inc.sidebar')
+
+                @if (auth()->user()->role == "admin")
+                    @include('inc.adminSidebar')
+                @else
+                    @include('inc.sidebar')
+                @endif
+
                 @yield('content')
             </div>
              
