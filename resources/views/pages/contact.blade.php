@@ -34,15 +34,16 @@
                                             </div>
                                     </div>
 
-                                      <form class="w-100 contact-form" action="#" >
+                                      <form class="w-100 contact-form" method="POST" action="{{ route('support.store') }}" >
+                                        @csrf
                                         <div class="w-100 d-flex flex-wrap mt-2" style="padding: 0px 10%;">
                                             <div class="form-group col-sm-6 text-left">
                                                 <label class="text-darkgray font-gothambook fontsize12px ">First Name*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothambook fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="first" placeholder="First Name"/>
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothambook fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="fname" placeholder="First Name"/>
                                             </div>
                                             <div class="form-group col-sm-6 text-left">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Last Name*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothambook fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="last" placeholder="Last Name" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothambook fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="lname" placeholder="Last Name" />
                                             </div>
                                             <div class="form-group col-sm-6 text-left">
                                                 <label class="text-darkgray font-gothambook fontsize12px">Email*</label>

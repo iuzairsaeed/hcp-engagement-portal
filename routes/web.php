@@ -41,6 +41,9 @@ Route::group(['namespace' => 'Web'], function () {
         
         Route::get('libraries', 'EventController@index');
         Route::get('trainings', 'EventController@index');
+        
+        Route::resource('support','SupportController');
+
 
         //  Route::get('dashboard', function(){ return view('dashboard'); });
         // Route::get('profile', function(){ return view('pages/profile'); });
@@ -55,11 +58,11 @@ Route::group(['namespace' => 'Web'], function () {
         // Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
     });
     
+    Route::get('about', 'PageController@about');
+    Route::get('contact', 'PageController@contact');
+    Route::get('faq', 'PageController@faq');
 });
 
-Route::get('about', 'Web\PageController@about');
-Route::get('contact', 'Web\PageController@contact');
-Route::get('faq', 'Web\PageController@faq');
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
 Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
