@@ -65,7 +65,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = $this->model->all()->where('id' ,'<>', auth()->id());
+        return view('users.index', compact('users') );
     }
 
     /**

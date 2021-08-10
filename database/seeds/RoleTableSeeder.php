@@ -32,7 +32,6 @@ class RoleTableSeeder extends Seeder
         // ];
         $roleNormal = Role::create(['name' => 'normal']);
         $normalPermission = Permission::pluck('id','id')->all();
-        $permissionsN = Permission::whereIn('name',$normalPermission)->pluck('id');
-        $roleNormal->syncPermissions($permissionsN);
+        $roleNormal->syncPermissions($normalPermission);
     }
 }

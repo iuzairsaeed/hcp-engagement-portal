@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('event-list', 'EventController@getList')->name('event.get-list');
         Route::get('libraries', 'EventController@libraries');
         Route::get('trainings', 'EventController@trainings');
-        
+        Route::get('communities', 'UserController@index');
         
         Route::resource('support','SupportController');
 
@@ -48,7 +48,6 @@ Route::group(['namespace' => 'Web'], function () {
         //  Route::get('dashboard', function(){ return view('dashboard'); });
         // Route::get('profile', function(){ return view('pages/profile'); });
         // Route::get('activities', function(){ return view('pages/activities'); });
-        Route::get('communities', function(){ return view('pages/communities');  });
         //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
         Route::get('chatroom', function(){ return view('pages/chatroom'); });
         // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
