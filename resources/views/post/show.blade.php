@@ -57,7 +57,7 @@
                                              
                                                         <div class="media">
                                                           <img src="{{ asset('images/Asset38.png') }}" class="mr-2 rounded-circle" style="width:35px;height: 35px;">
-                                                          <div class="media-body mt-2">
+                                                          <div class="media-body">
                                                             <h6 class="text-blue font-gothambook fontsize13px mb-0"> John Bush Carry </h6>
                                                             <span class="font-gothamlight text-gray fontsize9px d-block mb-1"> 10:00 PM | 17 May, 2021 </span>
                                                             <p class="font-gothambook text-dark fontsize11px mb-1"> Lorem ipsum dolor sit amet mollis consequat ut quis adipiscing rhoncus libero venenatis ipsum. Rhoncus tincidunt elementum sit vidi metus aenean viverra nullam fringilla et. </p>
@@ -73,7 +73,7 @@
                                              
                                                         <div class="media">
                                                           <img src="{{ asset('images/Asset38.png') }}" class="mr-2 rounded-circle" style="width:35px;height: 35px;">
-                                                          <div class="media-body mt-2">
+                                                          <div class="media-body">
                                                             <h6 class="text-blue font-gothambook fontsize13px mb-0"> Telenew film </h6>
                                                             <span class="font-gothamlight text-gray fontsize9px d-block mb-1"> 10:00 PM | 21 Juny, 2021 </span>
                                                             <p class="font-gothambook text-dark fontsize11px mb-1"> Lorem ipsum dolor sit amet mollis consequat ut quis adipiscing rhoncus libero venenatis ipsum. Rhoncus tincidunt elementum sit vidi metus aenean viverra nullam fringilla et. </p>

@@ -683,6 +683,38 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .form-submit .panel-body ::-webkit-input-placeholder, .form-submit .panel-body select option { color: #afafaf; }
 .form-submit .panel-body select{color: #606060;}
+.swal2-modal {
+    background: #0058a5 !important;
+    box-shadow: 1px 1px 15px #fff;
+    border: 1px solid #fff;
+    min-height: auto !important;
+    padding: 65px 20px !important;
+}
+.swal2-modal h2 {
+    color: #fff !important;
+    font-family: Gothambook;
+    font-weight: 500 !important;
+}
+.swal2-modal .swal2-content {
+    color: #fff !important;
+    font-weight: 300 !important;
+    font-family: Gothamlight;
+}
+.swal2-modal .swal2-confirm {
+    background: #f17121 !important;
+    border-radius: 25px 25px;
+    width: 100%;
+    max-width: 258px;
+}
+.swal2-modal .swal2-icon {
+    position: absolute;
+    right: -4px;
+    top: -27px !important;
+    opacity: 0.8;
+}
+
+
+
 
 
 

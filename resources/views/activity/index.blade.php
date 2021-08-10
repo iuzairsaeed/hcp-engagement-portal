@@ -31,9 +31,11 @@
                       <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addgami"> Add Gamification</a>
                     </div>
                   @endif
-                  <div class="pt-3 d-flex flex-wrap">
+                  <div class="pt-3 col-sm-12 font-gothambook text-black text-center">
                     {{ $gamifications->isEmpty() ? "No data available!" : ""}}
                       @foreach ($gamifications as $gamification )
+                    </div>
+                     <div class="d-flex flex-wrap">
                         <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
                             <div class=" p-2 card border-0 border-radius10px">
                               <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($gamification->activity_image)}}"></div>
@@ -63,8 +65,8 @@
                     </div>
                   @endif
 
-                    {{ $clinicals->isEmpty() ? "No data available!" : ""}}
-                    <div class="pt-3 d-flex flex-wrap">
+                   <div class="col-sm-12 text-center font-gothambook text-black pt-3"> {{ $clinicals->isEmpty() ? "No data available!" : ""}} </div>
+                    <div class="d-flex flex-wrap">
                       @foreach ($clinicals as $clinical )
                         <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
                             <div class=" p-2 card border-0 border-radius10px">

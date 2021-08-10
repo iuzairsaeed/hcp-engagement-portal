@@ -30,9 +30,9 @@
                                         </div>
                                       @endif
 
+                                        <div class="w-100 pt-3 text-center col-sm-12 font-gothambook text-black">   {{ $webinars->isEmpty() ? "No data available!" : ""}} </div>
 
-                                         <div class="w-100 pt-3 d-flex flex-wrap">
-                                          {{ $webinars->isEmpty() ? "No data available!" : ""}}
+                                         <div class="w-100 d-flex flex-wrap">
                                           @foreach ($webinars as $webinar )
                                           <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                               <div class=" p-2 card border-0 border-radius10px">
@@ -67,8 +67,10 @@
                                     </div>
                                   @endif
 
-                                 <div class="w-100 pt-3 d-flex flex-wrap">
-                                  {{ $virtuals->isEmpty() ? "No data available!" : ""}}
+                                  <div class=" pt-3 w-100 text-center col-sm-12 font-gothambook text-black"> {{ $virtuals->isEmpty() ? "No data available!" : ""}} </div>
+
+                                 <div class="w-100 d-flex flex-wrap">
+                                  
                                   @foreach ($virtuals as $virtual )
                                   <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
@@ -104,8 +106,13 @@
                                     </div>
                                   @endif  
 
-                                 <div class="w-100 pt-3 d-flex flex-wrap">
-                                  {{ $trainings->isEmpty() ? "No data available!" : ""}}
+
+                                  <div class="pt-3 w-100 text-center col-sm-12 font-gothambook text-black"> 
+                                         {{ $trainings->isEmpty() ? "No data available!" : ""}}
+                                       </div>
+
+                                 <div class="w-100 d-flex flex-wrap">
+                    
                                   @foreach ($trainings as $training )
                                   <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
