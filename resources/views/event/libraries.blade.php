@@ -46,7 +46,7 @@
                                                       <span class="float-left text-left w-fix"> {{ $webinar->created_at->format('d-m-Y') }} </span></h6></li>
                                                       <li class="col-sm-3 col-3 p-0 text-center"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-clock mr-1 fontsize12px float-left"></i><span class="float-left text-left w-fix"> {{ $webinar->created_at->format('g:i A') }} </span></h6></li>
                                                   </ul>
-                                                  <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$webinar->title}} </h1>
+                                                  <a href="{{ route('event.show', $webinar->id) }}" class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$webinar->title}} </a>
                                                   {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$webinar->description}} </h1> --}}
                                                 </div>
                                               </div>
@@ -86,7 +86,7 @@
                                               <span class="float-left text-left w-fix"> {{ $virtual->created_at->format('d-m-Y') }} </span></h6></li>
                                               <li class="col-sm-3 col-3 p-0 text-center"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-clock mr-1 fontsize12px float-left"></i><span class="float-left text-left w-fix"> {{ $virtual->created_at->format('g:i A') }} </span></h6></li>
                                           </ul>
-                                          <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$virtual->title}} </h1>
+                                          <a href="{{ route('event.show', $virtual->id) }}" class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$virtual->title}} </a>
                                           {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$virtual->description}} </h1> --}}
                                         </div>
                                       </div>

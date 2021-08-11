@@ -30,11 +30,15 @@ class EventRequest extends FormRequest
                 'time' => ['bail', 'required', 'date_format:H:i', 'max:255', 'min:3'],
                 'location' => ['bail', 'required', 'string', 'max:255', 'min:3'],
                 'tag' => ['bail', 'required', 'string', 'max:255', 'min:3'],
+                'event_attachment' => ['bail', 'required', 'image', 'mimes:jpeg,png,jpg','max:3048'],
+            ];
+        } else {
+            $rule = [
+                'event_attachment' => ['bail', 'required', 'mimes:mp4,flv,mkv,3gp,mov,ogg,avi,wmv','max:3048'],
             ];
         }
         $rule = [
             'type' => ['bail','required','alpha', 'max:255', 'min:3'],
-            'event_attachment' => ['bail', 'required', 'image', 'mimes:jpg,jpeg,png|max:2048'],
             'title' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
             'description' => ['bail','required','string', 'max:255', 'min:3'],
         ];

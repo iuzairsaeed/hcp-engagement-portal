@@ -15,6 +15,9 @@ class Event extends Model
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
+    protected $dateFormat = 'l, M d,Y';
+
+    protected $dates = ['date_from', 'date_to'];
 
     protected $fillable = [
         'title',
@@ -28,6 +31,7 @@ class Event extends Model
         'url',
         'tag',
         'event_attachment',
+        'event_mime_type',
         'user_id'
     ];
 

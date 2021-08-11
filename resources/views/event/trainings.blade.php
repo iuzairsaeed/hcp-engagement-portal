@@ -49,7 +49,7 @@
                                               <span class="float-left text-left w-fix"> {{ $training->created_at->format('d-m-Y') }} </span></h6></li>
                                               <li class="col-sm-3 col-3 p-0 text-center"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-clock mr-1 fontsize12px float-left"></i><span class="float-left text-left w-fix"> {{ $training->created_at->format('g:i A') }} </span></h6></li>
                                           </ul>
-                                          <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$training->title}} </h1>
+                                          <a href="{{ route('event.show', $training->id) }}" class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$training->title}} </a>
                                           {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$training->description}} </h1> --}}
                                         </div>
                                       </div>

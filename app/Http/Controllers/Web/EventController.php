@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Event;
 use App\Models\Reaction;
-use  App\Http\Requests\EventRequest;
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -81,6 +81,7 @@ class EventController extends Controller
             if($request->hasFile('event_attachment')){
                 $file_name = uploadFile( $request->event_attachment,  $request->type == 'webinar'  ? webinarPath() : ( $request->type == 'virtual' ? virtualPath() : trainingPath()) );
                 $data['event_attachment'] = $file_name;
+                $data['event_mime_type'] = $request->event_attachment->getClientMimeType();
             }
             $data['user_id'] = auth()->id();
             $this->model->create($data);
@@ -96,10 +97,18 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $event)
+    public function show(Event $event)
     {
         try {
-            view('event.show', compact('event'));
+            if($event->type == "webinar" || $event->type == "virtual" ){
+                $date_from = $event->date_from->format('l, M d,Y');
+                $date_to = $event->date_to->format('l, M d, Y');
+                $now = strtotime($event->time);
+                $time = date('h:i (T)', $now);
+                return view('event.show', compact('event', 'date_from', 'date_to', 'time'));
+            } else {
+                return view('event.show', compact('event'));
+            }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

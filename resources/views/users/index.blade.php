@@ -53,7 +53,7 @@
                                                                                      <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 7 Years </h6></li>
                                                                                      <li class="col-sm-3 col-3 p-0 text-right">
                                                                                         <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
-                                                                                        <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i>
+                                                                                        {{-- <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i> --}}
                                                                                      </a>
                                                                                      </li>
                                                                                  </ul>
