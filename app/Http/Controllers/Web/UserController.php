@@ -125,7 +125,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        dd(1);
         $profileModel = new Profile;
         $educationModel = new Education;
         $experienceModel = new Experience;

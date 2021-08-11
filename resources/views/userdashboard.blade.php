@@ -74,7 +74,7 @@
                     </div>
                 
                         <div class="col-sm-1 p-0 m-auto">
-                            <a href="{{url('/recentactivity') }}"
+                            <a href="{{url('/activity') }}"
                                class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                 All</a>
                         </div>
@@ -121,7 +121,7 @@
 
 
                         <div class="col-sm-1 p-0 m-auto">
-                            <a href="#"
+                            <a href="event"
                                class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                 All</a>
                         </div>
@@ -148,7 +148,7 @@
 
 
                             <div class="col-sm-1 p-0 m-auto">
-                                <a href="{{url('/recentpost') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
+                                <a href="{{url('/post') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
                             </div>
 
@@ -254,113 +254,7 @@
           }
         })
 
-    var data = {
-      labels: ["Dr Kath", "Dr Zuleha", "Dr Sharaby", "Dr Ashraf", "Dr Fernan", "Dr Fara"],
-      datasets: [{
-        label: "Experience",
-        backgroundColor: "rgb(4 95 170)",
-        borderColor: "rgb(4 95 170)",
-        borderWidth: 1,
-        hoverBackgroundColor: "rgb(228 228 228)",
-        hoverBorderColor: "rgb(228 228 228)",
-        data: [43, 38, 30, 33, 28, 25 ],
-      }]
-    };
-
-    var options = {
-
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          stacked: true,
-          gridLines: {
-            display: true,
-            color: "rgb(228 228 228)"
-          }
-        }],
-        xAxes: [{
-          gridLines: {
-            display: false
-          }
-        }]
-      }
-    };
-
-    Chart.Bar('chart', {
-      options: options,
-      data: data
-    });
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-            var chart = new Chart(ctx, {
-                type: 'line', // also try bar or other graph types
-
-                data: {
-                    labels: ["Dr Kath", "Dr Zuleha", "Dr Sharaby", "Dr Ashraf", "Dr Fernan", "Dr Fara"],
-                    // Information about the dataset
-                datasets: [{
-                        label: "Experience",
-                        backgroundColor: 'rgb(4 95 170)',
-                        borderColor: 'rgb(241 113 33)',
-                        borderCapStyle:'butt',
-                        drawTicks: false,
-                        data: [999, 899, 750, 650, 610, 530 ],
-                    }]
-                },
-
-                // Configuration options
-                options: {
-                layout: {
-                  padding: 0,
-                },
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: true,
-                        text: ''
-                    },
-                    scales: {
-                        yAxes: [{
-                            scaleLabel: {
-                                display: false,
-                                labelString: ''
-                            }
-                        }],
-                        xAxes: [{
-                            scaleLabel: {
-                                display: false,
-                                labelString: ''
-                            }
-                        }]
-                    }
-                }
-            });
-
-    var oilCanvas = document.getElementById("oilChart");
-
-        // Chart.defaults.global.defaultFontFamily = "Lato";
-        Chart.defaults.global.defaultFontSize = 12;
-
-        var oilData = {
-            labels: [
-                "Karachi",
-                "Lahore"
-            ],
-            datasets: [
-                {
-                    data: [133.3, 31],
-                    backgroundColor: [
-                        "#0058a5",
-                        "#f17121"
-                    ]
-                }]
-        };
-
-        var pieChart = new Chart(oilCanvas, {
-          type: 'pie',
-          data: oilData
-        });
+  
 </script>
 @endsection
 
