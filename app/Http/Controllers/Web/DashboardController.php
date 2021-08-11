@@ -22,6 +22,8 @@ class DashboardController extends Controller
             else {
                 $events = Event::all()->sortByDesc('updated_at');
                 $posts = Post::all()->sortByDesc('updated_at');
+                $posts = Post::all()->sortByDesc('updated_at');
+
                 return view('userdashboard',  compact(['events', 'posts']));
             } 
         } catch (\Throwable $th) {
