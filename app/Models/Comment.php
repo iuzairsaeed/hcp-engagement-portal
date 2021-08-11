@@ -16,8 +16,10 @@ class Comment extends Model
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
 
+    protected $fillable = ['text','post_id'];
+
     protected $with = [
-        'user',
+        'user'
     ];
 
     public function user()
@@ -25,10 +27,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
+    // public function post()
+    // {
+    //     return $this->belongsTo(Post::class);
+    // }
 
     public function replies() {
         return $this->hasMany(Comment::class, 'parent_id');

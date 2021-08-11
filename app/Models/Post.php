@@ -18,6 +18,10 @@ class Post extends Model
 
     protected $fillable = ['post_image','title','description', 'user_id'];
 
+    protected $with = [
+        'comments'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -27,5 +31,15 @@ class Post extends Model
     {
         $path = postPath();
         return $path.$value;
+    }
+
+    /**
+     * The has Many Relationship
+     *
+     * @var array
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

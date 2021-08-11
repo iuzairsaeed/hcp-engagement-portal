@@ -37,10 +37,11 @@
                                                         <p class="font-gothamlight fontsize11px text-gray mt-3">  {{$post->description}} </p>
                                                 </div> 
                                                 <div class="col-sm-12 pl-2 pr-2">
-                                                    <form class="w-100" action="" method="post">
+                                                    <form class="w-100" action="{{ route('comment.store') }}" method="POST" >
                                                       @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
                                                     <label class="font-gothamlight fontsize11px text-darkgray"> Add Comment</label>
-                                                    <textarea placeholder="Your comment"  name="comment" id="comment" class="font-gothambook text-darkgray w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 80px;"></textarea>
+                                                    <textarea placeholder="Your comment"  name="text" id="text" class="font-gothambook text-darkgray w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 80px;"></textarea>
                                                     <button class="bg-orange w-100 border-radius25px text-uppercase border border-orange text-white font-gothamlight p-2 mt-3"  type="submit"> Leave a Comment </button>
                                                 </div>
                                             </div>
@@ -51,46 +52,29 @@
                                                 <div class="w-100 pl-4 pr-4 pt-2 pb-3 border-bottom border-gray">
                                                     <h5 class="text-dark font-gothammedium">Recent Comments</h5>
                                                 </div>
+                                              <div class="col-sm-12 pl-sm-0 pr-sm-5 overflow-y" style="height: 500px; overflow-x: hidden;">
+                                                @if(!$post->comments->isEmpty())
+                                                  @foreach ($post->comments as $comment)
                                                     <!-- comments -->
-                                                  <div class="col-sm-12 pl-sm-0 pr-sm-5 overflow-y" style="height: 500px; overflow-x: hidden;">
                                                     <div class="w-100 border-bottom p-4 border-gray">
-                                             
                                                         <div class="media">
-                                                          <img src="{{ asset('images/Asset38.png') }}" class="mr-2 rounded-circle" style="width:35px;height: 35px;">
+                                                          <img src="{{ asset(auth()->user()->avatar) }}" class="mr-2 rounded-circle" style="width:35px;height: 35px;">
                                                           <div class="media-body">
-                                                            <h6 class="text-blue font-gothambook fontsize13px mb-0"> John Bush Carry </h6>
-                                                            <span class="font-gothamlight text-gray fontsize9px d-block mb-1"> 10:00 PM | 17 May, 2021 </span>
-                                                            <p class="font-gothambook text-dark fontsize11px mb-1"> Lorem ipsum dolor sit amet mollis consequat ut quis adipiscing rhoncus libero venenatis ipsum. Rhoncus tincidunt elementum sit vidi metus aenean viverra nullam fringilla et. </p>
-                                                             <a href="#" class="text-gray-500 font-montserrat fontsize10px"> Reply</a>
+                                                            <h6 class="text-blue font-gothambook fontsize13px mb-0"> {{ auth()->user()->name }} </h6>
+                                                            <span class="font-gothamlight text-gray fontsize9px d-block mb-1"> {{ $comment->created_at->format('H:i A | d M, Y') }}</span>
+                                                            <p class="font-gothambook text-dark fontsize11px mb-1">{{ $comment->text }} </p>
+                                                              {{-- <a href="#" class="text-gray-500 font-montserrat fontsize10px"> Reply</a> --}}
                                                           </div>
                                                         </div>
-                                              
-
                                                     </div>
-
-
-                                                    <div class="w-100 border-bottom p-4 border-gray">
-                                             
-                                                        <div class="media">
-                                                          <img src="{{ asset('images/Asset38.png') }}" class="mr-2 rounded-circle" style="width:35px;height: 35px;">
-                                                          <div class="media-body">
-                                                            <h6 class="text-blue font-gothambook fontsize13px mb-0"> Telenew film </h6>
-                                                            <span class="font-gothamlight text-gray fontsize9px d-block mb-1"> 10:00 PM | 21 Juny, 2021 </span>
-                                                            <p class="font-gothambook text-dark fontsize11px mb-1"> Lorem ipsum dolor sit amet mollis consequat ut quis adipiscing rhoncus libero venenatis ipsum. Rhoncus tincidunt elementum sit vidi metus aenean viverra nullam fringilla et. </p>
-                                                             <a href="#" class="text-gray-500 font-montserrat fontsize10px"> Reply</a>
-                                                          </div>
-                                                        </div>
-                                              
-
-                                                    </div>
-
-                                                </div>
+                                                  @endforeach
+                                                @else
+                                                    <p class="ml-4">No comments on this post</p>
+                                                @endif
+                                              </div>
 
                                             </div>
-
-                                              <!-- right side -->
-
-
+                                          <!-- right side -->
                                     </div>
                              </div>
                             <!-- /.container-fluid -->
