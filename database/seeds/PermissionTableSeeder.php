@@ -45,6 +45,11 @@ class PermissionTableSeeder extends Seeder
             'notifications-create',
             'notifications-edit',
             'notifications-delete',
+            'reactions-getList',
+            'reactions-list',
+            'reactions-create',
+            'reactions-edit',
+            'reactions-delete',
 
         ];
         foreach ($permissions as $permission) {

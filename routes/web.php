@@ -38,12 +38,14 @@ Route::group(['namespace' => 'Web'], function () {
         
         Route::resource('event','EventController');
         Route::get('event-list', 'EventController@getList')->name('event.get-list');
+        Route::post('react', 'EventController@react')->name('event.react');
         Route::get('libraries', 'EventController@libraries');
         Route::get('trainings', 'EventController@trainings');
-        Route::get('communities', 'UserController@index');
         
         Route::resource('support','SupportController');
-
+        Route::resource('reaction','ReactionController');
+        
+        Route::get('communities', 'UserController@index');
 
         //  Route::get('dashboard', function(){ return view('dashboard'); });
         // Route::get('profile', function(){ return view('pages/profile'); });

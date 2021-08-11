@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Event;
+use App\Models\Reaction;
 use  App\Http\Requests\EventRequest;
 
 class EventController extends Controller
@@ -164,6 +165,28 @@ class EventController extends Controller
         try {
             $trainings = $this->model->all()->where('type', 'training');
             return view('event.trainings', compact('trainings'));
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    
+    public function react(Request $request) {
+        try {
+            
+            $event = $this->model->all()->where('id', $request->event_id )->first();
+            $reactionModel = Reaction::where('user_id', auth()->id())
+            ->where('reactionable_id' , $request->event_id)
+            ->where('reactionable_type', Event::class);
+            if($reactionModel->exists()){
+                $reactionModel->update(array('favorite' => $reactionModel->value('favorite') ? false : true));
+            } else {
+                $data = new Reaction([
+                    "user_id" => auth()->id(),
+                    "event_id"=>$request->event_id,
+                    "favorite"=>true
+                ]);
+                $event->eventReaction()->save($data);
+            }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

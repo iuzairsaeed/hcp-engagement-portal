@@ -16,6 +16,8 @@ class Reaction extends Model
         'favorite' => 'boolean',
     ];
 
+    protected $fillable = ['user_id' , 'favorite', 'like' , 'unlike'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

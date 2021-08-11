@@ -38,8 +38,7 @@
                                               <div class=" p-2 card border-0 border-radius10px">
                                                 <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                                  <p class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart align-middle "></i></p>
-
+                                                  <button onclick="react(this)" data-event-id="{{$webinar->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa {{ ($webinar->eventReaction->first()) ? ($webinar->eventReaction->first->favorite ? "fa-heart" : "fa-heart-o" ) : "fa-heart-o"  }} align-middle "></i></button>
                                                   <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                                       <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $webinar->created_at->format('l') }} </li>
                                                       <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
@@ -74,7 +73,7 @@
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                          <p class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart align-middle"></i></p>
+                                          <button onclick="react(this)" data-event-id="{{$webinar->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart align-middle "></i></button>
 
                                           <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                               <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $virtual->created_at->format('l') }} </li>
@@ -111,8 +110,8 @@
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($training->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                          <p class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart-o align-middle"></i></p>
-                                          
+                                          <button onclick="react(this)" data-event-id="{{$webinar->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa fa-heart align-middle "></i></button>
+
                                           <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                               <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $training->created_at->format('l') }} </li>
                                               <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
@@ -385,6 +384,28 @@
 
 @section("afterScript")
 <script>
+
+function react(value){
+  var event_id = value.getAttribute("data-event-id");
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.react') }}",
+    type: "POST",
+    data : {
+      event_id : event_id,
+    },
+    success: function (res) {
+      toastr.success('{{session('success')}}', 'React');
+      },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
 
 function submitWebinar(){
   event = $("#webinarForm");

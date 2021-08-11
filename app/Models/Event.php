@@ -42,4 +42,9 @@ class Event extends Model
         $path = $this->type == 'webinar'  ? webinarPath() : ( $this->type == 'virtual' ? virtualPath() : trainingPath() ) ;
         return $path.$value;
     }
+
+    public function eventReaction()
+    {
+        return $this->morphMany(Reaction::class, 'reactionable');
+    }
 }
