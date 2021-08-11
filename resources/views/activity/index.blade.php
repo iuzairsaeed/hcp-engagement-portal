@@ -38,7 +38,7 @@
                      <div class="d-flex flex-wrap">
                         <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
                             <div class=" p-2 card border-0 border-radius10px">
-                              <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($gamification->activity_image)}}"></div>
+                              <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($gamification->activity_image)}}"></div>
                               <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
                                 <a href="{{ asset($gamification->activity_doc) }}" target="_blank" class="bg-white col-auto border-0 float-right p-0 coloricon rounded-circle text-center mt-minus mr-2" style="width: 28px;height: 28px;"><img src="{{ asset('images/Asset90.png') }}" class="iconsize m-auto"></a>
                                 <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
@@ -70,7 +70,7 @@
                       @foreach ($clinicals as $clinical )
                         <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
                             <div class=" p-2 card border-0 border-radius10px">
-                              <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($clinical->activity_image)}}"></div>
+                              <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($clinical->activity_image)}}"></div>
                               <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
                                 <a href="{{ asset($clinical->activity_doc) }}" target="_blank" class="bg-white col-auto border-0 float-right p-0 coloricon rounded-circle text-center mt-minus mr-2" style="width: 28px;height: 28px;"><img src="{{ asset('images/Asset91.png') }}" class="iconsize m-auto"></a>
                                 <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">

@@ -21,7 +21,7 @@
     
     <li class="nav-item {{ (request()->is('activity')) ? 'active' : '' }}">
         <a class="nav-link font-gothamlight" href="{{route('activity.index')}}" title="Activities">
-            <span class="{{ (request()->is('activity')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('activities')) ?'Asset20.png':'Asset30.png'}}' width="15"></span>
+            <span class="{{ (request()->is('activity')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('activity')) ?'Asset20.png':'Asset30.png'}}' width="15"></span>
             <span>Activities</span>
         </a>
     </li>

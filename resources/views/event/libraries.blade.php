@@ -35,7 +35,7 @@
                                           @foreach ($webinars as $webinar )
                                           <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                               <div class=" p-2 card border-0 border-radius10px">
-                                                <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
+                                                <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
                                                   @if (auth()->user()->role != "admin")
                                                     <button onclick="react(this)" data-event-id="{{$webinar->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa {{ ($webinar->eventReaction->first()) ? ($webinar->eventReaction->first->favorite ? "fa-heart" : "fa-heart-o" ) : "fa-heart-o"  }} align-middle "></i></button>
@@ -74,7 +74,7 @@
                                   @foreach ($virtuals as $virtual )
                                   <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
-                                        <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
+                                        <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
                                           @if (auth()->user()->role != "admin")
                                             <button onclick="react(this)" data-event-id="{{$virtual->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa {{ ($virtual->eventReaction->first()) ? ($virtual->eventReaction->first->favorite ? "fa-heart" : "fa-heart-o" ) : "fa-heart-o"  }} align-middle "></i></button>
