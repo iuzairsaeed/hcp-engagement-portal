@@ -13,8 +13,8 @@
     </li>
 
     <li class="nav-item {{ (request()->is('post')) ? 'active' : '' }}">
-        <a class="nav-link font-gothambook" href="{{route('post.index')}}" title="Profile">
-        <span class="{{ (request()->is('post')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('profile')) ?'Asset17.png':'Asset27.png'}}' width="15"></span>
+        <a class="nav-link font-gothambook" href="{{route('post.index')}}" title="Post">
+        <span class="{{ (request()->is('post')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('post')) ?'Asset93.png':'Asset92.png'}}' width="15"></span>
         <span>Recent Posts</span>
         </a>
     </li>
@@ -28,7 +28,7 @@
 
     <li class="nav-item {{ (request()->is('activity')) ? 'active' : '' }}">
         <a class="nav-link font-gothamlight" href="{{route('activity.index')}}" title="Activities">
-        <span class="{{ (request()->is('activity')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('activities')) ?'Asset20.png':'Asset30.png'}}' width="15"></span>
+        <span class="{{ (request()->is('activity')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('activity')) ?'Asset20.png':'Asset30.png'}}' width="15"></span>
         <span>Create Activity</span>
         </a>
     </li>
@@ -43,7 +43,7 @@
 
     <li class="nav-item {{ (request()->is('event')) ? 'active' : '' }}">
         <a class="nav-link font-gothambook" href="{{url('event')}}" title="Add Event">
-        <span class="{{ (request()->is('event')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('eventcalender')) ?'Asset19.png':'Asset29.png'}}' width="15"></span>
+        <span class="{{ (request()->is('event')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('event')) ?'Asset19.png':'Asset29.png'}}' width="15"></span>
         <span>Add Events </span></a>
     </li>
 

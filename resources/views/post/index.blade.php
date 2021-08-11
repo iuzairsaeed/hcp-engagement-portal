@@ -15,9 +15,9 @@
             <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
               <div class="row">                              
                 <div class="w-100 mt-2 text-right pl-3 pr-3 mb-3">
-                  <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-montserrat pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addpost"> Add Post</a>
+                  <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addpost"> Add Post</a>
                 </div>
-                <div class="ml-2 col-lg-5 col-sm-12">{{ $posts->isEmpty() ? "No data available!" : ""}}</div>
+                <div class="ml-2 col-lg-12 col-sm-12 text-center font-gothambook text-black">{{ $posts->isEmpty() ? "No data available!" : ""}}</div>
                 <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
                   @foreach ($posts as $post)
                     <!-- card -->
