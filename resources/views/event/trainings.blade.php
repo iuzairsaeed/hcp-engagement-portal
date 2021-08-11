@@ -16,24 +16,33 @@
 
                         <div class="w-100 d-flex flex-wrap pl-sm-2">
                                 <ul class="nav nav-tabs custom-navtabs border-0 col-sm-8 col-12">
-                                  <li><a class="font-gothambook active" data-toggle="tab" href="#trainings"> Trainings </a></li>
+                                  <li><a class="font-gothambook active" data-toggle="tab" href="#trainings" > Trainings </a></li>
                                 </ul>
                         </div>
                            <!-- Third tab -->
-                          <div class="tab-pane fade active show" id="trainings">
+                          <div class="tab-pane fade show active" id="trainings">
                                   @if (auth()->user()->role == "admin")
                                     <div class="col-sm-4 offset-sm-8 col-12 text-right mt-up">
                                          <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#trainingsmodal"> Add Training </a>
                                     </div>
                                   @endif  
 
-                                 <div class="w-100 pt-3 d-flex flex-wrap">
-                                  {{ $trainings->isEmpty() ? "No data available!" : ""}}
+
+                                  <div class="pt-3 w-100 text-center col-sm-12 font-gothambook text-black"> 
+                                         {{ $trainings->isEmpty() ? "No data available!" : ""}}
+                                       </div>
+
+                                 <div class="w-100 d-flex flex-wrap">
+                    
                                   @foreach ($trainings as $training )
-                                  <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
+                                  <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class=""><img class="card-img-top w-100 mb-1 rounded" src="{{asset($training->event_attachment)}}"></div>
                                         <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
+                                          @if (auth()->user()->role != "admin")
+                                            <button onclick="react(this)" data-event-id="{{$training->id}}" class="bg-white col-auto border-0 float-right p-0 rounded-circle text-center mt-minus mr-2 text-orange" style="width: 28px;height: 28px;"><i class="fa {{ ($training->eventReaction->first()) ? ($training->eventReaction->first->favorite ? "fa-heart" : "fa-heart-o" ) : "fa-heart-o"  }} align-middle "></i></button>
+                                          @endif
+
                                           <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                               <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $training->created_at->format('l') }} </li>
                                               <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
@@ -143,7 +152,7 @@
                    </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Webinar </button>
+                    <button type="button" onclick="submitWebinar()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Webinar </button>
                 </div>
             </form>
         </div>
@@ -195,7 +204,7 @@
                     </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
+                    <button type="button" onclick="submitTraining()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
                 </div>
             </form>
         </div>
@@ -288,7 +297,7 @@
                    </div>
 
                 <div class="w-100 text-center p-3 pb-4">
-                    <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Virtual Event </button>
+                    <button type="button" onclick="submitVirtual()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-montserrat text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Virtual Event </button>
                 </div>
             </form>
         </div>
@@ -299,10 +308,6 @@
   </div>
   <!-- Add Training -->
 
-
-
-
-
 @endsection
 
 
@@ -311,5 +316,27 @@
 @section("afterScript")
 <script>
 
+function react(value){
+  var event_id = value.getAttribute("data-event-id");
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.react') }}",
+    type: "POST",
+    data : {
+      event_id : event_id,
+    },
+    success: function (res) {
+      toastr.success('{{session('success')}}', 'React');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
 </script>
 @endsection

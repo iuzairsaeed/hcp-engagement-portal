@@ -152,8 +152,12 @@ class EventController extends Controller
     public function libraries()
     {
         try {
-            $webinars = $this->model->all()->where('type', 'webinar');
-            $virtuals = $this->model->all()->where('type', 'virtual');
+            $webinars = Event::where('type', 'webinar')->whereHas('eventReaction', function ($query){
+                $query->where('user_id', '=', auth()->id())->where('favorite',true);
+            })->get();
+            $virtuals = Event::where('type', 'virtual')->whereHas('eventReaction', function ($query){
+                $query->where('user_id', '=', auth()->id())->where('favorite',true);
+            })->get();
             return view('event.libraries', compact('webinars', 'virtuals'));
         } catch (\Throwable $th) {
             return $th->getMessage();
@@ -163,7 +167,9 @@ class EventController extends Controller
     public function trainings()
     {
         try {
-            $trainings = $this->model->all()->where('type', 'training');
+            $trainings = Event::where('type', 'training')->whereHas('eventReaction', function ($query){
+                $query->where('user_id', '=', auth()->id())->where('favorite',true);
+            })->get();
             return view('event.trainings', compact('trainings'));
         } catch (\Throwable $th) {
             return $th->getMessage();
