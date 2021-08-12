@@ -137,83 +137,161 @@
                         <div class="panel-heading mb-2 mt-4">
                            <h6 class="panel-title text-darkgray font-gothambook">Education Information</h6>
                         </div>
-
-                        <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
-                            <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
-                                <div class="row">
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
-                                        <input type="text" required="required" name="education[level][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Education Type</label>
-                                        <input type="text" required="required" name="education[type][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
-                                        <!-- <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="education_type" style="height: 43px;">
-
-                                            <option>Select Type</option>
-                                            <option>Easy</option>
-                                            <option>Intermediate</option>
-                                            <option>Medium</option>
-                                            <option>Fast</option>
-                                        </select> -->
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Field of Study</label>
-                                         <input type="text" required="required" name="education[field][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
-                                       <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="field_of_study" style="height: 43px;">
-
-                                            <option>Select Type</option>
-                                            <option>BS</option>
-                                            <option>Master</option>
-                                            <option>Bachelor</option>
-                                            <option>F.Sd</option>
-                                        </select> -->
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">School</label>
-                                        <input type="text" name="education[school][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text" name="education[country][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text" name="education[city][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" />
-                                    </div>
-                                    <div class="w-100">
-                                        <div class="form-group col-sm-4">
-                                            <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
-                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox" name="education[currently_here][]" value="1" ><span class="checkmark"></span>
-                                            </label>
-
+                        @if ($user->education->isEmpty() == false)
+                            @foreach ($user->education as $key => $education )
+                                <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
+                                    <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                        <div class="row">
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
+                                                <input type="text" required="required" name='education[level][{{$key}}]' value="{{ $education->level }}"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Education Type</label>
+                                                <input type="text" required="required" name="education[type][{{$key}}]" value="{{ $education->type }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
+                                                <!-- <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="education_type" style="height: 43px;">
+        
+                                                    <option>Select Type</option>
+                                                    <option>Easy</option>
+                                                    <option>Intermediate</option>
+                                                    <option>Medium</option>
+                                                    <option>Fast</option>
+                                                </select> -->
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Field of Study</label>
+                                                <input type="text" required="required" name="education[field][{{$key}}]" value="{{ $education->field }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
+                                            <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="field_of_study" style="height: 43px;">
+        
+                                                    <option>Select Type</option>
+                                                    <option>BS</option>
+                                                    <option>Master</option>
+                                                    <option>Bachelor</option>
+                                                    <option>F.Sd</option>
+                                                </select> -->
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">School</label>
+                                                <input type="text" name="education[school][{{$key}}]" value="{{ $education->school }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                                <input type="text" name="education[country][{{$key}}]" value="{{ $education->country }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                                <input type="text" name="education[city][{{$key}}]" value="{{ $education->city }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" />
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="form-group col-sm-4">
+                                                    <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                                    <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
+                                                        <input type="checkbox" name="education[currently_here][{{$key}}]" {{ $education->currently_here ? 'checked': '' }} value="1" ><span class="checkmark"></span>
+                                                    </label>
+        
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                                <input type="date" name="education[date_from][{{$key}}]" value="{{ $education->date_from->format('Y-m-d') }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                                <input type="date" name="education[date_to][{{$key}}]" value="{{ $education->date_to->format('Y-m-d') }}"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="form-group col-sm-4">
+                                                    <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
+                                                        <input type="checkbox" name="education[data][{{$key}}]" value="1" >
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                        <input type="date" name="education[date_from][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                        <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
-                                    </div>
-                                    <div class="w-100">
-                                        <div class="form-group col-sm-4">
-                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
-                                                <input type="checkbox" name="education[data][]" value="1" >
-                                                <span class="checkmark"></span>
-                                            </label>
+        
+                                        <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                            <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
                                         </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        @else
+                            <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
+                                <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
+                                            <input type="text" required="required" name='education[level][]'  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Education Type</label>
+                                            <input type="text" required="required" name="education[type][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
+                                            <!-- <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="education_type" style="height: 43px;">
 
-                                 <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                             <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
-                         </div>
-                        </div>
+                                                <option>Select Type</option>
+                                                <option>Easy</option>
+                                                <option>Intermediate</option>
+                                                <option>Medium</option>
+                                                <option>Fast</option>
+                                            </select> -->
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Field of Study</label>
+                                            <input type="text" required="required" name="education[field][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
+                                        <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="field_of_study" style="height: 43px;">
 
-                        </div>
+                                                <option>Select Type</option>
+                                                <option>BS</option>
+                                                <option>Master</option>
+                                                <option>Bachelor</option>
+                                                <option>F.Sd</option>
+                                            </select> -->
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">School</label>
+                                            <input type="text" name="education[school][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                            <input type="text" name="education[country][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                            <input type="text" name="education[city][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" />
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                                <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
+                                                    <input type="checkbox" name="education[currently_here][]" value="1" ><span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                            <input type="date" name="education[date_from][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                            <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="form-group col-sm-4">
+                                                <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
+                                                    <input type="checkbox" name="education[data][]" value="1" >
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="w-100 d-flex flex-wrap mt-5 stepwizard">
                            <div class="col-sm-6 text-right pr-sm-2 stepwizard-row setup-panel">
@@ -232,69 +310,138 @@
                         <div class="panel-heading mb-2 mt-4">
                            <h6 class="panel-title font-gothambook text-darkgray">Experience Information</h6>
                         </div>
-                        <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
-                            <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
-                                <div class="row">
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
-                                        <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Organization </label>
-                                         <input type="text" name="experience[organization][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization"/>
-                                       <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="organization" style="height: 43px;">
+                        @if ($user->experience->isEmpty() == false)
+                            @foreach ($user->experience as $key => $experience)
+                                <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
+                                    <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                        <div class="row">
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
+                                                <input type="text" name='experience[title][{{$key}}]' value="{{ $experience->title }}" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Organization </label>
+                                                <input type="text" name="experience[organization][{{$key}}]"  value="{{ $experience->organization }}" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization"/>
+                                            <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="organization" style="height: 43px;">
 
-                                            <option>Select Type</option>
-                                            <option>New</option>
-                                            <option>World</option>
-                                            <option>Classic</option>
-                                            <option>Fast</option>
-                                        </select> -->
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
-                                        <input type="text"  name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text"  name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text"  name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
-                                    </div>
-                                    <div class="w-100">
-                                        <div class="form-group col-sm-4">
-                                            <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
-                                            <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="1" id="currently_here" name="experience[currently_here][]">
-                                                <span class="checkmark"></span>
-                                            </label>
+                                                    <option>Select Type</option>
+                                                    <option>New</option>
+                                                    <option>World</option>
+                                                    <option>Classic</option>
+                                                    <option>Fast</option>
+                                                </select> -->
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
+                                                <input type="text"  name="experience[therapeutic_area][{{$key}}]"  value="{{ $experience->therapeutic_area }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                                <input type="text"  name="experience[city][{{$key}}]"  value="{{ $experience->city }}"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                                <input type="text"  name="experience[country][{{$key}}]"  value="{{ $experience->country }}"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="form-group col-sm-4">
+                                                    <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                                    <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
+                                                        <input type="checkbox"  value="1"{{ $experience->currently_here ? "checked": "" }} id="currently_here" name="experience[currently_here][{{$key}}]">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                                <input type="date" name="experience[date_from][{{$key}}]"  value="{{ $experience->date_from->format('Y-m-d') }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                                <input type="date" name="experience[date_to][{{$key}}]"  value="{{ $experience->date_to->format('Y-m-d')  }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                            </div> 
+                                            <div class="w-100">
+                                                <div class="form-group col-sm-4">
+                                                    <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
+                                                        <input type="checkbox" name="experience[data][{{$key}}]" value="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                        <input type="date" name="experience[date_from][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
-                                    </div>
-                                    <div class="form-group col-sm-4">
-                                        <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                        <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
-                                    </div>
-                                    <div class="w-100">
-                                        <div class="form-group col-sm-4">
-                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
-                                                <input type="checkbox" name="experience[data][]" value="1">
-                                                <span class="checkmark"></span>
-                                            </label>
+
+                                        <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
                                         </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        @else
+                            <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
+                                <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
+                                            <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Organization </label>
+                                            <input type="text" name="experience[organization][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization"/>
+                                        <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="organization" style="height: 43px;">
 
-                                 <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
-                                 </div>
+                                                <option>Select Type</option>
+                                                <option>New</option>
+                                                <option>World</option>
+                                                <option>Classic</option>
+                                                <option>Fast</option>
+                                            </select> -->
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
+                                            <input type="text"  name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                            <input type="text"  name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                            <input type="text"  name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="form-group col-sm-4">
+                                                <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                                <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
+                                                    <input type="checkbox"  value="1" id="currently_here" name="experience[currently_here][]">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                            <input type="date" name="experience[date_from][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                            <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="form-group col-sm-4">
+                                                <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
+                                                    <input type="checkbox" name="experience[data][]" value="1">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                    <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endif
+                        
 
                         <div class="w-100 d-flex flex-wrap mt-5 stepwizard">
                            <div class="col-sm-6 text-right pr-sm-2 stepwizard-row setup-panel">
@@ -309,69 +456,6 @@
                      </div>
                      <!-- third step -->
                   </form>
-                
-
-                
-
-                   <div class="col-sm-12 mt-4 d-none">
-                                    <div class="w-100 pt-3 pb-3 pl-4 pr-4 border-radius10px bg-white position-relative" style="box-shadow: 1px 1px 10px #a1c0cc;">
-                                            <div class="media">
-
-
-                                                  <img src="" class="mr-3 mt-3 rounded-circle" style="width:160px;height: 160px;">
-                                                  <div class="media-body mt-5">
-                                                    <p class="w-100 font-gothamlight text-darkgray fontsize11px mb-2">General Information</p>
-                                                    <h5 class="mb-0"><input type="text" name="" value="" disabled
-                                                        class="bg-transparent border-0 outline-none font-gothambook text-dark"></h5>
-                                                    <p class="mb-0"><input type="text" name="advice" value="" disabled
-                                                        class="bg-transparent border-0 outline-none font-gothamlight fontsize14px"></p>
-                                                    <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-4">
-                                                        <li class="col-sm-2 p-0"><i class="fa fa-map-marker text-blue" style="font-size: 13px;"></i> <input type="text" name="advice" value=" " class="bg-transparent border-0 text-gray fontsize13px" disabled style="width: 90%"></li>
-                                                        <li class="col-sm-3 p-0 ml-2"><i class="fa fa-envelope text-blue" style="font-size: 13px;"></i> <input type="text" name="advice" value="" class="bg-transparent border-0 text-gray fontsize13px" disabled style="width: 91%;"></li>
-                                                        <li class="col-sm-3 ml-2 p-0"><i class="fa fa-phone text-blue" style="font-size: 13px;"></i> <input type="text" name="advice" value="" class="bg-transparent border-0 text-gray fontsize13px" disabled style="width: 90%;"></li>
-                                                    </ul>
-
-
-                                                        <div class="w-100 d-flex flex-wrap mt-3">
-                                                                <h6 class="w-100 font-gothamlight text-dark fontsize12px mb-2">Education Information</h6>
-                                                                <div class="col-sm-4 pl-0">
-                                                                    <div class="w-100 border-right-before position-relative">
-                                                                        <h3 class="text-dark font-gothambook fontweight500 fontsize24px mb-1">  </h3>
-                                                                        <h5 class="font-gothamlight fontsize17px"> </h5>
-                                                                       <p class="fontsize13px font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i> 2005 - 2006 </p>
-                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <h3 class="text-darkgray font-gothambook fontsize24px mb-1">  </h3>
-                                                                    <h5 class="font-gothamlight fontsize17px"> </h5>
-                                                                    <p class="fontsize13px font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i>2005 - 2006 </p>
-                                                                </div>
-                                                        </div>
-
-                                                         <div class="w-100 d-flex flex-wrap mt-3">
-                                                                <h6 class="w-100 font-montserrat fontsize12px mb-2">Experience Information</h6>
-                                                                <div class="col-sm-4 pl-0">
-                                                                    <div class="w-100 border-right-before position-relative">
-                                                                        <h3 class="text-darkgray font-gothambook fontsize24px mb-1"> </h3>
-                                                                        <h5 class="font-gothamlight fontsize17px"> </h5>
-                                                                       <p class="fontsize13px mb-0 font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i> 2011 - 2016</p>
-                                                                        <p class="fontsize13px font-gothamlight"><i class="fa fa-map-marker text-blue mr-1" style="font-size: 10px;"></i>  </p>
-                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-5 pr-0">
-                                                                    <h3 class="text-darkgray font-gothambook fontsize24px mb-1">  </h3>
-                                                                    <h5 class="font-gothamlight fontsize17px"> </h5>
-                                                                    <p class="fontsize13px mb-0 font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 12px;"></i> 2016 - 2021</p>
-                                                                    <p class="fontsize13px font-gothamlight"><i class="fa fa-map-marker text-blue mr-1" style="font-size: 12px;"></i> </p>
-                                                                </div>
-                                                        </div>
-                                                  </div>
-                                                </div>
-                                            <a href="#" class="text-orange border rounded-circle border-orange position-absolute text-center fontsize14px" style="right: 6px;top: 6px;width: 23px;height: 23px;"><i class="fa fa-pencil"></i></a>
-                                    </div>
-                               </div>
-
-                            
                </div>
                <!-- /.container-fluid -->
             </div>
@@ -380,7 +464,6 @@
          <!-- End of Content Wrapper -->
 </div>
 
-</div>
 
 @endsection
 
@@ -404,8 +487,8 @@ function submitProfile(){
     enctype: 'multipart/form-data',
     processData: false,
     success: function (res) {
-    //   swal('Success','Your Record Has Been Successfully Addded','success');
-    //   location.reload(true);
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')
