@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('post-list', 'PostController@getList')->name('post.get-list');
 
         Route::resource('activity','ActivityController');
+        Route::get('download/{activity}', 'ActivityController@download')->name('download');
         Route::get('activity-list', 'ActivityController@getList')->name('activity.get-list');
         
         Route::resource('event','EventController');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Activity;
 use App\Http\Requests\ActivityRequest;
+
 class ActivityController extends Controller
 {
 
@@ -145,6 +146,14 @@ class ActivityController extends Controller
         try {
             $this->model->delete($activty);
             return redirect()->back()->with('success', 'Activity deleted Successfully');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    
+    public function download(Activity $activity) {
+        try {
+            return \Redirect::to($activity->activity_doc);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
