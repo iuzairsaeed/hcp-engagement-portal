@@ -50,21 +50,12 @@ Route::group(['namespace' => 'Web'], function () {
 
         Route::resource('comment', 'CommentController');
 
-        //  Route::get('dashboard', function(){ return view('dashboard'); });
-        // Route::get('profile', function(){ return view('pages/profile'); });
-        // Route::get('activities', function(){ return view('pages/activities'); });
-        //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
-        Route::get('chatroom', function(){ return view('pages/chatroom'); });
-        // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
-        // Route::get('recentpost', function(){ return view('pages/recentpost'); });
-        // Route::get('viewcomment', function(){ return view('pages/viewcomment'); });
-        Route::get('profileview', function(){ return view('pages/profileview'); });
-        Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
     });
     
     Route::get('about', 'PageController@about');
     Route::get('contact', 'PageController@contact');
     Route::get('faq', 'PageController@faq');
+    Route::get('chatroom', 'PageController@chatroom');
 });
 
 

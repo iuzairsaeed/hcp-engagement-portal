@@ -35,5 +35,9 @@ class PageController extends Controller
     {
         return view('pages.faq');
     }
+    public function chatroom()
+    {
+        return view('pages.chatroom');
+    }
 
 }
