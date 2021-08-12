@@ -14,6 +14,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('users-dropdown-list', 'UserController@getUser')->name('users.get-user');
 
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('search', 'DashboardController@search')->name('search');
         Route::get('dashboard/list', 'DashboardController@getList')->name('dashboard.getList');
 
         Route::get('changePassword','ProfileController@showChangePasswordForm');

@@ -10,6 +10,7 @@ use App\Models\Notification;
 use App\Observers\UserObserver;
 use App\Console\Commands\ModelMakeCommand;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema;
 use Validator;
 
@@ -59,6 +60,14 @@ class AppServiceProvider extends ServiceProvider
                 ->toArray() // make it an array
             ]);
         }
+
+        Builder::macro('whereLike', function($attributes, string $searchTerm) {
+            foreach($attributes as $attribute) {
+               $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
+            }
+            
+            return $this;
+         });
 
         //
         config([

@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\User;
+use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Post;
+use Schema;
 
 class DashboardController extends Controller
 {
@@ -26,6 +28,24 @@ class DashboardController extends Controller
 
                 return view('userdashboard',  compact(['events', 'posts']));
             } 
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    public function search(Request $request) {
+        try {
+            $search = $request->search;
+            $post = new Post;
+            $columns = $post->getFillable();
+            $posts = Post::query()->whereLike($columns, $search)->get();
+            $activity = new Activity;
+            $columns = $activity->getFillable();
+            $activities = Activity::query()->whereLike($columns, $search)->get();
+            $event = new Event;
+            $columns = $event->getFillable();
+            $events = Event::query()->whereLike($columns, $search)->get();
+            return 1;
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

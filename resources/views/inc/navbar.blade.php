@@ -15,7 +15,7 @@
                         </button>
 
                         <!-- Topbar Search -->
-                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search " method="" action=''>
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search " method="GET" action='{{route('search')}}'>
                             @csrf
                             <div class="input-group border-radius25px bg-lightgray">
                                 <input type="text" class="form-control font-gothamlight bg-transparent border-0 small outline-none pl-4" placeholder="Search..."
