@@ -49,7 +49,7 @@
                                                                              </div>
                                                                               <div class="card-body text-left pt-2 pb-0 pl-2 pr-2">
                                                                                <ul class="list-unstyled d-inline-block pb-2 d-flex flex-wrap w-100 mb-2 border-bottom border-gray">
-                                                                                    <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1" ></i> {{$user->speciality}} </h6> </li>
+                                                                                    <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1 float-left"></i> <span class="float-left text-left w-fix">{{$user->speciality}} </span></h6> </li>
                                                                                      <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 7 Years </h6></li>
                                                                                      <li class="col-sm-3 col-3 p-0 text-right">
                                                                                         <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
