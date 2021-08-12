@@ -19,7 +19,7 @@
                             @csrf
                             <div class="input-group border-radius25px bg-lightgray">
                                 <input type="text" class="form-control font-gothamlight bg-transparent border-0 small outline-none pl-4" placeholder="Search..."
-                                    aria-label="Search" name="search" aria-describedby="basic-addon2">
+                                    value="{{ session('search') }}" aria-label="Search" name="search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fas fa-search fa-sm"></i>

@@ -8,7 +8,10 @@
     <div class="wrapper">
         @if(Auth::check())
 
-             @include('inc.navbar')
+            @if(Request::segment(1) != "search" )
+                {{ Session::forget('search') }}
+            @endif
+            @include('inc.navbar')
             
             <div class="main-panel" id="wrapper">
 

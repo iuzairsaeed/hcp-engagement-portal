@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Post;
+use App\Http\Requests\SearchRequest;
 use Schema;
 
 class DashboardController extends Controller
@@ -24,28 +25,23 @@ class DashboardController extends Controller
             else {
                 $events = Event::all()->sortByDesc('updated_at');
                 $posts = Post::all()->sortByDesc('updated_at');
-                $posts = Post::all()->sortByDesc('updated_at');
+                $activities = Activity::all()->sortByDesc('updated_at');
 
-                return view('userdashboard',  compact(['events', 'posts']));
+                return view('userdashboard',  compact(['events', 'posts', 'activities']));
             } 
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
     }
 
-    public function search(Request $request) {
+    public function search(SearchRequest $request) {
         try {
-            $search = $request->search;
-            $post = new Post;
-            $columns = $post->getFillable();
-            $posts = Post::query()->whereLike($columns, $search)->get();
-            $activity = new Activity;
-            $columns = $activity->getFillable();
-            $activities = Activity::query()->whereLike($columns, $search)->get();
-            $event = new Event;
-            $columns = $event->getFillable();
-            $events = Event::query()->whereLike($columns, $search)->get();
-            return 1;
+            $search = $request->search; 
+            session(['search' => $search]);
+            $post = new Post; $columns = $post->getFillable(); $posts = Post::query()->whereLike($columns, $search)->get();
+            $activity = new Activity; $columns = $activity->getFillable(); $activities = Activity::query()->whereLike($columns, $search)->get();
+            $event = new Event; $columns = $event->getFillable(); $events = Event::query()->whereLike($columns, $search)->get();
+            return view('userdashboard',  compact(['events', 'posts', 'activities']));
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
