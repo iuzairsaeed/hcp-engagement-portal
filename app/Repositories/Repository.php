@@ -30,6 +30,12 @@ class Repository implements RepositoryInterface
     {
         return $this->model->create($data);
     }
+    
+    // create a new record in the database
+    public function insert(array $data)
+    {
+        return $this->model->insert($data);
+    }
 
     // update record in the database
     public function update(array $data, Model $model)

@@ -16,4 +16,6 @@ interface RepositoryInterface
 
     public function show(Model $model);
 
+    public function insert(array $data);
+
 }

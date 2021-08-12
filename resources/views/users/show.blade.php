@@ -36,36 +36,37 @@
 
                                                         <div class="w-100 d-flex flex-wrap mt-3">
                                                                 <h6 class="w-100 font-gothamlight text-dark fontsize12px mb-2">Education Information</h6>
-                                                                <div class="col-sm-4 pl-0">
-                                                                    <div class="w-100 border-right-before position-relative">
-                                                                        <h3 class="text-dark font-gothambook fontweight500 fontsize24px mb-1"> Dow University of Health Sciences </h3>
-                                                                        <h5 class="font-gothamlight fontsize17px"> MBA </h5>
-                                                                       <p class="fontsize13px font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i> 2005 - 2006 </p>
-                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <h3 class="text-darkgray font-gothambook fontsize24px mb-1"> Dow University of Health Sciences </h3>
-                                                                    <h5 class="font-gothamlight fontsize17px"> MBBS </h5>
-                                                                    <p class="fontsize13px font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i>2005 - 2006 </p>
-                                                                </div>
+                                                                @if(!$user->education->isEmpty())
+                                                                    @foreach ($user->education as $education)
+                                                                        <div class="col-sm-4 pl-0">
+                                                                            <div class="w-100  position-relative">
+                                                                                <h3 class="text-dark font-gothambook fontweight500 fontsize24px mb-1"> {{ $education->school}} </h3>
+                                                                                <h5 class="font-gothamlight fontsize17px"> {{ $education->field}} </h5>
+                                                                                <p class="fontsize13px font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i>{{ $education->date_from->format('Y')." - ".($education->currently_here ? "Present" : $education->date_to->format('Y') )}} </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endforeach
+                                                                @else
+                                                                    No Education post yet
+                                                                @endif
                                                         </div>
 
                                                          <div class="w-100 d-flex flex-wrap mt-3">
-                                                                <h6 class="w-100 font-montserrat fontsize12px mb-2">Experience Information</h6>
-                                                                <div class="col-sm-4 pl-0">
-                                                                    <div class="w-100 border-right-before position-relative">
-                                                                        <h3 class="text-darkgray font-gothambook fontsize24px mb-1"> Dow Hospital </h3>
-                                                                        <h5 class="font-gothamlight fontsize17px"> Orthopedics </h5>
-                                                                       <p class="fontsize13px mb-0 font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i> 2011 - 2016</p>
-                                                                        <p class="fontsize13px font-gothamlight"><i class="fa fa-map-marker text-blue mr-1" style="font-size: 10px;"></i> Karachi, Pakistan </p>
-                                                                     </div>
-                                                                </div>
-                                                                <div class="col-sm-5 pr-0">
-                                                                    <h3 class="text-darkgray font-gothambook fontsize24px mb-1"> Dow Hospital </h3>
-                                                                    <h5 class="font-gothamlight fontsize17px"> Head of department orthopaedics </h5>
-                                                                    <p class="fontsize13px mb-0 font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 12px;"></i> 2016 - Present </p>
-                                                                    <p class="fontsize13px font-gothamlight"><i class="fa fa-map-marker text-blue mr-1" style="font-size: 12px;"></i> Karachi/Pakistan </p>
-                                                                </div>
+                                                            <h6 class="w-100 font-gothamlight text-black fontsize12px mb-2">Experience Information</h6>
+                                                            @if (!$user->experience->isEmpty())
+                                                                @foreach ($user->experience as $experience)
+                                                                    <div class="col-sm-4 pl-0">
+                                                                        <div class="w-100  position-relative">
+                                                                            <h3 class="text-darkgray font-gothambook fontsize24px mb-1"> {{ $experience->organization }}</h3>
+                                                                            <h5 class="font-gothamlight fontsize17px"> {{ $experience->therapeutic_area }} </h5>
+                                                                            <p class="fontsize13px mb-0 font-gothambook"><i class="fa fa-calendar text-blue mr-1" style="font-size: 10px;"></i> {{ $experience->date_from->format('Y')." - ".($experience->currently_here ? "Present" : $experience->date_to->format('Y') )}} </p>
+                                                                            <p class="fontsize13px font-gothamlight"><i class="fa fa-map-marker text-blue mr-1" style="font-size: 10px;"></i>{{ $experience->city.", ".$experience->country}} </p>
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            @else
+                                                                No Experience post yet
+                                                            @endif
                                                         </div>
                                                   </div>
                                                 </div>

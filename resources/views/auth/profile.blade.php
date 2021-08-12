@@ -36,7 +36,7 @@
 
 
 
-                  <form role="form" class="w-100 p-2 form-submit" method="post" action="{{route('profile')}}"  enctype="multipart/form-data">
+                  <form role="form" class="w-100 p-2 form-submit" method="POST" id="profileForm" action=""  enctype="multipart/form-data">
                      @csrf
                      <!-- first step -->
                      <div class="panel panel-primary setup-content mt-3" id="step-1">
@@ -185,7 +185,7 @@
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox" name="education[currently_here][]" value="true" ><span class="checkmark"></span>
+                                                <input type="checkbox" name="education[currently_here][]" value="1" ><span class="checkmark"></span>
                                             </label>
 
                                         </div>
@@ -201,7 +201,7 @@
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
-                                                <input type="checkbox" name="education[data][]" value="true" >
+                                                <input type="checkbox" name="education[data][]" value="1" >
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -253,21 +253,21 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
-                                        <input type="text"  name="experience[organization][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
+                                        <input type="text"  name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text"  name="experience[organization][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
+                                        <input type="text"  name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text"  name="experience[organization][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
+                                        <input type="text"  name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
-                                            <label class="checkcustom fontsize12px font-gothamlight" for="experience_time_period" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="true" id="experience_time_period" name="experience[experience_time_period][]">
+                                            <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
+                                                <input type="checkbox"  value="1" id="currently_here" name="experience[currently_here][]">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -283,7 +283,7 @@
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
-                                                <input type="checkbox" name="experience[data][]" value="true">
+                                                <input type="checkbox" name="experience[data][]" value="1">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -303,7 +303,7 @@
                               </div>
                            </div>
                            <div class="col-sm-6 pl-sm-2">
-                              <button class="btn bg-orange border-orange text-white btn-success text-uppercase border-radius25px w-100 hoverbtn font-gothambook" style="max-width: 170px;" type="submit">Save</button>
+                              <button onclick="submitProfile()" class="btn bg-orange border-orange text-white btn-success text-uppercase border-radius25px w-100 hoverbtn font-gothambook" style="max-width: 170px;" type="button">Save</button>
                            </div>
                         </div>
                      </div>
@@ -382,4 +382,192 @@
 
 </div>
 
+@endsection
+
+@section('afterScript')
+<script>
+function submitProfile(){
+  event = $("#profileForm");
+  var form_data = new FormData($("#profileForm")[0]);
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('profile') }}",
+    type: "POST",
+    data : form_data,
+    async: false,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    success: function (res) {
+    //   swal('Success','Your Record Has Been Successfully Addded','success');
+    //   location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+}
+
+
+var indexedu=0;
+function appendEducationInfo() {
+    indexedu++;
+    $("#educationInfo").append(`
+                        <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
+                                        <input type="text" required="required" name="education[level][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Education Type</label>
+                                        <input type="text" required="required" name="education[type][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Education Type" />
+                                        <!-- <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="education_type" style="height: 43px;">
+
+                                            <option>Select Type</option>
+                                            <option>Easy</option>
+                                            <option>Intermediate</option>
+                                            <option>Medium</option>
+                                            <option>Fast</option>
+                                        </select> -->
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Field of Study</label>
+                                         <input type="text" required="required" name="education[field][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Field of Study" />
+                                       <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="field_of_study" style="height: 43px;">
+
+                                            <option>Select Type</option>
+                                            <option>BS</option>
+                                            <option>Master</option>
+                                            <option>Bachelor</option>
+                                            <option>F.Sd</option>
+                                        </select> -->
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">School</label>
+                                        <input type="text" name="education[school][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="School" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                        <input type="text" name="education[country][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                        <input type="text" name="education[city][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City" />
+                                    </div>
+                                    <div class="w-100">
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
+                                                <input type="checkbox" name="education[currently_here][]" value="1" ><span class="checkmark"></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                        <input type="date" name="education[date_from][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                        <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
+                                    </div>
+                                    <div class="w-100">
+                                        <div class="form-group col-sm-4">
+                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my education at this time
+                                                <input type="checkbox" name="education[data][]" value="true" >
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                             <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
+                         </div>
+                        </div>
+                        `
+                    );
+}
+
+var index=0;
+
+
+function appendExperienceInfo() {
+
+index++;
+$("#experienceInfo").append(`
+                    <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
+                            <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
+                                        <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Organization </label>
+                                         <input type="text" name="experience[organization][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Organization"/>
+                                       <!--  <select class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" name="organization" style="height: 43px;">
+
+                                            <option>Select Type</option>
+                                            <option>New</option>
+                                            <option>World</option>
+                                            <option>Classic</option>
+                                            <option>Fast</option>
+                                        </select> -->
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
+                                        <input type="text"  name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">City</label>
+                                        <input type="text"  name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
+                                        <input type="text"  name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
+                                    </div>
+                                    <div class="w-100">
+                                        <div class="form-group col-sm-4">
+                                            <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
+                                            <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
+                                                <input type="checkbox"  value="1" id="currently_here" name="experience[currently_here][]">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">From</label>
+                                        <input type="date" name="experience[date_from][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label class="text-darkgray font-gothamlight fontsize12px">To</label>
+                                        <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                    </div>
+                                    <div class="w-100">
+                                        <div class="form-group col-sm-4">
+                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
+                                                <input type="checkbox" name="experience[data][]" value="1">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
+                                 </div>
+                            </div>
+                        </div>
+                    `
+                    );
+}
+
+</script>
 @endsection

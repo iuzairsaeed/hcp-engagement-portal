@@ -15,6 +15,9 @@ class Education extends Model
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
+
+    protected $dates = ['date_from','date_to'];
+
     protected $fillable = [
         'level',
         'type',

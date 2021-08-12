@@ -22,6 +22,8 @@ class Experience extends Model
         'user_id',
     ];
 
+    protected $dates = ['date_from','date_to'];
+    
     protected $casts = [
         'created_at' => 'datetime:'.Constant::DATE_FORMAT,
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
