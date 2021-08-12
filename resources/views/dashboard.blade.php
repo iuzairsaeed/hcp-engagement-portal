@@ -16,7 +16,8 @@
                                   <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>HCP Name </option>
                                               <option>HCP Name </option>
                                           <option>HCP Name </option>
-                                      <option>HCP Name </option></select></li>
+                                      <option>HCP Name </option></select>
+                                    </li>
                                   
                                   <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 font-gothambook pt-2 pb-2 outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>Speciality </option>
                                               <option>Speciality </option>

@@ -67,10 +67,11 @@ class ProfileController extends Controller
         // save user
         $userModel = auth()->user();
         $this->model->update($userData, $userModel);
-        // save profile
-        $profileModel = Profile::where('user_id', auth()->id())->first() ?? new Profile;
-        $this->model = new Repository($profileModel);
-        $profileModel->exists() ? $this->model->update($profileData, $profileModel) : $this->model->create($profileData) ;
+        // save profile or update
+        $profileModel = Profile::updateOrCreate(
+            ['user_id' => auth()->id()],
+            $profileData   
+        );
         // save education
         foreach ($educationData['education'] as $key => $value) {
             foreach ($value as $k => $v) {

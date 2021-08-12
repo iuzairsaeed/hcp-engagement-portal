@@ -33,9 +33,10 @@
                   @endif
                   <div class="pt-3 col-sm-12 font-gothambook text-black text-center">
                     {{ $gamifications->isEmpty() ? "No data available!" : ""}}
-                      @foreach ($gamifications as $gamification )
-                    </div>
+                  </div>
+          
                      <div class="d-flex flex-wrap">
+                      @foreach ($gamifications as $gamification )
                         <div class="col-lg-3 col-sm-12 pl-2 pr-2 mt-3">
                             <div class=" p-2 card border-0 border-radius10px">
                               <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($gamification->activity_image)}}"></div>
@@ -51,7 +52,8 @@
                                 {{-- <h1 class="card-title text-black font-gothambook mt-1 mb-2 fontsize12px"> {{$gamification->description}} </h1> --}}
                               </div>
                             </div>
-                      </div>
+                          </div>
+                        
                       @endforeach 
                     </div>
                 </div>
