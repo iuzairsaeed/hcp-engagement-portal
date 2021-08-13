@@ -17,11 +17,11 @@ function uploadFile(object $file, string $uploadPath, string $oldFile = null)
 
     if(gettype($file) == 'object'){
         $fileNameToStore = $file->hashName();
-        // if (config('app.env') == 'testing'){
-        //     $path = $file->move('storage/framework/testing/disks/storage/', $fileNameToStore);
-        // }else{
+        if (config('app.env') == 'production'){
+            $path = $file->move('public/'.$uploadPath, $fileNameToStore);
+        } else{
             $path = $file->move($uploadPath, $fileNameToStore);
-        // }
+        }
     }
 
     return $fileNameToStore;
