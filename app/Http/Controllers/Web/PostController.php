@@ -75,11 +75,9 @@ class PostController extends Controller
         try {
             $data = $request->all();
             if($request->hasFile('post_image')){ 
-                dd(1);
                 $file_name = uploadFile($request->post_image, postPath());
                 $data['post_image'] = $file_name;
             }
-            dd(2);
             $this->model->create($data);
             return redirect()->back()->with('success', 'Post has been created.');
         } catch (\Throwable $th) {
