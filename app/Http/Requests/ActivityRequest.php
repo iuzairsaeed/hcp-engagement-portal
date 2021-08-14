@@ -25,7 +25,7 @@ class ActivityRequest extends FormRequest
     {
         return [
             'type' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
-            'activity_image' => ['bail', 'required', 'image', 'mimes:jpg,jpeg,png|'],
+            'activity_image' => ['bail', 'required', 'image', 'mimes:jpg,jpeg,png'],
             'title' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
             'description' => ['bail','required','string', 'max:255', 'min:3'],
             'activity_doc' => ['bail', 'required', 'mimes:pdf,pptx,ppt' ],
