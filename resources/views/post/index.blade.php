@@ -117,8 +117,8 @@ function submitPost(){
     enctype: 'multipart/form-data',
     processData: false,
     success: function (res) {
-      swal('Success','Your Record Has Been Successfully Addded','success');
-      location.reload(true);
+      // swal('Success','Your Record Has Been Successfully Addded','success');
+      // location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')
