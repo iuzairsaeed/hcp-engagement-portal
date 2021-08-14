@@ -74,7 +74,7 @@
                             <div class=" p-2 card border-0 border-radius10px">
                               <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($clinical->activity_image)}}"></div>
                               <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
-                                <a href="{{ route("download", $clinical->id)  }}" class="bg-white col-auto border-0 float-right p-0 coloricon rounded-circle text-center mt-minus mr-2" style="width: 28px;height: 28px;"><img src="{{ asset('images/Asset91.png') }}" class="iconsize m-auto"></a>
+                                <a href="{{ route("download", $clinical->id)  }}" target="_blank" class="bg-white col-auto border-0 float-right p-0 coloricon rounded-circle text-center mt-minus mr-2" style="width: 28px;height: 28px;"><img src="{{ asset('images/Asset91.png') }}" class="iconsize m-auto"></a>
                                 <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
                                     <li class="col-sm-4 col-4 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar-check fontsize11px mr-1"></i> {{ $clinical->created_at->format('l') }} </li>
                                     <li class="col-sm-5 col-5 p-0"><h6 class="text-darkgray fontsize9px font-gothambook"><i class="fa fa-calendar mr-1 fontsize11px float-left"></i>
