@@ -68,7 +68,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $path = avatarsPath();
         return $path.$value;
-        // return ($value) ? file_exists($path.$value) ? $path.$value: $path.'no-image.png' : $path.'no-image.png';
     }
 
     public function sendApiEmailVerificationNotification()
