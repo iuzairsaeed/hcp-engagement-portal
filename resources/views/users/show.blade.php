@@ -21,7 +21,7 @@
                    <div class="col-sm-12 mt-4">
                                     <div class="w-100 pt-3 pb-3 pl-4 pr-4 border-radius10px bg-white position-relative" style="box-shadow: 1px 1px 10px #a1c0cc;">
                                             <div class="media">
-                                                {{dd(asset($user->avatar), $user->avatar, public_path($user->avatar) , \Storage::disk('local')->get($user->avatar) )}}
+                                                {{dd(asset($user->avatar), $user->avatar, public_path($user->avatar) , storage_path($user->avatar) )}}
 
                                                   <img src="{{asset($user->avatar) }}" class="mr-3 mt-3 rounded-circle" style="width:160px;height: 160px;">
                                                   <div class="media-body mt-5">
