@@ -18,9 +18,9 @@ function uploadFile(object $file, string $uploadPath, string $oldFile = null)
     if(gettype($file) == 'object'){
         $fileNameToStore = $file->hashName();
         if (config('app.env') == 'production'){
-            $path = $file->move('public/'.$uploadPath, $fileNameToStore);
+            $path = $file->move(public_path($uploadPath), $fileNameToStore);
         } else{
-            $path = $file->move($uploadPath, $fileNameToStore);
+            $path = $file->move(public_path($uploadPath), $fileNameToStore);
         }
     }
 
