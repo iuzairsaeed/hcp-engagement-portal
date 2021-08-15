@@ -38,6 +38,8 @@
                                 @endforeach
                             </div>
                         </div>
+                    </div>
+                        
                     @else
                         <p class="ml-1">No Activties</p>
                     @endif
@@ -52,7 +54,7 @@
 
 
                     <!-- Upcoming Events -->
-                    <div class="w-100 mt-4 d-flex flex-wrap">
+                    <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Upcoming Events </h6>
                         @if (!$events->isEmpty())
                         @foreach ($events as $event )
@@ -85,6 +87,8 @@
                                     @endforeach
                                 </div>
                             </div>
+                        </div>
+
                         @else
                             <p class="ml-1">No Events</p>
                         @endif
@@ -125,7 +129,6 @@
                             @else
                                 <p class="ml-1">No Post</p>
                             @endif
-
 
                         <!-- /.container-fluid -->
                     </div>
