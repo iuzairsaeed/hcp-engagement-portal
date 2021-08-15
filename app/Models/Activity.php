@@ -34,4 +34,9 @@ class Activity extends Model
         $path = ($this->type == 'gamification') ? gamificationDocPath() : clinicalDocPath() ;
         return $path.$value;
     }
+
+    public function interact()
+    {
+        return $this->morphMany(interact::class, 'model');
+    }
 }

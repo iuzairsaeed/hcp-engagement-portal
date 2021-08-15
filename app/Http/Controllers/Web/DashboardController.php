@@ -18,14 +18,15 @@ class DashboardController extends Controller
     {
         try {
             if(auth()->user()->role == "admin"){
-                $hcp = User::count();
-                $events = Event::count();
+                // $hcp = User::count();
+                // $events = Event::count();
                 return view('dashboard', compact('hcp','events'));
             } 
             else {
                 $events = Event::all()->sortByDesc('updated_at');
                 $posts = Post::all()->sortByDesc('updated_at');
-                $activities = Activity::all()->sortByDesc('updated_at');
+                $activities = Activity::whereHas('interact')->get();
+                // $activities = Activity::all();
 
                 return view('userdashboard',  compact(['events', 'posts', 'activities']));
             } 

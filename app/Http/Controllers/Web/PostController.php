@@ -74,6 +74,7 @@ class PostController extends Controller
     {
         try {
             $data = $request->all();
+            $data['user_id'] = auth()->id();
             if($request->hasFile('post_image')){ 
                 $file_name = uploadFile($request->post_image, postPath());
                 $data['post_image'] = $file_name;
