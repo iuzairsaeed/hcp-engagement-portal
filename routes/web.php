@@ -20,9 +20,9 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');
 
-        Route::get('profile','ProfileController@showProfileForm')->name('profile.form');
-        Route::get('profile/show','ProfileController@showProfile')->name('profile.show');
-        Route::post('profile','ProfileController@profile')->name('profile');
+        Route::get('profileShow','ProfileController@showProfileForm')->name('profile.form');
+        Route::get('profile','ProfileController@showProfile')->name('profile.show');
+        Route::post('profile/edit','ProfileController@profile')->name('profile');
 
         Route::resource('permission','PermissionController');
         Route::get('permission-dropdown-list', 'PermissionController@getPermission')->name('permission.get-permission');

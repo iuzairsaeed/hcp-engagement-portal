@@ -19,9 +19,9 @@
         </a>
     </li>
 
-    <li class="nav-item {{ (request()->is('profile/show')) ? 'active' : '' }}" >
-        <a class="nav-link font-gothambook" href="{{url('profile/show')}}" title="Profile">
-        <span class="{{ (request()->is('profile/show')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('profile/show')) ?'Asset17.png':'Asset27.png'}}' width="15"></span>
+    <li class="nav-item {{ (request()->is('profile')) ? 'active' : '' }}" >
+        <a class="nav-link font-gothambook" href="{{url('profile')}}" title="Profile">
+        <span class="{{ (request()->is('profile')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('profile')) ?'Asset17.png':'Asset27.png'}}' width="15"></span>
         <span>Profile</span>
         </a>
     </li>

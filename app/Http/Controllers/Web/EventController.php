@@ -187,7 +187,6 @@ class EventController extends Controller
     
     public function react(Request $request) {
         try {
-            
             $event = $this->model->all()->where('id', $request->event_id )->first();
             $reactionModel = Reaction::where('user_id', auth()->id())
             ->where('reactionable_id' , $request->event_id)
@@ -197,7 +196,6 @@ class EventController extends Controller
             } else {
                 $data = new Reaction([
                     "user_id" => auth()->id(),
-                    "event_id"=>$request->event_id,
                     "favorite"=>true
                 ]);
                 $event->eventReaction()->save($data);

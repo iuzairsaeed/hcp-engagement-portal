@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Activity;
+use App\Models\Interact;
 use App\Http\Requests\ActivityRequest;
 
 class ActivityController extends Controller
@@ -153,7 +154,19 @@ class ActivityController extends Controller
     
     public function download(Activity $activity) {
         try {
-            return \Redirect::to($activity->activity_doc);
+            $interactModel = Interact::where('user_id', auth()->id())
+            ->where('model_id' , $activity->id)
+            ->where('model_type', Activity::class);
+            if($interactModel->exists()){
+                return \Redirect::to($activity->activity_doc);
+            } else {
+                $data = new Interact([
+                    "user_id" => auth()->id(),
+                    "favorite"=>true
+                ]);
+                $activity->interact()->save($data);
+                return \Redirect::to($activity->activity_doc);
+            }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
