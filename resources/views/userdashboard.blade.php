@@ -58,9 +58,9 @@
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Upcoming Events </h6>
                         @if (!$events->isEmpty())
-                        @foreach ($events as $event )
                         <div class="carousel-wrap col-sm-11 pl-sm-1">
                             <div class="owl-carousel upcoming-carousel">
+                                     @foreach ($events as $event )
                                         <div class="item">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($event->event_attachment) }}" class="img-fluid"></div>
@@ -86,12 +86,8 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                </div>
                             </div>
-
-                        @else
-                            <p class="ml-1">No Events</p>
-                        @endif
+                        </div>
                         @if (!$events->isEmpty())
                             <div class="col-sm-1 p-0 m-auto">
                                 <a href="event"
@@ -100,7 +96,12 @@
                             </div>
                         @endif
                     </div>
-                        <!-- Upcoming Events -->
+
+                    @else
+                        <p class="ml-1">No Events</p>
+                    @endif
+                   
+                    <!-- Upcoming Events -->
 
                         <!-- Content Row -->
                         <div class="w-100 mt-4 d-flex flex-wrap">
