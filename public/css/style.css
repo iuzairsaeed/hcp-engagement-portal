@@ -712,7 +712,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: -27px !important;
     opacity: 0.8;
 }
-
+.show-pass{ right: 20px;
+    height: 43px; }
 
 
 
