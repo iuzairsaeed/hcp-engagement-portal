@@ -58,9 +58,10 @@
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Upcoming Events </h6>
                         @if (!$events->isEmpty())
+      
                         <div class="carousel-wrap col-sm-11 pl-sm-1">
                             <div class="owl-carousel upcoming-carousel">
-                                     @foreach ($events as $event )
+                                      @foreach ($events as $event )
                                         <div class="item">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($event->event_attachment) }}" class="img-fluid"></div>

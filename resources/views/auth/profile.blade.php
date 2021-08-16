@@ -108,13 +108,15 @@
                                          <h6 class="panel-title font-gothambook text-darkgray">Account Information</h6>
                                     </div>
                                     <div class="panel-body w-100 bg-white border-radius15px d-flex flex-wrap p-3" style="box-shadow: 1px 1px 14px #cddee4;">
-                                        <div class="form-group col-sm-4">
+                                        <div class="form-group col-sm-4 position-relative">
                                             <label class="text-darkgray font-gothamlight fontsize12px ">Old Password*</label>
-                                            <input type="old_password" name="old_password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="Old Password"/>
+                                            <input type="password" name="old_password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" id="oldpassword" placeholder="Old Password"/>
+                                           <button type="button" class="bg-transparent border-0 fontsize14px position-absolute show-pass" onclick="passwordold()"> <i class="fa fa-eye text-gray"></i></button>
                                         </div>
-                                        <div class="form-group col-sm-4">
+                                        <div class="form-group col-sm-4 position-relative">
                                             <label class="text-darkgray font-gothamlight fontsize12px">New Password</label>
-                                            <input type="password" name="password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" placeholder="New Password" />
+                                            <input type="password" name="password" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" id="newpassword" placeholder="New Password" />
+                                            <button type="button" class="bg-transparent border-0 fontsize14px position-absolute show-pass" onclick="passwordnew()"> <i class="fa fa-eye text-gray"></i></button>
                                         </div>
                                          <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">PMDC Code* </label>
@@ -469,6 +471,27 @@
 
 @section('afterScript')
 <script>
+
+
+function passwordold() {
+  var x = document.getElementById("oldpassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function passwordnew() {
+  var x = document.getElementById("newpassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+
 function submitProfile(){
   event = $("#profileForm");
   var form_data = new FormData($("#profileForm")[0]);
@@ -501,8 +524,12 @@ var indexedu=0;
 function appendEducationInfo() {
     indexedu++;
     $("#educationInfo").append(`
-                        <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                        <div class="col-md-12 pb-4 pl-4 pr-4 pt-2 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
+                                   <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
+                                   <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                   </div>
+
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
                                         <input type="text" required="required" name="education[level][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
@@ -571,7 +598,7 @@ function appendEducationInfo() {
                                 </div>
 
                                  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                             <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-trash"></i></a>
+                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()" title="Add"><i class="fa fa-plus"></i></a>
                          </div>
                         </div>
                         `
@@ -586,8 +613,13 @@ function appendExperienceInfo() {
 index++;
 $("#experienceInfo").append(`
                     <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
-                            <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                            <div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
+                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
+                                     <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                   </div>
+
+
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
                                         <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
@@ -644,7 +676,7 @@ $("#experienceInfo").append(`
                                 </div>
 
                                  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-trash"></i></a>
+                                       <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
                                  </div>
                             </div>
                         </div>
