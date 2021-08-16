@@ -37,6 +37,6 @@ class Activity extends Model
 
     public function interact()
     {
-        return $this->morphMany(interact::class, 'model');
+        return $this->morphMany(Interact::class, 'model');
     }
 }
