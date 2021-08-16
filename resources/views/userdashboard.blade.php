@@ -38,7 +38,6 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
                         
                     @else
                         <p class="ml-1">No Activties</p>
@@ -50,7 +49,9 @@
                                 All</a>
                         </div>
                     @endif
+                </div>
                 <!-- Recent Activities -->
+
 
 
                     <!-- Upcoming Events -->
@@ -87,7 +88,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
 
                         @else
                             <p class="ml-1">No Events</p>
@@ -99,6 +99,7 @@
                                     All</a>
                             </div>
                         @endif
+                    </div>
                         <!-- Upcoming Events -->
 
                         <!-- Content Row -->
@@ -151,7 +152,7 @@
 @section('afterScript')
 <script type="text/javascript">
     $('.owl-carousel.recent-carousel').owlCarousel({
-          loop: true,
+          loop: false,
           margin: 15,
           nav: false,
           autoplayTimeout:6000,
@@ -176,7 +177,7 @@
         })
 
       $('.owl-carousel.upcoming-carousel').owlCarousel({
-          loop: true,
+          loop: false,
           margin: 15,
           nav: false,
           autoplayTimeout:5000,
@@ -201,7 +202,7 @@
         })
 
       $('.owl-carousel.activity-carousel').owlCarousel({
-          loop: true,
+          loop: false,
           margin: 7,
           nav: false,
           stagePadding: 0,

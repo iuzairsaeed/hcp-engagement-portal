@@ -571,7 +571,7 @@ function appendEducationInfo() {
                                 </div>
 
                                  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                             <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
+                             <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-trash"></i></a>
                          </div>
                         </div>
                         `
@@ -644,7 +644,7 @@ $("#experienceInfo").append(`
                                 </div>
 
                                  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
+                                 <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-trash"></i></a>
                                  </div>
                             </div>
                         </div>
