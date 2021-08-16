@@ -18,9 +18,7 @@ class DashboardController extends Controller
     {
         try {
             if(auth()->user()->role == "admin"){
-                // $hcp = User::count();
-                // $events = Event::count();
-                return view('dashboard', compact('hcp','events'));
+                return view('dashboard',);
             } 
             else {
                 $events = Event::all()->sortByDesc('updated_at');
