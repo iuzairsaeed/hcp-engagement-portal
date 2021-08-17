@@ -144,6 +144,9 @@
                                 <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
                                     <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                         <div class="row">
+                                            <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
+                                                <a href="#" id="{{ $education->id }}" class="deleteEdu text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                            </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
                                                 <input type="text" required="required" name='education[level][{{$key}}]' value="{{ $education->level }}"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
@@ -317,6 +320,9 @@
                                 <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
                                     <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                         <div class="row">
+                                            <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
+                                                <a href="#" id="{{ $experience->id }}" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                            </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
                                                 <input type="text" name='experience[title][{{$key}}]' value="{{ $experience->title }}" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
@@ -472,6 +478,72 @@
 @section('afterScript')
 <script>
 
+$(document).on('click','.deleteEdu',function(e){
+    e.preventDefault();
+    var id = $(this).attr('id');
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0CC27E',
+        cancelButtonColor: '#FF586B',
+        confirmButtonText: 'Yes, Delete it',
+        cancelButtonText: "No, Cancel"
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            // console.log( $(this)[0]. );
+            $.ajax(
+            {
+                url: "/education/"+id,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (){
+                    swal("Deleted!", "Action has been performed successfully!", "success");
+                },
+                error: function() {
+                    return true;
+                }
+
+            });
+        }
+    }).catch(swal.noop);
+});
+
+$(document).on('click','.deleteExp',function(e){
+    e.preventDefault();
+    var id = $(this).attr('id');
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0CC27E',
+        cancelButtonColor: '#FF586B',
+        confirmButtonText: 'Yes, Delete it',
+        cancelButtonText: "No, Cancel"
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            // console.log( $(this) );
+            $.ajax(
+            {
+                url: "/experience/"+id,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (){
+                    swal("Deleted!", "Action has been performed successfully!", "success");
+                },
+                error: function() {
+                    return true;
+                }
+            });
+        }
+    }).catch(swal.noop);
+});
 
 function passwordold() {
   var x = document.getElementById("oldpassword");
@@ -489,8 +561,6 @@ function passwordnew() {
     x.type = "password";
   }
 }
-
-
 
 function submitProfile(){
   event = $("#profileForm");
@@ -527,7 +597,7 @@ function appendEducationInfo() {
                         <div class="col-md-12 pb-4 pl-4 pr-4 pt-2 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                   <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                        <a href="#" id="" class="deleteEdu text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
                                    </div>
 
                                     <div class="form-group col-sm-4">
@@ -616,7 +686,7 @@ $("#experienceInfo").append(`
                             <div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
                                     <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                     <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                     <a href="#" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
                                    </div>
 
 

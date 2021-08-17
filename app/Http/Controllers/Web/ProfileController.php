@@ -23,7 +23,6 @@ class ProfileController extends Controller
         $this->model = new Repository($model);
     }
 
-
     public function showProfileForm()
     {
         $user = auth()->user();

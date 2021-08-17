@@ -52,16 +52,10 @@ Route::group(['namespace' => 'Web'], function () {
 
         Route::resource('comment', 'CommentController');
 
-        //  Route::get('dashboard', function(){ return view('dashboard'); });
-        // Route::get('profile', function(){ return view('pages/profile'); });
-        // Route::get('activities', function(){ return view('pages/activities'); });
-        //  Route::get('eventcalender', function(){ return view('pages/event_calenders'); }); 
-        // Route::get('chatroom', function(){ return view('pages/chatroom'); });
-        // Route::get('recentactivity', function(){ return view('pages/recentactivities'); });
-        // Route::get('recentpost', function(){ return view('pages/recentpost'); });
-        // Route::get('searcha', function(){ return view('pages/search'); });
-        // Route::get('profileview', function(){ return view('pages/profileview'); });
-        // Route::get('/eventdetails', function(){ return view('pages/eventdetails'); });
+        Route::resource('education', 'EducationController');
+
+        Route::resource('experience', 'ExperienceController');
+
     });
     
     Route::get('about', 'PageController@about');

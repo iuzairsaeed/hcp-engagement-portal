@@ -55,6 +55,16 @@ class PermissionTableSeeder extends Seeder
             'comment-create',
             'comment-edit',
             'comment-delete',
+            'education-getList',
+            'education-list',
+            'education-create',
+            'education-edit',
+            'education-delete',
+            'experience-getList',
+            'experience-list',
+            'experience-create',
+            'experience-edit',
+            'experience-delete',
 
         ];
         foreach ($permissions as $permission) {
