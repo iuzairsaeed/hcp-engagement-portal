@@ -51,9 +51,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('communities', 'UserController@index');
 
         Route::resource('comment', 'CommentController');
-
         Route::resource('education', 'EducationController');
-
         Route::resource('experience', 'ExperienceController');
 
     });
