@@ -496,7 +496,10 @@ $(document).on('click','.deleteEdu',function(e){
             $.ajax(
             {
                 url: "/education/"+id,
-                type: 'DELETE',
+                type: "POST",
+                data:{
+                    _method:"DELETE"
+                },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -530,7 +533,10 @@ $(document).on('click','.deleteExp',function(e){
             $.ajax(
             {
                 url: "/experience/"+id,
-                type: 'DELETE',
+                type: "POST",
+                data:{
+                    _method:"DELETE"
+                },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
