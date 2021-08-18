@@ -47,15 +47,14 @@
     </li>
 
     <li class="nav-item {{ (request()->is('libraries')) ? 'active' : '' }}">
-        <a class="nav-link font-gothamlight" href="{{url('libraries')}}" title="Libraries">
+        <a class="nav-link font-gothamlight" href="{{route('event.libraries')}}" title="Libraries">
             <span class="{{ (request()->is('libraries')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('libraries')) ?'Asset21.png':'Asset32.png'}}' width="15"></span>
             <span>Libraries</span></a>
     </li>
 
 
-
     <li class="nav-item {{ (request()->is('trainings')) ? 'active' : '' }}">
-        <a class="nav-link font-gothambook" href="{{url('trainings')}}" title="My Trainings">
+        <a class="nav-link font-gothambook" href="{{route('event.trainings')}}" title="My Trainings">
             <span class="{{ (request()->is('trainings')) ? ' bg-white rounded-circle p-1 text-center d-inline-block mr-1' : 'rounded-circle p-1 text-center d-inline-block mr-1' }}" style="width: 31px;height: 31px;"> <img src='{{asset("images")}}/{{ (request()->is('trainings')) ?'Asset23.png':'Asset33.png'}}' width="15"></span>
             <span>My Trainings</span></a>
     </li>

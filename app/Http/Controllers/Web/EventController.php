@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Event;
 use App\Models\Reaction;
+use App\Models\Interact;
 use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
@@ -81,7 +82,11 @@ class EventController extends Controller
             if($request->hasFile('event_attachment')){
                 $file_name = uploadFile( $request->event_attachment,  $request->type == 'webinar'  ? webinarPath() : ( $request->type == 'virtual' ? virtualPath() : trainingPath()) );
                 $data['event_attachment'] = $file_name;
-                $data['event_mime_type'] = $request->event_attachment->getClientMimeType();
+            }
+            if($request->hasFile('event_video')){
+                $file_name = uploadFile( $request->event_video,  $request->type == 'webinar'  ? webinarPath() : ( $request->type == 'virtual' ? virtualPath() : trainingPath()) );
+                $data['event_video'] = $file_name;
+                $data['event_mime_type'] = $request->event_video->getClientMimeType();
             }
             $data['user_id'] = auth()->id();
             $this->model->create($data);
@@ -103,8 +108,8 @@ class EventController extends Controller
             if($event->type == "webinar" || $event->type == "virtual" ){
                 $date_from = $event->date_from->format('l, M d,Y');
                 $date_to = $event->date_to->format('l, M d, Y');
-                $now = strtotime($event->time);
-                $time = date('h:i (T)', $now);
+                $db_time = strtotime($event->time);
+                $time = date('h:i (T)', $db_time);
                 return view('event.show', compact('event', 'date_from', 'date_to', 'time'));
             } else {
                 return view('event.show', compact('event'));
@@ -153,6 +158,25 @@ class EventController extends Controller
         try {
             $this->model->delete($event);
             return redirect()->back()->with('success', 'Event deleted Successfully');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    public function join(Event $event) {
+        try {
+            $interactModel = Interact::where('user_id', auth()->id())
+            ->where('model_id' , $event->id)
+            ->where('model_type', Event::class);
+            if($interactModel->exists()){
+                return response(["message"=>"You have already joined this event!"],200);
+            } else {
+                $data = new Interact([
+                    "user_id" => auth()->id(),
+                ]);
+                $event->interact()->save($data);
+                return response(["message"=>"Joined"],200);
+            }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

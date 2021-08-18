@@ -32,6 +32,7 @@ class Event extends Model
         'tag',
         'event_attachment',
         'event_mime_type',
+        'event_video',
         'user_id'
     ];
 
@@ -46,9 +47,20 @@ class Event extends Model
         $path = $this->type == 'webinar'  ? webinarPath() : ( $this->type == 'virtual' ? virtualPath() : trainingPath() ) ;
         return $path.$value;
     }
+    
+    public function getEventVideoAttribute($value)
+    {
+        $path = $this->type == 'webinar'  ? webinarPath() : ( $this->type == 'virtual' ? virtualPath() : trainingPath() ) ;
+        return $path.$value;
+    }
 
     public function eventReaction()
     {
         return $this->morphMany(Reaction::class, 'reactionable');
+    }
+
+    public function interact()
+    {
+        return $this->morphMany(Interact::class, 'model');
     }
 }

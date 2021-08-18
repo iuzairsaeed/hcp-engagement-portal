@@ -40,10 +40,13 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('activity-list', 'ActivityController@getList')->name('activity.get-list');
         
         Route::resource('event','EventController');
-        Route::get('event-list', 'EventController@getList')->name('event.get-list');
-        Route::post('react', 'EventController@react')->name('event.react');
-        Route::get('libraries', 'EventController@libraries');
-        Route::get('trainings', 'EventController@trainings');
+        Route::name('event.')->group(function () {
+            Route::get('event-list', 'EventController@getList')->name('get-list');
+            Route::post('react', 'EventController@react')->name('react');
+            Route::get('libraries', 'EventController@libraries')->name('libraries');
+            Route::get('trainings', 'EventController@trainings')->name('trainings');
+            Route::post('event/join/{event}', 'EventController@join')->name('join');
+        });
         
         Route::resource('support','SupportController');
         Route::resource('reaction','ReactionController');

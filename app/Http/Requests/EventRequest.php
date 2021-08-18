@@ -34,7 +34,7 @@ class EventRequest extends FormRequest
             ];
         } else {
             $rule = [
-                'event_attachment' => ['bail', 'required', 'mimes:mp4,flv,mkv,3gp,mov,ogg,avi,wmv','max:3048'],
+                'event_video' => ['bail', 'required', 'mimes:mp4,flv,mkv,3gp,mov,ogg,avi,wmv','max:3048'],
             ];
         }
         $rule = [

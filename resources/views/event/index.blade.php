@@ -259,36 +259,47 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" action="" id="trainingForm" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="type" value="training">
-                    <div class="w-100">
-                        <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
-                         <div class="col-sm-5 border text-center border-radius10px p-2">
-                            <div class="circle">
-                               <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="{{asset('images/Asset88.png') }}">
-                             </div>
-                             <div class="p-image">
-                               <h6 class="upload-button text-blue fontsize13px font-gothamlight" id="upload-button2">Upload Image</h6>
-                                 <input class="file-upload" id="file-upload2" name = "event_attachment"type="file" accept="image/*"/>       
-                            </div>
-                         </div>
+          <form class="w-100 uploader" action="" id="trainingForm" method="post" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="type" value="training">
+              <div class="w-100">
+                  <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
+                    <div class="col-sm-5 border text-center border-radius10px p-2">
+                      <div class="circle">
+                          <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="{{asset('images/Asset88.png') }}">
+                        </div>
+                        <div class="p-image">
+                          <h6 class="upload-button text-blue fontsize13px font-gothamlight" id="upload-button2">Upload Thumbnail</h6>
+                            <input class="file-upload" id="file-upload2" name = "event_attachment"type="file" accept="image/*"/>       
+                      </div>
                     </div>
+              </div>
 
-                    <div class="w-100 mt-2">
-                        <label class="font-gothamlight fontsize10px text-dark"> Post Title </label>
-                        <input placeholder="Post Title" name="title" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
-                    </div>
+              <div class="w-100 mt-2">
+                  <label class="font-gothamlight fontsize10px text-dark"> Post Title </label>
+                  <input placeholder="Post Title" name="title" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+              </div>
 
-                    <div class="w-100 mt-3">
-                        <label class="font-gothamlight fontsize10px text-dark"> Post Description </label>
-                        <textarea placeholder="Post Description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
-                    </div>
+              <div class="w-100 mt-3">
+                  <label class="font-gothamlight fontsize10px text-dark"> Post Description </label>
+                  <textarea placeholder="Post Description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+              </div>
 
-                <div class="w-100 text-center p-3 pb-4">
-                    <button type="button" onclick="submitTraining()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
+              <div class="w-100 mt-3">
+                <label class="font-gothamlight fontsize10px text-dark"> Attachment <span class="font-weight-light"> Training Video </span> </label>
+                <input type="file" name="event_video" class="input-file">
+                <div class="input-group col-sm-6 p-0">
+                  <input type="text" class="fileinput font-gothamlight w-100 bg-blue fontsize10px bg-blue p-3 border-0 border-radius10px text-white" disabled placeholder="Choose File">
+                  <span class="input-group-btn position-absolute" style="right: 0; top: 1px;">
+                      <button class="upload-field btn text-white rounded-0 border-0 bg-transparent fontsize22px outline-none" type="button"><i class="fa fa-paperclip"></i> </button>
+                  </span>
                 </div>
-            </form>
+              </div>
+
+              <div class="w-100 text-center p-3 pb-4">
+                  <button type="button" onclick="submitTraining()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Training </button>
+              </div>
+          </form>
         </div>
        
       </div>

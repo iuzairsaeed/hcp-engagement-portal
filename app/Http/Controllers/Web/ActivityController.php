@@ -162,7 +162,6 @@ class ActivityController extends Controller
             } else {
                 $data = new Interact([
                     "user_id" => auth()->id(),
-                    "favorite"=>true
                 ]);
                 $activity->interact()->save($data);
                 return \Redirect::to($activity->activity_doc);
