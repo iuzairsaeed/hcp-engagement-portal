@@ -80,8 +80,7 @@
 															<button onclick="join(this)" data-id="{{ $event->id }}" class="bg-orange btn border border-orange border-radius25px text-white text-uppercase fontsize16px w-100 font-gothambook">Join</button>
 														</div>
 														<div class="col-sm-1">
-														<button class="text-orange border border-orange rounded-circle p-2 d-block text-center fontsize16px hovericon bg-white" style="width: 38px; height: 38px;"><i class="fa fa-bookmark-o"></i></button>
-											
+														<button onclick="react(this)" data-event-id="{{$event->id}}" class="text-orange border border-orange rounded-circle p-2 d-block text-center fontsize16px hovericon bg-white" style="width: 38px; height: 38px;"><i class="fa {{ ($event->eventReaction->first()) ? ($event->eventReaction->first->favorite ? "fa-bookmark" : "fa-bookmark-o" ) : "fa-bookmark-o"  }}"></i></button>
 
 														</div>
 												</div>
@@ -126,6 +125,29 @@ function join(value){
 			swal('Not Valid',err.responseJSON.message,'error')
 		}
 	});
+}
+
+function react(value){
+  var event_id = value.getAttribute("data-event-id");
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "{{ route('event.react') }}",
+    type: "POST",
+    data : {
+      event_id : event_id,
+    },
+    success: function (res) {
+      toastr.success('{{session('success')}}', 'React');
+      location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
 }
 
 </script>
