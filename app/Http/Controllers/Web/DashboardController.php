@@ -9,8 +9,10 @@ use App\Models\User;
 use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Post;
+use App\Models\Interact;
 use App\Http\Requests\SearchRequest;
 use Schema;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -18,7 +20,22 @@ class DashboardController extends Controller
     {
         try {
             if(auth()->user()->role == "admin"){
-                return view('dashboard',);
+                $hcp = User::count();
+                $events = Event::count();
+                $pdf = Interact::distinct('user_id')->count();
+                $experienced = array();
+                $interacted = array();
+                $interacted = array();
+                User::all()->sortBy(function ($user) use (&$experienced) {
+                    $experienced[$user->name] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$user->id.';')[0]->sum;
+                })->take(10);
+                User::all()->sortBy(function ($user) use (&$interacted) {
+                    $interacted[$user->name]= DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
+                })->take(10);
+                
+                return view('dashboard', compact(
+                    'hcp','events','pdf','experienced','interacted'
+                ));
             } 
             else {
                 $events = Event::all()->sortByDesc('updated_at');

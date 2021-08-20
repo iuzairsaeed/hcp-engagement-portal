@@ -69,15 +69,15 @@
                                     <div class="w-100 bg-white border-radius10px text-center pt-2 pb-2" 
                                     style="margin-top: 2.1em;">
                                             <img src="{{ asset ('images/Asset87.png') }}" width="32" class="mb-1">
-                                            <h6 class="text-dark fontsize13px mb-0 font-gothambook"><strong>31</strong> Total HCP</h6>
+                                            <h6 class="text-dark fontsize13px mb-0 font-gothambook"><strong>{{$hcp}}</strong> Total HCP</h6>
                                     </div>
                                     <div class="w-100 bg-white border-radius10px text-center pt-2 pb-2 mt-4">
                                             <img src="{{ asset ('images/Asset86.png') }}" width="35" class="mb-1">
-                                            <h6 class="font-montserrat text-dark fontsize13px mb-0 font-gothambook"><strong>12</strong>  Total Events</h6>
+                                            <h6 class="font-montserrat text-dark fontsize13px mb-0 font-gothambook"><strong>{{$events}}</strong>  Total Events</h6>
                                     </div>
                                      <div class="w-100 bg-white border-radius10px text-center pt-2 pb-2 mt-4">
                                             <img src="{{ asset ('images/Asset85.png') }}" width="30" class="mb-1">
-                                            <h6 class="text-dark fontsize13px mb-0 font-gothambook"><strong>10</strong>  No of HCP Interact PDF</h6>
+                                            <h6 class="text-dark fontsize13px mb-0 font-gothambook"><strong>{{$pdf}}</strong>  No of HCP Interact PDF</h6>
                                     </div>
                             </div>
                         </div>
