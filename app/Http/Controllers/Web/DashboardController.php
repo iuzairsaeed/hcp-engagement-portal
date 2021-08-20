@@ -32,9 +32,10 @@ class DashboardController extends Controller
                 User::all()->sortBy(function ($user) use (&$interacted) {
                     $interacted[$user->name]= DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
                 })->take(10);
+                $events_and_hcps = Event::withCount('interact')->get();
                 
                 return view('dashboard', compact(
-                    'hcp','events','pdf','experienced','interacted'
+                    'hcp','events','pdf','experienced','interacted','events_and_hcps'
                 ));
             } 
             else {

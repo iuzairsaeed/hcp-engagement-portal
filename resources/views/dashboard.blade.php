@@ -83,112 +83,37 @@
                         </div>
 
                         <div class="row mt-4">
-                             <div class="col-sm-4 pl-2 pr-1">   
-                                    <div class="d-flex mb-1">
-                                             <h6 class="p-0 col-sm-4 font-gothambook">HCP Name</h6>
-                                              <h6 class="p-0 font-gothambook">Events </h6>
-                                    </div>
-                                    <div class="w-100 bg-white border-radius10px d-flex flex-wrap pt-2 pb-2 pl-1 pr-1 scroll-style" style="overflow-y: scroll;height: 220px;">
-                                        <div class="col-sm-4 fontsize9px pr-0 text-dark" style="border-right: 1px dotted #ccc">
-                                                <p class="mb-2">Dr. Cardiology</p>
-                                                <p class="mb-2">Dr. Dermatology</p>
-                                                <p class="mb-2">Dr. Gastroenterology</p>
-                                                <p class="mb-2">Dr. Hematology.</p>
-                                                <p class="mb-2">Dr. Immunology </p>
-                                                <p class="mb-2">Dr. Infectious Diseas..</p>
-                                                <p class="mb-2">Dr. Metabolism and..</p>
-                                                <p class="mb-2">Dr. Neurology.</p>
-                                                <p class="mb-2">Dr. Respirology.</p>
-                                                <p class="mb-2">Dr. Substance Abus...</p>
-                                        </div>
-                                        <div class="col-sm-8 fontsize9px pr-0 text-dark font-gothambook">
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                            <p class="mb-2">Lorem ipsum dolor sit amet, consectetuer</p>
-                                        </div>
-                                    </div>
-                             </div>
-
+                            <div class="col-sm-4 pl-2 pr-1">   
+                              <div class="d-flex mb-1">
+                                <h6 class="p-0 font-gothambook">Events </h6>
+                                <h6 class="p-0 col-sm-4 font-gothambook">Total HCP Joined</h6>
+                              </div>
+                              <div class="w-100 bg-white border-radius10px d-flex flex-wrap pt-2 pb-2 pl-1 pr-1 scroll-style" style="overflow-y: scroll;height: 220px;">
+                                @foreach ($events_and_hcps as $row )
+                                  <div class="col-sm-10 fontsize9px pr-0 text-dark" style="border-right: 1px dotted #ccc">
+                                    <p class="mb-2">{{$row->title}}</p>
+                                  </div>
+                                  <div class="col-sm-2 fontsize9px pr-0 text-dark font-gothambook">
+                                    <p class="mb-2">{{$row->interact_count}}</p>
+                                  </div>
+                                @endforeach
+                              </div>
+                            </div>
                             <!-- bars -->
-                             <div class="col-sm-4">
-                                    <h6 class="p-0 w-100 font-gothambook">No of HCP Belong to Specialization</h6>
+                            <div class="col-sm-4">
+                              <h6 class="p-0 w-100 font-gothambook">No of HCP Belong to Specialization</h6>
 
-                                    <div class="w-100 bg-white border-radius10px p-2 scroll-style" style="height: 220px;overflow-y: scroll;">
-                                            <ul class="p-0 m-0 list-unstyled">
-                                                <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">Cardiology</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:100%;height:14px"></div>
-                                                      </div></li>
-                                                <li class="w-100 d-flex flex-wrap pb-1"><div class=" text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">Dermatology.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:90%;height:14px"></div>
-                                                      </div></li>
-                                                  <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Gastroenterology.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:84%;height:14px"></div>
-                                                      </div></li>
-
-                                                  <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">Hematology.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:70%;height:14px"></div>
-                                                      </div></li>
-
-                                                  <li class="w-100 d-flex flex-wrap pb-1"><div class="font-gothambook text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Immunology.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                  <li class="w-100 d-flex flex-wrap pb-1"><div class="font-gothambook text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Infectious Diseases.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-                                                     <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Metabolism and En...</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                       <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Neurology.</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                         <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Respirology</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                      <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Respirology</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                      <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Lorem Ipsum</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                      <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Lorem Ipsum</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-
-                                                      <li class="w-100 d-flex flex-wrap pb-1"><div class="font-montserrat text-dark fontsize10px text-right col-sm-4 p-0 m-auto">Lorem Ipsum</div>
-                                                <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                                        <div class="progress-bar bg-blue" style="width:60%;height:14px"></div>
-                                                      </div></li>
-                                            </ul>   
-
-                                    </div>
-                             </div>
+                              <div class="w-100 bg-white border-radius10px p-2 scroll-style" style="height: 220px;overflow-y: scroll;">
+                                <ul class="p-0 m-0 list-unstyled">
+                                    
+                                    <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">Cardiology</div>
+                                      <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
+                                        <div class="progress-bar bg-blue" style="width:100%;height:14px"></div>
+                                      </div>
+                                    </li>
+                                </ul>   
+                              </div>
+                            </div>
                              <!-- bars -->
 
 
