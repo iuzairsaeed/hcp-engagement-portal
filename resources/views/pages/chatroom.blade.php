@@ -36,14 +36,21 @@
                                           <div class="inbox_chat">
                                             <div class="chat_list active_chat">
                                               <div class="chat_people">
+                                               @if($users->count() > 0)
+                                                @foreach($users as $user)
                                                 <div class="chat_img"> <img src="images/Asset72.png"> </div>
                                                 <div class="chat_ib">
-                                                  <h5>Dr Zulekha Daud <span class="chat_date">10:00 PM</span></h5>
+                                                  <a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
+                                                   <h5>{{ $user->name }}
+                                                  </a>  
+                                                  <span class="chat_date">10:00 PM</span></h5>
                                                   <p>Julphar resumes sales of products...</p>
                                                 </div>
+                                                @endforeach
+                                               @endif
                                               </div>
                                             </div>
-                                            <div class="chat_list">
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset78.png"> </div>
                                                 <div class="chat_ib">
@@ -51,8 +58,8 @@
                                                   <p>Sounds good</p>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="chat_list">
+                                            </div> -->
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset77.png"> </div>
                                                 <div class="chat_ib">
@@ -60,8 +67,8 @@
                                                   <p>We can Discuss on Call</p>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="chat_list">
+                                            </div> -->
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset76.png" > </div>
                                                 <div class="chat_ib">
@@ -69,8 +76,8 @@
                                                   <p>I Manage the Derma, Gyna & Cons...</p>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="chat_list">
+                                            </div> -->
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset75.png"> </div>
                                                 <div class="chat_ib">
@@ -78,8 +85,8 @@
                                                   <p>This might be a case of COVID</p>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="chat_list">
+                                            </div> -->
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset74.png"> </div>
                                                 <div class="chat_ib">
@@ -87,8 +94,8 @@
                                                   <p>I want to discuss the test results...</p>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="chat_list">
+                                            </div> -->
+                                            <!-- <div class="chat_list">
                                               <div class="chat_people">
                                                 <div class="chat_img"> <img src="images/Asset73.png"> </div>
                                                 <div class="chat_ib">
@@ -96,90 +103,16 @@
                                                   <p>Call ended</p>
                                                 </div>
                                               </div>
-                                            </div>
+                                            </div> -->
                                           </div>
                                       </div>
                                  </div>
-                                        <div class="mesgs col-sm-8">
-                                            <div class="w-100 bg-white border-radius10px p-3" style="box-shadow: 1px 1px 10px #a7c5d2;">
-                                                <!-- chat-header -->
-                                                <div class="w-100 d-flex flex-wrap mb-3">
-                                                        <div class="col-sm-6">
-                                                                <div class="media">
-                                                                  <img src="images/Asset72.png" class="mr-2 rounded-circle" style="width:50px;">
-                                                                  <div class="media-body m-auto">
-                                                                    <h6 class="text-dark fontsize14px">Dr Zulekha Daud</h6>
-                                                                    
-                                                                  </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-sm-6 text-right pr-0">
-                                                                <!-- <div class="w-100 bg-lightgray border-radius25px p-1 float-right" style=" max-width: 85px;">
-                                                                    <a href="#" class="pl-1 pr-1"><img src="images/Asset79.png" width="15"></a>
-                                                                    <a href="#" class="pl-1 pr-1"><img src="images/Asset81.png" width="15"></a>
-                                                            
-                                                                    <div class="dropdown d-inline-block pr-2">
-                                                                      <button class="btn bg-transparent dropdown-toggle outline-none p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        <img src="images/Asset80.png" width="4">
-                                                                      </button>
-                                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#">Chat</a>
-                                                                        <a class="dropdown-item" href="#">Disabled</a>
-                                                                        <a class="dropdown-item" href="#">Live</a>
-                                                                      </div>
-                                                                    </div>
-                                                                </div> -->
-                                                        </div>
-                                                </div>
-                                                 <!-- chat-header -->
+                                 @include('chat-box')
 
-                                                  <div class="msg_history">
-                                                    <div class="incoming_msg">
-                                                   
-                                                      <div class="received_msg">
-                                                        <div class="received_withd_msg">
-                                                          <p>Sure Anthony! Let’s Discuss</p>
-                                                          <span class="time_date"> 11:01 AM    |    June 9</span></div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="outgoing_msg">
-                                                      <div class="sent_msg">
-                                                        <p>Hi Zulekha! Hope You are Doing Good. Would you mind to hop on a short call. I have some confusions on a COVID Case. I could really use your views on the situation</p>
-                                                        <span class="time_date"> 11:01 AM    |    June 9</span> </div>
-                                                    </div>
-                                                    <div class="incoming_msg">
-                                                      
-                                                      <div class="received_msg">
-                                                        <div class="received_withd_msg">
-                                                          <p>Lorem Ipsum test Covid</p>
-                                                          <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="outgoing_msg">
-                                                      <div class="sent_msg">
-                                                        <p>Sure Anthony! Let’s Discuss</p>
-                                                        <span class="time_date"> 11:01 AM    |    Today</span> </div>
-                                                    </div>
-                                                    <div class="incoming_msg">
-                                                     
-                                                      <div class="received_msg">
-                                                        <div class="received_withd_msg">
-                                                          <p>We work directly with our designers and suppliers,
-                                                            and sell direct to you, which means quality, exclusive
-                                                            products, at a price anyone can afford.</p>
-                                                          <span class="time_date"> 11:01 AM    |    Today</span></div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="type_msg mt-2">
-                                                    <div class="input_msg_write">
-                                                        <a href="#" class="position-absolute" style="left: 16px;top: 10px;"><img src="images/Asset84.png" width="20"></a>
-                                                      <input type="text" class="write_msg bg-gray border-radius25px fontsize12px font-montserrat text-dark outline-none" placeholder="Type a message" />
-                                                      <button class="msg_send_btn" type="button"><img src="images/Asset83.png"></button>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                            </div>
+<input type="hidden" id="current_user" value="{{ Auth::id() }}" />
+<input type="hidden" id="pusher_app_key" value="{{ env('PUSHER_APP_KEY') }}" />
+<input type="hidden" id="pusher_cluster" value="{{ env('PUSHER_APP_CLUSTER') }}" />
+<!--               dfdsf             dfsdf                          dfsdfsdf          fsdf -->
                             </div>
                             <!-- /.container-fluid -->
 
@@ -200,4 +133,19 @@
 
 
 
+@endsection
+
+@section('script')
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script src="{{ asset('js/chat.js') }}"></script>
+    <!-- <script type="text/javascript">
+$(document).ready(function() {
+  $(window).on('load', function() {
+    $("#chat_box").hide();
+  });
+});
+    $('document').ready(function() {
+      $("#chat_box").hide();
+});
+</script> -->
 @endsection

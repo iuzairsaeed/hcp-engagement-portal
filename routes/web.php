@@ -60,6 +60,10 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('contact', 'PageController@contact');
     Route::get('faq', 'PageController@faq');
     Route::get('chatroom', 'PageController@chatroom');
+
+    Route::get('/load-latest-messages', 'MessagesController@getLoadLatestMessages');
+   Route::post('/send', 'MessagesController@postSendMessage');
+    Route::get('/fetch-old-messages', 'MessagesController@getOldMessages');
 });
 
 

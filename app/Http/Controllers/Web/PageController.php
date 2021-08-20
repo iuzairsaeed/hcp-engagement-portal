@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -37,7 +39,10 @@ class PageController extends Controller
     }
     public function chatroom()
     {
-        return view('pages.chatroom');
+        $u_id = auth()->id();
+        $users = User::where('id', '!=', $u_id)->get();
+           // return view('home', compact('users'));
+        return view('pages.chatroom', compact('users'));
     }
 
 }

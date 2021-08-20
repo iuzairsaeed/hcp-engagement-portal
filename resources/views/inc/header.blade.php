@@ -18,6 +18,13 @@
 {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"> --}}
 <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<link href="{{ asset('css/chat.css') }}" rel="stylesheet">
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
+<script>
+        var base_url = '{{ url("/") }}';
+</script>
+
 <link href="{{asset('app-assets/vendors/css/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('app-assets/vendors/css/toastr.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
