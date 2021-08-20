@@ -20,6 +20,9 @@
     <script src="{{ asset('js/chat.js') }}"></script>
 
 
+    <script src="{{asset('app-assets/vendors/js/select2/select2.js')}}"></script>
+
+
 
      <script type="text/javascript">
                  $(document).ready(function() {

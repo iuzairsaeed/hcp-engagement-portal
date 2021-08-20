@@ -27,6 +27,8 @@
 
 <link href="{{asset('app-assets/vendors/css/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('app-assets/vendors/css/toastr.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('app-assets/vendors/css/select2/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('app-assets/vendors/css/select2/select2.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{asset('css/owl.carousel.min.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

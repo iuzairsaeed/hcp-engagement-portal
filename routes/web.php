@@ -65,8 +65,12 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('chatroom', 'PageController@chatroom');
 
     Route::get('/load-latest-messages', 'MessagesController@getLoadLatestMessages');
-   Route::post('/send', 'MessagesController@postSendMessage');
+    Route::post('/send', 'MessagesController@postSendMessage');
     Route::get('/fetch-old-messages', 'MessagesController@getOldMessages');
+
+    Route::get('getLocation', 'UserController@getLocation')->name('user.getLocation');
+    Route::get('getSpeciality', 'UserController@getSpeciality')->name('user.getSpeciality');
+
 });
 
 

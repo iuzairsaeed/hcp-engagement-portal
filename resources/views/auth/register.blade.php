@@ -55,12 +55,7 @@
                                                     </div>
                                                      <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset9.png')}}" width="10">
-                                                        <select name="speciality" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
-                                                            <option>Select Speciality</option>
-                                                            <option>Hamatology</option>
-                                                            <option>Immunology</option>
-                                                            <option>Cardiology</option>
-                                                            <option>Dermatology</option>
+                                                        <select name="speciality_id" id="speciality" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
                                                         </select>
                                                        
                                                     </div>
@@ -70,10 +65,7 @@
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset7.png')}}" width="11">
-                                                        <select name="location" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
-                                                            <option>Select Location</option>
-                                                            <option>Karachi</option>
-                                                            <option>Lahore</option>
+                                                        <select name="location_id" id="location" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
                                                         </select>
                                                       </div>
                                                     
@@ -113,6 +105,46 @@
 @endsection
 @section('afterScript')
 <script>
+    $('#location').select2({
+        placeholder: "Search Location",
+        allowClear: true,
+        ajax: {
+            url: "{{ route('user.getLocation') }}",
+            type: "GET",
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    });
     
+    $('#speciality').select2({
+        placeholder: "Search Speciality",
+        allowClear: true,
+        ajax: {
+            url: "{{ route('user.getSpeciality') }}",
+            type: "GET",
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    });
 </script>
 @endsection

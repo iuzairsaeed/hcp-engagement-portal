@@ -8,6 +8,8 @@ use App\Repositories\UserRepository;
 use App\Repositories\Repository;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\Location;
+use App\Models\Speciality;
 use App\Http\Requests\Auth\RegisterRequest;
 use Spatie\Permission\Models\Role;
 
@@ -157,5 +159,32 @@ class UserController extends Controller
         // $this->model->delete($user);
 
         // return redirect('users')->with('success', 'User deleted successfully');
+    }
+
+    public function getLocation(Request $request)
+    {
+        $search = trim($request->search);
+
+        $role = Location::where('name','LIKE','%'.$search.'%')->get();
+        $formatted_role = [];
+        foreach ($role as $p) {
+            $formatted_role[] = ['id' => $p->id, 'text' => $p->name];
+        }
+
+        return \Response::json($formatted_role);
+    }
+
+
+    public function getSpeciality(Request $request)
+    {
+        $search = trim($request->search);
+
+        $role = Speciality::where('name','LIKE','%'.$search.'%')->get();
+        $formatted_role = [];
+        foreach ($role as $p) {
+            $formatted_role[] = ['id' => $p->id, 'text' => $p->name];
+        }
+
+        return \Response::json($formatted_role);
     }
 }
