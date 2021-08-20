@@ -81,7 +81,7 @@ class ProfileController extends Controller
             }
         }
         $educationModel = Education::where('user_id', auth()->id())->get();
-        // create new or update
+        // create new or update education
         if(!$educationModel->isEmpty()){
             foreach ($educationModel as $key => $edu){
                 $eduInput[$key]["created_at"] = $edu->created;
@@ -103,7 +103,7 @@ class ProfileController extends Controller
             }
         }
         $experienceModel = Experience::where('user_id', auth()->id())->get();
-        // create new or update
+        // create new or update experience
         if(!$experienceModel->isEmpty()){
             foreach ($experienceModel as $key => $exp){
                 $expInput[$key]["created_at"] = $exp->created;
