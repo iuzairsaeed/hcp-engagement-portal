@@ -16,10 +16,15 @@
 
 
 
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script src="{{ asset('js/chat.js') }}"></script>
 
 
 
      <script type="text/javascript">
+                 $(document).ready(function() {
+      $("#chat_box").hide();
+});
         $(document).on('click', '.upload-field', function(){
               var file = $(this).parent().parent().parent().find('.input-file');
               file.trigger('click');
@@ -27,6 +32,7 @@
             $(document).on('change', '.input-file', function(){
               $(this).parent().find('.fileinput').val($(this).val().replace(/C:\\fakepath\\/i, ''));
             });
+
     </script>
 
 

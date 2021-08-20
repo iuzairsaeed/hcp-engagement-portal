@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
         Artisan::call('cache:forget spatie.permission.cache');
         Artisan::call('cache:clear');
 
+        $this->call(LocationTableSeeder::class);
+        $this->call(SpecialityTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
