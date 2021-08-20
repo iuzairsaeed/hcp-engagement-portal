@@ -32,7 +32,6 @@ class ProfileController extends Controller
     public function showProfile()
     {
         $user = auth()->user();
-        dd($user->location);
         return view('users.show', compact('user'));
     }
 

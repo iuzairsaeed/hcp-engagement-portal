@@ -123,7 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function location()
     {
-        return $this->has(Location::class);
+        return $this->hasOne(Location::class, 'id');
     }
 
 }
