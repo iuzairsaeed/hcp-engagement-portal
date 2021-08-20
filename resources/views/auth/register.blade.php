@@ -55,7 +55,14 @@
                                                     </div>
                                                      <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset9.png')}}" width="10">
-                                                        <input type="text" name="speciality" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Speciality">
+                                                        <select name="speciality" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
+                                                            <option>Select Speciality</option>
+                                                            <option>Hamatology</option>
+                                                            <option>Immunology</option>
+                                                            <option>Cardiology</option>
+                                                            <option>Dermatology</option>
+                                                        </select>
+                                                       
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset8.png')}}" width="13">
@@ -63,8 +70,12 @@
                                                     </div>
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset7.png')}}" width="11">
-                                                        <input type="text" name="location" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray" placeholder="Location">
-                                                    </div>
+                                                        <select name="location" class="border-0 outline-none bg-transparent pl-3 pr-2 font-gothamlight fontsize13px col-md-12 text-darkgray">
+                                                            <option>Select Location</option>
+                                                            <option>Karachi</option>
+                                                            <option>Lahore</option>
+                                                        </select>
+                                                      </div>
                                                     
                                                     <div class="form-group form-control border-radius25px bg-gray border-gray pt-2 pb-2 h-100 d-flex align-items-center">
                                                         <img src="{{asset('images/Asset49.png')}}" width="10">
