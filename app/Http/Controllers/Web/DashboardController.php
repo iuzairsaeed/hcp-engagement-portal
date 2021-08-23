@@ -29,10 +29,12 @@ class DashboardController extends Controller
                 $interacted = array();
                 $interacted = array();
                 User::all()->sortBy(function ($user) use (&$experienced) {
-                    $experienced[$user->name] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$user->id.';')[0]->sum;
+                    $experienced['user'][] = $user->name;
+                    $experienced['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$user->id.';')[0]->sum  ;
                 })->take(10);
                 User::all()->sortBy(function ($user) use (&$interacted) {
-                    $interacted[$user->name]= DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
+                    $interacted['user'][] = $user->name;
+                    $interacted['count'][] = DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
                 })->take(10);
                 $events_and_hcps = Event::withCount('interact')->get();
                 $specialities = Speciality::withCount('users')->get();
