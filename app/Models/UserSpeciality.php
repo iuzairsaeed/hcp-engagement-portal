@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Constant;
 
-class Speciality extends Model
+class UserSpeciality extends Model
 {
     use SoftDeletes;
 
@@ -16,15 +16,10 @@ class Speciality extends Model
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
 
-    protected $fillable = ['name'];
-    
-    /**
-     * The users that belong to the role.
-     */
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'user_specialities');
-    }
+    protected $fillable = ['speciality_id', 'user_id'];
 
-  
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }    
 }

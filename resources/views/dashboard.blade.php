@@ -105,12 +105,14 @@
 
                               <div class="w-100 bg-white border-radius10px p-2 scroll-style" style="height: 220px;overflow-y: scroll;">
                                 <ul class="p-0 m-0 list-unstyled">
-                                    
-                                    <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">Cardiology</div>
-                                      <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
-                                        <div class="progress-bar bg-blue" style="width:100%;height:14px"></div>
-                                      </div>
-                                    </li>
+                                    @foreach ($specialities as $speciality )
+                                      
+                                      <li class="w-100 d-flex flex-wrap pb-1"><div class="text-dark fontsize10px text-right col-sm-4 p-0 m-auto font-gothambook">{{$speciality->name}}</div>
+                                        <div class="col-sm-8"> <div class="progress bg-transparent rounded-0">
+                                          <div class="progress-bar bg-blue" style="width:{{$speciality->users_count}}%;height:14px"></div>
+                                        </div>
+                                      </li>
+                                    @endforeach
                                 </ul>   
                               </div>
                             </div>

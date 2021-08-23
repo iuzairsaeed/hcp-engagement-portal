@@ -51,13 +51,13 @@
                                             </div>
                                             <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Location*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="location" value="{{ $user->location['name'] }}" placeholder="Location" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="location" value="{{ $user->location->first()->name }}" placeholder="Location" />
                                             </div>
                                         </div>
                                          <div class="col-sm-4 pl-2 pr-2">
                                              <div class="form-group col-sm-12 p-0">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Speciality*</label>
-                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="speciality" value="{{ $user->speciality }}" placeholder="Speciality" />
+                                                <input type="text" required="required" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray text-darkgray lineheight2px" name="speciality" value="{{ $user->speciality->first()->name }}" placeholder="Speciality" />
                                             </div>
 
                                         </div>
