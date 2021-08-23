@@ -45,7 +45,7 @@ class ProfileController extends Controller
             $user->update();
         }
         // filter user data
-        $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'email' ,'old_password', 'password']);
+        $userData = $request->except(['clinic_name','clinic_address', 'education' , 'experience', 'email' ,'old_password', 'password','location','speciality']);
         if($request->hasFile('avatar')){
             $deleteFile = $user->getAttributes()['avatar'] != 'no-image.png' ? $user->avatar : null;
             $file_name = uploadFile($request->avatar, avatarsPath(), $deleteFile);

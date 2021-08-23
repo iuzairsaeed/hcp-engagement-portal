@@ -19,14 +19,14 @@ class UsersTableSeeder extends Seeder
             'name' => 'Uzair Saeed',
             'username' => 'uzair',
             'pmdc' => '123456789',
-            'speciality_id' => 1,
             'phone' => '0335669874',
-            'location_id' => 1,
             'email' => 'uzair@hcp.com',
             'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
         ]);
+        $admin->speciality()->attach([1]);
+        $admin->location()->attach([1]);
         $role = Role::Where('name', 'admin')->first();
         $admin->assignRole([$role->id]);
 
@@ -34,14 +34,14 @@ class UsersTableSeeder extends Seeder
             'name' => 'Asim A.',
             'username' => 'asim',
             'pmdc' => '123456789',
-            'speciality_id' => 5,
             'phone' => '0335669874',
-            'location_id' => 2,
             'email' => 'asim@hcp.com',
             'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
         ]);
+        $user->speciality()->attach([5]);
+        $user->location()->attach([2]);
         $roleN = Role::where('name', 'normal')->first();
         $user->assignRole([$roleN->id]);
     }

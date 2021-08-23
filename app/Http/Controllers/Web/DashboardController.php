@@ -46,7 +46,6 @@ class DashboardController extends Controller
                 $events = Event::all()->sortByDesc('updated_at');
                 $posts = Post::all()->sortByDesc('updated_at');
                 $activities = Activity::whereHas('interact')->get();
-                // $activities = Activity::all();
 
                 return view('userdashboard',  compact(['events', 'posts', 'activities']));
             } 
