@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('education', 'EducationController');
         Route::resource('experience', 'ExperienceController');
 
+
     });
     
     Route::get('about', 'PageController@about');
@@ -76,4 +77,3 @@ Route::group(['namespace' => 'Web'], function () {
 
 Route::get('terms_conditions', 'Web\PageController@terms_conditions')->where('any', '.*');
 Route::get('{any}', 'Web\PageController@home')->where('any', '.*');
-
