@@ -10,6 +10,8 @@ use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Post;
 use App\Models\Interact;
+use App\Models\Speciality;
+use App\Models\Location;
 use App\Http\Requests\SearchRequest;
 use Schema;
 use DB;
@@ -33,9 +35,11 @@ class DashboardController extends Controller
                     $interacted[$user->name]= DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
                 })->take(10);
                 $events_and_hcps = Event::withCount('interact')->get();
+                $specialities = Speciality::withCount('users')->get();
+                $locations = Location::withCount('users')->get();
                 
                 return view('dashboard', compact(
-                    'hcp','events','pdf','experienced','interacted','events_and_hcps'
+                    'hcp', 'events', 'pdf', 'experienced', 'interacted', 'events_and_hcps', 'specialities', 'locations' 
                 ));
             } 
             else {

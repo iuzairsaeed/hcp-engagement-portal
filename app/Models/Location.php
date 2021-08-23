@@ -18,4 +18,13 @@ class Location extends Model
 
     protected $fillable = ['name'];
 
+    
+    /**
+     * The users that belong to the role.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_locations');
+    }
+  
 }

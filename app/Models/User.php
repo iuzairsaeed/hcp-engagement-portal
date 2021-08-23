@@ -123,7 +123,17 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function location()
     {
-        return $this->hasOne(Location::class, 'id');
+        return $this->belongsToMany(Location::class, 'user_locations');
+    }
+    
+    /**
+     * Get all of the speciality for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function speciality()
+    {
+        return $this->belongsToMany(Speciality::class , 'user_specialities');
     }
 
 }

@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('no-image.png');
             $table->string('password');
             $table->string('pmdc');
-            $table->foreignId('speciality_id');
             $table->string('phone');
             $table->foreignId('location_id');
             $table->string('cnic')->nullable();
