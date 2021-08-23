@@ -229,6 +229,7 @@
 @endsection
 
 
+
 @section('afterScript')
 <script>
 function submitClinical(){
@@ -284,5 +285,7 @@ function submitGamification(){
   });
 }
 </script>
+
+
 
 @endsection
