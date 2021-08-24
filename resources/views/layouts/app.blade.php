@@ -34,7 +34,11 @@
 
     </div>
 
-    @include('inc.footer')
+    @if (auth()->user()->role == "admin")
+        @include('inc.adminFooter')
+    @else
+        @include('inc.footer')
+    @endif
     @include('inc.messages')
     @yield('afterScript')
 </body>
