@@ -4,7 +4,7 @@
                                                     <div class="w-100 d-flex flex-wrap mb-3">
                                                         <div class="col-sm-6">
                                                                 <div class="media">
-                                                                  <img src="images/Asset72.png" class="mr-2 rounded-circle" style="width:50px;">
+                                                                  <img src="https://tech.celeritasdigital.com/hcp-engagement-portal/storage/avatars/{{ $user->avatar }}" class="mr-2 rounded-circle" style="width:50px;">
                                                                   <div class="media-body m-auto">
                                                                     <h6 class="text-dark fontsize14px"><i class="chat-user"></i></h6>
                                                                     <span class="glyphicon glyphicon-remove close-chat"></span>

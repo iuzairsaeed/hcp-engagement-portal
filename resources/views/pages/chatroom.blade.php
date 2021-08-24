@@ -35,16 +35,18 @@
                                                   </div>
                                           <div class="inbox_chat">
                                             <div class="chat_list active_chat">
-                                              <div class="chat_people">
-                                               @if($users->count() > 0)
+                                              @if($users)
                                                 @foreach($users as $user)
-                                                <div class="chat_img"> <img src="images/Asset72.png"> </div>
+                                              <div class="chat_people">
+                                                <div class="chat_img"> <img src="https://tech.celeritasdigital.com/hcp-engagement-portal/storage/avatars/{{ $user->avatar }}"> </div>
                                                 <div class="chat_ib">
                                                   <a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
                                                    <h5>{{ $user->name }}
-                                                   
-                                                  <span class="chat_date">10:00 PM</span></h5></a> 
-                                                  <p>Julphar resumes sales of products...</p>
+                                                  </a>  
+                                                  @if($user->up_at!=null)
+                                                  <span class="chat_date">{{date('h:i A', strtotime($user->up_at))}}</span></h5>
+                                                  @endif
+                                                  <p>{{$user->content}}</p>
                                                 </div>
                                                 @endforeach
                                                @endif

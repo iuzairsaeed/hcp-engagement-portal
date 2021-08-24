@@ -271,3 +271,36 @@ function displayOldMessages(data)
         });
     }
 }
+
+$("#approvedContri").submit(function (e){
+    e.preventDefault();
+
+    sendcommunities();
+   });
+function add_new_message(id){
+     $("#toUser_id").val(id);
+}
+
+   function sendcommunities(id) {
+     var toUser_id = $("#toUser_id").val();    
+     console.log(toUser_id);
+     const message = $("#addtext").val();
+
+ 
+     $.ajax({
+       type: "POST",
+       url: base_url + "/send",
+       headers: {
+         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+       },
+       data: {to_user: toUser_id, message: message},
+       success: function () {
+           alert("message sent successfully");
+           location.reload();
+       },
+   
+       error: function (err) {
+         console.log(err);
+       },
+     });
+    } 
