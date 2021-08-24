@@ -25,7 +25,7 @@
                                             style="border-radius: 7px 7px;box-shadow: -1px 1px 10px -2px #9fa5a7;">
                                         <img
                                             src="{{asset($activity->activity_image) }}"
-                                            class="mr-3 rounded" style="width:105px;">
+                                            class="mr-3 rounded" style="width:105px; height: 102px">
                                         <div class="media-body m-auto">
                                             <h6 class="text-black font-gothambook fontsize13px"
                                                 style="line-height: 1.3">{{ $activity->title }}</h6>
@@ -152,6 +152,7 @@
 @endsection
 
 @section('afterScript')
+
 <script type="text/javascript">
     $('.owl-carousel.recent-carousel').owlCarousel({
           loop: false,
@@ -230,5 +231,7 @@
 
   
 </script>
+
+
 @endsection
 

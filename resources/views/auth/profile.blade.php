@@ -125,10 +125,10 @@
                                     </div>
 
                                     <div class="w-100 d-flex flex-wrap mt-5">
-                                        <div class="col-sm-6 text-right pr-sm-2">
+                                        <div class="col-sm-6 col-6 text-right pr-sm-2">
                                                 <button class="btn bg-orange disabled text-white text-uppercase border-radius25px w-100 font-gothambook" style="max-width: 170px;" type="button">Back</button>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-2">
+                                        <div class="col-sm-6 col-6 pl-sm-2">
                                             <button class="btn bg-orange text-white nextBtn text-uppercase border-radius25px w-100 font-gothambook" style="max-width: 170px;" type="button">Next</button>
                                         </div>
                                     </div>
@@ -299,12 +299,12 @@
                         @endif
 
                         <div class="w-100 d-flex flex-wrap mt-5 stepwizard">
-                           <div class="col-sm-6 text-right pr-sm-2 stepwizard-row setup-panel">
+                           <div class="col-sm-6 col-6 text-right pr-sm-2 stepwizard-row setup-panel">
                               <div class="w-100 stepwizard-step">
                                  <a href="#step-1" class="btn bg-orange text-white text-uppercase border-radius25px w-100 font-gothambook" style="max-width: 170px;" type="button">Back</a>
                               </div>
                            </div>
-                           <div class="col-sm-6 pl-sm-2">
+                           <div class="col-sm-6 col-6 pl-sm-2">
                               <button class="btn bg-orange text-white nextBtn text-uppercase border-radius25px w-100 font-gothambook" style="max-width: 170px;" type="button">Next</button>
                            </div>
                         </div>
@@ -452,12 +452,12 @@
                         
 
                         <div class="w-100 d-flex flex-wrap mt-5 stepwizard">
-                           <div class="col-sm-6 text-right pr-sm-2 stepwizard-row setup-panel">
+                           <div class="col-sm-6 col-6 text-right pr-sm-2 stepwizard-row setup-panel">
                               <div class="w-100 stepwizard-step">
                                  <a href="#step-2" class="btn bg-orange text-white text-uppercase border-radius25px w-100 font-gothambook" style="max-width: 170px;" type="button">Back</a>
                               </div>
                            </div>
-                           <div class="col-sm-6 pl-sm-2">
+                           <div class="col-sm-6 col-6 pl-sm-2">
                               <button onclick="submitProfile()" class="btn bg-orange border-orange text-white btn-success text-uppercase border-radius25px w-100 hoverbtn font-gothambook" style="max-width: 170px;" type="button">Save</button>
                            </div>
                         </div>
@@ -676,7 +676,6 @@ function appendEducationInfo() {
 }
 
 var index=0;
-
 
 function appendExperienceInfo() {
 
