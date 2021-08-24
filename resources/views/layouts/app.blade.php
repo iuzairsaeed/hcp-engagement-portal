@@ -22,6 +22,12 @@
                 @endif
 
                 @yield('content')
+
+                @if (auth()->user()->role == "admin")
+                    @include('inc.adminFooter')
+                @else
+                    @include('inc.footer')
+                @endif
              
         @else
             @yield('content')
@@ -34,11 +40,6 @@
 
     </div>
 
-    @if (auth()->user()->role == "admin")
-        @include('inc.adminFooter')
-    @else
-        @include('inc.footer')
-    @endif
     @include('inc.messages')
     @yield('afterScript')
 </body>

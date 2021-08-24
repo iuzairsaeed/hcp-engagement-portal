@@ -2,7 +2,6 @@
 
 @section('content')
 
-
    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -106,6 +105,9 @@
 
 @endsection
 @section('afterScript')
+<script src="{{ asset('js/app.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="{{asset('app-assets/vendors/js/select2/select2.js')}}"></script>
 <script>
     $('#location').select2({
         placeholder: "Location",
@@ -151,7 +153,7 @@
 
 
 
-    function pmdcpass() {
+function pmdcpass() {
   var x = document.getElementById("pmdc");
   if (x.type === "password") {
     x.type = "text";
@@ -168,4 +170,5 @@ function passwordnew() {
   }
 }
 </script>
+
 @endsection
