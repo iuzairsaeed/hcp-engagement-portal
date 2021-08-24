@@ -52,7 +52,7 @@
                                                                                     <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1 float-left"></i> <span class="float-left text-left w-fix">{{ $user->speciality->first()->name }} </span></h6> </li>
                                                                                      <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 7 Years </h6></li>
                                                                                      <li class="col-sm-3 col-3 p-0 text-right">
-                                                                                        <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-name="{{ $user->name }}" data-speciality="{{$user->speciality->first()->name}}" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
+                                                                                        <a href="#" data-toggle="modal" data-target="#Messagemodal" onclick="add_new_message({{ $user->id}})" data-name="{{ $user->name }}" data-speciality="{{$user->speciality->first()->name}}" ><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
                                                                                         {{-- <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i> --}}
                                                                                      </a>
                                                                                      </li>
@@ -102,25 +102,27 @@
 <div class="modal fade" id="Messagemodal" style="background: rgb(77 138 192 / 56%);">
     <div class="modal-dialog h-100 d-flex">
       <div class="modal-content border-0 m-auto border-radius10px overflow-hiden">
-
+     <form id="approvedContri">
+     @csrf
+      <input type="hidden" id="toUser_id" value="toUser_id">
 
         <div class="modal-header flex-wrap" style="background: #4d8ac0;">
-          <h5 class="modal-title font-gothamlight w-100 text-white fontsize16px MessagemodalName">Dr Zulekha Daud</h5>
-          <p class="d-block font-gothamlight w-100 text-white mb-0 fontsize13px Messagemodaldatafield">Neurology</p>
+          <h5 class="modal-title font-gothamlight w-100 text-white fontsize16px MessagemodalName">{{$user->name}}</h5>
+          <p class="d-block font-gothamlight w-100 text-white mb-0 fontsize13px Messagemodaldatafield">{{ $user->speciality->first()->name }}</p>
           <button type="button" class="close position-absolute font-weight-light" data-dismiss="modal" style="opacity: 1;color: #fff;right: 14px;">&times;</button>
         </div>
 
          <div class="modal-body pl-4 pr-4" style=" height: 399px;">
             <div class="w-100">
                     <label class="font-gothamlight fontsize13px w-100">Message Body</label>
-                    <textarea placeholder="Message goes here" class="fontsize12px text-darkgray font-gothambook bg-gray border-0 w-100 border-radius10px p-3 outline-none" style="height: 230px;resize: none;box-shadow: 2px 4px 10px #ccc;"></textarea>
+                    <textarea id="addtext" name="addtext" placeholder="Message goes here" class="fontsize12px text-darkgray font-gothambook bg-gray border-0 w-100 border-radius10px p-3 outline-none" style="height: 230px;resize: none;box-shadow: 2px 4px 10px #ccc;"></textarea>
             </div>
                 <div class="w-100 text-center p-3 pb-4">
-                    <button class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-3 hoverbtn fontsize14px" style="max-width: 330px;"> Send </button>
+                    <button class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-3 hoverbtn fontsize14px" type="submit" style="max-width: 330px;"> Send </button>
                 </div>
         </div>
 
-
+     </form>
       </div>
     </div>
 </div>

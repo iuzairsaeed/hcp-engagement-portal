@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -40,8 +42,19 @@ class PageController extends Controller
     public function chatroom()
     {
         $u_id = auth()->id();
-        $users = User::where('id', '!=', $u_id)->get();
-           // return view('home', compact('users'));
+       // $users = User::where('id', '!=', $u_id)->get();
+        //    $users =  DB::select("SELECT users.*, messages.from_user,messages.content,messages.updated_at
+        //    FROM users
+        //    INNER join messages on messages.from_user = $u_id 
+           
+        //    where users.id!=$u_id order by messages.updated_at desc limit 1");
+
+           $users =  DB::select("SELECT users.*,
+        (select messages.content  from messages where messages.from_user=$u_id And messages.to_user=users.id order by messages.content ASC limit 1) as content,
+        (select messages.updated_at from messages where messages.from_user=$u_id And messages.to_user=users.id order by messages.updated_at ASC limit 1) as up_at
+
+        FROM users  where users.id!=$u_id ");
+
         return view('pages.chatroom', compact('users'));
     }
 
