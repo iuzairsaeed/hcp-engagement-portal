@@ -23,8 +23,12 @@ class EventRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->type == "webinar" || $this->type == "virtual" ){
+        if(request()->type == "webinar" || request()->type == "virtual" ){
             $rule = [
+                'type' => ['bail','required','alpha', 'max:255', 'min:3'],
+                'title' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
+                'presenter_name' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
+                'description' => ['bail','required','string', 'max:255', 'min:3'],
                 'date_from' => ['bail', 'required', 'date', 'max:255', 'min:3'],
                 'date_to' => ['bail', 'required', 'date', 'max:255', 'min:3'],
                 'time' => ['bail', 'required', 'date_format:H:i', 'max:255', 'min:3'],
@@ -34,14 +38,13 @@ class EventRequest extends FormRequest
             ];
         } else {
             $rule = [
+                'type' => ['bail','required','alpha', 'max:255', 'min:3'],
+                'title' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
+                'description' => ['bail','required','string', 'max:255', 'min:3'],
                 'event_video' => ['bail', 'required', 'mimes:mp4,flv,mkv,3gp,mov,ogg,avi,wmv','max:3048'],
             ];
         }
-        $rule = [
-            'type' => ['bail','required','alpha', 'max:255', 'min:3'],
-            'title' => ['bail','required','alpha_spaces', 'max:255', 'min:3'],
-            'description' => ['bail','required','string', 'max:255', 'min:3'],
-        ];
+       
         return $rule;
     }
 

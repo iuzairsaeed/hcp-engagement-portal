@@ -86,7 +86,6 @@ class DashboardController extends Controller
     public function getLocations(Request $request) {
         try {
             $locations = Location::withCount('users')->get();
-            $locs = [];
             foreach ($locations as $l) {
                 $locs['country'][] = $l->name; 
                 $locs['count'][] = $l->users_count;
