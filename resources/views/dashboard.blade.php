@@ -154,7 +154,7 @@
     var data = {
       labels: [],
       datasets: [{
-        label: "Experience",
+        label: "Interacted",
         backgroundColor: "rgb(4 95 170)",
         borderColor: "rgb(4 95 170)",
         borderWidth: 1,
