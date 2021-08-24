@@ -16,6 +16,9 @@ Route::group(['namespace' => 'Web'], function () {
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('search', 'DashboardController@search')->name('search');
         Route::get('dashboard/list', 'DashboardController@getList')->name('dashboard.getList');
+        Route::get('dashboard/interact', 'DashboardController@getInteract')->name('dashboard.getInteract');
+        Route::get('dashboard/experience', 'DashboardController@getExperience')->name('dashboard.getExperience');
+        Route::get('dashboard/locations', 'DashboardController@getLocations')->name('dashboard.getLocations');
 
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');

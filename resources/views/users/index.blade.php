@@ -49,10 +49,10 @@
                                                                              </div>
                                                                               <div class="card-body text-left pt-2 pb-0 pl-2 pr-2">
                                                                                <ul class="list-unstyled d-inline-block pb-2 d-flex flex-wrap w-100 mb-2 border-bottom border-gray">
-                                                                                    <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1 float-left"></i> <span class="float-left text-left w-fix">{{$user->speciality}} </span></h6> </li>
+                                                                                    <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1 float-left"></i> <span class="float-left text-left w-fix">{{ $user->speciality->first()->name }} </span></h6> </li>
                                                                                      <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 7 Years </h6></li>
                                                                                      <li class="col-sm-3 col-3 p-0 text-right">
-                                                                                        <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
+                                                                                        <a href="#" data-toggle="modal" onclick="openPopUp(this)" data-name="{{ $user->name }}" data-speciality="{{$user->speciality->first()->name}}" data-target="#Messagemodal"><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
                                                                                         {{-- <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i> --}}
                                                                                      </a>
                                                                                      </li>
@@ -128,70 +128,72 @@
 
 
 
-  <script type="text/javascript">
-                                // var sendername;
-                                // var id;
-                                //  function openPopUp(vart){
-                                //      debugger;
+<script type="text/javascript">
 
-                                //      var $this = $(vart);
-                                //     var $this = $(vart);
-                                //     id = $this.attr('data-id')??"";
-                                //     var title = $this.attr('data-title')??"";
-                                //     var datafield = $this.attr('data-field')??"";
-                                //     sendername=$this.attr('data-sendername')??"";
-                                //     $('.MessagemodalName').text(title);
-                                //     $('.Messagemodaldatafield').text(datafield);
-                                //  }
+    var sendername;
+    var id;
+    function openPopUp(vart){
+        var $this = $(vart);
+        var $this = $(vart);
+        id = $this.attr('data-id')??"";
+        var title = $this.attr('data-title')??"";
+        var name = $this.attr('data-name')??"";
+        var speciality = $this.attr('data-speciality')??"";
+        var datafield = $this.attr('data-field')??"";
+        sendername=$this.attr('data-sendername')??"";
+        $('.MessagemodalName').text(name);
+        $('.Messagemodaldatafield').text(speciality);
 
-
-                                //     function sendmessage() {
-                                //       // debugger;
-                                //       var currentTimeInMilliseconds=Date.now();
-                                //       var inputVal = document.getElementById("myInput").value;
-
-                                //       var usersRef = firebase.database().ref().child("Chat").push().set(
-                                //         {
-                                //           "message":String(inputVal),
-                                //           "recieverid":String(id),
-                                //           "time":currentTimeInMilliseconds  ,
-                                //           "senderid":'<?=auth()->id()?>',
-                                //           "sendername":String(sendername)
-                                //         });
-                                //        var usersRef = firebase.database().ref('MyChat/').child(String(id)).child('<?=auth()->id()?>');
-                                //        usersRef.update({ //With completion callback.
-                                //           "time":currentTimeInMilliseconds,
-                                //           "message":String(inputVal),
-
-                                //         },  function(error) {
-                                //           if (error) {
-                                           
-                                //           } else {
-                                           
-                                //           }
-                                //       });  var usersRef = firebase.database().ref('MyChat/').child('<?=auth()->id()?>').child(String(id));
-                                //        usersRef.update({ //With completion callback.
-                                //           "time":currentTimeInMilliseconds,
-                                //           "message":String(inputVal),
-
-                                //         },  function(error) { 
-                                //           if (error) {
-                                    
-                                //           } else {
-                                            
-                                //           }
-                                //       });
-                                //     document.getElementById('myInput').value = '';
-
-                                //     }
+    }
 
 
+        // function sendmessage() {
+        // // debugger;
+        // var currentTimeInMilliseconds=Date.now();
+        // var inputVal = document.getElementById("myInput").value;
 
-                               </script>
-                               <!-- Message Dr Modal -->
-                   
+        // var usersRef = firebase.database().ref().child("Chat").push().set(
+        //     {
+        //     "message":String(inputVal),
+        //     "recieverid":String(id),
+        //     "time":currentTimeInMilliseconds  ,
+        //     "senderid":'<?=auth()->id()?>',
+        //     "sendername":String(sendername)
+        //     });
+        // var usersRef = firebase.database().ref('MyChat/').child(String(id)).child('<?=auth()->id()?>');
+        // usersRef.update({ //With completion callback.
+        //     "time":currentTimeInMilliseconds,
+        //     "message":String(inputVal),
+
+        //     },  function(error) {
+        //     if (error) {
+                
+        //     } else {
+                
+        //     }
+        // });  var usersRef = firebase.database().ref('MyChat/').child('<?=auth()->id()?>').child(String(id));
+        // usersRef.update({ //With completion callback.
+        //     "time":currentTimeInMilliseconds,
+        //     "message":String(inputVal),
+
+        //     },  function(error) { 
+        //     if (error) {
+        
+        //     } else {
+                
+        //     }
+        // });
+        // document.getElementById('myInput').value = '';
+
+        // }
 
 
-          @endsection
+
+</script>
+<!-- Message Dr Modal -->
+
+
+
+@endsection
 
                            

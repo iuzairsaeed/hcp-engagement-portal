@@ -24,24 +24,12 @@ class DashboardController extends Controller
             if(auth()->user()->role == "admin"){
                 $hcp = User::count();
                 $events = Event::count();
-                $pdf = Interact::distinct('user_id')->count();
-                $experienced = array();
-                $interacted = array();
-                $interacted = array();
-                User::all()->sortBy(function ($user) use (&$experienced) {
-                    $experienced['user'][] = $user->name;
-                    $experienced['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$user->id.';')[0]->sum  ;
-                })->take(10);
-                User::all()->sortBy(function ($user) use (&$interacted) {
-                    $interacted['user'][] = $user->name;
-                    $interacted['count'][] = DB::select('SELECT COUNT(id) as count from interacts  WHERE user_id = '.$user->id.' AND model_type LIKE "%Activity%" ;')[0]->count;
-                })->take(10);
+                $pdf = Interact::where('model_type', Activity::class)->count();
                 $events_and_hcps = Event::withCount('interact')->get();
                 $specialities = Speciality::withCount('users')->get();
-                $locations = Location::withCount('users')->get();
-                
+
                 return view('dashboard', compact(
-                    'hcp', 'events', 'pdf', 'experienced', 'interacted', 'events_and_hcps', 'specialities', 'locations' 
+                    'hcp', 'events', 'pdf', 'events_and_hcps', 'specialities', 
                 ));
             } 
             else {
@@ -68,4 +56,45 @@ class DashboardController extends Controller
             return $th->getMessage();
         }
     }
+    
+    public function getInteract(Request $request) {
+        try {
+            User::all()->sortBy(function ($user) use (&$interact) {
+                $interact['user'][] = $user->name;
+                $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
+            })->take(10);
+            return \Response::json($interact);
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    public function getExperience(Request $request) {
+        try {
+            $experience = array();
+            User::all()->sortBy(function ($user) use (&$experience) {
+                $experience['user'][] = $user->name;
+                $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$user->id.';')[0]->sum ?? 0 ;
+            })->take(10);
+
+            return \Response::json($experience);
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+   
+    public function getLocations(Request $request) {
+        try {
+            $locations = Location::withCount('users')->get();
+            $locs = [];
+            foreach ($locations as $l) {
+                $locs['country'][] = $l->name; 
+                $locs['count'][] = $l->users_count;
+            }
+            return \Response::json($locs);
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
 }

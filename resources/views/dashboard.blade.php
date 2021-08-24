@@ -89,14 +89,20 @@
                                 <h6 class="p-0 col-sm-4 font-gothambook">Total HCP Joined</h6>
                               </div>
                               <div class="w-100 bg-white border-radius10px d-flex flex-wrap pt-2 pb-2 pl-1 pr-1 scroll-style" style="overflow-y: scroll;height: 220px;">
-                                @foreach ($events_and_hcps as $row )
-                                  <div class="col-sm-10 fontsize9px pr-0 text-dark" style="border-right: 1px dotted #ccc">
-                                    <p class="mb-2">{{$row->title}}</p>
+                                @if(!$events_and_hcps->isEmpty())
+                                  @foreach ($events_and_hcps as $row )
+                                    <div class="col-sm-10 fontsize9px pr-0 text-dark" style="border-right: 1px dotted #ccc">
+                                      <p class="mb-2">{{$row->title}}</p>
+                                    </div>
+                                    <div class="col-sm-2 fontsize9px pr-0 text-dark font-gothambook">
+                                      <p class="mb-2">{{$row->interact_count}}</p>
+                                    </div>
+                                  @endforeach
+                                @else
+                                  <div class="col-sm-10 fontsize9px pr-0 text-dark" >
+                                    <p class="mb-2">No Data Available</p>
                                   </div>
-                                  <div class="col-sm-2 fontsize9px pr-0 text-dark font-gothambook">
-                                    <p class="mb-2">{{$row->interact_count}}</p>
-                                  </div>
-                                @endforeach
+                                @endif
                               </div>
                             </div>
                             <!-- bars -->
@@ -146,7 +152,7 @@
   
   <script type="text/javascript">
     var data = {
-      labels: ["Dr Kath", "Dr Zuleha", "Dr Sharaby", "Dr Ashraf", "Dr Fernan", "Dr Fara"],
+      labels: [],
       datasets: [{
         label: "Experience",
         backgroundColor: "rgb(4 95 170)",
@@ -154,12 +160,11 @@
         borderWidth: 1,
         hoverBackgroundColor: "rgb(228 228 228)",
         hoverBorderColor: "rgb(228 228 228)",
-        data: [43, 38, 30, 33, 28, 25 ],
+        data: [1,1,1,1,1,1],
       }]
     };
   
     var options = {
-  
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
@@ -176,20 +181,35 @@
         }]
       }
     };
-  
-    Chart.Bar('chart', {
+
+    var chart_i = new Chart.Bar('chart', {
       options: options,
       data: data
+    });
 
-     });
+    ajax_chart(chart_i);
+    // function to update our chart
+    function ajax_chart(chart, data) {
+        var data = data || {};
+        $.getJSON("{{ route('dashboard.getInteract') }}", data).done(function(response) {
+          response.user.forEach((element, key) => {
+            chart.data.labels[key] = element;
+          });
+          response.count.forEach((element, key) => {
+            chart.data.datasets[0].data[key] = element;
+          });
+          chart.update(); // finally update our chart
+        });
+    }
+
 </script>
 <script type="text/javascript">
   var ctx = document.getElementById('myChart').getContext('2d');
-          var chart = new Chart(ctx, {
+          var chart_e = new Chart(ctx, {
               type: 'line', // also try bar or other graph types
 
               data: {
-                  labels: ["Dr Kath", "Dr Zuleha", "Dr Sharaby", "Dr Ashraf", "Dr Fernan", "Dr Fara"],
+                  labels: [],
                   // Information about the dataset
               datasets: [{
                       label: "Experience",
@@ -197,7 +217,7 @@
                       borderColor: 'rgb(241 113 33)',
                       borderCapStyle:'butt',
                       drawTicks: false,
-                      data: [999, 899, 750, 650, 610, 530 ],
+                      data: [50,60],
                   }]
               },
 
@@ -230,6 +250,21 @@
               }
           });
 
+          ajax_chart(chart_e);
+          // function to update our chart
+          function ajax_chart(chart, data) {
+              var data = data || {};
+              $.getJSON("{{ route('dashboard.getExperience') }}", data).done(function(response) {
+                response.user.forEach((element, key) => {
+                  chart.data.labels[key] = element;
+                });
+                response.count.forEach((element, key) => {
+                  chart.data.datasets[0].data[key] = element;
+                });
+                chart.update(); // finally update our chart
+              });
+          }
+
 </script>
 
 
@@ -258,6 +293,21 @@
         type: 'pie',
         data: oilData
       });
+
+      ajax_chart(pieChart);
+      // function to update our chart
+      function ajax_chart(chart, data) {
+          var data = data || {};
+          $.getJSON("{{ route('dashboard.getLocations') }}", data).done(function(response) {
+            response.country.forEach((element, key) => {
+              chart.data.labels[key] = element;
+            });
+            response.count.forEach((element, key) => {
+              chart.data.datasets[0].data[key] = element;
+            });
+            chart.update(); // finally update our chart
+          });
+      }
 
 </script>
 @endsection
