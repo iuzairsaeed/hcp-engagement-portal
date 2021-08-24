@@ -13,15 +13,14 @@
                         <div class="row">   
                           <div class="col-sm-12 text-right">
                               <ul class="pl-0 pr-0 pt-2 pb-2 m-0 text-right d-flex flex-wrap" style="flex-direction: row-reverse;">
-                                  <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>HCP Name </option>
-                                              <option>HCP Name </option>
-                                          <option>HCP Name </option>
-                                      <option>HCP Name </option></select></li>
+                                  <li class="d-inline-block col-sm-3 col-6">
+                                    <select id="hcp" class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"></select>
+                                  </li>
                                   
-                                  <li class="d-inline-block col-sm-3 col-6"><select class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 font-gothambook pt-2 pb-2 outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"><option>Speciality </option>
-                                              <option>Speciality </option>
-                                          <option>Speciality </option>
-                                      <option>Speciality </option></select></li>
+                                  <li class="d-inline-block col-sm-3 col-6">
+                                    <select id="speciality" class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"></select>
+                                  </li>
+                                  
                             
                                   <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
                                       <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
@@ -309,5 +308,47 @@
           });
       }
 
+</script>
+<script>
+  $('#hcp').select2({
+      placeholder: "HCP Name",
+      allowClear: true,
+      ajax: {
+          url: "{{ route('users.get-user') }}",
+          type: "GET",
+          dataType: 'json',
+          data: function (params) {
+              return {
+                  search: params.term
+              };
+          },
+          processResults: function (response) {
+              return {
+                  results: response
+              };
+          },
+          cache: true
+      }
+  });
+  $('#speciality').select2({
+        placeholder: "Specialty",
+        allowClear: true,
+        ajax: {
+            url: "{{ route('user.getSpeciality') }}",
+            type: "GET",
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    });
 </script>
 @endsection
