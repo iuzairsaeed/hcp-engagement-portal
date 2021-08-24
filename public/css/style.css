@@ -310,7 +310,7 @@ input[type=number] {
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 421px; overflow-y: scroll;}
+.inbox_chat { height: 532px; overflow-y: scroll;}
 
 .inbox_chat::-webkit-scrollbar-track
 {
@@ -750,6 +750,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 
+
+@media only screen and (max-width : 1050px) {
+.srch_bar .input-group-addon{ margin: 0px !important; }
+#chat-overlay {
+    left: 46% !important;
+    max-width: 52% !important;
+}
+.chat_ib h5 { font-size: 11px; }
+}
+
+@media only screen and (max-width : 780px) {
+.chat_ib {
+    padding: 7px 0 0 6px;
+    width: 83%;
+}
+.srch_bar .input-group-addon{ margin: 0px !important; }
+#chat-overlay {
+    left: 50% !important;
+    max-width: 50% !important;
+}
+.chat_ib h5 { font-size: 11px; }
+}
+
 @media only screen and (max-width : 650px) {
 .sidebar .nav-item .nav-link span { line-height: 2.2;}
 .activity-carousel .owl-item .media img { width: 100% !important;}
@@ -770,6 +793,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .nav.nav-tabs li a {
     padding: 7px 17px;
     font-size: 10px;
+}
+#chat-overlay {
+    left: 0% !important;
+    max-width: 100% !important;
+    margin-top: 44em !important;
 }
 }
 

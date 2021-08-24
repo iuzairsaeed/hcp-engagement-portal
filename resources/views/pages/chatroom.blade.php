@@ -19,13 +19,13 @@
                         
                             <div class="col-sm-12 pt-3">
                                       <div class="w-100 d-flex flex-wrap">
-                                        <div class="col-sm-4 pl-0">
+                                        <div class="col-sm-4 col-12 pl-sm-0 pr-sm-2 p-0">
                                             <div class="w-100 bg-white border-radius10px">
                                                   <div class="headind_srch d-flex flex-wrap pt-4 pb-4">
                                                     <div class="recent_heading col-sm-2">
                                                       <!-- <h4>Recent</h4> -->
                                                     </div>
-                                                    <div class="srch_bar col-sm-10 text-right">
+                                                    <div class="srch_bar col-lg-10 col-sm-12 text-right">
                                                       <div class="stylish-input-group">
                                                         <input type="text"  placeholder="Search" class="search-bar border border-radius25px pl-3 pr-3 pt-2 pb-2 fontsize12px outline-none w-100">
                                                         <span class="input-group-addon">
@@ -42,8 +42,8 @@
                                                 <div class="chat_ib">
                                                   <a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
                                                    <h5>{{ $user->name }}
-                                                  </a>  
-                                                  <span class="chat_date">10:00 PM</span></h5>
+                                                   
+                                                  <span class="chat_date">10:00 PM</span></h5></a> 
                                                   <p>Julphar resumes sales of products...</p>
                                                 </div>
                                                 @endforeach
@@ -107,11 +107,12 @@
                                           </div>
                                       </div>
                                  </div>
+
                                  @include('chat-box')
 
-<input type="hidden" id="current_user" value="{{ Auth::id() }}" />
-<input type="hidden" id="pusher_app_key" value="{{ env('PUSHER_APP_KEY') }}" />
-<input type="hidden" id="pusher_cluster" value="{{ env('PUSHER_APP_CLUSTER') }}" />
+                  <input type="hidden" id="current_user" value="{{ Auth::id() }}" />
+                  <input type="hidden" id="pusher_app_key" value="{{ env('PUSHER_APP_KEY') }}" />
+                  <input type="hidden" id="pusher_cluster" value="{{ env('PUSHER_APP_CLUSTER') }}" />
 <!--               dfdsf             dfsdf                          dfsdfsdf          fsdf -->
                             </div>
                             <!-- /.container-fluid -->

@@ -37,12 +37,12 @@ time {
     /* margin-right: 25px;
     width: 310px; */
     margin-right: 95px;
-    width: 914px;
-    height: 780px;
+    width: 100%;
+    height: auto;
 }
 
 .chat-area {
-    height: 400px;
+    height: 476px;
     overflow-y: scroll;
 }
 
@@ -51,9 +51,11 @@ time {
 }
 
 #chat-overlay {
-    position: fixed;
-    right: 0%;
-    bottom: 0%;
+    position: absolute;
+    left: 43%;
+    margin-top: 4em;
+    width: 100%;
+    max-width: 55%;
 }
 
 .glyphicon-ok {

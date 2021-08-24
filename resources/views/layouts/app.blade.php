@@ -22,15 +22,15 @@
                 @endif
 
                 @yield('content')
-            </div>
              
         @else
             @yield('content')
         @endif
-        <div id="chat-overlay" class="row"></div>
+        <div id="chat-overlay"></div>
             <audio id="chat-alert-sound" style="display: none">
               <source src="{{ asset('sound/facebook_chat.mp3') }}" />
             </audio>
+         </div>
 
     </div>
 

@@ -1,4 +1,4 @@
-                                        <div id="chat_box" class="chat_box  col-sm-8 ">
+                                        <div id="chat_box" class="chat_box  col-sm-12 ">
                                             <div class="w-100 bg-white border-radius10px p-3" style="box-shadow: 1px 1px 10px #a7c5d2;">
                                                 <!-- chat-header -->
                                                     <div class="w-100 d-flex flex-wrap mb-3">
