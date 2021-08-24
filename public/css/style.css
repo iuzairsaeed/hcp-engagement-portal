@@ -747,6 +747,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 1px 1px 10px #ccc;
     margin-top: 12px;
 }
+input[type="date"]:disabled {
+    opacity: 0.7;
+}
+
 
 
 
