@@ -34,6 +34,7 @@
 
                                          <div class="w-100 d-flex flex-wrap">
                                           @foreach ($webinars as $webinar )
+                                          <a href="{{ route('event.show', $webinar->id) }}">
                                           <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                               <div class=" p-2 card border-0 border-radius10px">
                                                 <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($webinar->event_attachment)}}"></div>
@@ -52,6 +53,7 @@
                                                 </div>
                                               </div>
                                           </div>
+                                          </a>
                                           @endforeach 
                                             
                                             
@@ -73,6 +75,7 @@
                                  <div class="w-100 d-flex flex-wrap">
                                   
                                   @foreach ($virtuals as $virtual )
+                                  <a href="{{ route('event.show', $virtual->id) }}" >
                                   <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($virtual->event_attachment)}}"></div>
@@ -92,6 +95,7 @@
                                         </div>
                                       </div>
                                   </div>
+                                  </a>
                                   @endforeach 
                                     
 
@@ -117,6 +121,7 @@
                                  <div class="w-100 d-flex flex-wrap">
                     
                                   @foreach ($trainings as $training )
+                                  <a href="{{ route('event.show', $training->id) }}">
                                   <div class="col-lg-3 col-sm-6 pl-2 pr-2 mt-3">
                                       <div class=" p-2 card border-0 border-radius10px">
                                         <div class="h-img"><img class="card-img-top w-100 mb-1 rounded" src="{{asset($training->event_attachment)}}"></div>
@@ -136,6 +141,7 @@
                                         </div>
                                       </div>
                                   </div>
+                                  </a>
                                   @endforeach 
                                           
                           </div>

@@ -25,11 +25,11 @@
                                   <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
                                       <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
                                           <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-5 checklabel text-left border-right mr-2 mb-0">Karachi
-                                            <input type="checkbox" required>
+                                            <input type="checkbox" class="karachi" onclick="searchByLoc(this)" value="karachi" name="location" required>
                                             <span class="checkmark"></span>
                                           </label>
                                           <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
-                                            <input type="checkbox" required>
+                                            <input type="checkbox" class="lahore" onclick="searchByLoc(this)" value="lahore" name="location" required>
                                             <span class="checkmark"></span>
                                           </label>
                                       </div>
@@ -149,7 +149,15 @@
 
 @section('afterScript')
   
-  <script type="text/javascript">
+<script type="text/javascript">
+
+function searchByLoc(data) {
+  var khi = $('.karachi').is(':checked') ? "karachi" : 0;
+  var lhr = $('.lahore').is(':checked') ? "lahore" : 0;
+  
+  console.log(khi,lhr);
+}
+
     var data = {
       labels: [],
       datasets: [{
@@ -265,8 +273,6 @@
           }
 
 </script>
-
-
 <script type="text/javascript">
   var oilCanvas = document.getElementById("oilChart");
 

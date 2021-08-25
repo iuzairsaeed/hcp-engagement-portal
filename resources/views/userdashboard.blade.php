@@ -62,6 +62,7 @@
                         <div class="carousel-wrap col-sm-11 pl-sm-1">
                             <div class="owl-carousel upcoming-carousel">
                                       @foreach ($events as $event )
+                                      <a href="{{ route('event.show', $event->id) }}">
                                         <div class="item">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($event->event_attachment) }}" class="img-fluid"></div>
@@ -86,6 +87,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                      </a>
                                     @endforeach
                             </div>
                         </div>
@@ -112,6 +114,7 @@
                                 <div class="owl-carousel recent-carousel">
                                     @foreach ($posts as $post )
                                     <div class="item">
+                                        <a href="{{ route('post.show', $post->id) }}">
                                         <div class="bg-white border-radius15px p-2">
                                             <div class="w-100 h-img"><img src="{{asset($post->post_image) }}" class="mb-2 rounded w-100"></div>
                                             <p class="text-black font-gothambook fontsize12px mb-2 pl-2 pr-2">
@@ -119,15 +122,16 @@
                                             <a href="{{ route('post.show', $post->id) }}"
                                                 class="text-orange font-gothambook fontsize12px pl-2 pr-2 mb-2 d-block">View
                                                 Comment</a></div>
+                                            </a>
                                         </div>
-                                        @endforeach
-                                    </div>
+                                    @endforeach
                                 </div>
-                                <div class="col-sm-1 p-0 m-auto">
-                                    <a href="{{url('/post') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
-                                        All</a>
-                                </div>
-                                <!-- Content Row -->
+                            </div>
+                            <div class="col-sm-1 p-0 m-auto">
+                                <a href="{{url('/post') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
+                                    All</a>
+                            </div>
+                            <!-- Content Row -->
                         </div>
                             @else
                                 <p class="ml-1">No Post</p>

@@ -96,4 +96,11 @@ class DashboardController extends Controller
         }
     }
 
+    public function searchByLoc(Request $request) {
+        try {
+            // 
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
 }

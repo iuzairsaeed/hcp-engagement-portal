@@ -15,7 +15,6 @@ class Event extends Model
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
-    protected $dateFormat = 'l, M d,Y';
 
     protected $dates = ['date_from', 'date_to'];
 

@@ -21,6 +21,7 @@
                 <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
                   @foreach ($posts as $post)
                     <!-- card -->
+                    <a href="{{url('/post/'.$post->id)}}">
                     <div class="w-100 col-sm-3 p-2">
                       <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
                         <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
@@ -31,6 +32,7 @@
                         </div>
                       </div>
                     </div>
+                    </a>
                   @endforeach
                 </div>
               </div>
