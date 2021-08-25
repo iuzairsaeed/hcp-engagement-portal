@@ -34,6 +34,7 @@ class EventRequest extends FormRequest
                 'time' => ['bail', 'required', 'date_format:H:i', 'max:255', 'min:3'],
                 'location' => ['bail', 'required', 'string', 'max:255', 'min:3'],
                 'tag' => ['bail', 'required', 'string', 'max:255', 'min:3'],
+                'url' => ['bail', 'required', 'url', 'max:255', 'min:3'],
                 'event_attachment' => ['bail', 'required', 'image', 'mimes:jpeg,png,jpg','max:51200'],
             ];
         } else {

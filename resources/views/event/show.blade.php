@@ -77,7 +77,11 @@
 
 												<div class="w-100 d-flex d-flex mt-5">
 														<div class="col-sm-6 p-0">
-															<button onclick="join(this)" data-id="{{ $event->id }}" class="bg-orange btn border border-orange border-radius25px text-white text-uppercase fontsize16px w-100 font-gothambook">Join</button>
+															<a class="text-white" href="{{$event->url}}">
+															<button class="bg-orange btn border border-orange border-radius25px text-white text-uppercase fontsize16px w-100 font-gothambook">
+																	Join
+															</button>
+															</a>
 														</div>
 														<div class="col-sm-1">
 														<button onclick="react(this)" data-event-id="{{$event->id}}" class="text-orange border border-orange rounded-circle p-2 d-block text-center fontsize16px hovericon bg-white" style="width: 38px; height: 38px;"><i class="fa {{ ($event->eventReaction->first()) ? ($event->eventReaction->first->favorite ? "fa-bookmark" : "fa-bookmark-o" ) : "fa-bookmark-o"  }}"></i></button>
