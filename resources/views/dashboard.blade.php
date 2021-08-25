@@ -25,13 +25,13 @@
                                   <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
                                       <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
                                           <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-5 checklabel text-left border-right mr-2 mb-0">Karachi
-                                                    <input type="checkbox" required>
-                                                    <span class="checkmark"></span>
-                                                  </label>
-                                            <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
-                                                    <input type="checkbox" required>
-                                                    <span class="checkmark"></span>
-                                                  </label>
+                                            <input type="checkbox" required>
+                                            <span class="checkmark"></span>
+                                          </label>
+                                          <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
+                                            <input type="checkbox" required>
+                                            <span class="checkmark"></span>
+                                          </label>
                                       </div>
                                   </li>
                               </ul>
