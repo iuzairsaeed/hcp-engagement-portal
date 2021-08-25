@@ -73,7 +73,7 @@
                                     </h6>
 
 
-                                   <a class="dropdown-item d-flex align-items-center" href="#" id="tests">
+                                   {{-- <a class="dropdown-item d-flex align-items-center" href="#" id="tests">
                                         <div class="dropdown-list-image mr-3">
                                             <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
                                                 alt="">
@@ -84,10 +84,10 @@
                                                 the progress so far, keep up the good work!</div>
                                             <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                         </div>
-                                    </a> 
+                                    </a>  --}}
                                   
 
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="{{ route('chatroom') }}">Read More Messages</a>
                                 </div>
                             </li>
 

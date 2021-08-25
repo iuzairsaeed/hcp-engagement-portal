@@ -66,7 +66,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('about', 'PageController@about');
     Route::get('contact', 'PageController@contact');
     Route::get('faq', 'PageController@faq');
-    Route::get('chatroom', 'PageController@chatroom');
+    Route::get('chatroom', 'PageController@chatroom')->name('chatroom');
 
     Route::get('/load-latest-messages', 'MessagesController@getLoadLatestMessages');
     Route::post('/send', 'MessagesController@postSendMessage');

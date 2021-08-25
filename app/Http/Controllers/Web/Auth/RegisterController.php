@@ -57,8 +57,6 @@ class RegisterController extends Controller
             'password' => ['bail','required', 'string', 'min:6'],
             'phone' => ['required','regex:/[0-9+*-*]/'],
             'pmdc' => ['required','regex:/[0-9+*-*]/'],
-            'speciality' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
-            'location' => ['bail', 'required', 'alpha_spaces', 'max:255', 'min:3'],
         ]);
     }
 
@@ -70,24 +68,27 @@ class RegisterController extends Controller
      */
     public function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'pmdc' => $data['pmdc'],
-            'speciality' => $data['speciality'],
             'phone' => $data['phone'],
-            'location' => $data['location'],
             'device_token' => $data['device_token'] ?? null,
         ]);
+        $user->speciality()->attach([$data['speciality_id']]);
+        $user->location()->attach([$data['location_id']]);
+        $roleN = Role::where('name', 'normal')->first();
+        $user->assignRole([$roleN->id]);
+
+        return $user;
     }
 
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all())));
-        $roleN = Role::where('name', 'normal')->first();
-        $user->assignRole([$roleN->id]);
+        event(new Registered($this->create($request->all())));
+        
         return redirect("/");
     }
 }
