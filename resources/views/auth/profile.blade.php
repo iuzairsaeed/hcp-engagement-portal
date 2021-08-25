@@ -268,7 +268,7 @@
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
                                                 <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
-                                                    <input type="checkbox" name="education[currently_here][]" value="1" ><span class="checkmark"></span>
+                                                    <input type="checkbox" name="education[currently_here][]" value="1" id="chkPassport"><span class="checkmark"></span>
                                                 </label>
 
                                             </div>
@@ -279,7 +279,7 @@
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                            <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
+                                            <input type="date" name="education[date_to][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" id="txtNumberDate"  />
                                         </div>
                                         <div class="w-100">
                                             <div class="form-group col-sm-4">
@@ -431,7 +431,7 @@
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                            <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                            <input type="date" name="experience[date_to][]" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" id="txtNumberExp" placeholder="Year" />
                                         </div>
                                         <div class="w-100">
                                             <div class="form-group col-sm-4">
@@ -561,6 +561,30 @@ function passwordnew() {
     x.type = "password";
   }
 }
+
+
+    $(function () {
+        $("#chkPassport").click(function () {
+            if ($(this).is(":checked")) {
+              $("#txtNumberDate").attr("disabled", "disabled");
+              
+            } else {
+                $("#txtNumberDate").removeAttr("disabled");
+                $("#txtNumberDate").focus();
+            }
+        });
+        $("#currently_here").click(function () {
+            if ($(this).is(":checked")) {
+              $("#txtNumberExp").attr("disabled", "disabled");
+              
+            } else {
+                $("#txtNumberExp").removeAttr("disabled");
+                $("#txtNumberExp").focus();
+            }
+        });
+    });
+ 
+
 
 function submitProfile(){
   event = $("#profileForm");
