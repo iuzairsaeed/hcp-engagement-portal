@@ -77,7 +77,7 @@
 
 												<div class="w-100 d-flex d-flex mt-5">
 														<div class="col-sm-6 p-0">
-															<a class="text-white" href="{{$event->url}}">
+															<a class="text-white" href="{{$event->url}}" target="_blank">
 															<button class="bg-orange btn border border-orange border-radius25px text-white text-uppercase fontsize16px w-100 font-gothambook">
 																	Join
 															</button>
