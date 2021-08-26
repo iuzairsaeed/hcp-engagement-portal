@@ -40,7 +40,7 @@
 
     </div>
 
-    @include('inc.messages')
     @yield('afterScript')
+    @include('inc.messages')
 </body>
 </html>

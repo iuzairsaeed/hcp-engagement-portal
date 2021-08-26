@@ -99,63 +99,15 @@
     </div>
 
 
-
-                    
-                  
-                          <!--   <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><i class="ft-at-sign"></i></span>
-                                            </div>
-                                            <input type="username" class="form-control form-control-lg{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" id="username" placeholder="Username" required autofocus>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1"><i class="icon-key"></i></span>
-                                            </div>
-                                            <input type="password" class="form-control form-control-lg{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="inputPass" placeholder="Password" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0 ml-5">
-                                                <input type="checkbox" class="custom-control-input" name="remember" id="remember">
-                                                <label class="custom-control-label float-left" for="remember">Remember Me</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="text-center col-md-12">
-                                        <button type="submit"style="background-color: #004d40;"  class="btn btn 900 px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0">Login</button>
-                                    </div>
-                                </div>
-                              
-                            </form>
-                  
-                                <div class="text-center mb-1">Forgot Password? <a href="{{ route('password.request') }}"><b>Reset</b></a></div>
-                            -->
-
                         
-          </section>
+</section>
+@endsection
+
+@section('afterScript')
+<script src="{{ asset('js/app.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="{{asset('app-assets/vendors/js/select2/select2.js')}}"></script>
+<script src="{{asset('app-assets/js/toastr.js')}}"></script>
+<script src="{{asset('app-assets/js/sweet-alerts.js')}}"></script>
+<script src="{{asset('app-assets/js/toastr.min.js')}}"></script>
 @endsection
