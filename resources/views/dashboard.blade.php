@@ -13,6 +13,7 @@
                         <div class="row">   
                           <div class="col-sm-12 text-right">
                               <ul class="pl-0 pr-0 pt-2 pb-2 m-0 text-right d-flex flex-wrap" style="flex-direction: row-reverse;">
+                                
                                   <li class="d-inline-block col-sm-3 col-6">
                                     <select id="hcp" class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"></select>
                                   </li>
@@ -20,20 +21,11 @@
                                   <li class="d-inline-block col-sm-3 col-6">
                                     <select id="speciality" class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"></select>
                                   </li>
-                                  
-                            
-                                  <li class="d-inline-block col-sm-3 col-12 mt-sm-0 mt-3" style="max-width: 243px;">
-                                      <div class="bg-white border-radius25px d-flex position-relative" style="box-shadow: 1px 1px 10px #d6d6d6;padding: 7px 15px;">
-                                          <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-5 checklabel text-left border-right mr-2 mb-0">Karachi
-                                            <input type="checkbox" class="karachi" onclick="searchByLoc(this)" value="karachi" name="location" required>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                          <label class="checkcustom checksmall fontsize12px font-gothambook col-sm-6 checklabel text-left mb-0">Lahore
-                                            <input type="checkbox" class="lahore" onclick="searchByLoc(this)" value="lahore" name="location" required>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                      </div>
+
+                                  <li class="d-inline-block col-sm-3 col-6">
+                                    <select id="location" class="border-0 border-radius25px bg-white fontsize11px pl-3 pr-3 pt-2 pb-2 font-gothambook outline-none w-100" style="box-shadow: 1px 1px 10px #d6d6d6;"></select>
                                   </li>
+                                  
                               </ul>
                           </div>
                         </div>
@@ -151,13 +143,6 @@
   
 <script type="text/javascript">
 
-function searchByLoc(data) {
-  var khi = $('.karachi').is(':checked') ? "karachi" : 0;
-  var lhr = $('.lahore').is(':checked') ? "lahore" : 0;
-  
-  console.log(khi,lhr);
-}
-
     var data = {
       labels: [],
       datasets: [{
@@ -224,7 +209,7 @@ function searchByLoc(data) {
                       borderColor: 'rgb(241 113 33)',
                       borderCapStyle:'butt',
                       drawTicks: false,
-                      data: [50,60],
+                      data: [0],
                   }]
               },
 
@@ -317,44 +302,98 @@ function searchByLoc(data) {
 </script>
 <script>
   $('#hcp').select2({
-      placeholder: "HCP Name",
-      allowClear: true,
-      ajax: {
-          url: "{{ route('users.get-user') }}",
-          type: "GET",
-          dataType: 'json',
-          data: function (params) {
-              return {
-                  search: params.term
-              };
-          },
-          processResults: function (response) {
-              return {
-                  results: response
-              };
-          },
-          cache: true
-      }
+    placeholder: "HCP Name",
+    allowClear: true,
+    ajax: {
+      url: "{{ route('users.get-user') }}",
+      type: "GET",
+      dataType: 'json',
+      data: function (params) {
+          return {
+              search: params.term
+          };
+      },
+      processResults: function (response) {
+          return {
+              results: response
+          };
+      },
+      cache: true
+    } 
   });
+
   $('#speciality').select2({
-        placeholder: "Specialty",
-        allowClear: true,
-        ajax: {
-            url: "{{ route('user.getSpeciality') }}",
-            type: "GET",
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    search: params.term
-                };
-            },
-            processResults: function (response) {
-                return {
-                    results: response
-                };
-            },
-            cache: true
-        }
+    placeholder: "Specialty",
+    allowClear: true,
+    ajax: {
+      url: "{{ route('user.getSpeciality') }}",
+      type: "GET",
+      dataType: 'json',
+      data: function (params) {
+          return {
+              search: params.term
+          };
+      },
+      processResults: function (response) {
+          return {
+              results: response
+          };
+      },
+      cache: true
+    }
+  });
+
+  $('#location').select2({
+    placeholder: "Search Location",
+    allowClear: true,
+    ajax: {
+        url: "{{ route('user.getLocation') }}",
+        type: "GET",
+        dataType: 'json',
+        data: function (params) {
+            return {
+                search: params.term
+            };
+        },
+        processResults: function (response) {
+            return {
+                results: response
+            };
+        },
+        cache: true
+    }
+  });
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  $('#location').on('select2:select', function(e){
+    var data = e.params.data;
+    $.ajax({
+      url : "{{ route('dashboard.searchByLoc') }}",
+      type: "POST",
+      data : { data  :data },
+      success: function (res) {
+        swal('Success','Your Record Has Been Successfully Addded','success');
+      },
+      error: function(err) {
+        swal('Not Valid',err.responseJSON.message,'error')
+      }
     });
+    console.log(data);
+  }); 
+
+  $('#speciality').on('select2:select', function(e){
+    var data = e.params.data;
+    console.log(data);
+  }); 
+  $('#hcp').on('select2:select', function(e){
+    var data = e.params.data;
+    console.log(data);
+  }); 
+
 </script>
 @endsection

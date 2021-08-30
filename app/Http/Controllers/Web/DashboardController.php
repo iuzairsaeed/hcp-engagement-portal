@@ -83,9 +83,9 @@ class DashboardController extends Controller
         }
     }
    
-    public function getLocations(Request $request) {
+    public function getLocations($request) {
         try {
-            $locations = Location::withCount('users')->get();
+            $locations = Location::where('id', 'LIKE', ($request['location_id'] ?? null) )->withCount('users')->get();
             foreach ($locations as $l) {
                 $locs['country'][] = $l->name; 
                 $locs['count'][] = $l->users_count;
@@ -98,7 +98,10 @@ class DashboardController extends Controller
 
     public function searchByLoc(Request $request) {
         try {
-            // 
+            $location_id['location_id'] = (int)$request->data['id'];
+            $loc = $this->getLocations($location_id);
+            $exp = $this->getExperience($location_id);
+            dd($exp);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

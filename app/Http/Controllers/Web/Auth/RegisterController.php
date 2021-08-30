@@ -74,6 +74,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'pmdc' => $data['pmdc'],
             'phone' => $data['phone'],
+            'speciality_id' => $data['speciality_id'],
+            'location_id' => $data['location_id'],
             'device_token' => $data['device_token'] ?? null,
         ]);
         $user->speciality()->attach([$data['speciality_id']]);

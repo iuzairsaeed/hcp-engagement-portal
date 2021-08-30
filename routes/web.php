@@ -6,19 +6,21 @@ use Illuminate\Support\Facades\Auth;
 Route::group(['namespace' => 'Web'], function () {
     Auth::routes(['rese' => true, 'verify' => true]);
 
-     Route::group(['middleware' => 'auth' ], function () {
+   Route::group(['middleware' => 'auth' ], function () {
         
         Route::post('registerUser','Auth\RegisterController@register')->name('registerUser');
         Route::resource('users','UserController');
         Route::get('usersList', 'UserController@getList')->name('users.getList');
         Route::get('users-dropdown-list', 'UserController@getUser')->name('users.get-user');
-
+        Route::get('communities', 'UserController@index');
+       
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('search', 'DashboardController@search')->name('search');
         Route::get('dashboard/list', 'DashboardController@getList')->name('dashboard.getList');
         Route::get('dashboard/interact', 'DashboardController@getInteract')->name('dashboard.getInteract');
         Route::get('dashboard/experience', 'DashboardController@getExperience')->name('dashboard.getExperience');
         Route::get('dashboard/locations', 'DashboardController@getLocations')->name('dashboard.getLocations');
+        Route::post('dashboard/searchLoc', 'DashboardController@searchByLoc')->name('dashboard.searchByLoc');
 
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');
@@ -54,12 +56,9 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('support','SupportController');
         Route::resource('reaction','ReactionController');
         
-        Route::get('communities', 'UserController@index');
-
         Route::resource('comment', 'CommentController');
         Route::resource('education', 'EducationController');
         Route::resource('experience', 'ExperienceController');
-
 
     });
     

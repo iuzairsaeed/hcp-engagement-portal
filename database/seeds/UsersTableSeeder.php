@@ -21,6 +21,8 @@ class UsersTableSeeder extends Seeder
             'pmdc' => '123456789',
             'phone' => '0335669874',
             'email' => 'uzair@hcp.com',
+            'speciality_id' => 1,
+            'location_id' => 1,
             'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
@@ -36,6 +38,8 @@ class UsersTableSeeder extends Seeder
             'pmdc' => '123456789',
             'phone' => '0335669874',
             'email' => 'asim@hcp.com',
+            'speciality_id' => 5,
+            'location_id' => 2,
             'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
