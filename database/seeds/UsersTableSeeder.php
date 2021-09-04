@@ -23,8 +23,6 @@ class UsersTableSeeder extends Seeder
             'location_id' => 1,
             'speciality_id' => 1,
             'email' => 'uzair@hcp.com',
-            'speciality_id' => 1,
-            'location_id' => 1,
             'is_admin' => true,
             'password' => Hash::make('secret'),
             'created_at' => now()
