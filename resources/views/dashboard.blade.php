@@ -401,7 +401,13 @@
       type: "POST",
       data : { data  :data },
       success: function (res) {
-        console.log(res.length);
+        console.log(res.response);
+        update_pie_chart(res.response[0]);
+        update_line_chart(res.response[1]);
+        update_bar_chart(res.response[2]);
+        $('#pdf').text(res.response[3]);
+        update_total_hcp_joined(res.response[4]);
+        update_specialities(res.response[5]);
         
         swal('Success','Your Record Has Been Successfully Addded','success');
       },

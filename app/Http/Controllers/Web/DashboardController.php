@@ -103,7 +103,7 @@ class DashboardController extends Controller
         // UserSpeciality::where('id', 'LIKE', ($request['speciality_id'] ?? null) )->with('users')->get();
         try {
             $loc= array();
-            $speciality = DB::select('SELECT * FROM `user_specialities` JOIN users ON users.id= user_specialities.user_id WHERE user_specialities.id='.$request['speciality_id'].'');
+            $speciality = DB::select('SELECT * FROM `users` JOIN specialities ON specialities.id= users.speciality_id WHERE users.speciality_id='.$request['speciality_id'].'');
             foreach ($speciality as $l) {
                 $loc['name'] = $l->name;
             }
@@ -153,8 +153,19 @@ class DashboardController extends Controller
     public function searchBySpec(Request $request) {
         try {
             $speciality_id['speciality_id'] = (int)$request->data['id'];
-            $loc = $this->getSpecialities($speciality_id);
-
+            $speciality=DB::table('users')
+            ->join('specialities','specialities.id','users.speciality_id')
+            ->where('users.speciality_id',$speciality_id['speciality_id'])
+            ->get();
+            // dd($speciality); 
+            foreach ($speciality as $value) {
+                $locations = Location::where('id',$value->location_id )->withCount('users')->get();
+            }
+            foreach ($locations as $l) {
+                $locs['country'][] = $l->name; 
+                $locs['count'][] = $l->users_count;
+            }
+            // dd($locs);
             $experience = array();
             $interact = array();
             
@@ -168,7 +179,7 @@ class DashboardController extends Controller
                 $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
             })->take(10);
             
-
+            
             $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($speciality_id) {
                 return $query->where('speciality_id', $speciality_id);
             })->count();
@@ -177,11 +188,12 @@ class DashboardController extends Controller
                 return $query->where('speciality_id', $speciality_id);
             })->withCount('interact')->with('user')->get();
             $specialities = Speciality::whereHas('users', function ($query) use ($speciality_id) {
-                return $query->where('speciality_id', $speciality_id);
+                return $query->where('users.speciality_id', 2);
             })->withCount('users')->get();
+            // dd($specialities);
 
-            $data['response']=array($loc->original,$experience,$interact,$pdf,$events_and_hcps,$specialities);
-            dd($data);
+            $data['response']=array($locs,$experience,$interact,$pdf,$events_and_hcps,$specialities);
+            // dd($data);
             return $data;
         } catch (\Throwable $th) {
             return $th->getMessage();

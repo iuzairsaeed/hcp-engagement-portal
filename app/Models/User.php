@@ -37,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar',
         'password',
         'pmdc',
-        'speciality',
+        'speciality_id',
         'phone',
         'location',
         'cnic',
