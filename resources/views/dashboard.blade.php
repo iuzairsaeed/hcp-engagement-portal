@@ -420,13 +420,13 @@
       type: "POST",
       data : { data  :data },
       success: function (res) {
-        console.log(res);
-        // update_pie_chart(res.response[0]);
+        console.log(res.response[5]);
         update_line_chart(res.response[0]);
         update_bar_chart(res.response[1]);
         $('#pdf').text(res.response[2]);
         update_total_hcp_joined(res.response[3]);
         update_specialities(res.response[4]);
+        update_pie_chart(res.response[5]);
         swal('Success','Your Record Has Been Successfully Addded','success');
       },
       error: function(err) {
@@ -441,7 +441,14 @@
 
     // Chart.defaults.global.defaultFontFamily = "Lato";
     Chart.defaults.global.defaultFontSize = 12;
-
+    if(res.country[0]=="Karachi")
+    {
+      var color="#0058a5";
+    }
+    if(res.country[0]=="Lahore")
+    {
+      var color="#f17121";
+    }
     var oilData = {
       labels: [
         res.country[0]
@@ -450,7 +457,7 @@
           {
               data: [100],
               backgroundColor: [
-                  "#0058a5",
+                  color,
               ]
           }]
       };
