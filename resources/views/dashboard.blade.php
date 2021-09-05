@@ -372,6 +372,8 @@
   });
 
   $('#location').on('select2:select', function(e){
+    $('#hcp').val(null).trigger('change');
+    $('#speciality').val(null).trigger('change');
     var data = e.params.data;
     $.ajax({
       url : "{{ route('dashboard.searchByLoc') }}",
@@ -385,6 +387,7 @@
         $('#pdf').text(res.response[3]);
         update_total_hcp_joined(res.response[4]);
         update_specialities(res.response[5]);
+        // $('#location').val(null).trigger('change');
         
         swal('Success','Your Record Has Been Successfully Addded','success');
       },
@@ -395,6 +398,8 @@
   }); 
 
   $('#speciality').on('select2:select', function(e){
+    $('#location').val(null).trigger('change');
+    $('#hcp').val(null).trigger('change');
     var data = e.params.data;
     $.ajax({
       url : "{{ route('dashboard.searchBySpec') }}",
@@ -402,6 +407,11 @@
       data : { data  :data },
       success: function (res) {
         console.log(res.response);
+        if(res.response==201)
+        {
+          swal('Not Valid','No Record Found','error')
+        } else{
+
         update_pie_chart(res.response[0]);
         update_line_chart(res.response[1]);
         update_bar_chart(res.response[2]);
@@ -409,7 +419,9 @@
         update_total_hcp_joined(res.response[4]);
         update_specialities(res.response[5]);
         
+        $('#speciality').val(null).trigger('change');
         swal('Success','Your Record Has Been Successfully Addded','success');
+        }
       },
       error: function(err) {
         swal('Not Valid',err.responseJSON.message,'error')
@@ -420,6 +432,8 @@
 
 
   $('#hcp').on('select2:select', function(e){
+    $('#location').val(null).trigger('change');
+    $('#speciality').val(null).trigger('change');
     var data = e.params.data;
     $.ajax({
       url : "{{ route('dashboard.searchByHCP') }}",
@@ -433,6 +447,8 @@
         update_total_hcp_joined(res.response[3]);
         update_specialities(res.response[4]);
         update_pie_chart(res.response[5]);
+        
+
         swal('Success','Your Record Has Been Successfully Addded','success');
       },
       error: function(err) {
@@ -440,6 +456,16 @@
       }
     });
   }); 
+
+  $('#hcp').on('select2:unselect', function(e){
+    location.reload(true);    
+  });
+  $('#speciality').on('select2:unselect', function(e){
+    location.reload(true);    
+  });
+  $('#location').on('select2:unselect', function(e){
+    location.reload(true);    
+  });
 
   function update_pie_chart(res){
     console.log(res.country);
