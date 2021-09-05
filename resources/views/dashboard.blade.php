@@ -411,8 +411,52 @@
         {
           swal('Not Valid','No Record Found','error')
         } else{
+          console.log(res.response[0])
+        // update_pie_chart(res.response[0]);
+        var oilCanvas = document.getElementById("oilChart");
 
-        update_pie_chart(res.response[0]);
+        // Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 12;
+         var oilData = {
+          labels: [
+              "Karachi",
+              "Lahore"
+          ],
+          datasets: [
+              {
+                  data: [133.3, 31],
+                  backgroundColor: [
+                      "#0058a5",
+                      "#f17121"
+                  ]
+              }]
+      };
+
+      var pieChart = new Chart(oilCanvas, {
+        type: 'pie',
+        data: oilData
+      });
+
+      ajax_chart(pieChart);
+        // function to update our chart
+        function pie_chart(chart, data) {
+            var data = data || {};
+            res.response[0].forEach((element, key) => {
+              chart.data.labels[key] = element[0].name;
+            });
+            res.response[0].forEach((element, key) => {
+                chart.data.labels[key] = element[0].users_count;
+            });
+            chart.update(); // finally update our chart
+        }
+          // res.response[0].forEach((element, key) => {
+          //     chart.data.labels[key] = element[0].name;
+          // });
+          // res.response[0].forEach((element, key) => {
+          //     chart.data.labels[key] = element[0].users_count;
+          // });
+          // chart.update(); // finally update our chart
+          // console.log(name,users_count);
         update_line_chart(res.response[1]);
         update_bar_chart(res.response[2]);
         $('#pdf').text(res.response[3]);
