@@ -410,7 +410,7 @@
         } else{
         // update_pie_chart(res.response[0]);
         var oilCanvas = document.getElementById("oilChart");
-          console.log(res.response[0]);
+          console.log("Location ",res.response[0][0]);
         // Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 12;
          var oilData = {
@@ -420,7 +420,7 @@
           ],
           datasets: [
               {
-                  data: [133.3, 31],
+                  data: [],
                   backgroundColor: [
                       "#0058a5",
                       "#f17121"
@@ -433,15 +433,16 @@
         data: oilData
       });
 
-      ajax_chart(pieChart);
+      pie_chart(pieChart);
         // function to update our chart
         function pie_chart(chart, data) {
             var data = data || {};
-            res.response[0].forEach((element, key) => {
-              chart.data.labels[key] = element[0].name;
+            res.response[0][0].forEach((element, key) => {
+              chart.data.labels[key] = element.name;
             });
-            res.response[0].forEach((element, key) => {
-                chart.data.labels[key] = element[0].users_count;
+            res.response[0][0].forEach((element, key) => {
+              console.log("COunt",element.users_count);
+                chart.data.datasets[0].data[key] = element.users_count;
             });
             chart.update(); // finally update our chart
         }

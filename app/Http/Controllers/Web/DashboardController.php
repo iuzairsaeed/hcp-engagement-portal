@@ -168,11 +168,10 @@ class DashboardController extends Controller
             }
             else{
 
-                foreach ($speciality as $value) {
-                    $locs[] = Location::withCount(['users'=>function ($query) use ($speciality_id) {
-                        return $query->where('speciality_id', $speciality_id);
-                    }])->get();
-                }
+                $locs[] = Location::withCount(['users'=>function ($query) use ($speciality_id) {
+                    return $query->where('speciality_id', $speciality_id);
+                }])->get();
+                
                 $experience = array();
                 $interact = array();
                 
