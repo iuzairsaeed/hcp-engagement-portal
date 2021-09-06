@@ -175,6 +175,9 @@ class DashboardController extends Controller
                 $experience = array();
                 $interact = array();
                 
+                $experience['user'][]=".";
+                $experience['count'][]=0;
+                
                 User::all()->where('speciality_id' , $speciality_id['speciality_id'])->sortBy(function ($interacts) use (&$experience) {
                     $experience['user'][] = $interacts->name;
                     $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$interacts->id.';')[0]->sum ?? 0 ;
