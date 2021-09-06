@@ -122,6 +122,16 @@ class DashboardController extends Controller
             $experience = array();
             $interact = array();
 
+            User::all()->where('location_id' , $location_id['location_id'])->sortBy(function ($interacts) use (&$experience) {
+                $experience['user'][] = $interacts->name;
+                $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$interacts->id.';')[0]->sum ?? 0 ;
+            })->take(10);
+            
+            User::all()->where('location_id' , $location_id['location_id'])->sortBy(function ($user) use (&$interact) {
+                $interact['user'][] = $user->name;
+                $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
+            })->take(10);
+
             $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($location_id) {
                 return $query->where('location_id', $location_id);
             })->count();
@@ -166,6 +176,16 @@ class DashboardController extends Controller
                 $experience = array();
                 $interact = array();
                 
+                User::all()->where('speciality_id' , $speciality_id['speciality_id'])->sortBy(function ($interacts) use (&$experience) {
+                    $experience['user'][] = $interacts->name;
+                    $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$interacts->id.';')[0]->sum ?? 0 ;
+                })->take(10);
+                
+                User::all()->where('speciality_id' , $speciality_id['speciality_id'])->sortBy(function ($user) use (&$interact) {
+                    $interact['user'][] = $user->name;
+                    $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
+                })->take(10);
+
                 $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($speciality_id) {
                     return $query->where('speciality_id', $speciality_id);
                 })->count();
@@ -217,7 +237,7 @@ class DashboardController extends Controller
                 $locs['country'][] = $l->name; 
                 $locs['count'][] = $l->users_count;
             }
-            $data['response']=array($experience,$interact,$pdf,$events_and_hcps,$specialities,$locs);
+            $data['response']=array($experience,$interact,$pdf,$events_and_hcps,$specialities,$locations);
 
             return $data;
         } catch (\Throwable $th) {
