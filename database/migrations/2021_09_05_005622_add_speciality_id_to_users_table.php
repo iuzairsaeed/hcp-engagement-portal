@@ -14,7 +14,7 @@ class AddSpecialityIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('speciality_id');
+            $table->foreignId('speciality_id')->after('location_id');
         });
     }
 

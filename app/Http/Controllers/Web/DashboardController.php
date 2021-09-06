@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Models\Post;
 use App\Models\Interact;
 use App\Models\Speciality;
+use App\Models\UserSpeciality;
 use App\Models\Location;
 use App\Http\Requests\SearchRequest;
 use Schema;
@@ -70,6 +71,7 @@ class DashboardController extends Controller
     }
 
     public function getExperience(Request $request) {
+        // dd($request->all());
         try {
             $experience = array();
             User::all()->sortBy(function ($user) use (&$experience) {
@@ -83,9 +85,10 @@ class DashboardController extends Controller
         }
     }
    
-    public function getLocations($request) {
+    public function getLocations(Request $request) {
         try {
             $locations = Location::where('id', 'LIKE', ($request['location_id'] ?? null) )->withCount('users')->get();
+            // dd($locations);
             foreach ($locations as $l) {
                 $locs['country'][] = $l->name; 
                 $locs['count'][] = $l->users_count;
@@ -96,12 +99,127 @@ class DashboardController extends Controller
         }
     }
 
+    public function getSpecialities($request) {
+        // UserSpeciality::where('id', 'LIKE', ($request['speciality_id'] ?? null) )->with('users')->get();
+        try {
+            $loc= array();
+            $speciality = DB::select('SELECT * FROM `users` JOIN specialities ON specialities.id= users.speciality_id WHERE users.speciality_id='.$request['speciality_id'].'');
+            foreach ($speciality as $l) {
+                $loc['name'] = $l->name;
+            }
+            return \Response::json($speciality);
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
     public function searchByLoc(Request $request) {
+        // dd($request->all());
         try {
             $location_id['location_id'] = (int)$request->data['id'];
-            $loc = $this->getLocations($location_id);
-            $exp = $this->getExperience($location_id);
-            dd($exp);
+            $loc = Location::where('id', $location_id['location_id'] )->withCount('users')->get();
+
+            $experience = array();
+            $interact = array();
+
+            $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($location_id) {
+                return $query->where('location_id', $location_id);
+            })->count();
+            // $events_and_hcps = Event::->withCount('interact')->get();
+            // $events_and_hcps =Event::whereHas('user', function ($query) use ($location_id) {
+            //     return $query->where('location_id', $location_id);
+            // })->withCount('interact')->with('user')->get();
+            $events_and_hcps =Event::whereHas('interact', function ($query) use ($location_id) {
+                return $query->whereHas('user', function ($user) use ($location_id) {
+                   return $user->where('location_id', $location_id);
+                });
+            })->withCount('interact')->with('user')->get();
+            // dd($events_and_hcps);
+            $specialities = Speciality::whereHas('users', function ($query) use ($location_id) {
+                return $query->where('location_id', $location_id);
+            })->withCount('users')->get();
+
+            $data['response']=array($loc,$experience,$interact,$pdf,$events_and_hcps,$specialities);
+            return $data;
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    public function searchBySpec(Request $request) {
+        try {
+            $speciality_id['speciality_id'] = (int)$request->data['id'];
+            $speciality=DB::table('users')
+            ->join('specialities','specialities.id','users.speciality_id')
+            ->where('users.speciality_id',$speciality_id['speciality_id'])
+            ->get();
+            if($speciality->isEmpty())
+            {
+                $data['response']=201;
+            }
+            else{
+
+                foreach ($speciality as $value) {
+                    $locs[] = Location::withCount(['users'=>function ($query) use ($speciality_id) {
+                        return $query->where('speciality_id', $speciality_id);
+                    }])->get();
+                }
+                $experience = array();
+                $interact = array();
+                
+                $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($speciality_id) {
+                    return $query->where('speciality_id', $speciality_id);
+                })->count();
+                // $events_and_hcps = Event::->withCount('interact')->get();
+                $events_and_hcps =Event::whereHas('user', function ($query) use ($speciality_id) {
+                    return $query->where('speciality_id', $speciality_id);
+                })->withCount('interact')->with('user')->get();
+                $specialities = Speciality::whereHas('users', function ($query) use ($speciality_id) {
+                    return $query->where('users.speciality_id', $speciality_id);
+                })->withCount('users')->get();
+                // dd($specialities);
+    
+                $data['response']=array($locs,$experience,$interact,$pdf,$events_and_hcps,$specialities);
+            }
+            // dd($locs);
+            // dd($data);
+            return $data;
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    public function searchByHCP(Request $request) {
+        // dd($request->data['id']);
+        $user_id= $request->data['id'];
+        try {
+            $experience = array();
+            $interact = array();
+
+            $experience['user'][]=".";
+            $experience['count'][]=0;
+
+            $experience['user'][] = $request->data['text'];
+            $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$request->data['id'].';')[0]->sum ?? 0 ;
+            
+            $interact['user'][] = $request->data['text'];
+            $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$request->data['id'].';')[0]->sum  ;
+            $pdf = Interact::where('model_type', Activity::class)->where('user_id',$request->data['id'])->count();
+            $events_and_hcps =Event::where('user_id',$request->data['id'])->withCount('interact')->with('user')->get();
+            $specialities = Speciality::whereHas('users', function ($query) use ($user_id) {
+                return $query->where('users.id', $user_id);
+            })->withCount('users')->get();
+            $location=DB::table('users')
+            ->join('locations','locations.id','users.location_id')
+            ->where('users.id',$user_id)
+            ->first();
+            $locations = Location::where('id',$location->location_id )->withCount('users')->get();
+            // dd($locations);
+            foreach ($locations as $l) {
+                $locs['country'][] = $l->name; 
+                $locs['count'][] = $l->users_count;
+            }
+            $data['response']=array($experience,$interact,$pdf,$events_and_hcps,$specialities,$locs);
+
+            return $data;
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
