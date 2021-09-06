@@ -289,7 +289,7 @@
       // function to update our chart
       function ajax_chart(chart, data) {
           var data = data || {};
-          $.getJSON("{{ route('dashboard.getLocations') }}", data).done(function(response) {
+          $.getJSON("{{route('dashboard.getLocations')}}", data).done(function(response) {
             response.country.forEach((element, key) => {
               chart.data.labels[key] = element;
             });
@@ -517,23 +517,15 @@
 
     // Chart.defaults.global.defaultFontFamily = "Lato";
     Chart.defaults.global.defaultFontSize = 12;
-    if(res.country[0]=="Karachi")
-    {
-      var color="#0058a5";
-    }
-    if(res.country[0]=="Lahore")
-    {
-      var color="#f17121";
-    }
+   
     var oilData = {
-      labels: [
-        res.country[0]
-      ],
+      labels: [],
       datasets: [
           {
               data: [100],
               backgroundColor: [
-                  color,
+                      "#0058a5",
+                      "#f17121"
               ]
           }]
       };
@@ -546,12 +538,13 @@
     pie_chart(pieChart,res);
     // function to update our chart
     function pie_chart(chart,res, data) {
+        console.log(res);
         var data = data || {};
-          res.country.forEach((element, key) => {
-            chart.data.labels[key] = element;
+          res.forEach((element, key) => {
+            chart.data.labels[key] = element.name;
           });
-          res.count.forEach((element, key) => {
-            chart.data.datasets[0].data[key] = element;
+          res.forEach((element, key) => {
+            chart.data.datasets[0].data[key] = element.users_count;
           });
           chart.update(); // finally update our chart
     }
@@ -609,10 +602,10 @@
           function ajax_chart(chart,res, data) {
             console.log(res);
               var data = data || {};
-                res.user.forEach((element, key) => {
+                res.forEach((element, key) => {
                   chart.data.labels[key] = element;
                 });
-                res.count.forEach((element, key) => {
+                res.forEach((element, key) => {
                   chart.data.datasets[0].data[key] = element;
                 });
                 chart.update(); // finally update our chart
@@ -661,11 +654,11 @@
     function ajax_chart(chart,res, data) {
         var data = data || {};
           console.log(res);
-          res.user.forEach((element, key) => {
-            chart.data.labels[key] = element;
+          res.forEach((element, key) => {
+            chart.data.labels[key] = element.name;
           });
-          res.count.forEach((element, key) => {
-            chart.data.datasets[0].data[key] = element;
+          res.forEach((element, key) => {
+            chart.data.datasets[0].data[key] = element.users_count;
           });
           chart.update(); // finally update our chart
     }

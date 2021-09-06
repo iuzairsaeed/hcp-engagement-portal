@@ -85,7 +85,7 @@ class DashboardController extends Controller
         }
     }
    
-    public function getLocations($request) {
+    public function getLocations(Request $request) {
         try {
             $locations = Location::where('id', 'LIKE', ($request['location_id'] ?? null) )->withCount('users')->get();
             // dd($locations);
@@ -117,21 +117,10 @@ class DashboardController extends Controller
         // dd($request->all());
         try {
             $location_id['location_id'] = (int)$request->data['id'];
-            $loc = $this->getLocations($location_id);
+            $loc = Location::where('id', $location_id['location_id'] )->withCount('users')->get();
 
             $experience = array();
             $interact = array();
-            
-            User::all()->where('location_id' , $location_id['location_id'])->sortBy(function ($interacts) use (&$experience) {
-                $experience['user'][] = $interacts->name;
-                $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$interacts->id.';')[0]->sum ?? 0 ;
-            })->take(10);
-            
-            User::all()->where('location_id' , $location_id['location_id'])->sortBy(function ($user) use (&$interact) {
-                $interact['user'][] = $user->name;
-                $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
-            })->take(10);
-            
 
             $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($location_id) {
                 return $query->where('location_id', $location_id);
@@ -150,7 +139,7 @@ class DashboardController extends Controller
                 return $query->where('location_id', $location_id);
             })->withCount('users')->get();
 
-            $data['response']=array($loc->original,$experience,$interact,$pdf,$events_and_hcps,$specialities);
+            $data['response']=array($loc,$experience,$interact,$pdf,$events_and_hcps,$specialities);
             return $data;
         } catch (\Throwable $th) {
             return $th->getMessage();
@@ -176,17 +165,6 @@ class DashboardController extends Controller
                 }
                 $experience = array();
                 $interact = array();
-                
-                User::all()->where('speciality_id' , $speciality_id['speciality_id'])->sortBy(function ($interacts) use (&$experience) {
-                    $experience['user'][] = $interacts->name;
-                    $experience['count'][] = DB::select('SELECT round(SUM(DATEDIFF(date_to , date_from ) / 365)) as sum from experiences where user_id = '.$interacts->id.';')[0]->sum ?? 0 ;
-                })->take(10);
-                
-                User::all()->where('speciality_id' , $speciality_id['speciality_id'])->sortBy(function ($user) use (&$interact) {
-                    $interact['user'][] = $user->name;
-                    $interact['count'][] = DB::select('SELECT COUNT(id) as sum from interacts where model_type LIKE "%Activity%" AND user_id = '.$user->id.';')[0]->sum  ;
-                })->take(10);
-                
                 
                 $pdf = Interact::where('model_type', Activity::class)->whereHas('user', function ($query) use ($speciality_id) {
                     return $query->where('speciality_id', $speciality_id);
