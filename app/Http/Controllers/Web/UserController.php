@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $search = trim($request->search);
 
-        $users = User::where('name','Like',"%".$search."%")->get();
+        $users = User::where('name','Like',"%".$search."%")->where('is_admin', false)->get();
         $formatted_depts = [];
         foreach ($users as $user) {
             $formatted_depts[] = ['id' => $user->id, 'text' => $user->name];

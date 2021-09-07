@@ -50,6 +50,20 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_active',
     ];
 
+
+    public function scopeOfType($query, $type)
+    {
+        switch ($type) {
+            case 'admin':
+                return $query->where('isa_dmin', true);
+                break;
+                
+                default:
+                return $query->where('isa_dmin', false);
+                break;
+        } 
+    }
+
     protected $with = [
 
     ];

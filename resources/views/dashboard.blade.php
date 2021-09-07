@@ -184,7 +184,6 @@
     function ajax_chart(chart, data) {
         var data = data || {};
         $.getJSON("{{ route('dashboard.getInteract') }}", data).done(function(response) {
-          console.log(response);
           response.user.forEach((element, key) => {
             chart.data.labels[key] = element;
           });
@@ -380,7 +379,6 @@
       type: "POST",
       data : { data  :data },
       success: function (res) {
-        console.log(res.response[5]);
         update_pie_chart(res.response[0]);
         update_line_chart(res.response[1]);
         update_bar_chart(res.response[2]);
@@ -406,15 +404,12 @@
       type: "POST",
       data : { data  :data },
       success: function (res) {
-        console.log(res.response);
         if(res.response==201)
         {
           swal('Not Valid','No Record Found','error')
         } else{
-          console.log(res.response[0])
         // update_pie_chart(res.response[0]);
         var oilCanvas = document.getElementById("oilChart");
-
         // Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 12;
          var oilData = {
@@ -424,7 +419,7 @@
           ],
           datasets: [
               {
-                  data: [133.3, 31],
+                  data: [],
                   backgroundColor: [
                       "#0058a5",
                       "#f17121"
@@ -437,15 +432,15 @@
         data: oilData
       });
 
-      ajax_chart(pieChart);
+      pie_chart(pieChart);
         // function to update our chart
         function pie_chart(chart, data) {
             var data = data || {};
-            res.response[0].forEach((element, key) => {
-              chart.data.labels[key] = element[0].name;
+            res.response[0][0].forEach((element, key) => {
+              chart.data.labels[key] = element.name;
             });
-            res.response[0].forEach((element, key) => {
-                chart.data.labels[key] = element[0].users_count;
+            res.response[0][0].forEach((element, key) => {
+                chart.data.datasets[0].data[key] = element.user_count;
             });
             chart.update(); // finally update our chart
         }
@@ -456,7 +451,6 @@
           //     chart.data.labels[key] = element[0].users_count;
           // });
           // chart.update(); // finally update our chart
-          // console.log(name,users_count);
         update_line_chart(res.response[1]);
         update_bar_chart(res.response[2]);
         $('#pdf').text(res.response[3]);
@@ -484,7 +478,6 @@
       type: "POST",
       data : { data  :data },
       success: function (res) {
-        console.log(res.response[5]);
         update_line_chart(res.response[0]);
         update_bar_chart(res.response[1]);
         $('#pdf').text(res.response[2]);
@@ -512,20 +505,23 @@
   });
 
   function update_pie_chart(res){
-    console.log(res.country);
-      var oilCanvas = document.getElementById("oilChart");
-
+    var oilCanvas = document.getElementById("oilChart");
     // Chart.defaults.global.defaultFontFamily = "Lato";
     Chart.defaults.global.defaultFontSize = 12;
-   
+      if(res[0].name=="Karachi")
+      {
+        var color="#0058a5";
+      } 
+      if(res[0].name=="Lahore") {
+        var color="#f17121";
+      }
     var oilData = {
       labels: [],
       datasets: [
           {
               data: [100],
               backgroundColor: [
-                      "#0058a5",
-                      "#f17121"
+                      color
               ]
           }]
       };
@@ -538,13 +534,12 @@
     pie_chart(pieChart,res);
     // function to update our chart
     function pie_chart(chart,res, data) {
-        console.log(res);
         var data = data || {};
           res.forEach((element, key) => {
             chart.data.labels[key] = element.name;
           });
           res.forEach((element, key) => {
-            chart.data.datasets[0].data[key] = element.users_count;
+            chart.data.datasets[0].data[key] = element.user_count;
           });
           chart.update(); // finally update our chart
     }
@@ -599,19 +594,18 @@
 
           ajax_chart(chart_e,res);
           // function to update our chart
+
           function ajax_chart(chart,res, data) {
-            console.log(res);
               var data = data || {};
-                res.forEach((element, key) => {
+                res.user.forEach((element, key) => {
                   chart.data.labels[key] = element;
                 });
-                res.forEach((element, key) => {
+                res.count.forEach((element, key) => {
                   chart.data.datasets[0].data[key] = element;
                 });
                 chart.update(); // finally update our chart
           }
   }
-
   function update_bar_chart(res){
     var data = {
       labels: [],
@@ -653,16 +647,17 @@
     // function to update our chart
     function ajax_chart(chart,res, data) {
         var data = data || {};
-          console.log(res);
-          res.forEach((element, key) => {
-            chart.data.labels[key] = element.name;
+          res.user.forEach((element, key) => {
+            chart.data.labels[key] = element;
           });
-          res.forEach((element, key) => {
-            chart.data.datasets[0].data[key] = element.users_count;
+          res.count.forEach((element, key) => {
+            chart.data.datasets[0].data[key] = element;
           });
           chart.update(); // finally update our chart
     }
   }
+
+
 
   function update_total_hcp_joined(res){
       var hcp_html="";
@@ -688,7 +683,6 @@
 
   function update_specialities(res)
   {
-    console.log("Specialization:"+ res);
     var sp_html="";
       if(res.length==0)
       {
