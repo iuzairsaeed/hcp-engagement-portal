@@ -41,6 +41,8 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('activity','ActivityController');
         Route::get('download/{activity}', 'ActivityController@download')->name('download');
         Route::get('activity-list', 'ActivityController@getList')->name('activity.get-list');
+
+        Route::get('/notification', 'PusherNotificationController@sendNotification');
         
         Route::resource('event','EventController');
         Route::name('event.')->group(function () {
