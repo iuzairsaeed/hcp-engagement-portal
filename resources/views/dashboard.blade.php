@@ -700,8 +700,7 @@
         }
 
       }
-
-        $('.hcp_specialization').html(sp_html);
+      $('.hcp_specialization').html(sp_html);
   }
 
 </script>
