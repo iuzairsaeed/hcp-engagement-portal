@@ -18,8 +18,8 @@
                             <div class="col-lg-8 col-sm-7 bg-login-image pr-0 d-flex align-items-center">
                                 <div class="w-100 text-center mobile-h" style="padding: 5em 2em;height: 60%;">
                                     <h1 class="text-white font-gothambold font-weight800">HCP <br/> ENGAGEMENT PORTAL</h1>
-                                    <h2 class="text-white text-uppercase font-gothambold font-weight800 mt-4">Hello</h2>
-                                    <p class="text-white font-gothamlight fontsize21px maxwidth437px m-auto">Enter your personal details and start journey with us</p>
+                                    <h2 class="text-white font-gothambold font-weight800 mt-4"> Welcome Back!</h2>
+                                    <p class="text-white font-gothamlight fontsize21px maxwidth437px m-auto">Helping you connect, share and learn with HCPs around the world</p>
                                 </div>
                             </div>
                             <!-- left side -->

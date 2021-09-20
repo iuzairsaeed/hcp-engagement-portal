@@ -16,8 +16,8 @@
                             <div class="col-lg-8 col-sm-7 col-12 bg-login-image pr-0 d-flex align-items-center">
                                 <div class="w-100 text-center mobile-h" style="padding: 5em 2em;height: 60%;">
                                     <h1 class="text-white font-weight800 font-gothambold">HCP <br/> ENGAGEMENT PORTAL</h1>
-                                    <h2 class="text-white text-uppercase font-weight800 font-gothambold mt-4">Welcome Back!</h2>
-                                    <p class="text-white fontsize21px maxwidth437px font-gothamlight m-auto">To keep connected with us please login with your personal infos</p>
+                                    <h2 class="text-white font-weight800 font-gothambold mt-4"> Hello </h2>
+                                    <p class="text-white fontsize21px maxwidth437px font-gothamlight m-auto"> It’s quick and easy </p>
                                 </div>
                             </div>
                             <!-- left side -->

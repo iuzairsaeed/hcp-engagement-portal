@@ -57,7 +57,7 @@ a{text-decoration: none !important;}
 .fontsize31px{font-size: 31px;}
 .border-radius15px{border-radius: 15px 15px;}
 .border-radius10px{border-radius: 10px 10px;}
-.border-radius25px{border-radius: 25px 25px;}
+.border-radius25px{border-radius: 25px 25px !important;}
 .text-orange{color: #f17121;}
 .text-blue{color: #0058a5;}
 .text-gray{color: #afadad;}
@@ -65,7 +65,7 @@ a{text-decoration: none !important;}
 .text-black{color: #322F49;}
 .bg-orange{background-color: #f17121;}
 .bg-blue{background-color: #0058a5;}
-.bg-gray{background-color: #f9f9f9;}
+.bg-gray{background-color: #f9f9f9 !important;}
 .bg-lightgray{background-color: #f1f9fc;}
 .border-gray{border-color: #f9f9f9 !important;}
 .border-orange{border-color: #f17121 !important;}
@@ -293,6 +293,7 @@ input[type=number] {
 
 .chat_ib h5{ font-size:15px; color:#606060; margin:0 0 3px 0;
  font-family: Gothambook;}
+ .chat_ib h5 a{ color:#606060; }
 .chat_ib h5 span{ font-size:11px; float:right;color: #0058a5; font-family: Gothambook;}
 .chat_ib p{ font-size:10px; color:#989898; margin:auto; font-family: Gothambook;}
 .chat_img {
@@ -377,7 +378,7 @@ input[type=number] {
 .input_msg_write input {
   border: medium none;
   width: 100%;
-    padding: 14px 47px;
+    padding: 24px 47px;
 }
 
 .type_msg {position: relative;}

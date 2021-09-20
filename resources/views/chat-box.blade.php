@@ -23,10 +23,10 @@
                                                   </div>
                                                   <div class="type_msg mt-2">
                                                     <div class="input_msg_write input-group form-controls">
-                                                        <a href="#" class="position-absolute" style="left: 16px;top: 10px;"><img src="images/Asset84.png" width="20"></a>
+                                                        <a href="#" class="position-absolute" style="left: 16px;top: 10px;z-index: 10;"><img src="images/Asset84.png" width="20"></a>
                                                       <input type="text" class="write_msg bg-gray border-radius25px fontsize12px font-montserrat text-dark outline-none form-control input-sm chat_input" placeholder="Type a message" />
                                                       <span class="input-group-btn">
-                                                       <button class="btn btn-primary btn-sm btn-chat" type="button" data-to-user="" disabled><img src="images/Asset83.png"></button>
+                                                       <button class="btn btn-primary btn-sm btn-chat h-100" type="button" data-to-user="" disabled><img src="images/Asset83.png"></button>
                                                       </span>
                                                     </div>
                                                   </div>
