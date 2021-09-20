@@ -27,8 +27,10 @@
                         <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
                         <div class="card-body pt-1 pb-0 pl-1 pr-1">
                           <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
-                            <div class="text-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
+                            <div class="text-left float-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
                             </div>
+                            <div class="col-auto float-right p-0"><a href="#" class="fontsize14px text-black"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="fontsize14px text-black ml-1"><i class="fa fa-trash"></i></a></div>
                         </div>
                       </div>
                     </div>
