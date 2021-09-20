@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Constant;
+// use App\Models\traits\Search;
 
 class Post extends Model
 {
     use SoftDeletes;
+    use Search;
+
 
     protected $casts = [
         'created_at' => 'datetime:'.Constant::DATE_FORMAT,
@@ -20,6 +23,11 @@ class Post extends Model
 
     protected $with = [
         'comments'
+    ];
+
+    protected $searchable = [
+        'title',
+        'description',      
     ];
 
     public function user()

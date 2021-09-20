@@ -23,14 +23,14 @@
                                              <div class="w-100 d-flex flex-wrap mt-4">
                                                   <h6 class="mb-1 pt-1 pb-1 col-sm-6 font-gothambook text-black"> HCPs Profiles </h6>
                                                       <div class="col-sm-6 text-right">
-                                                           <select class="border-0 bg-white font-gothambook fontsize11px pl-3 pr-3 pt-2 pb-2 outline-none" style="box-shadow: -1px 1px 10px -2px #9fa5a7;">
+                                                           {{-- <select class="border-0 bg-white font-gothambook fontsize11px pl-3 pr-3 pt-2 pb-2 outline-none" style="box-shadow: -1px 1px 10px -2px #9fa5a7;">
                                                                         <option>Select</option>
                                                                         <option>Last 10 Days</option>
                                                                         <option>Last 15 Days</option>
                                                                         <option>Last 20 Days</option>
                                                                         <option>Last 25 Days</option>
                                                                         <option>Last 30 Days</option>
-                                                                    </select>
+                                                                    </select> --}}
                                                                 </div>
                                                              </div>
 

@@ -18,22 +18,9 @@
                   <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addpost"> Add Post</a>
                 </div>
                 <div class="ml-2 col-lg-12 col-sm-12 text-center font-gothambook text-black">{{ $posts->isEmpty() ? "No data available!" : ""}}</div>
+                <input wire:model="search" type="text" placeholder="Search posts..."/>
                 <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
-                  @foreach ($posts as $post)
-                    <!-- card -->
-                    <a href="{{url('/post/'.$post->id)}}">
-                    <div class="w-100 col-sm-3 p-2">
-                      <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
-                        <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
-                        <div class="card-body pt-1 pb-0 pl-1 pr-1">
-                          <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
-                            <div class="text-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    </a>
-                  @endforeach
+                  @livewire('show-posts')
                 </div>
               </div>
             </div>
