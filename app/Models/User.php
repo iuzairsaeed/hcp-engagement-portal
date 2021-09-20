@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Constant;
+use App\Models\Traits\Search;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\ModelStatus\HasStatuses;
 use App\Notifications\VerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use SoftDeletes, HasApiTokens, Notifiable, HasRoles, HasStatuses;
+    use SoftDeletes, HasApiTokens, Notifiable, HasRoles, HasStatuses, Search;
 
     protected $hidden = [
         'pin', 'biometric', 'updated_at', 'email_verified_at', 'password', 'remember_token', 'device_token', 'is_admin'
@@ -29,6 +30,18 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $guarded = [];
+
+    protected $searchable = [
+        'name',
+        'email',
+        'phone',
+        'cnic',
+        'country',
+        'address',
+        'street',
+        'city',
+        'zipcode'
+    ];
 
     protected $fillable = [
         'name',

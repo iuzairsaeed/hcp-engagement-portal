@@ -22,6 +22,10 @@ class CreatePostsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::statement(
+            'ALTER TABLE posts ADD FULLTEXT fulltext_index(title,description)'
+        );
     }
 
     /**

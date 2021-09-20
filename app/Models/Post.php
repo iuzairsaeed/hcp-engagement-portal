@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Constant;
-// use App\Models\traits\Search;
+use App\Models\Traits\Search;
 
 class Post extends Model
 {
-    use SoftDeletes;
-    use Search;
+    use SoftDeletes, Search;
 
 
     protected $casts = [

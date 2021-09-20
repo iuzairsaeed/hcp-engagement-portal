@@ -25,12 +25,12 @@ class CreateUsersTable extends Migration
             $table->foreignId('location_id');
             $table->string('cnic')->nullable();
             $table->date('dob')->nullable();
-            $table->string('gender')->nullanle();
-            $table->string('country')->nullanle();
-            $table->string('address')->nullanle();
-            $table->string('street')->nullanle();
-            $table->string('city')->nullanle();
-            $table->string('zipcode')->nullanle();
+            $table->string('gender')->nullable();
+            $table->string('country')->nullable();
+            $table->string('address')->nullable();
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zipcode')->nullable();
             $table->rememberToken();
             $table->boolean('is_active')->default(true);
             $table->boolean('is_admin')->default(false);
@@ -39,6 +39,10 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        DB::statement(
+            'ALTER TABLE users ADD FULLTEXT fulltext_index(name, email, phone, cnic, country, address, street, city, zipcode)'
+        );
     }
 
     /**

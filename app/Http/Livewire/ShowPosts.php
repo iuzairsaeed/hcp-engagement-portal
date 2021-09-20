@@ -11,8 +11,12 @@ class ShowPosts extends Component
  
     public function render()
     {
+        // sleep(1);    
+        // $posts = Post::search($this->search)->paginate(10);
+        // return view('livewire.show-posts',['posts'=>$posts]);
+
         $posts = new Post; 
-        $columns = $posts->getFillable(); $posts = Post::query()->whereLike($columns, $this->search)->get();
+        $columns = $posts->getFillable(); $posts = Post::query()->whereLike($columns, $this->search)->paginate(10);
         return view('livewire.show-posts', [
             'posts' => $posts,
         ]);
