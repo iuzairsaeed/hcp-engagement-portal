@@ -1,48 +1,37 @@
 <div>
-    <input wire:model="search" type="text" placeholder="Search Posts"/>
+    {{-- <input wire:model="search" type="text" placeholder="Search Posts"/> --}}
+    <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
 
-    @if ($search == "")
+    @if($posts->isEmpty())
+
+        <br>
+        <div class="text-gray-700 text-sm">
+            No matching result was found.
+        </div>
+    @else
         @foreach ($posts as $post)
         <!-- card -->
         <a href="{{url('/post/'.$post->id)}}">
         <div class="w-100 col-sm-3 p-2">
-            <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
+        <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
             <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
             <div class="card-body pt-1 pb-0 pl-1 pr-1">
-                <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
-                <div class="text-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
+            <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
+                <div class="text-left float-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
                 </div>
-            </div>
+                <div class="col-auto float-right p-0"><a href="#" class="fontsize14px text-black"><i class="fa fa-pencil"></i></a>
+                <a href="#" class="fontsize14px text-black ml-1"><i class="fa fa-trash"></i></a></div>
             </div>
         </div>
+        </div>
         </a>
-
         @endforeach
-    @else
-        @if($posts->isEmpty())
-            <div class="text-gray-500 text-sm">
-                No matching result was found.
-            </div>
-            @else
-            @foreach ($posts as $post)
-                <!-- card -->
-                <a href="{{url('/post/'.$post->id)}}">
-                <div class="w-100 col-sm-3 p-2">
-                    <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
-                    <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
-                    <div class="card-body pt-1 pb-0 pl-1 pr-1">
-                        <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
-                        <div class="text-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            @endforeach
-        @endif
     @endif
-    <div class="px-4 mt-4">
+    {{-- @endif --}}
+    
+    
+</div>            
+    {{-- <div class="col-12">
         {{$posts->links()}}
-    </div>
-                    
+    </div> --}}
 </div>

@@ -18,9 +18,7 @@
                   <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addpost"> Add Post</a>
                 </div>
                 <div class="ml-2 col-lg-12 col-sm-12 text-center font-gothambook text-black">{{ $posts->isEmpty() ? "No data available!" : ""}}</div>
-                <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
                   @livewire('show-posts')
-                </div>
               </div>
             </div>
           </div>
