@@ -15,8 +15,8 @@ class FAQ extends Model
         'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
         'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
     ];
-
-    protected $fillable = ['quesstion', 'answer'];
+    
+    protected $fillable = ['user_id','question', 'answer'];
 
     public function user()
     {
