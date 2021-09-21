@@ -19,7 +19,12 @@
                         <a class="card-link font-gothambook text-dark fontweight500 mb-3 collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false">
                                 {{$faq->question}}
                             </a>
-                            <div class="float-right col-auto p-0"><a href="#" class="text-black fontsize14px"><i class="fa fa-pencil"></i></a><button href="#" class="text-black fontsize14px bg-transparent border-0 ml-1"><i class="fa fa-trash"></i></button> </div>
+                            <div class="float-right col-auto p-0">
+                                <a href="#" class="text-black fontsize14px"><i class="fa fa-pencil"></i></a>
+                                <button href="#" class="text-black fontsize14px bg-transparent border-0 ml-1">
+                                    <i class="fa fa-trash"></i>
+                                </button> 
+                            </div>
                         </div>
                         <div id="collapse1" class="collapse" data-parent="#accordion" style="">
                             <div class="card-body font-gothamlight">

@@ -14,9 +14,9 @@
             <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
 
                 <!-- Recent Activities -->
+                @if (!$activities->isEmpty())
                 <div class="w-100 pt-3 d-flex flex-wrap">
                     <h6 class="font-gothambook text-darkgray mb-1 p-1 col-sm-12">My Recent Activities </h6>
-                    @if (!$activities->isEmpty())
                         <div class="carousel-wrap pl-sm-0 col-sm-11">
                             <div class="owl-carousel activity-carousel">
                                 @foreach ($activities as $activity )
@@ -39,8 +39,6 @@
                             </div>
                         </div>
                         
-                    @else
-                        <p class="ml-1">No Activties</p>
                     @endif
                     @if (!$activities->isEmpty())
                         <div class="col-sm-1 p-0 m-auto">
@@ -55,9 +53,9 @@
 
 
                     <!-- Upcoming Events -->
+                    @if (!$events->isEmpty())
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Upcoming Events </h6>
-                        @if (!$events->isEmpty())
       
                         <div class="carousel-wrap col-sm-11 pl-sm-1">
                             <div class="owl-carousel upcoming-carousel">
@@ -100,16 +98,14 @@
                         @endif
                     </div>
 
-                    @else
-                        <p class="ml-1">No Events</p>
                     @endif
-                   
+                    
                     <!-- Upcoming Events -->
 
                         <!-- Content Row -->
+                        @if (!$posts->isEmpty())
                         <div class="w-100 mt-4 d-flex flex-wrap">
                             <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12"> Recent Posts</h6>
-                            @if (!$posts->isEmpty())
                             <div class="carousel-wrap col-sm-11 pl-sm-1">
                                 <div class="owl-carousel recent-carousel">
                                     @foreach ($posts as $post )
@@ -133,9 +129,52 @@
                             </div>
                             <!-- Content Row -->
                         </div>
-                            @else
-                                <p class="ml-1">No Post</p>
-                            @endif
+                        @endif
+                    
+
+                    <!-- Users -->
+                    @if (!$users->isEmpty())
+                    <div class="w-100 pt-3 d-flex flex-wrap">
+                        <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Users </h6>
+      
+                        <div class="carousel-wrap col-sm-11 pl-sm-1">
+                            <div class="owl-carousel upcoming-carousel">
+                                      @foreach ($users as $user )
+                                        <div class="item">
+                                            <div class="bg-white border-radius15px p-2">
+                                                <div class="w-100 h-img"><img src="{{asset($user->avatar) }}" class="img-fluid"></div>
+                                                <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
+                                                    <p>{{ $user->name }}</p>
+                                                    <ul class="list-unstyled d-inline-block p-0 d-flex flex-wrap w-100 mb-3 border-bottom border-gray">
+                                                        <li class="col-sm-6 col-6 p-0"><h6
+                                                                class="text-darkgray fontsize9px font-gothambook"><i
+                                                                    class="fa fa-calendar-check fontsize11px mr-1 float-left"></i>
+                                                                {{ $user->speciality[0]->name }}</li>
+                                                        <li class="col-sm-6 col-6 p-0 text-center">
+                                                            <h6 class="text-darkgray fontsize9px font-gothambook">
+                                                                <i class="fa fa-clock mr-1 fontsize12px float-left"></i>
+                                                                <span class="float-left text-left w-fix">  {{ $user->location[0]->name }}</span>
+                                                            </h6>
+                                                        </li>
+                                                    </ul>
+                                                    <h6 class="text-black font-gothambook mt-1 mb-2 fontsize12px"> {{ $user->title }}  </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </a>
+                                    @endforeach
+                            </div>
+                        </div>
+                        @if (!$users->isEmpty())
+                            <div class="col-sm-1 p-0 m-auto">
+                                <a href="user"
+                                class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
+                                    All</a>
+                            </div>
+                        @endif
+                    </div>
+
+                    @endif
 
                         <!-- /.container-fluid -->
                     </div>

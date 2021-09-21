@@ -29,13 +29,7 @@
 
                             <div class="col-sm-12 mt-4">
                                 <div class="w-100 border-radius10px pt-4 pb-5 pl-4 pr-4 text-center bg-white">
-
-                                    
-
-                                        @livewire('show-faq')
-
-                                    
-
+                                    @livewire('show-faq')
                                 </div>
                             </div>
 
@@ -70,12 +64,12 @@
                     
                     <div class="w-100 mt-2">
                         <label class="font-gothamlight fontsize10px text-dark"> Question </label>
-                        <input placeholder="Question" name="question" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+                        <input placeholder="Question" name="question" id="question" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
                     </div>
 
                     <div class="w-100 mt-3">
                         <label class="font-gothamlight fontsize10px text-dark"> Answer </label>
-                        <textarea placeholder="Answer" name="answer" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+                        <textarea placeholder="Answer" name="answer" id="answer" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
                     </div>
                 <div class="w-100 text-center p-3 pb-4">
                     <button type="button" onclick="submitFaq()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Faqs </button>
@@ -121,6 +115,24 @@ function submitFaq(){
     }
   });
 }
+
+$(document).on('click','.viewBtn',function(){
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: 'faq/'+id+'/edit',
+            method:'GET',
+            dataType:'json',
+            success:function(data)
+            {
+                $('#id').val(data[0].id);
+                $('#name').val(data[0].name);
+                $('#type').val(data[0].type);
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    });
 </script>
 
 @endsection

@@ -78,7 +78,8 @@ class FaqsControlller extends Controller
      */
     public function edit($id)
     {
-        //
+        $faq = FAQ::find($id)->get();
+        return response($faq , 200);
     }
 
     /**

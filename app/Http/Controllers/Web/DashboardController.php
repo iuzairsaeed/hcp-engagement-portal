@@ -29,6 +29,7 @@ class DashboardController extends Controller
                 $events_and_hcps = Event::withCount('interact')->get();
                 $specialities = Speciality::withCount('users')->get();
 
+
                 return view('dashboard', compact(
                     'hcp', 'events', 'pdf', 'events_and_hcps', 'specialities', 
                 ));
@@ -37,8 +38,9 @@ class DashboardController extends Controller
                 $events = Event::all()->sortByDesc('updated_at');
                 $posts = Post::all()->sortByDesc('updated_at');
                 $activities = Activity::whereHas('interact')->get();
-
-                return view('userdashboard',  compact(['events', 'posts', 'activities']));
+                $users = new User;
+                $users = collect($users);
+                return view('userdashboard',  compact(['events', 'posts', 'activities', 'users']));
             } 
         } catch (\Throwable $th) {
             return $th->getMessage();
@@ -52,7 +54,9 @@ class DashboardController extends Controller
             $post = new Post; $columns = $post->getFillable(); $posts = Post::query()->whereLike($columns, $search)->get();
             $activity = new Activity; $columns = $activity->getFillable(); $activities = Activity::query()->whereLike($columns, $search)->get();
             $event = new Event; $columns = $event->getFillable(); $events = Event::query()->whereLike($columns, $search)->get();
-            return view('userdashboard',  compact(['events', 'posts', 'activities']));
+            $user = new User; $columns = $user->getFillable(); $users = User::query()->whereLike($columns, $search)->get();
+
+            return view('userdashboard',  compact(['events', 'posts', 'activities','users']));
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
