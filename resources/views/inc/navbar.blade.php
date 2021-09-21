@@ -17,7 +17,7 @@
                         <!-- Topbar Search -->
                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search " method="GET" action='{{route('search')}}'>
                             @csrf
-                            <div class="input-group border-radius25px bg-lightgray">
+                            <div class="input-group border-radius25px bg-lightgray border border-orange">
                                 <input type="text" class="form-control font-gothamlight bg-transparent border-0 small outline-none pl-4" placeholder="Search..."
                                     value="{{ session('search') }}" aria-label="Search" name="search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">

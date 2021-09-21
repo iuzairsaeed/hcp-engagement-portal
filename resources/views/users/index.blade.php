@@ -59,8 +59,8 @@
                                                                                  </ul>
 
                                                                                   <div class="text-left">
-                                                                                    <p class="fontsize13px mb-0 pt-2 text-black font-gothammedium"> {{$user->name}} </p>
-                                                                                    <p class="text-gray font-gothamlight fontsize10px"> {{$user->profile->clinic_name ?? ""}} </p>
+                                                                                    <h6 class="fontsize13px mb-0 pt-1 text-black font-gothammedium"> {{$user->name}} </h6>
+                                                                                    <p class="text-gray font-gothamlight fontsize10px mb-1"> {{$user->profile->clinic_name ?? ""}} </p>
                                                                                 </div>
 
                                                                                 </div>
