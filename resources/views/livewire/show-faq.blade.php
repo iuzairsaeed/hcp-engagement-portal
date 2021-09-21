@@ -19,7 +19,10 @@
                         <a class="card-link font-gothambook text-dark fontweight500 mb-3 collapsed" data-toggle="collapse" href="#collapse{{$key}}" aria-expanded="false">
                                 {{$faq->question}}
                             </a>
-                            <div class="float-right col-auto p-0"><a href="#" class="text-black fontsize14px" data-toggle="modal" data-target="#editpost"><i class="fa fa-pencil"></i></a><button href="#" class="text-black fontsize14px bg-transparent border-0 ml-1 delete"><i class="fa fa-trash"></i></button> </div>
+                            <div class="float-right col-auto p-0 ">
+                                <a class="viewBtn text-black fontsize14px " data-id="{{$faq->id}}" data-toggle="modal" data-target="#editfaq"><i class="fa fa-pencil"></i></a>
+                                <button class="text-black fontsize14px bg-transparent border-0 ml-1 delete" data-id="{{$faq->id}}" ><i class="fa fa-trash"></i></button> 
+                            </div>
                         </div>
                         <div id="collapse{{$key}}" class="collapse" data-parent="#accordion" style="">
                             <div class="card-body font-gothamlight">
