@@ -48,7 +48,7 @@
 
 
 
-     <!-- Add Post Modal -->
+     <!-- Add FAQ Modal -->
   <div class="modal fade" id="addfaq" role="dialog">
     <div class="modal-dialog modal-lg" style=" max-width: 605px;">
     
@@ -59,17 +59,15 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" id="faqForm" >
+              <form class="w-100 uploader" id="faqAddForm">
                      @csrf
-                    
                     <div class="w-100 mt-2">
                         <label class="font-gothamlight fontsize10px text-dark"> Question </label>
-                        <input placeholder="Question" name="question" id="question" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+                        <input placeholder="Question" name="question" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
                     </div>
-
                     <div class="w-100 mt-3">
                         <label class="font-gothamlight fontsize10px text-dark"> Answer </label>
-                        <textarea placeholder="Answer" name="answer" id="answer" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+                        <textarea placeholder="Answer" name="answer" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
                     </div>
                 <div class="w-100 text-center p-3 pb-4">
                     <button type="button" onclick="submitFaq()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Faqs </button>
@@ -81,12 +79,12 @@
       
     </div>
   </div>
-  <!-- Add Post -->
+  <!-- Add FAQ -->
 
   
 
-<!-- Edit Post Modal -->
-<div class="modal fade" id="editpost" role="dialog">
+<!-- Edit FAQ Modal -->
+<div class="modal fade" id="editfaq" role="dialog">
     <div class="modal-dialog modal-lg" style=" max-width: 605px;">
     
       <!-- Modal content-->
@@ -96,29 +94,28 @@
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                <form class="w-100 uploader" action="" id="postForm" method="post" enctype="multipart/form-data">
-                     @csrf
-                    
-                    <div class="w-100 mt-2">
-                        <label class="font-gothamlight fontsize10px text-dark"> Post Title </label>
-                        <input placeholder="Post Title" name="title" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
-                    </div>
-
-                    <div class="w-100 mt-3">
-                        <label class="font-gothamlight fontsize10px text-dark"> Post Description </label>
-                        <textarea placeholder="Post Description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
-                    </div>
-                <div class="w-100 text-center p-3 pb-4">
-                    <button type="button" onclick="submitPost()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Edit Faqs </button>
-                </div>
-            </form>
+          <form class="w-100 uploader" id="faqForm" >
+            @csrf
+            <input type="hidden" name="id" id="id" />
+            <div class="w-100 mt-2">
+                <label class="font-gothamlight fontsize10px text-dark"> Question </label>
+                <input placeholder="Question" name="question" id="question" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+            </div>
+            <div class="w-100 mt-3">
+                <label class="font-gothamlight fontsize10px text-dark"> Answer </label>
+                <textarea placeholder="Answer" name="answer" id="answer" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+            </div>
+            <div class="w-100 text-center p-3 pb-4">
+                <button type="button"  class="btn updatebtn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Add Faqs </button>
+            </div>
+          </form>
         </div>
        
       </div>
       
     </div>
   </div>
-  <!-- Edit Post -->
+  <!-- Edit FAQ -->
 
 
 
@@ -131,8 +128,8 @@
 <script type="text/javascript">
 
 function submitFaq(){
-  event = $("#faqForm");
-  var form_data = new FormData($("#faqForm")[0]);
+  event = $("#faqAddForm");
+  var form_data = new FormData($("#faqAddForm")[0]);
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -157,55 +154,86 @@ function submitFaq(){
   });
 }
 
-$(document).on('click','.viewBtn',function(){
-        var id = $(this).attr('data-id');
-        $.ajax({
-            url: 'faq/'+id+'/edit',
-            method:'GET',
-            dataType:'json',
-            success:function(data)
-            {
-                $('#id').val(data[0].id);
-                $('#name').val(data[0].name);
-                $('#type').val(data[0].type);
-            },
-            error: function(e) {
-                console.log(e);
-            }
-        });
-    });
-</script>
+$(document).on('click','.updatebtn',function(e){
+  e.preventDefault();
+  event = $("#faqForm");
+  var form_data = new FormData($("#faqForm")[0]);
+  form_data.append('_method', "PUT")
 
-<script type="text/javascript">
-    $(document).on('click','.delete',function(e){
-        e.preventDefault();
-        var id = $(this).attr('id');
-        swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0CC27E',
-            cancelButtonColor: '#FF586B',
-            confirmButtonText: 'Yes, Delete it',
-            cancelButtonText: "No, Cancel"
-        }).then(function (isConfirm) {
-            if (isConfirm) {
-                $.ajax(
-                {
-                    url: "/product/"+id,
-                    type: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (){
-                        $('#dTable').DataTable().ajax.reload();
-                        swal("Deleted!", "Action has been performed successfully!", "success");
-                    }
-                });
-            }
-        }).catch(swal.noop);
+  var id = $('#id').val();
+  var question = $('#question').val();
+  var answer = $('#answer').val();
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url : "/faq/"+id,
+    type: "PUT",
+    dataType: 'json',
+    data: {
+      form_data
+    },
+    processData: false,
+    success: function (res) {
+      swal('Success','Your Record Has Been Successfully Addded','success');
+      // location.reload(true);
+    },
+    error: function(err) {
+      swal('Not Valid',err.responseJSON.message,'error')
+    }
+  });
+});
+
+$(document).on('click','.viewBtn',function(){
+    var id = $(this).attr('data-id');
+    $.ajax({
+        url: 'faq/'+id+'/edit',
+        method:'GET',
+        dataType:'json',
+        success:function(data)
+        {
+            $('#id').val(data.id);
+            $('#question').val(data.question);
+            $('#answer').val(data.answer);
+        },  
+        error: function(e) {
+            console.log(e);
+        }
     });
+});
+
+
+$(document).on('click','.delete',function(e){
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0CC27E',
+        cancelButtonColor: '#FF586B',
+        confirmButtonText: 'Yes, Delete it',
+        cancelButtonText: "No, Cancel"
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            $.ajax(
+            {
+                url: "/faq/"+id,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (){
+                    swal("Deleted!", "Action has been performed successfully!", "success");
+                    location.reload(true);
+                }
+            });
+        }
+    }).catch(swal.noop);
+});
 </script>
 
 @endsection

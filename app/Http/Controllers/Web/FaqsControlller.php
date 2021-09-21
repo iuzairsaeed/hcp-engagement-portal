@@ -76,9 +76,8 @@ class FaqsControlller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FAQ $faq)
     {
-        $faq = FAQ::find($id)->get();
         return response($faq , 200);
     }
 
@@ -93,6 +92,7 @@ class FaqsControlller extends Controller
     {
         try { 
             $data = $request->all();
+            dd($data);
             $this->model->update($data , $faq);
             return redirect()->back()->with('success', 'FAQ has been updated.');
         } catch (\Throwable $th) {
@@ -106,10 +106,10 @@ class FaqsControlller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FAQ $faq)
     {
         try {
-            $this->model->delete($experience);
+            $this->model->delete($faq);
             return response('Experience Deleted Successfully',200);
         } catch (\Throwable $th) {
             return $th->getMessage();
