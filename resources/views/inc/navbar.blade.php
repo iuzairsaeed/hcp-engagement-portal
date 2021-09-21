@@ -3,7 +3,7 @@
                 <div class="row">
                 <!-- Topbar -->
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow col-sm-12">
-                        <div><a href="route('/dashboard')"><img src="{{asset('images/Asset3.png')}}" width="130"></a></div>
+                        <div><a href="{{ url('/dashboard') }}"><img src="{{asset('images/Asset3.svg')}}" width="130"></a></div>
                          <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between border-left p-2 ml-4 col-sm-4 d-sm-block d-none" style="border-width: 2px !important;">
                             <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium">{{  Str::ucfirst(Request::segment(1)) }}

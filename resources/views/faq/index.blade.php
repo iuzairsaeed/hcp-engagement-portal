@@ -83,6 +83,47 @@
   </div>
   <!-- Add Post -->
 
+  
+
+<!-- Edit Post Modal -->
+<div class="modal fade" id="editpost" role="dialog">
+    <div class="modal-dialog modal-lg" style=" max-width: 605px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content border-0 border-radius10px overflow-hiden">
+        <div class="modal-header pl-4 pr-4 border-0" style="background: #4d8ac0;">
+            <h6 class="modal-title text-left text-white font-gothambook"> Edit Faq's </h6>
+          <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
+        </div>
+        <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
+                <form class="w-100 uploader" action="" id="postForm" method="post" enctype="multipart/form-data">
+                     @csrf
+                    
+                    <div class="w-100 mt-2">
+                        <label class="font-gothamlight fontsize10px text-dark"> Post Title </label>
+                        <input placeholder="Post Title" name="title" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+                    </div>
+
+                    <div class="w-100 mt-3">
+                        <label class="font-gothamlight fontsize10px text-dark"> Post Description </label>
+                        <textarea placeholder="Post Description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+                    </div>
+                <div class="w-100 text-center p-3 pb-4">
+                    <button type="button" onclick="submitPost()" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn" style="max-width: 380px;"> Edit Faqs </button>
+                </div>
+            </form>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+  <!-- Edit Post -->
+
+
+
+
+
 @endsection
 
 @section("afterScript")
@@ -132,6 +173,38 @@ $(document).on('click','.viewBtn',function(){
                 console.log(e);
             }
         });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).on('click','.delete',function(e){
+        e.preventDefault();
+        var id = $(this).attr('id');
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#0CC27E',
+            cancelButtonColor: '#FF586B',
+            confirmButtonText: 'Yes, Delete it',
+            cancelButtonText: "No, Cancel"
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                $.ajax(
+                {
+                    url: "/product/"+id,
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (){
+                        $('#dTable').DataTable().ajax.reload();
+                        swal("Deleted!", "Action has been performed successfully!", "success");
+                    }
+                });
+            }
+        }).catch(swal.noop);
     });
 </script>
 
