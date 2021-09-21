@@ -38,14 +38,31 @@ class UsersTableSeeder extends Seeder
             'pmdc' => '123456789',
             'phone' => '0335669874',
             'email' => 'asim@hcp.com',
-            'location_id' => 5,
+            'location_id' => 2,
             'speciality_id' => 2,
-            'is_admin' => true,
+            'is_admin' => false,
+            'password' => Hash::make('secret'),
+            'created_at' => now()
+        ]);
+        $user->speciality()->attach([2]);
+        $user->location()->attach([2]);
+        $roleN = Role::where('name', 'normal')->first();
+        $user->assignRole([$roleN->id]);
+       
+        $user = User::create([
+            'name' => 'Asad A.',
+            'username' => 'asad',
+            'pmdc' => '123456789',
+            'phone' => '03356698174',
+            'email' => 'asad@hcp.com',
+            'location_id' => 1,
+            'speciality_id' => 5,
+            'is_admin' => false,
             'password' => Hash::make('secret'),
             'created_at' => now()
         ]);
         $user->speciality()->attach([5]);
-        $user->location()->attach([2]);
+        $user->location()->attach([1]);
         $roleN = Role::where('name', 'normal')->first();
         $user->assignRole([$roleN->id]);
     }

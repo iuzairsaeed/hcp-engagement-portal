@@ -218,11 +218,8 @@ class DashboardController extends Controller
             $specialities = Speciality::whereHas('users', function ($query) use ($user_id) {
                 return $query->where('users.id', $user_id);
             })->withCount('users')->get();
-            $location=DB::table('users')
-            ->join('locations','locations.id','users.location_id')
-            ->where('users.id',$user_id)
-            ->first();
-            $locations = Location::where('id',$location->location_id )->withCount(['user'=>function ($user) use($user_id) {
+            $user=User::find($user_id)->first();
+            $locations = Location::where('id',$user->location_id )->withCount(['user'=>function ($user) use($user_id) {
                 $user->where('id',$user_id );
             }])->get();
             foreach ($locations as $l) {
@@ -231,9 +228,9 @@ class DashboardController extends Controller
             }
             $data['response']=array($experience,$interact,$pdf,$events_and_hcps,$specialities,$locations);
 
-            return $data;
+            return $data; 
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            return $th;
         }
     }
 }
