@@ -1,8 +1,11 @@
 <div class="w-100">
     <div id="accordion">
         <div class="row mb-2">
-            <div class="col-lg-4 col-sm-12">
-                <input wire:model="search" type="text" class="bg-lightgray w-100 border-radius25px border-0 fontsize14px pl-3 pt-2 pb-2 outline-none" placeholder="Search Faq"/>
+            <div class="col-lg-3 col-sm-12 ml-auto position-relative">
+                <div class="w-100 bg-lightgray border-radius25px">
+                <input wire:model="search" type="text" class="bg-transparent border-0 fontsize14px pl-3 pt-2 pb-2 outline-none w-100 pr-4" placeholder="Search Faq"/>
+                <i class="fas fa-search fa-sm position-absolute serch-icon text-orange"></i>
+                </div>
             </div>
         </div>
         <div class="w-100 d-flex flex-wrap">

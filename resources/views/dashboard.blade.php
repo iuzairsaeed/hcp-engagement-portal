@@ -77,7 +77,7 @@
                             <div class="col-sm-4 pl-2 pr-1">   
                               <div class="d-flex mb-1">
                                 <h6 class="p-0 font-gothambook">Events </h6>
-                                <h6 class="p-0 col-sm-4 font-gothambook">Total HCP Joined</h6>
+                                <h6 class="p-0 w-100 font-gothambook">Total HCP Joined</h6>
                               </div>
                               <div class="w-100 bg-white border-radius10px d-flex flex-wrap pt-2 pb-2 pl-1 pr-1 scroll-style total_hcp_joined" style="overflow-y: scroll;height: 220px;">
                                 @if(!$events_and_hcps->isEmpty())

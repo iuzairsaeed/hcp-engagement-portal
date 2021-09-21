@@ -147,6 +147,7 @@
                                 <a class="nav-link dropdown-toggle" href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 
                                      <span class="d-block bg-lightgray rounded-circle p-1 text-center" style="width: 31px;"><img src="{{asset('images/Asset15.png')}}" width="15"></span>
+                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small ml-2">Logout </span>
                             
                                 </a>
                         

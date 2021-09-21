@@ -104,7 +104,7 @@
 
                         <!-- Content Row -->
                         @if (!$posts->isEmpty())
-                        <div class="w-100 mt-4 d-flex flex-wrap">
+                        <div class="w-100 mt-3 d-flex flex-wrap col-sm-12 pl-3 pr-3">
                             <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12"> Recent Posts</h6>
                             <div class="carousel-wrap col-sm-11 pl-sm-1">
                                 <div class="owl-carousel recent-carousel">
