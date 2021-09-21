@@ -21,7 +21,7 @@
                   <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
                         <div class="row">
                             <div class="w-100 d-flex flex-wrap mt-3">
-                                <h6 class="mb-1 col-sm-6 font-gothambook text-darkgray pl-3 m-auto"> FAQs </h6>
+                                <h6 class="mb-1 col-sm-6 font-gothambook text-darkgray pl-3 m-auto"> Frequently Asked Questions </h6>
                                 <div class="text-right pl-3 pr-3 col-sm-6">
                                     <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addfaq"> Add Faq</a>
                                 </div>
