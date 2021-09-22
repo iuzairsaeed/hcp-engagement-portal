@@ -157,13 +157,7 @@ function submitFaq(){
 
 $(document).on('click','.updatebtn',function(e){
   e.preventDefault();
-  event = $("#faqForm");
-  var form_data = new FormData($("#faqForm")[0]);
-  form_data.append('_method', "PUT")
-
   var id = $('#id').val();
-  var question = $('#question').val();
-  var answer = $('#answer').val();
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -173,13 +167,11 @@ $(document).on('click','.updatebtn',function(e){
     url : "/faq/"+id,
     type: "PUT",
     dataType: 'json',
-    data: {
-      form_data
-    },
+    data:$("#faqForm").serialize(),
     processData: false,
     success: function (res) {
       swal('Success','Your Record Has Been Successfully Addded','success');
-      // location.reload(true);
+      location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')

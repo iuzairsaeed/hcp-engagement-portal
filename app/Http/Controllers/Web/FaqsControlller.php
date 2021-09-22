@@ -92,9 +92,8 @@ class FaqsControlller extends Controller
     {
         try { 
             $data = $request->all();
-            dd($data);
             $this->model->update($data , $faq);
-            return redirect()->back()->with('success', 'FAQ has been updated.');
+            return response(['message','FAQ has been updated'],200);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

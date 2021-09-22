@@ -95,6 +95,7 @@
             <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
                     <form class="w-100 uploader" action="" id="postEditForm" method="post" enctype="multipart/form-data">
                          @csrf
+                        <input type="hidden" name="id" id="id" />
                         <div class="w-100">
                             <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
                             <input id="file-upload" type="file" name="post_image" accept="image/*" />
@@ -220,31 +221,23 @@ $(document).on('click','.viewBtn',function(e){
   });
 });
 
-  $(document).on('click','.updatebtn',function(e){
+$(document).on('click','.updatebtn',function(e){
   e.preventDefault();
-  event = $("#postEditForm");
-  var form_data = new FormData($("#postEditForm")[0]);
-  form_data.append('_method', "PUT")
-
-  var id = $('#id').val();
-  var title = $('#title').val();
-  var description = $('#description').val();
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
+  var id = $('#id').val();
   $.ajax({
     url : "/post/"+id,
     type: "PUT",
     dataType: 'json',
-    data: {
-      form_data
-    },
+    data:$("#postEditForm").serialize(),
     processData: false,
     success: function (res) {
       swal('Success','Your Record Has Been Successfully Addded','success');
-      // location.reload(true);
+      location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')

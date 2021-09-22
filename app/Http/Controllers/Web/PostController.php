@@ -124,8 +124,12 @@ class PostController extends Controller
     {
         try { 
             $data = $request->all();
+            if($request->hasFile('post_image')){ 
+                $file_name = uploadFile($request->post_image, postPath());
+                $data['post_image'] = $file_name;
+            }
             $this->model->update($data , $post);
-            return redirect()->back()->with('success', 'Post has been updated.');
+            return response(['message','Post has been updated'],200);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
