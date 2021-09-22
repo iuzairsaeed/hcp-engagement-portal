@@ -20,8 +20,12 @@
             <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
                 <div class="text-left float-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
                 </div>
-                <div class="col-auto float-right p-0"><a href="#" class="fontsize14px text-black" data-toggle="modal" data-target="#editpost"><i class="fa fa-pencil"></i></a>
-                <a href="#" class="fontsize14px text-black ml-1 delete"><i class="fa fa-trash"></i></a></div>
+                @if(auth()->user()->role == "admin")
+                    <div class="col-auto float-right p-0">
+                        <a class="fontsize14px text-black viewBtn" data-id="{{$post->id}}" data-toggle="modal" data-target="#editpost"><i class="fa fa-pencil"></i></a>
+                        <a class="fontsize14px text-black ml-1 delete" data-id="{{$post->id}}" ><i class="fa fa-trash"></i></a>
+                </div>
+                @endif
             </div>
         </div>
         </div>
