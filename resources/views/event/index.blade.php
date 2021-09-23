@@ -179,7 +179,7 @@
                     <input type="hidden" name="type" value="webinar">
                     <div class="w-100">
                         <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
-                         <div class="col-sm-5 border text-center border-radius10px p-2">
+                         <div class="col-sm-5 style-upload text-center border-radius10px p-2">
                             <div class="circle">
                                <img class="profile-pic img-fluid border-radius10px" id="profile-pic" src="{{ asset('images/Asset88.png') }}">
                              </div>
@@ -270,7 +270,7 @@
               <input type="hidden" name="type" value="training">
               <div class="w-100">
                   <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
-                    <div class="col-sm-5 border text-center border-radius10px p-2">
+                    <div class="col-sm-5 style-upload text-center border-radius10px p-2">
                       <div class="circle">
                           <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="{{asset('images/Asset88.png') }}">
                         </div>
@@ -335,7 +335,7 @@
 
                     <div class="w-100">
                         <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
-                        <div class="col-sm-5 border text-center border-radius10px p-2">
+                        <div class="col-sm-5 style-upload text-center border-radius10px p-2">
                             <div class="circle">
                                <img class="profile-pic img-fluid border-radius10px" id="profile-pic3" src="{{asset('images/Asset88.png') }}">
                              </div>
