@@ -93,7 +93,7 @@
               <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
             </div>
             <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
-                    <form class="w-100 uploader" action="" id="postEditForm" method="post" enctype="multipart/form-data">
+                    <form class="w-100 uploader" id="postEditForm" enctype="multipart/form-data">
                          @csrf
                         <input type="hidden" name="id" id="id" />
                         <div class="w-100">
@@ -101,7 +101,7 @@
                            
                             <div class="col-sm-5 border text-center border-radius10px p-2">
                             <div class="circle">
-                               <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="http://127.0.0.1:8000/images/Asset88.png">
+                               <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="/images/Asset88.png">
                              </div>
                              <div class="p-image">
                                <h6 class="upload-button text-blue fontsize13px font-gothamlight" id="upload-button2">Upload Image</h6>
@@ -199,7 +199,6 @@ $(document).on('click','.delete',function(e){
 $(document).on('click','.viewBtn',function(e){
   e.preventDefault();
   var id = $(this).attr('data-id');
-  console.log(this,id);
   $.ajax({
       url: 'post/'+id+'/edit',
       method:'GET',
@@ -208,11 +207,8 @@ $(document).on('click','.viewBtn',function(e){
       {
           $('#id').val(data.id);
           $('#profile-pic2').attr('src', data.post_image);
-          $('#file-upload2').attr('value', data.post_image);
           $('#title').val(data.title);
           $('#description').val(data.description);
-          var a = $('#file-upload2').val(data.post_image);
-          console.log(a,$('#file-upload2'));
       },  
       error: function(e) {
           console.log(e);
@@ -228,15 +224,19 @@ $(document).on('click','.updatebtn',function(e){
     }
   });
   var id = $('#id').val();
+  var formData = $("#postEditForm").serialize();
   $.ajax({
     url : "/post/"+id,
     type: "PUT",
-    dataType: 'json',
-    data:$("#postEditForm").serialize(),
+    enctype: 'multipart/form-data',
+    async: false,
+    cache: false,
+    processData: false,
+    data:formData,
     processData: false,
     success: function (res) {
       swal('Success','Your Record Has Been Successfully Addded','success');
-      location.reload(true);
+      // location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')
@@ -376,33 +376,36 @@ function ekUpload(){
   } else {
     document.getElementById('file-drag').style.display = 'none';
   }
+
 }
 ekUpload();
 
 
 
  $(document).ready(function() {    
-                var readURL2 = function(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
+    var readURL2 = function(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
 
-                        reader.onload = function (e) {
-                            $('#profile-pic2').attr('src', e.target.result);
-                        }
-                
-                        reader.readAsDataURL(input.files[0]);
-                    }
-                }
+          reader.onload = function (e) {
+              console.log(e)
+              $('#profile-pic2').attr('src', e.target.result);
+          }
+  
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
 
-                $("#file-upload2").on('change', function(){
-                    readURL(this);
-                });
-                
-                $("#upload-button2").on('click', function() {
-                   $("#file-upload2").click();
-                });
 
-            });
+    $("#file-upload2").on('change', function(){
+        readURL(this);
+    });
+    
+    $("#upload-button2").on('click', function() {
+        $("#file-upload2").click();
+    });
+
+});
 
 </script>
 
