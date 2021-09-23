@@ -20,18 +20,19 @@
 
                   <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
                         <div class="row">
-                            <div class="w-100 d-flex flex-wrap mt-3">
-                                <h6 class="mb-1 col-sm-6 font-gothambook text-darkgray pl-3 m-auto"> Frequently Asked Questions </h6>
+                          <div class="w-100 d-flex flex-wrap mt-3">
+                            <h6 class="mb-1 col-sm-6 font-gothambook text-darkgray "> Frequently Asked Questions </h6>
+                              @if (auth()->user()->role == "admin")
                                 <div class="text-right pl-3 pr-3 col-sm-6">
-                                    <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addfaq"> Add Faq</a>
+                                  <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addfaq"> Add Faq</a>
                                 </div>
+                              @endif
                             </div>
-
-                            <div class="col-sm-12 mt-4">
-                                <div class="w-100 border-radius10px pt-4 pb-5 pl-4 pr-4 text-center bg-white">
-                                    @livewire('show-faq')
-                                </div>
-                            </div>
+                          <div class="col-sm-12 mt-4">
+                              <div class="w-100 border-radius10px pt-4 pb-5 pl-4 pr-4 text-center bg-white">
+                                  @livewire('show-faq')
+                              </div>
+                          </div>
 
                         <!-- /.container-fluid -->
 
@@ -55,7 +56,7 @@
       <!-- Modal content-->
       <div class="modal-content border-0 border-radius10px overflow-hiden">
         <div class="modal-header pl-4 pr-4 border-0" style="background: #4d8ac0;">
-            <h6 class="modal-title text-left text-white font-gothambook"> Add Faq's </h6>
+            <h6 class="modal-title text-left text-white font-gothambook"> Add FAQ </h6>
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
@@ -90,7 +91,7 @@
       <!-- Modal content-->
       <div class="modal-content border-0 border-radius10px overflow-hiden">
         <div class="modal-header pl-4 pr-4 border-0" style="background: #4d8ac0;">
-            <h6 class="modal-title text-left text-white font-gothambook"> Edit Faq's </h6>
+            <h6 class="modal-title text-left text-white font-gothambook"> Edit FAQ </h6>
           <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
         </div>
         <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
@@ -156,13 +157,7 @@ function submitFaq(){
 
 $(document).on('click','.updatebtn',function(e){
   e.preventDefault();
-  event = $("#faqForm");
-  var form_data = new FormData($("#faqForm")[0]);
-  form_data.append('_method', "PUT")
-
   var id = $('#id').val();
-  var question = $('#question').val();
-  var answer = $('#answer').val();
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -172,13 +167,11 @@ $(document).on('click','.updatebtn',function(e){
     url : "/faq/"+id,
     type: "PUT",
     dataType: 'json',
-    data: {
-      form_data
-    },
+    data:$("#faqForm").serialize(),
     processData: false,
     success: function (res) {
       swal('Success','Your Record Has Been Successfully Addded','success');
-      // location.reload(true);
+      location.reload(true);
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')
@@ -186,7 +179,8 @@ $(document).on('click','.updatebtn',function(e){
   });
 });
 
-$(document).on('click','.viewBtn',function(){
+$(document).on('click','.viewBtn',function(e){
+    e.preventDefault();
     var id = $(this).attr('data-id');
     $.ajax({
         url: 'faq/'+id+'/edit',
