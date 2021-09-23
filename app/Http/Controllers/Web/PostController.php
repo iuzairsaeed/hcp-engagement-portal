@@ -130,7 +130,7 @@ class PostController extends Controller
                 $data['post_image'] = $file_name;
             }
             $this->model->update($data , $post);
-            return response(['message','Post has been updated'],200);
+            return redirect()->back()->with('success', 'Post has been updated.');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
