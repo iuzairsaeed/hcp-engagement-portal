@@ -98,29 +98,14 @@
                         <input type="hidden" name="id" id="id" />
                         <div class="w-100">
                             <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
-                            <!-- <input id="file-upload" type="file" name="post_image" accept="image/*" />
-    
-                                  <label for="file-upload" id="file-drag" class="file-upload">
-                                    <img id="file-image" src=".#" alt="Preview" class="hidden">
-                                    <div id="start">
-                                      <img src="{{ asset('images/Asset88.png') }}">
-                                      <div class="text-blue fontsize11px font-gothamlight font-weight-bold"> Upload Image </div>
-                                      <div id="notimage" class="hidden">Upload Image</div>
-                                    </div>
-                                    <div id="response" class="hidden">
-                                      <div id="messages"></div>
-                                      <progress class="progress" id="file-progress" value="0">
-                                        <span>0</span>%
-                                      </progress>
-                                    </div>
-                                  </label> -->
-                                <div class="col-sm-5 border text-center border-radius10px p-2">
+                           
+                            <div class="col-sm-5 border text-center border-radius10px p-2">
                             <div class="circle">
                                <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="http://127.0.0.1:8000/images/Asset88.png">
                              </div>
                              <div class="p-image">
                                <h6 class="upload-button text-blue fontsize13px font-gothamlight" id="upload-button2">Upload Image</h6>
-                                 <input class="file-upload" id="file-upload2" name="event_attachment" type="file" accept="image/*">       
+                                 <input class="file-upload" id="file-upload2" name="post_image" type="file" accept="image/*">       
                             </div>
                          </div>
                           
@@ -223,8 +208,11 @@ $(document).on('click','.viewBtn',function(e){
       {
           $('#id').val(data.id);
           $('#profile-pic2').attr('src', data.post_image);
+          $('#file-upload2').attr('value', data.post_image);
           $('#title').val(data.title);
           $('#description').val(data.description);
+          var a = $('#file-upload2').val(data.post_image);
+          console.log(a,$('#file-upload2'));
       },  
       error: function(e) {
           console.log(e);
