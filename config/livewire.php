@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => env("APP_URL") == "https://tech.celeritasdigital.com/hcp-engagement-portal" ? '/hcp-engagement-portal' : null,
+    'asset_url' => env('APP_URL', null),
 
     /*
     |--------------------------------------------------------------------------
