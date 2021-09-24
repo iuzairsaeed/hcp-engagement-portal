@@ -44,5 +44,6 @@
     @yield('afterScript')
     @include('inc.messages')
     @livewireScripts
+    <script src="{{ URL::to('/vendor/livewire/livewire.js?id=21fa1dd78491a49255cd') }}" data-turbo-eval="false" data-turbolinks-eval="false"></script>
 </body>
 </html>
