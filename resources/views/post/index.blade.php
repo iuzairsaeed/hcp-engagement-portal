@@ -180,7 +180,7 @@ $(document).on('click','.delete',function(e){
           if (isConfirm) {
               $.ajax(
               {
-                  url: "/post/"+id,
+                  url: "post/"+id,
                   method: 'DELETE',
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -200,7 +200,7 @@ $(document).on('click','.delete',function(e){
 $(document).on('click','.viewBtn',function(e){
   e.preventDefault();
   var id = $(this).attr('data-id');
-  var action = '/post/'+id;
+  var action = 'post/'+id;
   $("#postEditForm").attr('action',action);
   console.log(this,id);
   $.ajax({
@@ -234,7 +234,7 @@ $(document).on('click','.viewBtn',function(e){
 //   var id = $('#id').val();
 //   var formData = $("#postEditForm").serialize();
 //   $.ajax({
-//     url : "/post/"+id,
+//     url : "post/"+id,
 //     type: "PUT",
 //     enctype: 'multipart/form-data',
 //     async: false,

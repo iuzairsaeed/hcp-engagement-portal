@@ -164,7 +164,7 @@ $(document).on('click','.updatebtn',function(e){
     }
   });
   $.ajax({
-    url : "/faq/"+id,
+    url : "faq/"+id,
     type: "PUT",
     dataType: 'json',
     data:$("#faqForm").serialize(),
@@ -215,7 +215,7 @@ $(document).on('click','.delete',function(e){
         if (isConfirm) {
             $.ajax(
             {
-                url: "/faq/"+id,
+                url: "faq/"+id,
                 type: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
