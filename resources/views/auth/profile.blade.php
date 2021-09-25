@@ -198,11 +198,11 @@
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                                <input type="date" name="education[date_from][{{$key}}]" value="{{ $education->date_from->format('Y-m-d') }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                                <input type="date" name="education[date_from][{{$key}}]" value="{{ $education->date_from ? $education->date_from->format('Y-m-d') : null }}" {{ $education->date_from ? "" : "disabled"}} class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                                <input type="date" name="education[date_to][{{$key}}]" value="{{ $education->date_to->format('Y-m-d') }}"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
+                                                <input type="date" name="education[date_to][{{$key}}]" value="{{ $education->date_to ? $education->date_to->format('Y-m-d') : null }}" {{ $education->date_to ? "" : "disabled"}}  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year"  />
                                             </div>
                                             <div class="w-100">
                                                 <div class="form-group col-sm-4">
@@ -362,11 +362,11 @@
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">From</label>
-                                                <input type="date" name="experience[date_from][{{$key}}]"  value="{{ $experience->date_from->format('Y-m-d') }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                                <input type="date" name="experience[date_from][{{$key}}]"  value="{{ $experience->date_from ? $experience->date_from->format('Y-m-d') : null }}" {{ $experience->date_from ? "" : "disabled"}} class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">To</label>
-                                                <input type="date" name="experience[date_to][{{$key}}]"  value="{{ $experience->date_to->format('Y-m-d')  }}" class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
+                                                <input type="date" name="experience[date_to][{{$key}}]"  value="{{ $experience->date_to ? $experience->date_to->format('Y-m-d') : null  }}" {{ $experience->date_to ? "" : "disabled"}} class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Year" />
                                             </div> 
                                             <div class="w-100">
                                                 <div class="form-group col-sm-4">
