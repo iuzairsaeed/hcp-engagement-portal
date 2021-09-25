@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @livewireStyles
     @include('inc.header')
     @yield('afterStyle')
 </head>
@@ -42,5 +43,6 @@
 
     @yield('afterScript')
     @include('inc.messages')
+    @livewireScripts
 </body>
 </html>

@@ -61,12 +61,12 @@ Route::group(['namespace' => 'Web'], function () {
         Route::resource('comment', 'CommentController');
         Route::resource('education', 'EducationController');
         Route::resource('experience', 'ExperienceController');
+        Route::resource('faq', 'FaqsControlller');
 
     });
     
     Route::get('about', 'PageController@about');
     Route::get('contact', 'PageController@contact');
-    Route::get('faq', 'PageController@faq');
     Route::get('chatroom', 'PageController@chatroom')->name('chatroom');
 
     Route::get('/load-latest-messages', 'MessagesController@getLoadLatestMessages');

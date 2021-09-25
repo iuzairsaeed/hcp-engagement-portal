@@ -23,14 +23,14 @@
                                              <div class="w-100 d-flex flex-wrap mt-4">
                                                   <h6 class="mb-1 pt-1 pb-1 col-sm-6 font-gothambook text-black"> HCPs Profiles </h6>
                                                       <div class="col-sm-6 text-right">
-                                                           <select class="border-0 bg-white font-gothambook fontsize11px pl-3 pr-3 pt-2 pb-2 outline-none" style="box-shadow: -1px 1px 10px -2px #9fa5a7;">
+                                                           {{-- <select class="border-0 bg-white font-gothambook fontsize11px pl-3 pr-3 pt-2 pb-2 outline-none" style="box-shadow: -1px 1px 10px -2px #9fa5a7;">
                                                                         <option>Select</option>
                                                                         <option>Last 10 Days</option>
                                                                         <option>Last 15 Days</option>
                                                                         <option>Last 20 Days</option>
                                                                         <option>Last 25 Days</option>
                                                                         <option>Last 30 Days</option>
-                                                                    </select>
+                                                                    </select> --}}
                                                                 </div>
                                                              </div>
 
@@ -52,15 +52,15 @@
                                                                                     <li class="col-sm-5 col-5 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-bookmark-o fontsize12px mr-1 float-left"></i> <span class="float-left text-left w-fix">{{ $user->speciality->first()->name }} </span></h6> </li>
                                                                                      <li class="col-sm-4 col-4 p-0 m-auto"><h6 class="bg-transparent border-0 text-dark fontsize10px font-gothambook mb-0"><i class="fa fa-star-o fontsize12px mr-1"></i> 7 Years </h6></li>
                                                                                      <li class="col-sm-3 col-3 p-0 text-right">
-                                                                                        <a href="#" data-toggle="modal" data-target="#Messagemodal" onclick="add_new_message({{ $user->id}})" data-name="{{ $user->name }}" data-speciality="{{$user->speciality->first()->name}}" ><i class="fa fa-envelope-o mr-1 text-gray-200 fontsize15px"></i></a>
+                                                                                        <a href="#" data-toggle="modal" data-target="#Messagemodal" onclick="add_new_message({{ $user->id}})" data-name="{{ $user->name }}" data-speciality="{{$user->speciality->first()->name}}" ><i class="fa fa-envelope-o mr-1 text-dark fontsize15px"></i></a>
                                                                                         {{-- <a href="#" class="fontsize15px text-orange"><i class="fa fa-heart-o"></i> --}}
                                                                                      </a>
                                                                                      </li>
                                                                                  </ul>
 
                                                                                   <div class="text-left">
-                                                                                    <p class="fontsize13px mb-0 pt-2 text-black font-gothammedium"> {{$user->name}} </p>
-                                                                                    <p class="text-gray font-gothamlight fontsize10px"> {{$user->profile->clinic_name ?? ""}} </p>
+                                                                                    <h6 class="fontsize13px mb-0 pt-1 text-black font-gothammedium"> {{$user->name}} </h6>
+                                                                                    <p class="text-gray font-gothamlight fontsize10px mb-1"> {{$user->profile->clinic_name ?? ""}} </p>
                                                                                 </div>
 
                                                                                 </div>
@@ -89,10 +89,6 @@
                                 <!-- End of Page Wrapper -->
 
                             </div>
-                                <!-- Scroll to Top Button-->
-                                <a class="scroll-to-top rounded" href="#page-top">
-                                    <i class="fas fa-angle-up"></i>
-                                </a>
 
 
                             <!-- /.container-fluid -->

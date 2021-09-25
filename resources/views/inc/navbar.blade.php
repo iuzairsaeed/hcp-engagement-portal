@@ -3,10 +3,10 @@
                 <div class="row">
                 <!-- Topbar -->
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow col-sm-12">
-                        <div><a href="route('/dashboard')"><img src="{{asset('images/Asset3.png')}}" width="130"></a></div>
+                        <div><a href="{{ url('/dashboard') }}"><img src="{{asset('images/Asset3.svg')}}" width="130"></a></div>
                          <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between border-left p-2 ml-4 col-sm-4 d-sm-block d-none" style="border-width: 2px !important;">
-                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium">{{  Str::ucfirst(Request::segment(1)) }}
+                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium ">{{  Str::upper(Request::segment(1) == "profileShow" ? "Profile Edit" : Request::segment(1) ) }}
                              </h1>
                         </div>
                         <!-- Sidebar Toggle (Topbar) -->
@@ -17,7 +17,7 @@
                         <!-- Topbar Search -->
                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search " method="GET" action='{{route('search')}}'>
                             @csrf
-                            <div class="input-group border-radius25px bg-lightgray">
+                            <div class="input-group border-radius25px bg-lightgray border border-orange">
                                 <input type="text" class="form-control font-gothamlight bg-transparent border-0 small outline-none pl-4" placeholder="Search..."
                                     value="{{ session('search') }}" aria-label="Search" name="search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
@@ -147,6 +147,7 @@
                                 <a class="nav-link dropdown-toggle" href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 
                                      <span class="d-block bg-lightgray rounded-circle p-1 text-center" style="width: 31px;"><img src="{{asset('images/Asset15.png')}}" width="15"></span>
+                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small ml-2">Logout </span>
                             
                                 </a>
                         

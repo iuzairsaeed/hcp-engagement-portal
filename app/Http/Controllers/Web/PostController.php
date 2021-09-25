@@ -110,7 +110,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return response($post , 200);
     }
 
     /**
@@ -124,6 +124,10 @@ class PostController extends Controller
     {
         try { 
             $data = $request->all();
+            if($request->hasFile('post_image')){ 
+                $file_name = uploadFile($request->post_image, postPath());
+                $data['post_image'] = $file_name;
+            }
             $this->model->update($data , $post);
             return redirect()->back()->with('success', 'Post has been updated.');
         } catch (\Throwable $th) {
@@ -141,7 +145,7 @@ class PostController extends Controller
     {
         try {
             $this->model->delete($post);
-            return redirect()->back()->with('success', 'Post deleted Successfully');
+            return response(['success'=>'Post deleted Successfully', 200]);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

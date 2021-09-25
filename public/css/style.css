@@ -57,7 +57,7 @@ a{text-decoration: none !important;}
 .fontsize31px{font-size: 31px;}
 .border-radius15px{border-radius: 15px 15px;}
 .border-radius10px{border-radius: 10px 10px;}
-.border-radius25px{border-radius: 25px 25px;}
+.border-radius25px{border-radius: 25px 25px !important;}
 .text-orange{color: #f17121;}
 .text-blue{color: #0058a5;}
 .text-gray{color: #afadad;}
@@ -65,9 +65,9 @@ a{text-decoration: none !important;}
 .text-black{color: #322F49;}
 .bg-orange{background-color: #f17121;}
 .bg-blue{background-color: #0058a5;}
-.bg-gray{background-color: #f9f9f9;}
+.bg-gray{background-color: #f9f9f9 !important;}
 .bg-lightgray{background-color: #f1f9fc;}
-.border-gray{border-color: #f9f9f9 !important;}
+.border-gray{border-color: #e6e6e6 !important;}
 .border-orange{border-color: #f17121 !important;}
 .bg-cover{background-size: cover; background-repeat: no-repeat;}
 .letterspacing1px{letter-spacing: 1px;}
@@ -93,7 +93,7 @@ a{text-decoration: none !important;}
     height: 145px;
     overflow: hidden;
     margin-bottom: 2px;
-    border: 1px solid #f7f7f7;
+    border: 1px solid #d0d0d0;
     border-radius: 9px 9px;
 }
 .hovericon:hover,.hovericon:active,.hovericon:focus{ background: #f17121 !important; color: #fff; }
@@ -293,6 +293,7 @@ input[type=number] {
 
 .chat_ib h5{ font-size:15px; color:#606060; margin:0 0 3px 0;
  font-family: Gothambook;}
+ .chat_ib h5 a{ color:#606060; }
 .chat_ib h5 span{ font-size:11px; float:right;color: #0058a5; font-family: Gothambook;}
 .chat_ib p{ font-size:10px; color:#989898; margin:auto; font-family: Gothambook;}
 .chat_img {
@@ -377,7 +378,7 @@ input[type=number] {
 .input_msg_write input {
   border: medium none;
   width: 100%;
-    padding: 14px 47px;
+    padding: 24px 47px;
 }
 
 .type_msg {position: relative;}
@@ -495,7 +496,7 @@ input[type=number] {
 .chart-container {
   position: relative;
   margin: auto;
-  height: 40vh;
+  height: 43vh;
 }
 .scroll-style::-webkit-scrollbar-track
 {
@@ -716,8 +717,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .show-pass{ right: 20px;
     height: 43px; }
 .select2.select2-container .select2-selection {
-    background: none;
+    background: #fff;
     border: 0px;
+    border-radius: 20px !important;
+    text-align: left;
+    outline: none;
     padding: 0px 10px;
 }
 .select2.select2-container .select2-selection .select2-selection__placeholder, 
@@ -750,6 +754,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type="date"]:disabled {
     opacity: 0.7;
 }
+.serch-icon{ right: 21px; top: 11px; }
+.style-upload {
+    border-color: #4d8ac0 !important;
+    border: 2px dashed;
+}
+.p-image .upload-button { cursor: pointer; }
+
+
 
 
 

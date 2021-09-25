@@ -77,7 +77,7 @@
                             <div class="col-sm-4 pl-2 pr-1">   
                               <div class="d-flex mb-1">
                                 <h6 class="p-0 font-gothambook">Events </h6>
-                                <h6 class="p-0 col-sm-4 font-gothambook">Total HCP Joined</h6>
+                                <h6 class="p-0 w-100 font-gothambook">Total HCP Joined</h6>
                               </div>
                               <div class="w-100 bg-white border-radius10px d-flex flex-wrap pt-2 pb-2 pl-1 pr-1 scroll-style total_hcp_joined" style="overflow-y: scroll;height: 220px;">
                                 @if(!$events_and_hcps->isEmpty())
@@ -410,7 +410,6 @@
         } else{
         // update_pie_chart(res.response[0]);
         var oilCanvas = document.getElementById("oilChart");
-          console.log("Location ",res.response[0][0]);
         // Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 12;
          var oilData = {
@@ -441,8 +440,7 @@
               chart.data.labels[key] = element.name;
             });
             res.response[0][0].forEach((element, key) => {
-              console.log("COunt",element.users_count);
-                chart.data.datasets[0].data[key] = element.users_count;
+                chart.data.datasets[0].data[key] = element.user_count;
             });
             chart.update(); // finally update our chart
         }
@@ -541,7 +539,7 @@
             chart.data.labels[key] = element.name;
           });
           res.forEach((element, key) => {
-            chart.data.datasets[0].data[key] = element.users_count;
+            chart.data.datasets[0].data[key] = element.user_count;
           });
           chart.update(); // finally update our chart
     }
@@ -649,7 +647,6 @@
     // function to update our chart
     function ajax_chart(chart,res, data) {
         var data = data || {};
-          console.log(res);
           res.user.forEach((element, key) => {
             chart.data.labels[key] = element;
           });
@@ -703,8 +700,7 @@
         }
 
       }
-
-        $('.hcp_specialization').html(sp_html);
+      $('.hcp_specialization').html(sp_html);
   }
 
 </script>

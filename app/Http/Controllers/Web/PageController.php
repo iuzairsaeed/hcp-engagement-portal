@@ -35,10 +35,6 @@ class PageController extends Controller
         return view('pages.contact');
     }
     
-    public function faq()
-    {
-        return view('pages.faq');
-    }
     public function chatroom()
     {
         $u_id = auth()->id();

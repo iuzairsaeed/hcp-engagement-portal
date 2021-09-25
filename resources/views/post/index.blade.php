@@ -18,23 +18,7 @@
                   <a href="#" class="bg-orange border-radius25px text-uppercase border text-white font-gothambook pl-4 pr-4 pt-2 pb-2 fontsize13px border-orange d-inline-block hoverbtn" data-toggle="modal" data-target="#addpost"> Add Post</a>
                 </div>
                 <div class="ml-2 col-lg-12 col-sm-12 text-center font-gothambook text-black">{{ $posts->isEmpty() ? "No data available!" : ""}}</div>
-                <div class="w-100 d-flex flex-wrap overflow-y pl-sm-2 pr-sm-2">
-                  @foreach ($posts as $post)
-                    <!-- card -->
-                    <a href="{{url('/post/'.$post->id)}}">
-                    <div class="w-100 col-sm-3 p-2">
-                      <div class="card p-2 border-0 border-radius10px" style="box-shadow: 1px 1px 13px #b2cfda;">
-                        <img class="card-img-top w-100 mb-2" src="{{ $post->post_image }}">
-                        <div class="card-body pt-1 pb-0 pl-1 pr-1">
-                          <p class="card-text text-black fontsize12px mb-2 font-gothambook">{{$post->title}}</p>
-                            <div class="text-left"><a href="{{url('/post/'.$post->id)}}" class="text-orange font-gothamlight fontsize12px hoverlink"> Leave a Comment </a>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    </a>
-                  @endforeach
-                </div>
+                  @livewire('show-posts')
               </div>
             </div>
           </div>
@@ -95,10 +79,62 @@
   </div>
   <!-- Add Post -->
 
+
+
+
+       <!-- Edit Post Modal -->
+       <div class="modal fade" id="editpost" role="dialog">
+        <div class="modal-dialog modal-lg" style=" max-width: 605px;">
+        
+          <!-- Modal content-->
+          <div class="modal-content border-0 border-radius10px overflow-hiden">
+            <div class="modal-header pl-4 pr-4 border-0" style="background: #4d8ac0;">
+                <h6 class="modal-title text-left text-white font-gothambook"> Edit Post </h6>
+              <button type="button" class="close text-white font-weight-light" data-dismiss="modal" style="opacity: 1;">&times;</button>
+            </div>
+            <div class="modal-body border-0 pl-4 pr-4 pt-3 pb-3">
+                    <form class="w-100 uploader" method="POST" id="postEditForm" enctype="multipart/form-data">
+                         @csrf
+                         @method('PUT')
+                        <input type="hidden" name="id" id="id" />
+                        <div class="w-100">
+                            <label class="font-gothamlight fontsize10px text-dark w-100"> Upload Thumbnail </label>
+                           
+                            <div class="col-sm-5 border text-center border-radius10px p-2">
+                            <div class="circle">
+                               <img class="profile-pic img-fluid border-radius10px" id="profile-pic2" src="http://127.0.0.1:8000/images/Asset88.png">
+                             </div>
+                             <div class="p-image">
+                               <h6 class="upload-button text-blue fontsize13px font-gothamlight" id="upload-button2">Upload Image</h6>
+                                 <input type="file" class="file-upload" id="file-upload2" name="post_image"  accept="image/*">       
+                            </div>
+                         </div>
+                          
+                        </div>
+    
+                        <div class="w-100 mt-2">
+                            <label class="font-gothamlight fontsize10px text-dark"> Post Title </label>
+                            <input placeholder="Post Title" id="title" name="title" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; ">
+                        </div>
+    
+                        <div class="w-100 mt-3">
+                            <label class="font-gothamlight fontsize10px text-dark"> Post Description </label>
+                            <textarea placeholder="Post Description" id="description" name="description" class="font-gothamlight w-100 border-radius10px fontsize11px p-3 bg-gray border-0 outline-none" style="box-shadow: 2px 3px 11px #d2d2d2; resize: none; height: 100px;"></textarea>
+                        </div>
+                    <div class="w-100 text-center p-3 pb-4">
+                        <button type="submit" class="btn w-100 bg-orange border-radius25px pt-2 pb-2 text-uppercase font-gothambook text-white ml-auto mr-auto mt-4 hoverbtn updatebtn " style="max-width: 380px;"> Edit Post </button>
+                    </div>
+                </form>
+            </div>
+           
+          </div>
+          
+        </div>
+      </div>
+      <!--Edit Post -->
+    
 @endsection
-
-@section("afterScript")
-
+@section('afterScript')
 <script type="text/javascript">
 
 function submitPost(){
@@ -128,143 +164,233 @@ function submitPost(){
   });
 }
 
-
-    function ekUpload(){
-      function Init() {
-
-        console.log("Upload Initialised");
-
-        var fileSelect    = document.getElementById('file-upload'),
-            fileDrag      = document.getElementById('file-drag'),
-            submitButton  = document.getElementById('submit-button');
-
-        fileSelect.addEventListener('change', fileSelectHandler, false);
-
-        // Is XHR2 available?
-        var xhr = new XMLHttpRequest();
-        if (xhr.upload) {
-          // File Drop
-          fileDrag.addEventListener('dragover', fileDragHover, false);
-          fileDrag.addEventListener('dragleave', fileDragHover, false);
-          fileDrag.addEventListener('drop', fileSelectHandler, false);
-        }
-      }
-
-      function fileDragHover(e) {
-        var fileDrag = document.getElementById('file-drag');
-
-        e.stopPropagation();
-        e.preventDefault();
-
-        fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
-      }
-
-      function fileSelectHandler(e) {
-        // Fetch FileList object
-        var files = e.target.files || e.dataTransfer.files;
-
-        // Cancel event and hover styling
-        fileDragHover(e);
-
-        // Process all File objects
-        for (var i = 0, f; f = files[i]; i++) {
-          parseFile(f);
-          uploadFile(f);
-        }
-      }
-
-      // Output
-      function output(msg) {
-        // Response
-        var m = document.getElementById('messages');
-        m.innerHTML = msg;
-      }
-
-      function parseFile(file) {
-
-        console.log(file.name);
-        output(
-          '<strong>' + encodeURI(file.name) + '</strong>'
-        );
-        
-
-                var imageName = file.name;
-
-                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
-                if (isGood) {
-                  document.getElementById('start').classList.add("hidden");
-                  document.getElementById('response').classList.remove("hidden");
-                  document.getElementById('notimage').classList.add("hidden");
-                  // Thumbnail Preview
-                  document.getElementById('file-image').classList.remove("hidden");
-                  document.getElementById('file-image').src = URL.createObjectURL(file);
-                }
-                else {
-                  document.getElementById('file-image').classList.add("hidden");
-                  document.getElementById('notimage').classList.remove("hidden");
-                  document.getElementById('start').classList.remove("hidden");
-                  document.getElementById('response').classList.add("hidden");
-                  document.getElementById("file-upload-form").reset();
-                }
-              }
-
-              function setProgressMaxValue(e) {
-                var pBar = document.getElementById('file-progress');
-
-                if (e.lengthComputable) {
-                  pBar.max = e.total;
-                }
-              }
-
-              function updateFileProgress(e) {
-                var pBar = document.getElementById('file-progress');
-
-                if (e.lengthComputable) {
-                  pBar.value = e.loaded;
-                }
-              }
-
-              function uploadFile(file) {
-
-                var xhr = new XMLHttpRequest(),
-                  fileInput = document.getElementById('class-roster-file'),
-                  pBar = document.getElementById('file-progress'),
-                  fileSizeLimit = 1024; // In MB
-                if (xhr.upload) {
-                  // Check if file is less than x MB
-                  if (file.size <= fileSizeLimit * 1024 * 1024) {
-                    // Progress bar
-                    pBar.style.display = 'inline';
-                    xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-                    xhr.upload.addEventListener('progress', updateFileProgress, false);
-
-                    // File received / failed
-                    xhr.onreadystatechange = function(e) {
-                      if (xhr.readyState == 4) {
-                    
-                      }
-                    };
-
-                    // Start upload
-                    xhr.open('POST', document.getElementById('file-upload-form').action, true);
-                    xhr.setRequestHeader('X-File-Name', file.name);
-                    xhr.setRequestHeader('X-File-Size', file.size);
-                    xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-                    xhr.send(file);
-                  } else {
-                    output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+$(document).on('click','.delete',function(e){
+      e.preventDefault();
+      var id = $(this).attr('data-id');
+      swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#0CC27E',
+          cancelButtonColor: '#FF586B',
+          confirmButtonText: 'Yes, Delete it',
+          cancelButtonText: "No, Cancel"
+      }).then(function (isConfirm) {
+          if (isConfirm) {
+              $.ajax(
+              {
+                  url: "post/"+id,
+                  method: 'DELETE',
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                  success: function (data){
+                    swal("Deleted!", "Action has been performed successfully!", "success");
+                    location.reload(true);
+                  },
+                  error: function(e){
+                    console.log(e);
                   }
-                }
-              }
+              });
+          }
+      }).catch(swal.noop);
+  });
 
-             
-              if (window.File && window.FileList && window.FileReader) {
-                Init();
-              } else {
-                document.getElementById('file-drag').style.display = 'none';
-              }
-            }
-            ekUpload();
-        </script>
+$(document).on('click','.viewBtn',function(e){
+  e.preventDefault();
+  var id = $(this).attr('data-id');
+  var action = 'post/'+id;
+  $("#postEditForm").attr('action',action);
+  console.log(this,id);
+  $.ajax({
+      url: 'post/'+id+'/edit',
+      method:'GET',
+      dataType:'json',
+      success:function(data)
+      {
+          $('#id').val(data.id);
+          $('#profile-pic2').attr('src', data.post_image);
+          $('#file-upload2').attr('value', data.post_image);
+          $('#title').val(data.title);
+          $('#description').val(data.description);
+          var a = $('#file-upload2').val(data.post_image);
+          console.log(a,$('#file-upload2'));
+      },  
+      error: function(e) {
+          console.log(e);
+      }
+  });
+});
+
+// $(document).on('click','.updatebtn',function(e){
+//   debugger;
+//   e.preventDefault();
+//   $.ajaxSetup({
+//     headers: {
+//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+//   });
+//   var id = $('#id').val();
+//   var formData = $("#postEditForm").serialize();
+//   $.ajax({
+//     url : "post/"+id,
+//     type: "PUT",
+//     enctype: 'multipart/form-data',
+//     async: false,
+//     cache: false,
+//     processData: false,
+//     data:formData,
+//     processData: false,
+//     success: function (res) {
+//       swal('Success','Your Record Has Been Successfully Addded','success');
+//       // location.reload(true);
+//     },
+//     error: function(err) {
+//       swal('Not Valid',err.responseJSON.message,'error')
+//     }
+//   });
+// });
+
+function ekUpload(){
+  function Init() {
+
+    console.log("Upload Initialised");
+
+    var fileSelect    = document.getElementById('file-upload'),
+        fileDrag      = document.getElementById('file-drag'),
+        submitButton  = document.getElementById('submit-button');
+
+    fileSelect.addEventListener('change', fileSelectHandler, false);
+
+    // Is XHR2 available?
+    var xhr = new XMLHttpRequest();
+    if (xhr.upload) {
+      // File Drop
+      fileDrag.addEventListener('dragover', fileDragHover, false);
+      fileDrag.addEventListener('dragleave', fileDragHover, false);
+      fileDrag.addEventListener('drop', fileSelectHandler, false);
+    }
+  }
+
+  function fileDragHover(e) {
+    var fileDrag = document.getElementById('file-drag');
+
+    e.stopPropagation();
+    e.preventDefault();
+
+    fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+  }
+
+  function fileSelectHandler(e) {
+    // Fetch FileList object
+    var files = e.target.files || e.dataTransfer.files;
+
+    // Cancel event and hover styling
+    fileDragHover(e);
+
+    // Process all File objects
+    for (var i = 0, f; f = files[i]; i++) {
+      parseFile(f);
+      uploadFile(f);
+    }
+  }
+
+  // Output
+  function output(msg) {
+    // Response
+    var m = document.getElementById('messages');
+    m.innerHTML = msg;
+  }
+
+  function parseFile(file) {
+
+    console.log(file.name);
+    output(
+      '<strong>' + encodeURI(file.name) + '</strong>'
+    );
+    var imageName = file.name;
+
+    var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+    if (isGood) {
+      document.getElementById('start').classList.add("hidden");
+      document.getElementById('response').classList.remove("hidden");
+      document.getElementById('notimage').classList.add("hidden");
+      // Thumbnail Preview
+      document.getElementById('file-image').classList.remove("hidden");
+      document.getElementById('file-image').src = URL.createObjectURL(file);
+    }
+    else {
+      document.getElementById('file-image').classList.add("hidden");
+      document.getElementById('notimage').classList.remove("hidden");
+      document.getElementById('start').classList.remove("hidden");
+      document.getElementById('response').classList.add("hidden");
+      document.getElementById("file-upload-form").reset();
+    }
+  }
+
+  function setProgressMaxValue(e) {
+    var pBar = document.getElementById('file-progress');
+
+    if (e.lengthComputable) {
+      pBar.max = e.total;
+    }
+  }
+
+  function updateFileProgress(e) {
+    var pBar = document.getElementById('file-progress');
+
+    if (e.lengthComputable) {
+      pBar.value = e.loaded;
+    }
+  }
+
+  function uploadFile(file) {
+    var xhr = new XMLHttpRequest(),
+      fileInput = document.getElementById('class-roster-file'),
+      pBar = document.getElementById('file-progress'),
+      fileSizeLimit = 1024; // In MB
+    if (xhr.upload) {
+      // Check if file is less than x MB
+      if (file.size <= fileSizeLimit * 1024 * 1024) {
+        // Progress bar
+        pBar.style.display = 'inline';
+        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+        xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+        // File received / failed
+        xhr.onreadystatechange = function(e) {
+          if (xhr.readyState == 4) {
+        
+          }
+        };
+
+        // Start upload
+        xhr.open('POST', document.getElementById('file-upload-form').action, true);
+        xhr.setRequestHeader('X-File-Name', file.name);
+        xhr.setRequestHeader('X-File-Size', file.size);
+        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+        xhr.send(file);
+      } else {
+        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+      }
+    }
+  }
+
+          
+  if (window.File && window.FileList && window.FileReader) {
+    Init();
+  } else {
+    document.getElementById('file-drag').style.display = 'none';
+  }
+
+}
+ekUpload();
+
+
+
+
+
+</script>
 
 @endsection
