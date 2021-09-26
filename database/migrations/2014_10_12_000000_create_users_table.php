@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('pmdc');
             $table->string('phone');
             $table->foreignId('location_id');
+            $table->foreignId('speciality_id');
             $table->string('cnic')->nullable();
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();

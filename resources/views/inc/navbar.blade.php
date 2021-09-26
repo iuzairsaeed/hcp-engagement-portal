@@ -6,7 +6,7 @@
                         <div><a href="{{ url('/dashboard') }}"><img src="{{asset('images/Asset3.svg')}}" width="130"></a></div>
                          <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between border-left p-2 ml-4 col-sm-4 d-sm-block d-none" style="border-width: 2px !important;">
-                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium ">{{  Str::upper(Request::segment(1)) }}
+                            <h1 class="h5 mb-0 text-dark font-weight-light ml-2 font-gothammedium ">{{  Str::upper(Request::segment(1) == "profileShow" ? "Profile Edit" : Request::segment(1) ) }}
                              </h1>
                         </div>
                         <!-- Sidebar Toggle (Topbar) -->
