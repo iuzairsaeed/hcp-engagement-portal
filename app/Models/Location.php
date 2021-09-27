@@ -26,7 +26,6 @@ class Location extends Model
     {
         return $this->belongsToMany(User::class, 'user_locations');
     }
-
     /**
      * The users that belong to the role.
      */

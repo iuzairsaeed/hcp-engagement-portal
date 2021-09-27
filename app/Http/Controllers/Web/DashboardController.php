@@ -75,6 +75,7 @@ class DashboardController extends Controller
     }
 
     public function getExperience(Request $request) {
+        // dd($request->all());
         try {
             $experience = array();
             User::all()->where('is_admin', false)->sortBy(function ($user) use (&$experience) {
@@ -113,6 +114,7 @@ class DashboardController extends Controller
     }
 
     public function searchByLoc(Request $request) {
+        // dd($request->all());
         try {
             $location_id['location_id'] = (int)$request->data['id'];
             $loc = Location::where('id', $location_id['location_id'] )->withCount(['user'=>function ($user) {
