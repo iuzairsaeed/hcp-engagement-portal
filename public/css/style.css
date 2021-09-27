@@ -760,8 +760,12 @@ input[type="date"]:disabled {
     border: 2px dashed;
 }
 .p-image .upload-button { cursor: pointer; }
-
-
+#educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 { display: none !important; }
+.remove, .remove2{width: 28px; height: 28px;
+  line-height: 1.5;
+  right: 7px;top: 8px;
+ z-index: 1;
+}
 
 
 
