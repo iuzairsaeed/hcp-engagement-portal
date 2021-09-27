@@ -21,6 +21,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $user->notify(new InvoicePaid($invoice));
         try {
             if(auth()->user()->role == "admin"){
                 $hcp = User::count();
