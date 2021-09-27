@@ -141,11 +141,14 @@
                         </div>
                         @if ($user->education->isEmpty() == false)
                             @foreach ($user->education as $key => $education )
-                                <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
-                                    <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo">
+                                    <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1 participantRow" style="box-shadow: 1px 1px 14px #cddee4;">
+                                      <tr>
                                         <div class="row">
                                             <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                                <a href="#" id="{{ $education->id }}" class="deleteEdu text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                               <!--  <a href="#" id="{{ $education->id }}" class="deleteEdu text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a> -->
+                                                  <button class="remove text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1 p-0" title="Delete"><i class="fa fa-trash"></i></button> 
+                                             
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
@@ -213,17 +216,26 @@
                                                 </div>
                                             </div>
                                         </div>
+                                      </tr>
         
-                                        <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                            <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
+                                      <!--   <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow">
+                                            <button type="button" class="add text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></button>
+                                        </div> -->
+                                          <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow">
+                                            <button type="button" class="add text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block bg-transparent" style="width: 28px; height: 28px;line-height: 1.6;"><i class="fa fa-plus"></i></button>
                                         </div>
+                                       
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo" >
-                                <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                            <div class="panel-body w-100  d-flex flex-wrap position-relative" id="educationInfo">
+                                <div class="col-md-12 p-4 bg-white border-radius15px mb-4 pb-sm-1 participantRow" style="box-shadow: 1px 1px 14px #cddee4;">
+                                  <tr>
                                     <div class="row">
+
+                                      <button class="remove text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle ml-1 position-absolute bg-transparent p-0" title="Delete"><i class="fa fa-trash"></i></button> 
+
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Level of Education</label>
                                             <input type="text" required="required" name='education[level][]'  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight fontsize13px text-darkgray pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Level of Education" />
@@ -290,10 +302,13 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                  </tr>
+                                   <!--  <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
                                         <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()"><i class="fa fa-plus"></i></a>
-                                    </div>
+                                    </div> -->
+                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow">
+                                            <button type="button" class="add text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block bg-transparent" style="width: 28px; height: 28px;line-height: 1.6;"><i class="fa fa-plus"></i></button>
+                                      </div>
                                 </div>
                             </div>
                         @endif
@@ -317,11 +332,14 @@
                         </div>
                         @if ($user->experience->isEmpty() == false)
                             @foreach ($user->experience as $key => $experience)
-                                <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
-                                    <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                                <div class="panel-body w-100 d-flex flex-wrap position-relative" id="experienceInfo">
+                                    <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1 experiencerow" style="box-shadow: 1px 1px 14px #cddee4;">
+                                      <tr>
                                         <div class="row">
                                             <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                                <a href="#" id="{{ $experience->id }}" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                                <!-- <a href="#" id="{{ $experience->id }}" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a> -->
+                                                <button type="button" class="remove2 text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle p-0 ml-1 bg-transparent position-absolute" title="Delete"><i class="fa fa-trash"></i></button>
+                                                
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
@@ -377,17 +395,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                      </tr>
 
-                                        <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                        <!-- <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
                                         <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
-                                        </div>
+                                        </div> -->
+                                         <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow2">
+                                          <button type="button" class="add2 text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block bg-transparent" style="width: 28px;height: 28px;line-height: 1.6;"><i class="fa fa-plus"></i></button>
+                                          </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
-                                <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+                            <div class="panel-body w-100 d-flex flex-wrap position-relative" id="experienceInfo">
+                                <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1 experiencerow" style="box-shadow: 1px 1px 14px #cddee4;">
+                                  <tr>
                                     <div class="row">
+
+                                        <button type="button" class="remove2 text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle p-0 ml-1 bg-transparent position-absolute" title="Delete"><i class="fa fa-trash"></i></button>
+
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
                                             <input type="text" name="experience[title][]" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Title"/>
@@ -442,10 +468,14 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
+                                  </tr>
+                                    <!-- <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
                                     <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
+                                    </div> -->
+                                     <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow2">
+                                    <button type="button" class="add2 text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block bg-transparent" style="width: 28px;height: 28px;line-height: 1.6;"><i class="fa fa-plus"></i></button>
                                     </div>
+                                   
                                 </div>
                             </div>
                         @endif
@@ -614,6 +644,71 @@ function submitProfile(){
 }
 
 
+
+    // append function
+    var p = $("#participants").val();
+    var row = $(".participantRow");
+
+    /* Functions */
+    function getP(){
+      p = $("#participants").val();
+    }
+
+    function addRow() {
+      row.clone(true, true).appendTo("#educationInfo");
+    }
+
+    function removeRow(button) {
+      button.closest(".participantRow").remove();
+    }
+    /* Doc ready */
+    $(".add").on('click', function () {
+      getP();
+      if($("#educationInfo tr").length < 17) {
+        addRow();
+        var i = Number(p)+1;
+        $("#participants").val(i);
+      }
+      $(this).closest("tr").appendTo("#educationInfo");
+      if ($("#educationInfo tr").length === 3) {
+        $(".remove").hide();
+      } else {
+        $(".remove").show();
+      }
+    });
+    $(".remove").on('click', function () {
+      getP();
+      if($("#educationInfo tr").length === 3) {
+        //alert("Can't remove row.");
+        $(".remove").hide();
+      } else if($("#educationInfo tr").length - 1 ==3) {
+        $(".remove").hide();
+        removeRow($(this));
+        var i = Number(p)-1;
+        $("#participants").val(i);
+      } else {
+        removeRow($(this));
+        var i = Number(p)-1;
+        $("#participants").val(i);
+      }
+    });
+    $("#participants").change(function () {
+      var i = 0;
+      p = $("#participants").val();
+      var rowCount = $("#educationInfo tr").length - 2;
+      if(p > rowCount) {
+        for(i=rowCount; i<p; i+=1){
+          addRow();
+        }
+        $("#educationInfo #addButtonRow").appendTo("#educationInfo");
+      } else if(p < rowCount) {
+      }
+    });
+
+    // append function
+
+
+
 var indexedu=0;
 function appendEducationInfo() {
     indexedu++;
@@ -698,6 +793,67 @@ function appendEducationInfo() {
                         `
                     );
 }
+
+
+ var ps = $("#exppart").val();
+    var rows = $(".experiencerow");
+
+    /* Functions */
+    function getPs(){
+      ps = $("#exppart").val();
+    }
+
+    function addRows() {
+      rows.clone(true, true).appendTo("#experienceInfo");
+    }
+
+    function removeRows(button) {
+      button.closest(".experiencerow").remove();
+    }
+    /* Doc ready */
+    $(".add2").on('click', function () {
+      getPs();
+      if($("#experienceInfo tr").length < 17) {
+        addRows();
+        var i = Number(ps)+1;
+        $("#exppart").val(i);
+      }
+      $(this).closest("tr").appendTo("#experienceInfo");
+      if ($("#experienceInfo tr").length === 3) {
+        $(".remove2").hide();
+      } else {
+        $(".remove2").show();
+      }
+    });
+    $(".remove2").on('click', function () {
+      getPs();
+      if($("#experienceInfo tr").length === 3) {
+        //alert("Can't remove row.");
+        $(".remove2").hide();
+      } else if($("#experienceInfo tr").length - 1 ==3) {
+        $(".remove2").hide();
+        removeRows($(this));
+        var i = Number(ps)-1;
+        $("#exppart").val(i);
+      } else {
+        removeRows($(this));
+        var i = Number(ps)-1;
+        $("#exppart").val(i);
+      }
+    });
+    $("#exppart").change(function () {
+      var i = 0;
+      ps = $("#exppart").val();
+      var rowCount2 = $("#experienceInfo tr").length - 2;
+      if(ps > rowCount2) {
+        for(i=rowCount2; i<ps; i+=1){
+          addRows();
+        }
+        $("#experienceInfo #addButtonRow2").appendTo("#experienceInfo");
+      } else if(ps < rowCount2) {
+      }
+    });
+
 
 var index=0;
 
