@@ -39,6 +39,7 @@ time {
     margin-right: 95px;
     width: 100%;
     height: auto;
+    position: absolute;
 }
 
 .chat-area {
