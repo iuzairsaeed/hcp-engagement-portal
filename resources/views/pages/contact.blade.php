@@ -70,7 +70,7 @@
                                             <a href="https://www.linkedin.com/company/celeritas-digital-solutions/mycompany/" class="pl-1 pr-1"><img src="{{asset('images/Asset70.png')}}" width="25"></a>
                                             <a href="https://www.youtube.com/user/CeleritasSolutions" class="pl-1 pr-1"><img src="{{asset('images/Asset71.png')}}" width="25"></a>
                                     </div>
-                    </div>
+                            </div>
                         <!-- /.container-fluid -->
 
         </div>
