@@ -134,10 +134,9 @@
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Users </h6>
       
-                        <div class="carousel-wrap col-sm-11 pl-sm-1">
-                            <div class="owl-carousel upcoming-carousel">
+                            <div class="w-100 d-flex flex-wrap">
                                       @foreach ($users as $user )
-                                        <div class="item">
+                                        <div class="col-sm-3 p-2">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($user->avatar) }}" class="img-fluid"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
@@ -158,17 +157,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                      </a>
+                                
                                     @endforeach
                             </div>
-                        </div>
-                        @if (!$users->isEmpty())
+                        
+                        <!-- @if (!$users->isEmpty())
                             <div class="col-sm-1 p-0 m-auto">
                                 <a href="user"
                                 class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
                             </div>
-                        @endif
+                        @endif -->
                     </div>
 
                     @endif
