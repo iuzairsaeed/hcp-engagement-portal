@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Web'], function () {
         Route::post('dashboard/searchLoc', 'DashboardController@searchByLoc')->name('dashboard.searchByLoc');
         Route::post('dashboard/searchSpec', 'DashboardController@searchBySpec')->name('dashboard.searchBySpec');
         Route::post('dashboard/searchHCP', 'DashboardController@searchByHCP')->name('dashboard.searchByHCP');
+        Route::post('/mark-as-read', 'DashboardController@markNotification')->name('markNotification');
 
         Route::get('changePassword','ProfileController@showChangePasswordForm');
         Route::post('changePassword','ProfileController@changePassword')->name('changePassword');

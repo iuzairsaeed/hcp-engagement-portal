@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use App\Models\User;
+use Notification as Notifications;
+use App\Notifications\OnUpload;
 
 class PostController extends Controller
 {
@@ -79,7 +82,11 @@ class PostController extends Controller
                 $file_name = uploadFile($request->post_image, postPath());
                 $data['post_image'] = $file_name;
             }
-            $this->model->create($data);
+            $updated_data = $this->model->create($data);
+            $params['route_id'] = $updated_data['id']; $params['title'] = $data['title']; 
+            $params['body'] = $data['description']; $params['type'] = 'post'; 
+            $notify_users = User::get();
+            Notifications::send($notify_users, new OnUpload($params));
             return redirect()->back()->with('success', 'Post has been created.');
         } catch (\Throwable $th) {
             return $th->getMessage();
