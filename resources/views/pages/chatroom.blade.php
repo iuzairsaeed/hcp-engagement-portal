@@ -34,23 +34,23 @@
                                                     </div>
                                                   </div>
                                           <div class="inbox_chat">
-                                            <div class="chat_list active_chat">
+                                            <div class="chat_list">
                                               @if($users)
                                                 @foreach($users as $user)
-                                              <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://tech.celeritasdigital.com/hcp-engagement-portal/storage/avatars/{{ $user->avatar }}"> </div>
-                                                <div class="chat_ib">
-                                                  <a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}">
-                                                   <h5>{{ $user->name }}
-                                                  </a>  
-                                                  @if($user->up_at!=null)
-                                                  <span class="chat_date">{{date('h:i A', strtotime($user->up_at))}}</span></h5>
-                                                  @endif
-                                                  <p>{{$user->content}}</p>
-                                                </div>
+                                                 <a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}"><div class="chat_people">
+                                                  <div class="chat_img"> <img src="https://tech.celeritasdigital.com/hcp-engagement-portal/storage/avatars/{{ $user->avatar }}"> </div>
+                                                  <div class="chat_ib">
+                                                   
+                                                     <h5>{{ $user->name }}                                       
+                                                    @if($user->up_at!=null)
+                                                    <span class="chat_date">{{date('h:i A', strtotime($user->up_at))}}</span></h5> 
+                                                    @endif
+                                                    <p>{{$user->content}}</p>
+                                                  </div>
+                                              </div></a>
                                                 @endforeach
                                                @endif
-                                              </div>
+                                            
                                             </div>
                                             <!-- <div class="chat_list">
                                               <div class="chat_people">

@@ -190,6 +190,7 @@
 @endsection
 
 @section('afterScript')
+
 <script type="text/javascript">
     $('.owl-carousel.recent-carousel').owlCarousel({
           loop: false,

@@ -21,6 +21,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // $user->notify(new InvoicePaid($invoice));
         try {
             if(auth()->user()->role == "admin"){
                 $hcp = User::count();
@@ -56,7 +57,7 @@ class DashboardController extends Controller
             $event = new Event; $columns = $event->getFillable(); $events = Event::query()->whereLike($columns, $search)->get();
             $user = new User; $columns = $user->getFillable(); $users = User::query()->whereLike($columns, $search)->get();
 
-            return view('userdashboard',  compact(['events', 'posts', 'activities','users']));
+            return view('search',  compact(['events', 'posts', 'activities','users']));
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

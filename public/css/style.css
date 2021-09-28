@@ -306,7 +306,7 @@ input[type=number] {
   width: 83%;
 }
 
-.chat_people{ overflow:hidden; clear:both;}
+.chat_people{ overflow:hidden; clear:both; margin: 6px 0px 10px;}
 .chat_list {
   margin: 0;
   padding: 18px 16px 10px;
@@ -662,6 +662,12 @@ input[type=number] {
 .comment-overlay:hover {  background: #fef8f4; }
 .w-fix{ width: 70%; }
 .w-93{width: 93%;}
+.dashboard-select .select2-selection { background: #fff !important; }
+.swal2-modal .line.tip.animate-success-tip { display: block !important; }
+.swal2-icon.swal2-success .line.tip, .swal2-success.animate::after, .swal2-icon.swal2-success .fix, 
+.swal2-icon.swal2-success::before{display: none;}
+
+
 
 
 
@@ -717,7 +723,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .show-pass{ right: 20px;
     height: 43px; }
 .select2.select2-container .select2-selection {
-    background: #fff;
+    background: transparent;
     border: 0px;
     border-radius: 20px !important;
     text-align: left;
@@ -760,8 +766,12 @@ input[type="date"]:disabled {
     border: 2px dashed;
 }
 .p-image .upload-button { cursor: pointer; }
+<<<<<<< HEAD
 #educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 
 { display: none !important; }
+=======
+#educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 { display: none !important; }
+>>>>>>> origin/backend
 .remove, .remove2{width: 28px; height: 28px;
   line-height: 1.5;
   right: 7px;top: 8px;

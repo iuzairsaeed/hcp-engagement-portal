@@ -2,7 +2,7 @@
                                             <div class="w-100 bg-white border-radius10px p-3" style="box-shadow: 1px 1px 10px #a7c5d2;">
                                                 <!-- chat-header -->
                                                     <div class="w-100 d-flex flex-wrap mb-3">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-6 col-9">
                                                                 <div class="media">
                                                                   <img src="https://tech.celeritasdigital.com/hcp-engagement-portal/storage/avatars/{{ $user->avatar }}" class="mr-2 rounded-circle" style="width:50px;">
                                                                   <div class="media-body m-auto">
@@ -12,8 +12,8 @@
                                                                   </div>
                                                                 </div>
                                                         </div>
-                                                        <div class="col-sm-6 text-right pr-0">
-
+                                                        <div class="col-sm-6 col-3 text-right pr-0">
+                                                            <button class="close-chat bg-transparent border-0 rounded-none">X</button>
                                                         </div>
                                                     </div>
                                                  <!-- chat-header -->

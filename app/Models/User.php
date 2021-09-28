@@ -15,7 +15,13 @@ use App\Notifications\VerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use SoftDeletes, HasApiTokens, Notifiable, HasRoles, HasStatuses, Search;
+    use SoftDeletes,
+        HasApiTokens,
+        Notifiable,
+        HasRoles,
+        HasStatuses,
+        Search,
+        Notifiable;
 
     protected $hidden = [
         'pin', 'biometric', 'updated_at', 'email_verified_at', 'password', 'remember_token', 'device_token', 'is_admin'
