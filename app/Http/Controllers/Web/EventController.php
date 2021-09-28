@@ -8,7 +8,10 @@ use App\Repositories\Repository;
 use App\Models\Event;
 use App\Models\Reaction;
 use App\Models\Interact;
+use App\Models\User;
 use App\Http\Requests\EventRequest;
+use Notification as Notifications;
+use App\Notifications\OnUpload;
 
 class EventController extends Controller
 {
@@ -89,7 +92,11 @@ class EventController extends Controller
                 $data['event_mime_type'] = $request->event_video->getClientMimeType();
             }
             $data['user_id'] = auth()->id();
-            $this->model->create($data);
+            $updated_data = $this->model->create($data);
+            $params['route_id'] = $updated_data['id']; $params['title'] = $data['title']; 
+            $params['body'] = $data['description']; $params['type'] = 'event'; 
+            $notify_users = User::get();
+            Notifications::send($notify_users, new OnUpload($params));
             return redirect()->back()->with('success', 'Event has been created.');
         } catch (\Throwable $th) {
             return $th->getMessage();

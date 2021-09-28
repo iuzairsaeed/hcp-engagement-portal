@@ -21,7 +21,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // $user->notify(new InvoicePaid($invoice));
         try {
             if(auth()->user()->role == "admin"){
                 $hcp = User::count();
@@ -46,6 +45,18 @@ class DashboardController extends Controller
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
+    }
+
+    public function markNotification(Request $request)
+    {
+        auth()->user()  
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
     }
 
     public function search(SearchRequest $request) {

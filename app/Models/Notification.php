@@ -11,21 +11,24 @@ class Notification extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'title', 'body', 'click_action','data_id'
+        'data',
    ];
 
-   public function getCreatedAtAttribute($value)
-   {
-       return time_elapsed_string($value);
-   }
+    protected $casts = [
+        'created_at' => 'datetime:'.Constant::DATE_FORMAT,
+        'updated_at' => 'datetime:'.Constant::DATE_FORMAT,
+        'deleted_at' => 'datetime:'.Constant::DATE_FORMAT,
+    ];
 
-   public function user()
-   {
-       return $this->belongsTo(User::class);
-   }
+    protected $dates = ['created_at'];
 
-   public function notifiable()
-   {
-       return $this->morphTo();
-   }
+    public function getCreatedAtAttribute($value)
+    {
+        return time_elapsed_string($value);
+    }
+
+    public function notifiable()
+    {
+        return $this->morphTo();
+    }
 }
