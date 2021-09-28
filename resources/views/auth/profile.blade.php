@@ -390,7 +390,7 @@
                                       </tr>
 
                                         <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()" id="{{$user->experience->id}}"><i class="fa fa-plus"></i></a>
+                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo(this)" id="{{$user->experience->id}}"><i class="fa fa-plus"></i></a>
                                         </div>
                                          
                                     </div>
@@ -458,7 +458,7 @@
                                     </div>
                                 
                                     <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                    <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()" id="0"><i class="fa fa-plus"></i></a>
+                                    <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo(this)" id="0"><i class="fa fa-plus"></i></a>
                                     </div>
                                    
                                    
@@ -634,14 +634,13 @@ function submitProfile(){
 
 var indexedu=0;
 function appendEducationInfo(a) {
-    var id = $('#a').attr('id');
-    console.log(++id);
-    indexedu++;
-    $("#educationInfo").append(`
-                        <div class="col-md-12 pb-4 pl-4 pr-4 pt-2 bg-white border-radius15px mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+    // var id = $(a).attr('id');
+    // console.log(++id, indexedu);
+    html = `<div class="col-md-12 pb-4 pl-4 pr-4 pt-2 bg-white border-radius15px mb-4 pb-sm-1" 
+                        id='edu`+indexedu+`' style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
                                    <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                        <a href="#" id="" class="deleteEdu text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" onclick="$('#edu`+indexedu+`').remove();" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
                                    </div>
 
                                     <div class="form-group col-sm-4">
@@ -715,24 +714,22 @@ function appendEducationInfo(a) {
                                  <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo(this)" title="Add"><i class="fa fa-plus"></i></a>
                          </div>
                         </div>
-                        `
-                    );
+                        `;
+
+                  $('#educationInfo').append(html);
+                  indexedu++;
+                    
 }
 
 
 
 
 var index=0;
-
 function appendExperienceInfo() {
-
-index++;
-$("#experienceInfo").append(`
-                    <div class="panel-body w-100 d-flex flex-wrap position-relative"  id="experienceInfo">
-                            <div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
+html = `<div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-4 pb-sm-1" id='exp`+index+`' style="box-shadow: 1px 1px 14px #cddee4;">
                                 <div class="row">
                                     <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
-                                     <a href="#" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
+                                     <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1"  onclick="$('#exp`+index+`').remove();" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
                                    </div>
 
 
@@ -795,9 +792,9 @@ $("#experienceInfo").append(`
                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo()"><i class="fa fa-plus"></i></a>
                                  </div>
                             </div>
-                        </div>
-                    `
-                    );
+                        </div>`;
+                        $('#experienceInfo').append(html);
+                        index++;
 }
 
 </script>
