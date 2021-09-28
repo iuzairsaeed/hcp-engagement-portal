@@ -218,7 +218,7 @@
                                         </div>
                                     
                                         <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;" id="addButtonRow">
-                                            <button type="button" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()" id={{$user->education->id}}><i class="fa fa-plus"></i></button>
+                                            <button type="button" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px; height: 28px;line-height: 1.8;" onclick="appendEducationInfo()" id={{$education->id}}><i class="fa fa-plus"></i></button>
                                         </div>
                                          
                                        
@@ -327,11 +327,12 @@
                             @foreach ($user->experience as $key => $experience)
                                 <div class="panel-body w-100 d-flex flex-wrap position-relative" id="experienceInfo">
                                     <div class="col-md-12 bg-white border-radius15px p-4 mb-4 pb-sm-1" style="box-shadow: 1px 1px 14px #cddee4;">
-                                  
+                                        
                                         <div class="row">
                                             <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative">
                                                 <a href="#" id="{{ $experience->id }}" class="deleteExp text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block ml-1" style="width: 28px; height: 28px;line-height: 1.8;" title="Delete"><i class="fa fa-trash"></i></a>
                                               
+                                                
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label class="text-darkgray font-gothamlight fontsize12px">Title</label>
@@ -390,7 +391,7 @@
                                       </tr>
 
                                         <div class="col-md-12 text-right d-flex justify-content-end p-0 position-relative" style="left: 16px;">
-                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo(this)" id="{{$user->experience->id}}"><i class="fa fa-plus"></i></a>
+                                        <a href="#" class="text-center border border-orange fontsize17px text-orange font-weight-light rounded-circle d-block" style="width: 28px;height: 28px;line-height: 1.8;" onclick="appendExperienceInfo(this)" id="{{$experience->id}}"><i class="fa fa-plus"></i></a>
                                         </div>
                                          
                                     </div>
