@@ -766,17 +766,39 @@ input[type="date"]:disabled {
     border: 2px dashed;
 }
 .p-image .upload-button { cursor: pointer; }
-<<<<<<< HEAD
-#educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 
-{ display: none !important; }
-=======
 #educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 { display: none !important; }
->>>>>>> origin/backend
-.remove, .remove2{width: 28px; height: 28px;
+.remove, .remove2{
+  width: 28px; height: 28px;
   line-height: 1.5;
   right: 7px;top: 8px;
  z-index: 1;
 }
+.notify-sec .action:hover, .notify-sec .action:active, .notify-sec .action:focus { background: #eee !important;
+box-shadow: 0px 0px !important; }
+.notify-sec .action {
+    text-align: left;
+    padding: 14px 18px;
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px;
+}
+.notify-sec .action p {
+    margin-bottom: 0px;
+    color: #505158;
+    font-size: 12px;
+    padding: 0px;
+    margin-top: 3px;
+    font-family: Gothamlight;
+}
+.notify-sec .action .h6 {
+    color: #0058a5;
+    font-family: 'Gothambook';
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+
+
 
 
 

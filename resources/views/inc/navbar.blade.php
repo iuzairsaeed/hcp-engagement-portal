@@ -102,7 +102,7 @@
                                     <!-- <span class="badge bg-blue text-white badge-counter">3+</span> -->
                                 </a>
                                 <!-- Dropdown - Alerts -->
-                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in notify-sec"
                                     aria-labelledby="alertsDropdown" >
                                     <h6 class="dropdown-header font-gothamlight">
                                         Alerts Center

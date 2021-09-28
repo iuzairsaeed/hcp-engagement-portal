@@ -579,27 +579,7 @@ function passwordnew() {
 }
 
 
-    $(function () {
-        $("#chkPassport").click(function () {
-            if ($(this).is(":checked")) {
-              $("#txtNumberDate").attr("disabled", "disabled");
-              
-            } else {
-                $("#txtNumberDate").removeAttr("disabled");
-                $("#txtNumberDate").focus();
-            }
-        });
-        $("#currently_here").click(function () {
-            if ($(this).is(":checked")) {
-              $("#txtNumberExp").attr("disabled", "disabled");
-              
-            } else {
-                $("#txtNumberExp").removeAttr("disabled");
-                $("#txtNumberExp").focus();
-            }
-        });
-    });
- 
+  
 
 
 function submitProfile(){
@@ -751,21 +731,21 @@ html = `<div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Therapeutic Area</label>
-                                        <input type="text"  name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
+                                        <input type="text" name="experience[therapeutic_area][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Therapeutic Area" />
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">City</label>
-                                        <input type="text"  name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
+                                        <input type="text" name="experience[city][]"  class="border w-100 bg-gray border-radius25px outline-none font-gothamlight text-darkgray fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="City"/>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label class="text-darkgray font-gothamlight fontsize12px">Country</label>
-                                        <input type="text"  name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
+                                        <input type="text" name="experience[country][]"  required="required" class="border w-100 bg-gray border-radius25px text-darkgray outline-none font-gothamlight fontsize13px pl-3 pr-3 pt-2 pb-2 border-gray lineheight2px" placeholder="Country"/>
                                     </div>
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="text-darkgray font-gothamlight fontsize12px">Time Period</label>
-                                            <label class="checkcustom fontsize12px font-gothamlight" for="currently_here" style="color: #afafaf;">I currently go here
-                                                <input type="checkbox"  value="1" id="currently_here" name="experience[currently_here][]">
+                                            <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I currently go here
+                                                <input type="checkbox"  value="1" name="experience[currently_here][]">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -781,7 +761,7 @@ html = `<div class="col-md-12 bg-white border-radius15px pl-4 pr-4 pb-4 pt-2 mb-
                                     <div class="w-100">
                                         <div class="form-group col-sm-4">
                                             <label class="checkcustom fontsize12px font-gothamlight" style="color: #afafaf;">I do not want to enter my experience at this time
-                                                <input type="checkbox" name="experience[data][]" value="1">
+                                                <input type="checkbox" name="experience[data][]">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
