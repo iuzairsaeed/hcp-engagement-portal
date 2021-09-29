@@ -601,7 +601,7 @@ function submitProfile(){
     processData: false,
     success: function (res) {
       swal('Success','Your Record Has Been Successfully Addded','success');
-      window.location = "{{ url('profile') }}";
+    //   window.location = "{{ url('profile') }}";
     },
     error: function(err) {
       swal('Not Valid',err.responseJSON.message,'error')
