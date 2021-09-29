@@ -1,11 +1,7 @@
 /node_modules
-<<<<<<< HEAD
-=======
 /public/hot
 /public/storage/*
->>>>>>> backend
 /storage/*.key
-/public/storage/*
 /vendor
 .env
 .env.backup
