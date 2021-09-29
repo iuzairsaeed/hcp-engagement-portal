@@ -54,7 +54,6 @@
 													</div>
 													</div>
 
-												<div class="w-100 mt-4"><a href="#" class="text-orange fontsize13px font-gothambook"><i class="fa fa-flag mr-1"></i> Report</a></div>
 										</div>
 									</div>
 									<div class="col-sm-5 pt-3 pl-sm-3 pr-sm-3">
