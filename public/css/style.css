@@ -306,7 +306,7 @@ input[type=number] {
   width: 83%;
 }
 
-.chat_people{ overflow:hidden; clear:both;}
+.chat_people{ overflow:hidden; clear:both; margin: 6px 0px 10px;}
 .chat_list {
   margin: 0;
   padding: 18px 16px 10px;
@@ -662,6 +662,12 @@ input[type=number] {
 .comment-overlay:hover {  background: #fef8f4; }
 .w-fix{ width: 70%; }
 .w-93{width: 93%;}
+.dashboard-select .select2-selection { background: #fff !important; }
+.swal2-modal .line.tip.animate-success-tip { display: block !important; }
+.swal2-icon.swal2-success .line.tip, .swal2-success.animate::after, .swal2-icon.swal2-success .fix, 
+.swal2-icon.swal2-success::before{display: none;}
+
+
 
 
 
@@ -717,7 +723,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .show-pass{ right: 20px;
     height: 43px; }
 .select2.select2-container .select2-selection {
-    background: #fff;
+    background: transparent;
     border: 0px;
     border-radius: 20px !important;
     text-align: left;
@@ -761,11 +767,38 @@ input[type="date"]:disabled {
 }
 .p-image .upload-button { cursor: pointer; }
 #educationInfo .participantRow:nth-child(1) .remove, #experienceInfo .experiencerow:nth-child(1) .remove2 { display: none !important; }
-.remove, .remove2{width: 28px; height: 28px;
+.remove, .remove2{
+  width: 28px; height: 28px;
   line-height: 1.5;
   right: 7px;top: 8px;
  z-index: 1;
 }
+.notify-sec .action:hover, .notify-sec .action:active, .notify-sec .action:focus { background: #eee !important;
+box-shadow: 0px 0px !important; }
+.notify-sec .action {
+    text-align: left;
+    padding: 14px 18px;
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px;
+}
+.notify-sec .action p {
+    margin-bottom: 0px;
+    color: #505158;
+    font-size: 12px;
+    padding: 0px;
+    margin-top: 3px;
+    font-family: Gothamlight;
+}
+.notify-sec .action .h6 {
+    color: #0058a5;
+    font-family: 'Gothambook';
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+
+
 
 
 

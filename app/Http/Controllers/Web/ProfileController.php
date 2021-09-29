@@ -78,6 +78,7 @@ class ProfileController extends Controller
                 $eduInput[$k][$key] = $value[$k];
                 $eduInput[$k]["created_at"] = now();
                 $eduInput[$k]["updated_at"] = now();
+                $eduInput[$k]["currently_here"] = $educationData['education']["currently_here"][$k] ?? null; 
             }
         }
         $educationModel = Education::where('user_id', auth()->id())->get();
@@ -92,6 +93,7 @@ class ProfileController extends Controller
             $educationModel = new  Education;
             $this->model = new Repository($educationModel);
             $this->model->insert($eduInput);
+            return response(['success'=>$eduInput],200);
         }
         // save experience
         foreach ($experienceData['experience'] as $key => $value) {
@@ -100,6 +102,7 @@ class ProfileController extends Controller
                 $expInput[$k][$key] = $value[$k];
                 $expInput[$k]["created_at"] = now();
                 $expInput[$k]["updated_at"] = now();
+                $expInput[$k]["currently_here"] = $experienceData['experience']["currently_here"][$k] ?? null; 
             }
         }
         $experienceModel = Experience::where('user_id', auth()->id())->get();
@@ -115,7 +118,7 @@ class ProfileController extends Controller
             $this->model = new Repository($experienceModel);
             $this->model->insert($expInput);
         }
-        return redirect()->back()->with('success', 'Profile has been updated.');
+        return response(['success'=>$request->all()],200);
     }
 
     public function showChangePasswordForm()

@@ -66,9 +66,9 @@
 
                                     <div class="w-100 text-center bg-gray pt-3 pb-3" style="margin-top: -4px">
                                             <h6 class="font-gothambook text-darkgray mb-2">On Social Networks</h6>
-                                            <a href="https://www.facebook.com/celeritassolutionsTUJU" class="pl-1 pr-1"><img src="{{asset('images/Asset69.png')}}" width="25"></a>
-                                            <a href="https://www.linkedin.com/company/celeritas-digital-solutions/mycompany/" class="pl-1 pr-1"><img src="{{asset('images/Asset70.png')}}" width="25"></a>
-                                            <a href="https://www.youtube.com/user/CeleritasSolutions" class="pl-1 pr-1"><img src="{{asset('images/Asset71.png')}}" width="25"></a>
+                                            <a href="https://www.facebook.com/celeritassolutionsTUJU" target="_blank" class="pl-1 pr-1"><img src="{{asset('images/Asset69.png')}}" width="25"></a>
+                                            <a href="https://www.linkedin.com/company/celeritas-digital-solutions/mycompany/" target="_blank" class="pl-1 pr-1"><img src="{{asset('images/Asset70.png')}}" width="25"></a>
+                                            <a href="https://www.youtube.com/user/CeleritasSolutions" target="_blank" class="pl-1 pr-1"><img src="{{asset('images/Asset71.png')}}" width="25"></a>
                                     </div>
                             </div>
                         <!-- /.container-fluid -->

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
     
-
+    
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -17,10 +16,9 @@
                 @if (!$activities->isEmpty())
                 <div class="w-100 pt-3 d-flex flex-wrap">
                     <h6 class="font-gothambook text-darkgray mb-1 p-1 col-sm-12">My Recent Activities </h6>
-                        <div class="carousel-wrap pl-sm-0 col-sm-11">
-                            <div class="owl-carousel activity-carousel">
+                            <div class="w-100 d-flex flex-wrap">
                                 @foreach ($activities as $activity )
-                                <div class="item">
+                                <div class="col-sm-3 p-2">
                                     <div class="media p-1 bg-white"
                                             style="border-radius: 7px 7px;box-shadow: -1px 1px 10px -2px #9fa5a7;">
                                         <img
@@ -37,16 +35,16 @@
                                 </div>
                                 @endforeach
                             </div>
-                        </div>
+                        
                         
                     @endif
-                    @if (!$activities->isEmpty())
+<!--                     @if (!$activities->isEmpty())
                         <div class="col-sm-1 p-0 m-auto">
                             <a href="{{url('/activity') }}"
                                 class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                 All</a>
                         </div>
-                    @endif
+                    @endif -->
                 </div>
                 <!-- Recent Activities -->
 
@@ -56,12 +54,11 @@
                     @if (!$events->isEmpty())
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Upcoming Events </h6>
-      
-                        <div class="carousel-wrap col-sm-11 pl-sm-1">
-                            <div class="owl-carousel upcoming-carousel">
+    
+                            <div class="w-100 d-flex flex-wrap">
                                       @foreach ($events as $event )
                                       <a href="{{ route('event.show', $event->id) }}">
-                                        <div class="item">
+                                        <div class="col-sm-3 p-2">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($event->event_attachment) }}" class="img-fluid"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
@@ -87,15 +84,15 @@
                                         </div>
                                       </a>
                                     @endforeach
-                            </div>
+                        
                         </div>
-                        @if (!$events->isEmpty())
+                       <!--  @if (!$events->isEmpty())
                             <div class="col-sm-1 p-0 m-auto">
                                 <a href="event"
                                 class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
                             </div>
-                        @endif
+                        @endif -->
                     </div>
 
                     @endif
@@ -106,10 +103,10 @@
                         @if (!$posts->isEmpty())
                         <div class="w-100 mt-3 d-flex flex-wrap col-sm-12 pl-3 pr-3">
                             <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12"> Recent Posts</h6>
-                            <div class="carousel-wrap col-sm-11 pl-sm-1">
-                                <div class="owl-carousel recent-carousel">
+                           
+                                <div class="w-100 d-flex flex-wrap">
                                     @foreach ($posts as $post )
-                                    <div class="item">
+                                    <div class="col-sm-3 p-2">
                                         <a href="{{ route('post.show', $post->id) }}">
                                         <div class="bg-white border-radius15px p-2">
                                             <div class="w-100 h-img"><img src="{{asset($post->post_image) }}" class="mb-2 rounded w-100"></div>
@@ -122,11 +119,11 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            </div>
-                            <div class="col-sm-1 p-0 m-auto">
+                         
+                            <!-- <div class="col-sm-1 p-0 m-auto">
                                 <a href="{{url('/post') }}" class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
-                            </div>
+                            </div> -->
                             <!-- Content Row -->
                         </div>
                         @endif
@@ -137,10 +134,9 @@
                     <div class="w-100 pt-3 d-flex flex-wrap">
                         <h6 class="mb-1 p-1 font-gothambook text-darkgray col-sm-12">Users </h6>
       
-                        <div class="carousel-wrap col-sm-11 pl-sm-1">
-                            <div class="owl-carousel upcoming-carousel">
+                            <div class="w-100 d-flex flex-wrap">
                                       @foreach ($users as $user )
-                                        <div class="item">
+                                        <div class="col-sm-3 p-2">
                                             <div class="bg-white border-radius15px p-2">
                                                 <div class="w-100 h-img"><img src="{{asset($user->avatar) }}" class="img-fluid"></div>
                                                 <div class="card-body text-left pt-2 pb-0 pl-1 pr-1">
@@ -161,17 +157,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                      </a>
+                                
                                     @endforeach
                             </div>
-                        </div>
-                        @if (!$users->isEmpty())
+                        
+                        <!-- @if (!$users->isEmpty())
                             <div class="col-sm-1 p-0 m-auto">
                                 <a href="user"
                                 class="text-uppercase bg-orange btn border-radius25px text-white border border-orange font-gothammedium fontsize10px">View
                                     All</a>
                             </div>
-                        @endif
+                        @endif -->
                     </div>
 
                     @endif
@@ -192,7 +188,7 @@
 @section('afterScript')
 
 <script type="text/javascript">
-    $('.owl-carousel.recent-carousel').owlCarousel({
+    $('.owl-carousel.recent-search').owlCarousel({
           loop: false,
           margin: 15,
           nav: false,
@@ -270,7 +266,6 @@
   
 </script>
 
-
-
 @endsection
+
 

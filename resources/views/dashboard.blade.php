@@ -11,7 +11,7 @@
 
                   <div class="container-fluid pr-sm-0 pr-sm-4 pl-sm-4 pl-1 pb-2">
                         <div class="row">   
-                          <div class="col-sm-12 text-right">
+                          <div class="col-sm-12 text-right dashboard-select">
                               <ul class="pl-0 pr-0 pt-2 pb-2 m-0 text-right d-flex flex-wrap" style="flex-direction: row-reverse;">
                                 
                                   <li class="d-inline-block col-sm-3 col-6">

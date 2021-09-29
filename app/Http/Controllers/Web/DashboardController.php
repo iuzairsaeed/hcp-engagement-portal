@@ -47,6 +47,18 @@ class DashboardController extends Controller
         }
     }
 
+    public function markNotification(Request $request)
+    {
+        auth()->user()  
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
+    }
+
     public function search(SearchRequest $request) {
         try {
             $search = $request->search; 
@@ -56,7 +68,7 @@ class DashboardController extends Controller
             $event = new Event; $columns = $event->getFillable(); $events = Event::query()->whereLike($columns, $search)->get();
             $user = new User; $columns = $user->getFillable(); $users = User::query()->whereLike($columns, $search)->get();
 
-            return view('userdashboard',  compact(['events', 'posts', 'activities','users']));
+            return view('search',  compact(['events', 'posts', 'activities','users']));
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

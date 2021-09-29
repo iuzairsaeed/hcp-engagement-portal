@@ -67,3 +67,29 @@ $("#imageUpload").change(function() {
 });
 
 
+
+
+
+ $(function () {
+        $("#chkPassport").click(function () {
+            if ($(this).is(":checked")) {
+              $("#txtNumberDate").attr("disabled", "disabled");
+              
+            } else {
+                $("#txtNumberDate").removeAttr("disabled");
+                $("#txtNumberDate").focus();
+            }
+        });
+        $("#currently_here").click(function () {
+            if ($(this).is(":checked")) {
+              $("#txtNumberExp").attr("disabled", "disabled");
+              
+            } else {
+                $("#txtNumberExp").removeAttr("disabled");
+                $("#txtNumberExp").focus();
+            }
+        });
+    
+    });
+ 
+
